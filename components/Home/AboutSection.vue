@@ -1,31 +1,17 @@
 <template>
   <section class="about scroll-point" id="about">
     <div class="about__inner inner" id="fadeElement">
-      <div class="about__title section-title">
-        <span class="section-title__main">About</span>
-        <h2 class="section-title__sub">自己紹介</h2>
-        <SectionTitle></SectionTitle>
-      </div>
+       <SectionTitle></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
         <div class="about__text">
           <p>
-            はじめまして、宇佐美洋平と申します。<br />
-            名古屋でデザートコースのお店を経営している<br />
-            オーナーシェフパティシエです。
+            一皿のデザートと、体験のデザイン。
+            パティシエとして、“記憶に残る時間”を作り続けてきました。
+            いまはその表現を、デジタルにも広げています。
           </p>
-          <p>
-            作ることが好きでパティシエをしていますが、<br />
-            他にプログラミングでのWeb制作も好きで<br />
-            日々の学習に勤しんでおります。
-          </p>
-          <p>
-            年間2000人に対応した接客術や<br />
-            クオリティーの高い制作物、<br />
-            細部まで突き詰める能力を<br />
-            Web制作にも活かしていきます。
-          </p>
-          <p class="about__policy">即行動・傾聴力・追求心</p>
-          <p>の三箇条が信念です。</p>
+          <!-- <p class="about__policy">即行動・傾聴力・追求心</p> -->
+          <p>行動力、柔軟な視点、細部までのこだわり。<br/>
+            この3つを大切にしながら、デジタルとアナログのものづくりをしています。</p>
         </div>
         <img src="/public/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
       </div>
@@ -39,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import  SectionTitle  from "../common/SectionTitle.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -135,46 +122,6 @@ a {
   }
 }
 
-/* section-title */
-.section-title {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 200px;
-  height: 130px;
-  /* display: inline-block; */
-  position: relative;
-  margin-left: 15%;
-}
-.section-title span {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 4rem;
-  font-family: 'Italianno';
-  letter-spacing: 0.15rem;
-
-  /* border-bottom: 1px solid #333; */
-}
-
-.section-title h2 {
-  position: absolute;
-  top: 120px;
-  right: -10px;
-  font-size: 12px;
-  font-family: 'Yu Gothic', sans-serif;
-  /* font-weight: ; */
-}
-.section-title span::after {
-  position: absolute;
-  bottom: 5px;
-  right: 0px;
-  content: '';
-  border: solid 2px #bf901a;
-  width: 50px;
-  /* height: 4px; */
-  border-radius: 5px;
-  /* width: 10px; */
-}
 /* .about .section-title {
   margin-left: 10%;
 } */

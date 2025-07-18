@@ -1,7 +1,12 @@
 <template>
+      <div class="section-title">
+        <h2 class="section-title__main">About</h2>
+        <span class="section-title__sub">自己紹介</span>
+      </div>
 </template>
 
 <script setup lang="ts">
+import { defineProps } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -67,4 +72,44 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+/* section-title */
+.section-title {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 130px;
+  /* display: inline-block; */
+  position: relative;
+  margin-left: 15%;
+}
+.section-title h2 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 4rem;
+  font-family: 'Italianno';
+  letter-spacing: 0.15rem;
+  font-weight: 300;
+  /* border-bottom: 1px solid #333; */
+}
+
+.section-title span {
+  position: absolute;
+  top: 100px;
+  right: 48px;
+  font-size: 12px;
+  font-family: 'Yu Gothic', sans-serif;
+  /* font-weight: ; */
+}
+.section-title h2::after {
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+  content: '';
+  border: solid 2px #bf901a;
+  width: 50px;
+  /* height: 4px; */
+  border-radius: 5px;
+  /* width: 10px; */
+}
 </style>
