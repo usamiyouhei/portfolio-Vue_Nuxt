@@ -1,5 +1,6 @@
 <template>
  <HomeHeroSection/>
+ <HomeAboutSection/>
 </template>
 
 <script setup lang="ts">
