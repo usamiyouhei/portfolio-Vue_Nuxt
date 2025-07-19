@@ -1,4 +1,9 @@
 <template>
+   <div class="button__wrap">
+      <a href="/usami/about">
+        <button fontFamily="system-ui" color="" back=" #fedaf36f" :hoverType="18" :afterType="3">Read More</button>
+      </a>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -67,4 +72,10 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.button__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
 </style>

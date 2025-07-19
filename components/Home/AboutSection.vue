@@ -3,29 +3,27 @@
     <div class="about__inner inner" id="fadeElement">
        <SectionTitle></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
+        <img src="/public/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
         <div class="about__text">
           <p>
-            一皿のデザートと、体験のデザイン。
-            パティシエとして、“記憶に残る時間”を作り続けてきました。
+            はじめまして。
+            宇佐美洋平と申します。<br/>
+            一皿のデザートと、体験のデザイン。<br/>
+            パティシエとして、“記憶に残る時間”を作り続けてきました。<br/>
             いまはその表現を、デジタルにも広げています。
           </p>
-          <!-- <p class="about__policy">即行動・傾聴力・追求心</p> -->
           <p>行動力、柔軟な視点、細部までのこだわり。<br/>
             この3つを大切にしながら、デジタルとアナログのものづくりをしています。</p>
         </div>
-        <img src="/public/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
       </div>
     </div>
-    <div class="button__wrap">
-      <a href="/usami/about">
-        <test02 fontFamily="system-ui" color="" back=" #fedaf36f" :hoverType="18" :afterType="3">Read More</test02>
-      </a>
-    </div>
+   <Button/>
   </section>
 </template>
 
 <script setup lang="ts">
 import  SectionTitle  from "../common/SectionTitle.vue";
+import  Button  from "../common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -110,18 +108,24 @@ a {
 }
 .about__wrap {
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
   background-image: url(/public/img/aboutback.png);
-  background-size: 600px 500px;
+  background-size: 300px 250px;
   background-repeat: no-repeat;
-  background-position: 20%;
+  background-position: 30%;
   &.is-scrollIn {
     opacity: 1;
     transform: translate(0, -50px);
   }
 }
-
+.about img {
+  object-fit: cover;
+  border-radius: 10px;
+  width: 20%;
+}
 /* .about .section-title {
   margin-left: 10%;
 } */
@@ -137,17 +141,8 @@ a {
   font-size: 30px;
   font-weight: bold;
 }
-.about img {
-  object-fit: cover;
-  border-radius: 10px;
-  width: 40%;
-}
-.button__wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
+
+
 @media screen and (max-width: 1024px) {
   .section-title h2 {
     position: absolute;
