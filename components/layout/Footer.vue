@@ -1,5 +1,40 @@
 <template>
-  <div><span>footer</span></div>
+  <footer class="footer" id="footer">
+      <div class="footer__container">
+        <nav class="footer__nav inner">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer__icon">
+          <a href="https://twitter.com/" target="_blank"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><i class="fa-brands fa-square-instagram"></i
+          ></a>
+          <a href="https://www.facebook.com/"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://github.com/usamiyouhei"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="https://www.youtube.com/"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+        <div class="footer__info inner">
+          <h4>Infomation</h4>
+        </div>
+      </div>
+      <div class="footer__copy-right">
+        <p>&copy;y.usami</p>
+      </div>
+    </footer>
 </template>
 
 <script setup lang="ts">
