@@ -35,9 +35,15 @@ import 'swiper/css/pagination'
       category: 'web'
     },
     { 
-      title: "Webサイト制作", 
-      img: '/img/website1.png',
-      description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
+      title: "Webデザイン", 
+      img: '/img/design.png',
+      description: 'クライアント様からのイメージを詳しくお聞きし、より良いデザインを作っていきます。',
+      category: 'web'
+    },
+    { 
+      title: "Webサイトリニューアル", 
+      img: '/img/siterenewal.png',
+      description: '現状のWebサイトの改良や修正なども可能です。',
       category: 'web'
     },
     
