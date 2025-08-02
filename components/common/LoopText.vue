@@ -1,51 +1,19 @@
 <template>
-  <section class="service" id="service">
-      <div class="service__inner inner">
-        <div class="service__title section-title">
-         <SectionTitle sectionTitle="Service" sectionSubTitle="事業内容" />
-        </div>
-      <Swiper
-        :loop="true"
-        :autoplay="{ delay : 5000 }"
-        :pagination="true"
-        class="service-swiper"
-        >
-        <SwiperSlide v-for="(service , index) in filteredServices" :key="index">
-          <ServiceCard :service="service"/>
-        </SwiperSlide>
-      </Swiper>
+  <div class="loop__wrap">
+      <div class="loop__wrap--first">
+        Web Designer &nbsp;Programmer &nbsp;Dessert Creator &nbsp;
       </div>
-    </section>
+      <div class="loop__wrap--second">
+        Web Designer &nbsp;Programmer &nbsp;Dessert Creator &nbsp;
+      </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { Swiper,SwiperSlide } from "swiper/vue";
-import  SectionTitle  from "../common/SectionTitle.vue";
-import  ServiceCard  from "../Home/ServiceCard.vue";
-import 'swiper/css'
-import 'swiper/css/pagination'
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-  const services = [
-    { 
-      title: "Webサイト制作", 
-      img: '/img/website1.png',
-      description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
-      category: 'web'
-    },
-    { 
-      title: "Webサイト制作", 
-      img: '/img/website1.png',
-      description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
-      category: 'web'
-    },
-    
-  ]
-
-
-  const filteredServices = services
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
@@ -107,4 +75,52 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.loop__wrap {
+  display: flex;
+  /* width:  100%; */
+  height: 300px;
+  overflow: hidden;
+  margin: 50px 0;
+}
+
+.loop__wrap div {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 250px;
+  font-weight: 900;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.loop__wrap--first {
+  color: #e6d3bb;
+}
+.loop__wrap--second {
+  color: #e9cfad;
+}
+.loop__wrap div:nth-child(odd) {
+  animation: loop 200s -100s linear infinite;
+}
+
+.loop__wrap div:nth-child(even) {
+  animation: loop2 200s linear infinite;
+}
+
+@keyframes loop {
+  0% {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes loop2 {
+  0% {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+
 </style>
