@@ -2,13 +2,11 @@
   <Swiper>
     <ul class="service__items">
           <li class="service__item fade-in fade-in-up">
-            <h3>Webサイト制作</h3>
-            <img src="./img2/website1.png" alt="" />
-            <p>
-              新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です。
-            </p>
+            <h3>{{ service.title }}</h3>
+            <img :src="service.img" alt="service.title" />
+            <p v-html="service.description" />
           </li>
-          <li class="service__item fade-in fade-in-up">
+          <!-- <li class="service__item fade-in fade-in-up">
             <h3>Webデザイン</h3>
             <img src="./img2/design.png" alt="" />
             <p>
@@ -43,7 +41,7 @@
               写真、動画撮影も承ります。<br />
               ポートフォリオの写真は自分が撮影しました。
             </p>
-          </li>
+          </li> -->
         </ul>
   </Swiper>
 </template>
@@ -53,7 +51,15 @@ import { Swiper,SwiperSlide } from "swiper/vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
+  defineProps<{
+  service: {
+    title: string;
+    img: string;
+    description: string;
+  }
+  }>()
+
+ //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
@@ -115,4 +121,42 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.service__items {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 50px auto;
+  flex-wrap: wrap;
+  gap: 3.5%;
+  padding: 0;
+}
+.service__item {
+  width: 31%;
+  margin-bottom: 24px;
+  background-color: rgba(255, 243, 230, 100);
+  border-radius: 6px;
+}
+.service__item h3 {
+  font-size: 1rem;
+}
+.service__item img {
+  margin: auto;
+  width: 80%;
+
+}
+.service__item:nth-child(2) img,
+.service__item:nth-child(6) img {
+  width: 55%;
+  margin: 20px auto 0;
+}
+.service__item:nth-child(3) img,
+.service__item:nth-child(5) img {
+  width: 50%;
+  margin: 30px auto 10px;
+}
+.service__item p {
+  width: 70%;
+  /* text-align: center; */
+  margin: 20px auto;
+}
 </style>
