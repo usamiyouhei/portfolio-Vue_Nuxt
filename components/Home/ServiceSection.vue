@@ -1,7 +1,24 @@
 <template>
+  <section class="service" id="service">
+      <div class="service__inner inner">
+        <div class="service__title section-title">
+         <SectionTitle sectionTitle="Service" sectionSubTitle="事業内容" />
+        </div>
+        <Swiper>
+    <SwiperSlide>
+      <ServiceCard>
+
+      </ServiceCard>
+    </SwiperSlide>
+  </Swiper>
+      </div>
+    </section>
 </template>
 
 <script setup lang="ts">
+import { Swiper,SwiperSlide } from "swiper/vue";
+import  SectionTitle  from "../common/SectionTitle.vue";
+import  ServiceCard  from "../Home/ServiceCard.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/

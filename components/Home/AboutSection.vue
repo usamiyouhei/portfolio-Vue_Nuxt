@@ -1,7 +1,7 @@
 <template>
   <section class="about scroll-point" id="about">
     <div class="about__inner inner" id="fadeElement">
-       <SectionTitle></SectionTitle>
+       <SectionTitle sectionTitle="about" sectionSubTitle="自己紹介"></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
         <img src="/public/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
         <div class="about__text">
