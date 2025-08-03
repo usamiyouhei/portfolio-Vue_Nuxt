@@ -1,47 +1,14 @@
 <template>
   <Swiper>
     <ul class="service__items">
-          <li class="service__item fade-in fade-in-up">
+          <li 
+            :class="{'fade-in fade-in-up' : visible}"
+            v-intersect="onIntersect"
+            class="service__item">
             <h3>{{ service.title }}</h3>
             <img :src="service.img" alt="service.title" />
             <p v-html="service.description" />
           </li>
-          <!-- <li class="service__item fade-in fade-in-up">
-            <h3>Webデザイン</h3>
-            <img src="./img2/design.png" alt="" />
-            <p>
-              クライアント様からのイメージを詳しくお聞きし、より良いデザインを作っていきます。
-            </p>
-          </li>
-          <li class="service__item fade-in fade-in-up">
-            <h3>Webサイトリニューアル</h3>
-            <img src="./img2/siterenewal.png" alt="" />
-            <p>現状のWebサイトの改良や修正なども可能です。</p>
-          </li>
-          <li class="service__item fade-in fade-in-up">
-            <h3>飲食店コンサルタント</h3>
-            <img src="./img2/consulting.png" alt="" />
-            <p>
-              飲食店、パティシエの経験を活かしコンサルタントを行っております。<br />
-              ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。
-            </p>
-          </li>
-          <li class="service__item fade-in fade-in-up">
-            <h3>レシピ開発</h3>
-            <img src="./img2/cake.png" alt="" />
-            <p>
-              ２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。<br />
-              栄養学も学習中で体に良いものも考案できます。
-            </p>
-          </li>
-          <li class="service__item fade-in fade-in-up">
-            <h3>写真・動画撮影</h3>
-            <img src="./img2/camera.png" alt="" />
-            <p>
-              写真、動画撮影も承ります。<br />
-              ポートフォリオの写真は自分が撮影しました。
-            </p>
-          </li> -->
         </ul>
   </Swiper>
 </template>
@@ -58,6 +25,14 @@ import { Swiper,SwiperSlide } from "swiper/vue";
     description: string;
   }
   }>()
+
+  const visible = ref(false)
+
+  function onIntersect(entries: IntersectionObserverEntry[]) {
+  if (entries[0].isIntersecting) {
+    visible.value = true
+  }
+}
 
  //------------------------------------------------------------------------------------------------------------
 // 引数
@@ -158,5 +133,15 @@ function onChange(value: any) {
   width: 70%;
   /* text-align: center; */
   margin: 20px auto;
+}
+
+.fade-in {
+  opacity: 0;
+  transition-duration: 1000ms;
+  transition-property: opacity, transform;
+}
+
+.fade-in-up {
+  transform: translate(0, 100px);
 }
 </style>
