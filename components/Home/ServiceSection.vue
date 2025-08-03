@@ -30,13 +30,13 @@ import 'swiper/css/pagination'
   const services = [
     { 
       title: "Webサイト制作", 
-      img: '/img/website1.png',
+      img: '/img/Static website-cuate.svg',
       description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
       category: 'web'
     },
     { 
       title: "Webデザイン", 
-      img: '/img/design.png',
+      img: '/img/UI-UX design-amico.svg',
       description: 'クライアント様からのイメージを詳しくお聞きし、より良いデザインを作っていきます。',
       category: 'web'
     },
@@ -45,6 +45,24 @@ import 'swiper/css/pagination'
       img: '/img/siterenewal.png',
       description: '現状のWebサイトの改良や修正なども可能です。',
       category: 'web'
+    },
+    { 
+      title: "飲食店コンサルタント", 
+      img: '/img/',
+      description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
+      category: 'creater'
+    },
+    { 
+      title: "レシピ開発", 
+      img: '/img/',
+      description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
+      category: 'creater'
+    },
+    { 
+      title: "写真・動画撮影", 
+      img: '/img/',
+      description: '写真、動画撮影も承ります。ポートフォリオの写真は自分が撮影しました。',
+      category: 'creater'
     },
     
   ]
