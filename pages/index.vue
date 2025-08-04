@@ -2,6 +2,7 @@
  <HomeHeroSection/>
  <HomeAboutSection/>
  <HomeServiceSection/>
+ <HomeNewsSection/>
  <HomeWorksSection/>
 </template>
 

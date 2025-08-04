@@ -1,7 +1,22 @@
 <template>
+   <section id="news" class="news">
+      <div class="news__inner inner">
+        <div class="news__title section-title">
+         <SectionTitle sectionTitle="News" sectionSubTitle="お知らせ"/>
+        </div>
+        <ul class="news__items">
+          <NewsItem/>
+        </ul>
+      </div>
+      <a class="read-more__button" href="./news.html">
+        <span>Read More</span>
+      </a>
+    </section>
 </template>
 
 <script setup lang="ts">
+import SectionTitle from "../common/SectionTitle.vue";
+import NewsItem from "../Home/NewsItem.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
