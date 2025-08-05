@@ -42,25 +42,25 @@ import 'swiper/css/pagination'
     },
     { 
       title: "Webサイトリニューアル", 
-      img: '/img/siterenewal.png',
+      img: '/img/Setup-amico.svg',
       description: '現状のWebサイトの改良や修正なども可能です。',
       category: 'web'
     },
     { 
       title: "飲食店コンサルタント", 
-      img: '/img/',
+      img: '/img/Marketing consulting-rafiki.svg',
       description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
       category: 'creater'
     },
     { 
       title: "レシピ開発", 
-      img: '/img/',
+      img: '/img/Recipe book-amico.svg',
       description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
       category: 'creater'
     },
     { 
       title: "写真・動画撮影", 
-      img: '/img/',
+      img: '/img/Photo-amico.svg',
       description: '写真、動画撮影も承ります。ポートフォリオの写真は自分が撮影しました。',
       category: 'creater'
     },
