@@ -106,10 +106,11 @@ function onChange(value: any) {
   padding: 0;
 }
 .service__item {
-  width: 31%;
+  width: 60%;
   margin-bottom: 24px;
-  background-color: rgba(255, 243, 230, 100);
+  // background-color: rgba(255, 243, 230, 100);
   border-radius: 6px;
+  background-color: #fff;
 }
 .service__item h3 {
   font-size: 1rem;
