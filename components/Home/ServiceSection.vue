@@ -10,7 +10,7 @@
         :pagination="true"
         class="service-swiper"
         >
-        <SwiperSlide v-for="(service , index) in filteredServices" :key="index">
+        <SwiperSlide v-for="(service , index) in services" :key="index">
           <ServiceCard :service="service"/>
         </SwiperSlide>
       </Swiper>

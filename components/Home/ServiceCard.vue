@@ -1,16 +1,17 @@
 <template>
-  <Swiper>
-    <ul class="service__items">
+    <!-- <ul class="service__items"> -->
           <li 
-            :class="{'fade-in fade-in-up' : visible}"
+            :class="{
+              'fade-in fade-in-up' : true ,
+              'fade-in-up-visible': visible}"
             v-intersect="onIntersect"
-            class="service__item">
+            class="service__item"
+            >
             <h3>{{ service.title }}</h3>
             <img :src="service.img" alt="service.title" />
             <p v-html="service.description" />
           </li>
-        </ul>
-  </Swiper>
+        <!-- </ul> -->
 </template>
 
 <script setup lang="ts">
@@ -138,11 +139,19 @@ function onChange(value: any) {
 
 .fade-in {
   opacity: 0;
-  transition-duration: 1000ms;
-  transition-property: opacity, transform;
+  transform: translateY(100px); 
+  transition: opacity 1000ms ease, transform 1000ms ease;
+
+  // transition-duration: 1000ms;
+  // transition-property: opacity, transform;
 }
 
 .fade-in-up {
   transform: translate(0, 100px);
+}
+
+.fade-in-up-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

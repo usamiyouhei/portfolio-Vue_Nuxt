@@ -72,4 +72,24 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.page-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: none;
+}
+.page-top-link {
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #886a1e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
 </style>
