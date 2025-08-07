@@ -4,6 +4,7 @@
  <HomeServiceSection/>
  <HomeNewsSection/>
  <HomeWorksSection/>
+ <HomeContactSection/>
 </template>
 
 <script setup lang="ts">

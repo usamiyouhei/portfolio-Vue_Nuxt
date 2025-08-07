@@ -122,4 +122,61 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.contact {
+  background-image: url(./img2/contact-back.jpg);
+}
+.contact__inner {
+  display: flex;
+  justify-content: center;
+  margin: 80px auto 0;
+}
+.contact__wrap {
+  padding: 20px 0;
+  margin: 20px;
+}
+.contact .section-title {
+  margin: 30px auto;
+  width: 270px;
+}
+.contact .section-title span {
+  position: absolute;
+  left: 50px;
+}
+.contact .section-title h2 {
+  position: absolute;
+  right: 90px;
+}
+.contact__text {
+  text-align: center;
+  margin: 30px auto;
+  line-height: 1.78;
+  letter-spacing: 0.05em;
+  background-color: rgba(220, 220, 220, 0.3);
+}
+
+.contact__form {
+  margin: 50px 20px 0 20px;
+  width: 50%;
+  background-color: rgba(220, 220, 220, 0.3);
+  text-align: center;
+}
+.contact__form dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact__form dt {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.contact__form dd {
+  width: 40%;
+  min-width: 30%;
+  border-radius: 6px;
+  margin: 0;
+  text-align: start;
+  line-height: 3;
+}
+
 </style>
