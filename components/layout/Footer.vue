@@ -103,4 +103,50 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+#footer {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(126, 64, 91, 0.857),
+    rgba(128, 100, 67, 0.859),
+    rgb(212, 169, 118)
+  );
+  margin: 0;
+}
+
+.footer ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 70px 0;
+  margin: 0;
+}
+
+.footer a {
+  color: #fff;
+}
+
+.footer__icon i {
+  font-size: 20px;
+  padding: 10px;
+  margin: 0 30px;
+  color: #333;
+  cursor: pointer;
+}
+.footer__icon {
+  text-align: center;
+}
+.footer__info {
+  letter-spacing: 2px;
+  line-height: 1.5;
+  display: block;
+  max-width: 500px;
+}
+
+.footer__copy-right p {
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
 </style>
