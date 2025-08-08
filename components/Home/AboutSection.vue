@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-   <Button/>
+   <Button buttonText="View More" link="/usami/about"/>
   </section>
 </template>
 
