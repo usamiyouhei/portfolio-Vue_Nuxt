@@ -1,11 +1,9 @@
 <template>
     <!-- <ul class="service__items"> -->
           <li 
-            :class="{
-              'fade-in fade-in-up' : true ,
-              'fade-in-up-visible': visible}"
-            v-intersect="onIntersect"
-            class="service__item"
+            ref="root"
+            class="service__item fade-in"
+            :class="{'fade-in-up-visible': visible}"
             >
             <h3>{{ service.title }}</h3>
             <img :src="service.img" alt="service.title" />
@@ -16,6 +14,7 @@
 
 <script setup lang="ts">
 import { Swiper,SwiperSlide } from "swiper/vue";
+import { useIntersectionObserver } from "@vueuse/core";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -26,14 +25,25 @@ import { Swiper,SwiperSlide } from "swiper/vue";
     description: string;
   }
   }>()
-
+  const root = ref<HTMLElement | null>(null)
   const visible = ref(false)
 
-  function onIntersect(entries: IntersectionObserverEntry[]) {
-  if (entries[0].isIntersecting) {
-    visible.value = true
-  }
-}
+  const { stop } = useIntersectionObserver(
+  root,
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      visible.value = true
+      // 1回だけ発火にする
+      stop()
+    }
+  },
+  { threshold: 0.15 }
+)
+//   function onIntersect(entries: IntersectionObserverEntry[]) {
+//   if (entries[0].isIntersecting) {
+//     visible.value = true
+//   }
+// }
 
  //------------------------------------------------------------------------------------------------------------
 // 引数
@@ -97,59 +107,26 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
-.service__items {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 50px auto;
-  flex-wrap: wrap;
-  gap: 3.5%;
-  padding: 0;
-}
 .service__item {
+  list-style: none;
   width: 60%;
-  margin-bottom: 24px;
-  // background-color: rgba(255, 243, 230, 100);
+  margin: 24px auto;
   border-radius: 6px;
   background-color: #fff;
+  text-align: center;
+  cursor: pointer;
 }
-.service__item h3 {
-  font-size: 1rem;
-}
-.service__item img {
-  margin: auto;
-  width: 80%;
+.service__item h3 { font-size: 1rem; }
+.service__item img { margin: 0 auto; width: 80%; }
+.service__item p { width: 70%; margin: 20px auto; }
 
-}
-.service__item:nth-child(2) img,
-.service__item:nth-child(6) img {
-  width: 55%;
-  margin: 20px auto 0;
-}
-.service__item:nth-child(3) img,
-.service__item:nth-child(5) img {
-  width: 50%;
-  margin: 30px auto 10px;
-}
-.service__item p {
-  width: 70%;
-  /* text-align: center; */
-  margin: 20px auto;
-}
-
+/* アニメの初期値 */
 .fade-in {
   opacity: 0;
-  transform: translateY(100px); 
-  transition: opacity 1000ms ease, transform 1000ms ease;
-
-  // transition-duration: 1000ms;
-  // transition-property: opacity, transform;
+  transform: translateY(50px);
+  transition: opacity 900ms ease, transform 900ms ease;
 }
-
-.fade-in-up {
-  transform: translate(0, 100px);
-}
-
+/* 画面に入ったら可視化 */
 .fade-in-up-visible {
   opacity: 1;
   transform: translateY(0);

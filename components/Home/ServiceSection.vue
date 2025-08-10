@@ -4,16 +4,23 @@
         <div class="service__title section-title">
          <SectionTitle sectionTitle="Service" sectionSubTitle="事業内容" />
         </div>
-      <Swiper
-        :loop="true"
-        :autoplay="{ delay : 5000 }"
-        :pagination="true"
-        class="service-swiper"
-        >
-        <SwiperSlide v-for="(service , index) in services" :key="index">
-          <ServiceCard :service="service"/>
-        </SwiperSlide>
-      </Swiper>
+        <div class="only-mobile">
+          <Swiper
+            :loop="true"
+            :autoplay="{ delay : 5000 }"
+            :pagination="true"
+            class="service-swiper"
+            >
+            <SwiperSlide v-for="(service , index) in services" :key="index">
+              <ServiceCard :service="service"/>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
+        <ul class="service__items only-desktop">
+          <ServiceCard v-for="(service , index) in services" :key="index" :service="service"/>
+        </ul>
+
       </div>
     </section>
 </template>
@@ -131,4 +138,24 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+/* スワイパーの土台 */
+.service-swiper { width: 100%; padding: 16px 0; }
+
+/* グリッド（PC用） */
+.service__items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 0;
+  margin: 40px auto;
+}
+.service__items.-single { display: block; } /* 1枚だけ中央に */
+
+.only-mobile { display: block; }
+.only-desktop { display: none; }
+
+@media (min-width: 1024px) {
+  .only-mobile { display: none; }
+  .only-desktop { display: grid; grid-template-columns: repeat(3, 1fr); }
+}
 </style>
