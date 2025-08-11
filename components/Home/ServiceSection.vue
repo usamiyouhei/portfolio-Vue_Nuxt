@@ -2,8 +2,17 @@
   <section class="service" id="service">
       <div class="service__inner inner">
         <div class="service__title section-title">
-         <SectionTitle sectionTitle="Service" sectionSubTitle="事業内容" />
+          <SectionTitle sectionTitle="Service" sectionSubTitle="事業内容" />
         </div>
+        <!-- tab -->
+        <div class="category-tabs">
+          <button v-for="cat in categories"
+            :key="cat"
+            :class="['tab', { active: selectedCategory === cat}]"
+            @click="selectedCategory = cat"
+            >{{ catLabels[cat] }}</button>
+        </div>
+        <!-- mobile -->
         <div class="only-mobile">
           <Swiper
             :loop="true"
@@ -11,7 +20,7 @@
             :pagination="true"
             class="service-swiper"
             >
-            <SwiperSlide v-for="(service , index) in services" :key="index">
+            <SwiperSlide v-for="service  in filteredServices" :key="service.title">
               <ServiceCard :service="service"/>
             </SwiperSlide>
           </Swiper>
@@ -57,25 +66,36 @@ import 'swiper/css/pagination'
       title: "飲食店コンサルタント", 
       img: '/img/Marketing consulting-rafiki.svg',
       description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
-      category: 'creater'
+      category: 'creator'
     },
     { 
       title: "レシピ開発", 
       img: '/img/Recipe book-amico.svg',
       description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
-      category: 'creater'
+      category: 'creator'
     },
     { 
       title: "写真・動画撮影", 
       img: '/img/Photo-amico.svg',
       description: '写真、動画撮影も承ります。ポートフォリオの写真は自分が撮影しました。',
-      category: 'creater'
+      category: 'creator'
     },
     
   ]
 
 
-  const filteredServices = services
+  const filteredServices = computed(() => 
+    selectedCategory.value === 'all'
+    ? services
+    : services.filter(s => s.category === selectedCategory.value)
+
+) 
+
+  type Category = 'all' | 'web' | 'creator'
+  const selectedCategory = ref<Category>('all')
+  const categories: Category[] = ['all', 'web', 'creator']
+  const catLabels: Record<Category, string> = { all: 'All', web: 'WEB', creator: 'クリエイター'}
+
  //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
@@ -138,6 +158,26 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+// tab
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  margin: 0 0 1rem;
+}
+.tab {
+  padding: 0.5rem 1rem;
+  border-radius: 75rem;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: bold;
+}
+.tab.active {
+  background: #f8a2f8;
+  color: #ffffff;
+  border-color: #ddd;
+}
 /* スワイパーの土台 */
 .service-swiper { width: 100%; padding: 16px 0; }
 
