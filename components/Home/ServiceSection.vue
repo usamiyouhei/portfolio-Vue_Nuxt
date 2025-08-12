@@ -14,10 +14,18 @@
         </div>
         <!-- mobile -->
         <div class="only-mobile">
+          <!-- Nav button -->
+            <div class="nav-wrap">
+              <button class="nav-button svc-prev" aria-label="前へ">←</button>
+              <button class="nav-button svc-next" aria-label="次へ">→</button>
+            </div>
           <Swiper
             :loop="true"
-            :autoplay="{ delay : 5000 }"
+            :modules="[Autoplay, Pagination, Navigation, Keyboard, A11y]"
+            :autoplay="{ delay : 5000, disableOnInteraction: false }"
             :pagination="true"
+            :navigation="{ nextEl: '.svc-next', prevEl: '.svc-prev' }"
+            :keyboard="{ enabled: true}"
             class="service-swiper"
             >
             <SwiperSlide v-for="service  in filteredServices" :key="service.title">
@@ -27,7 +35,7 @@
         </div>
 
         <ul class="service__items only-desktop">
-          <ServiceCard v-for="(service , index) in services" :key="index" :service="service"/>
+          <ServiceCard v-for="service  in filteredServices" :key="service.title" :service="service"/>
         </ul>
 
       </div>
@@ -35,11 +43,14 @@
 </template>
 
 <script setup lang="ts">
-import { Swiper,SwiperSlide } from "swiper/vue";
 import  SectionTitle  from "../common/SectionTitle.vue";
 import  ServiceCard  from "../Home/ServiceCard.vue";
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules'
+
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -62,16 +73,16 @@ import 'swiper/css/pagination'
       description: '現状のWebサイトの改良や修正なども可能です。',
       category: 'web'
     },
+     { 
+      title: "レシピ開発", 
+      img: '/img/Recipe book-amico.svg',
+      description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
+      category: 'creator'
+    },
     { 
       title: "飲食店コンサルタント", 
       img: '/img/Marketing consulting-rafiki.svg',
       description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
-      category: 'creator'
-    },
-    { 
-      title: "レシピ開発", 
-      img: '/img/Recipe book-amico.svg',
-      description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
       category: 'creator'
     },
     { 
@@ -178,6 +189,21 @@ function onChange(value: any) {
   color: #ffffff;
   border-color: #ddd;
 }
+
+/* 矢印ボタン */
+.nav-wrap { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-bottom: .5rem; 
+}
+.nav-btn { 
+  border: 1px solid #ddd; 
+  background: #fff; 
+  border-radius: .5rem; 
+  padding: .4rem .8rem; 
+  cursor: pointer; 
+}
+
 /* スワイパーの土台 */
 .service-swiper { width: 100%; padding: 16px 0; }
 
