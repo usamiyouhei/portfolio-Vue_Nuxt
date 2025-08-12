@@ -7,7 +7,8 @@
             >
             <h3>{{ service.title }}</h3>
             <img :src="service.img" alt="service.title" />
-            <p v-html="service.description" />
+            {{ service.description }}
+            <!-- <p v-html="service.description" /> -->
           </li>
         <!-- </ul> -->
 </template>
@@ -15,16 +16,19 @@
 <script setup lang="ts">
 import { Swiper,SwiperSlide } from "swiper/vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import { ref } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-  defineProps<{
-  service: {
-    title: string;
+  
+ type Service = {
+   title: string;
     img: string;
     description: string;
-  }
-  }>()
+ }
+ 
+const props = defineProps<{
+  service: Service}>()
   const root = ref<HTMLElement | null>(null)
   const visible = ref(false)
 
