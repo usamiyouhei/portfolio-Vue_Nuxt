@@ -113,16 +113,23 @@ function onChange(value: any) {
 <style lang="scss" scoped>
 .service__item {
   list-style: none;
-  width: 60%;
+  width: 70%;
   margin: 24px auto;
-  border-radius: 6px;
+  border-radius: 20px;
   background-color: #fff;
   text-align: center;
   cursor: pointer;
 }
-.service__item h3 { font-size: 1rem; }
-.service__item img { margin: 0 auto; width: 80%; }
-.service__item p { width: 70%; margin: 20px auto; }
+.service__item h3 { 
+  font-size: 1.3rem; 
+  padding-top: 14px;
+}
+.service__item img { margin: 0 auto; width: 70%; }
+.service__item p { 
+  width: 60%; 
+  margin: 20px auto;
+  padding: 20px;
+ }
 
 /* アニメの初期値 */
 .fade-in {

@@ -17,8 +17,6 @@
           <!-- Nav button -->
             <div class="nav-wrap">
               <button class="nav-button svc-prev" aria-label="前へ">←</button>
-              <button class="nav-button svc-next" aria-label="次へ">→</button>
-            </div>
           <Swiper
             :loop="true"
             :modules="[Autoplay, Pagination, Navigation, Keyboard, A11y]"
@@ -32,6 +30,8 @@
               <ServiceCard :service="service"/>
             </SwiperSlide>
           </Swiper>
+            <button class="nav-button svc-next" aria-label="次へ">→</button>
+           </div>
         </div>
 
         <ul class="service__items only-desktop">
@@ -107,61 +107,6 @@ import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules
   const categories: Category[] = ['all', 'web', 'creator']
   const catLabels: Record<Category, string> = { all: 'All', web: 'WEB', creator: 'クリエイター'}
 
- //------------------------------------------------------------------------------------------------------------
-// 引数
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -191,21 +136,74 @@ function onChange(value: any) {
 }
 
 /* 矢印ボタン */
-.nav-wrap { 
-  display: flex; 
-  justify-content: space-between; 
-  margin-bottom: .5rem; 
-}
-.nav-btn { 
-  border: 1px solid #ddd; 
-  background: #fff; 
-  border-radius: .5rem; 
-  padding: .4rem .8rem; 
-  cursor: pointer; 
-}
+// .nav-wrap { 
+//   display: flex; 
+//   justify-content: space-between; 
+//   margin-bottom: .5rem; 
+// }
+// .nav-btn { 
+//   border: 1px solid #ddd; 
+//   background: #fff; 
+//   border-radius: .5rem; 
+//   padding: .4rem .8rem; 
+//   cursor: pointer; 
+// }
 
 /* スワイパーの土台 */
-.service-swiper { width: 100%; padding: 16px 0; }
+.service-swiper { 
+  width: 100%; 
+  padding: 16px 0; 
+  /* ドット形状と状態 */
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: #c7c7c7;
+    opacity: 1;         /* Swiperのデフォ薄さを打ち消す */
+    transition: transform .2s ease, background .2s ease;
+  }
+  .swiper-pagination-bullet-active {
+    background: #111;   /* アクティブ色 */
+    transform: scale(1.2);
+  }
+
+  /* ドット間隔（横） */
+  .swiper-pagination-horizontal .swiper-pagination-bullet {
+    margin: 0 6px;
+  }
+}
+
+
+/* カスタムナビボタン */
+.nav-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.nav-button:hover {
+  background: #fff;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
+/* 端で無効になったとき */
+.nav-button.swiper-button-disabled {
+  opacity: .35;
+  cursor: default;
+  transform: none;
+}
 
 /* グリッド（PC用） */
 .service__items {
