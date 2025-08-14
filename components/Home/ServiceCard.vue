@@ -5,10 +5,11 @@
             class="service__item fade-in"
             :class="{'fade-in-up-visible': visible}"
             >
-            <h3>{{ service.title }}</h3>
-            <img :src="service.img" alt="service.title" />
-            {{ service.description }}
-            <!-- <p v-html="service.description" /> -->
+            <div class="svc-card">
+              <h3 class="svc-card__title">{{ service.title }}</h3>
+              <img class="svc-card__img" :src="service.img" alt="service.title" />
+              <p class="svc-card__desc" v-html="service.description" />
+            </div>
           </li>
         <!-- </ul> -->
 </template>
@@ -115,21 +116,42 @@ function onChange(value: any) {
   list-style: none;
   width: 70%;
   margin: 24px auto;
-  border-radius: 20px;
-  background-color: #fff;
   text-align: center;
   cursor: pointer;
 }
-.service__item h3 { 
-  font-size: 1.3rem; 
-  padding-top: 14px;
-}
-.service__item img { margin: 0 auto; width: 70%; }
-.service__item p { 
-  width: 60%; 
-  margin: 20px auto;
+.svc-card {
+  display: flex;
+  flex-direction: column;
+  height: 460px;
   padding: 20px;
- }
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+
+.svc-card__title {
+  text-align: center;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.svc-card__img {
+  width: 100%;
+  max-height: 230px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+.svc-card__desc {
+  margin: 0;
+  line-height: 1.8;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .svc-card { height: 500px; padding: 16px; }
+  .svc-card__img { max-height: 200px; }
+}
 
 /* アニメの初期値 */
 .fade-in {
