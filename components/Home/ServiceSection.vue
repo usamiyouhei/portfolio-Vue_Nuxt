@@ -135,55 +135,47 @@ import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules
   border-color: #ddd;
 }
 
-/* 矢印ボタン */
-// .nav-wrap { 
-//   display: flex; 
-//   justify-content: space-between; 
-//   margin-bottom: .5rem; 
-// }
-// .nav-btn { 
-//   border: 1px solid #ddd; 
-//   background: #fff; 
-//   border-radius: .5rem; 
-//   padding: .4rem .8rem; 
-//   cursor: pointer; 
-// }
 
 /* スワイパーの土台 */
 .service-swiper { 
   width: 100%; 
-  padding: 16px 0; 
-  /* ドット形状と状態 */
-  .swiper-pagination-bullet {
+  padding: 16px 24px 36px; 
+ /* pagination の位置を下＆余白 */
+  :deep(.swiper-pagination) {
+    position: static;
+    margin-top: 2px;
+  }
+
+  /* ドットの見た目 */
+  :deep(.swiper-pagination-bullet) {
     width: 10px;
     height: 10px;
     border-radius: 9999px;
     background: #c7c7c7;
-    opacity: 1;         /* Swiperのデフォ薄さを打ち消す */
+    opacity: 1;
     transition: transform .2s ease, background .2s ease;
-  }
-  .swiper-pagination-bullet-active {
-    background: #111;   /* アクティブ色 */
-    transform: scale(1.2);
+    margin: 0 6px; /* 横の間隔 */
   }
 
-  /* ドット間隔（横） */
-  .swiper-pagination-horizontal .swiper-pagination-bullet {
-    margin: 0 6px;
+  :deep(.swiper-pagination-bullet-active) {
+    background: #f8a2f8;
+    transform: scale(1.2);
   }
 }
 
 
 /* カスタムナビボタン */
 .nav-wrap {
+  position: relative; 
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
 }
 .nav-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;               /* スライドより前面に */
   width: 38px;
   height: 38px;
   border-radius: 10px;
@@ -196,14 +188,18 @@ import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules
 .nav-button:hover {
   background: #fff;
   border-color: #bbb;
-  transform: translateY(-1px);
+  transform: translateY(-50%) translateX(0); /* hoverで縦位置がズレないよう */
 }
+
 /* 端で無効になったとき */
 .nav-button.swiper-button-disabled {
   opacity: .35;
   cursor: default;
   transform: none;
 }
+
+.svc-prev { left: 4px; }
+.svc-next { right: 4px; }
 
 /* グリッド（PC用） */
 .service__items {
