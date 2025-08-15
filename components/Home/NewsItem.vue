@@ -1,101 +1,22 @@
 <template>
-  <ul class="news__items">
-          <li class="news__item news-item">
-            <time class="news-item__date" datetime="2023-12-29"
-              >2023.12.29</time
-            >
-            <a href="#" class="news-item__title"
-              >新ポートフォリオ作成しております</a
-            >
-          </li>
-          <li class="news__item news-item">
-            <time class="news-item__date" datetime="2023-12-15"
-              >2023.12.15</time
-            >
-            <a href="#" class="news-item__title"
-              >クリスマスデザートコーススタート</a
-            >
-          </li>
-          <li class="news__item news-item">
-            <time class="news-item__date" datetime="2023-11-04"
-              >2023.11.04</time
-            >
-            <a href="#" class="news-item__title">Node.jsの学習始めました</a>
-          </li>
-          <li class="news__item news-item">
-            <time class="news-item__date" datetime="2023-10-26"
-              >2023.10.26</time
-            >
-            <a href="#" class="news-item__title">Reactの学習始めました</a>
-          </li>
-          <li class="news__item news-item">
-            <time class="news-item__date" datetime="2023-10-11"
-              >2023.10.11</time
-            >
-            <a href="#" class="news-item__title">Figma始めました</a>
-          </li>
-        </ul>
+    <div class="news__items">
+      <img :src="thumbnail" :alt="title" class="news-item__thumb">
+      <div class="news-item__info">
+        <time class="news-item__date" datetime="">{{ date }}</time>
+        <h3 class="news-item__title">{{ title }}</h3>
+      </div>
+    </div>
 </template>
 
 <script setup lang="ts">
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
-// 引数
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
+defineProps<{
+  title: string;
+  date: string;
+  thumbnail: string;
+}>()
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -103,4 +24,28 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.news-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 60%;
+}
+
+.news-item__thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.news-item__date {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.news-item__title {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.4;
+}
 </style>
