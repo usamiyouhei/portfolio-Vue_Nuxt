@@ -24,6 +24,7 @@
             :pagination="true"
             :navigation="{ nextEl: '.svc-next', prevEl: '.svc-prev' }"
             :keyboard="{ enabled: true}"
+            :to="`service/${services.slug}`"
             class="service-swiper"
             >
             <SwiperSlide v-for="service  in filteredServices" :key="service.title">
@@ -35,7 +36,10 @@
         </div>
 
         <ul class="service__items only-desktop">
-          <ServiceCard v-for="service  in filteredServices" :key="service.title" :service="service"/>
+          <ServiceCard v-for="service  in filteredServices" 
+          :key="service.title" 
+          :service="service"
+          :to="`service/${service.slug}`"/>
         </ul>
 
       </div>
@@ -59,37 +63,43 @@ import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules
       title: "Webサイト制作", 
       img: '/img/Static website-cuate.svg',
       description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
-      category: 'web'
+      category: 'web',
+      slug:'WebsiteCreate'
     },
     { 
       title: "Webデザイン", 
       img: '/img/UI-UX design-amico.svg',
       description: 'クライアント様からのイメージを詳しくお聞きし、より良いデザインを作っていきます。',
-      category: 'web'
+      category: 'web',
+      slug:'WebDesign'
     },
     { 
       title: "Webサイトリニューアル", 
       img: '/img/Setup-amico.svg',
       description: '現状のWebサイトの改良や修正なども可能です。',
-      category: 'web'
+      category: 'web',
+      slug:'SiteRenewal'
     },
      { 
       title: "レシピ開発", 
       img: '/img/Recipe book-amico.svg',
       description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
-      category: 'creator'
+      category: 'creator',
+      slug:'RecipeCreate'
     },
     { 
       title: "飲食店コンサルタント", 
       img: '/img/Marketing consulting-rafiki.svg',
       description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
-      category: 'creator'
+      category: 'creator',
+      slug:'Consulting'
     },
     { 
       title: "写真・動画撮影", 
       img: '/img/Photo-amico.svg',
       description: '写真、動画撮影も承ります。ポートフォリオの写真は自分が撮影しました。',
-      category: 'creator'
+      category: 'creator',
+      slug:'PhotoMovie'
     },
     
   ]
