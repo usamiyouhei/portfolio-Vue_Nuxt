@@ -4,30 +4,40 @@
             class="service__item fade-in"
             :class="{'fade-in-up-visible': visible}"
             >
+            <NuxtLink :to="resolvedTo" class="card-link">
             <div class="svc-card">
               <h3 class="svc-card__title">{{ service.title }}</h3>
-              <img class="svc-card__img" :src="service.img" alt="service.title" />
+              <img class="svc-card__img" :src="service.img" :alt="service.title" />
               <p class="svc-card__desc" v-html="service.description" />
             </div>
+            </NuxtLink>
           </li>
 </template>
 
 <script setup lang="ts">
 import { Swiper,SwiperSlide } from "swiper/vue";
 import { useIntersectionObserver } from "@vueuse/core";
-import { ref } from "vue";
+import { ref,computed } from "vue";
 /**===================================================================================================================
- * 
- ===================================================================================================================**/
-  
- type Service = {
-   title: string;
+ *
+===================================================================================================================**/
+
+  type Service = {
+    title: string;
     img: string;
     description: string;
- }
- 
-const props = defineProps<{
-  service: Service}>()
+    slug?: string;
+  }
+
+  const props = defineProps<{
+  service: Service
+  to?: string}>()
+
+  const resolvedTo = computed(() => {
+    if (props.to) return props.to
+    if (props.service.slug) return `/service/${props.service.slug}`
+  })
+
   const root = ref<HTMLElement | null>(null)
   const visible = ref(false)
 
@@ -51,58 +61,6 @@ const props = defineProps<{
  //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -117,6 +75,12 @@ function onChange(value: any) {
   text-align: center;
   cursor: pointer;
 }
+.card-link {
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
 .svc-card {
   display: flex;
   flex-direction: column;
