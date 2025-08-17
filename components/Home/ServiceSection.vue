@@ -21,14 +21,13 @@
             :loop="true"
             :modules="[Autoplay, Pagination, Navigation, Keyboard, A11y]"
             :autoplay="{ delay : 5000, disableOnInteraction: false }"
-            :pagination="true"
+            :pagination="{ clickable: true }"
             :navigation="{ nextEl: '.svc-next', prevEl: '.svc-prev' }"
             :keyboard="{ enabled: true}"
-            :to="`service/${services.slug}`"
             class="service-swiper"
             >
-            <SwiperSlide v-for="service  in filteredServices" :key="service.title">
-              <ServiceCard :service="service"/>
+            <SwiperSlide v-for="service in filteredServices" :key="service.slug">
+              <ServiceCard :service="service" :to="`/service/${service.slug}`"/>
             </SwiperSlide>
           </Swiper>
             <button class="nav-button svc-next" aria-label="次へ">→</button>
@@ -36,8 +35,8 @@
         </div>
 
         <ul class="service__items only-desktop">
-          <ServiceCard v-for="service  in filteredServices" 
-          :key="service.title" 
+          <ServiceCard v-for="service in filteredServices" 
+          :key="service.slug" 
           :service="service"
           :to="`service/${service.slug}`"/>
         </ul>
@@ -53,7 +52,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules'
-
+import { ref, computed } from "vue";
 
 /**===================================================================================================================
  * 
@@ -61,45 +60,45 @@ import { Autoplay, Pagination, Navigation, Keyboard, A11y } from 'swiper/modules
   const services = [
     { 
       title: "Webサイト制作", 
-      img: '/img/Static website-cuate.svg',
-      description: '新規サイトの制作はもちろん、レスポンシブコーディングやアニメーションなど動きのあるサイト制作も可能です',
+      img: '/img/Static website-development.svg',
+      description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
-      slug:'WebsiteCreate'
+      slug:'website-development'
     },
     { 
       title: "Webデザイン", 
       img: '/img/UI-UX design-amico.svg',
-      description: 'クライアント様からのイメージを詳しくお聞きし、より良いデザインを作っていきます。',
+      description: 'ヒアリングを通じてご要望やイメージを丁寧に汲み取り、ユーザーに伝わるデザインをご提案。世界観を大切にした、より良いビジュアルを形にします。  ',
       category: 'web',
-      slug:'WebDesign'
+      slug:'web-design'
     },
     { 
       title: "Webサイトリニューアル", 
       img: '/img/Setup-amico.svg',
-      description: '現状のWebサイトの改良や修正なども可能です。',
+      description: '既存サイトの改善や調整もお任せください。デザインの刷新から細かな修正まで柔軟に対応。課題を解決し、より効果的なサイトへと導きます。  ',
       category: 'web',
-      slug:'SiteRenewal'
+      slug:'website-renovation'
     },
      { 
       title: "レシピ開発", 
       img: '/img/Recipe book-amico.svg',
-      description: '２０年分のレシピや新作の考え方を活かしてレシピ１品から承ります。栄養学の面でも体に良いものも考案できます。',
+      description: '20年以上の経験と新作開発のノウハウを活かし、1品からオリジナルレシピを制作いたします。栄養学の観点から、体に優しいメニュー提案も可能です。  ',
       category: 'creator',
-      slug:'RecipeCreate'
+      slug:'recipe-development'
     },
     { 
       title: "飲食店コンサルタント", 
       img: '/img/Marketing consulting-rafiki.svg',
-      description: '飲食店、パティシエの経験を活かしコンサルタントを行っております。ケーキ屋、カフェ、デザート屋などお気軽にご相談ください。',
+      description: '飲食店やパティシエとしての現場経験をもとに、ケーキ屋・カフェ・デザート専門店などをサポート。店舗運営やメニュー開発まで幅広くご相談いただけます。  ',
       category: 'creator',
-      slug:'Consulting'
+      slug:'restaurant-consulting'
     },
     { 
       title: "写真・動画撮影", 
       img: '/img/Photo-amico.svg',
-      description: '写真、動画撮影も承ります。ポートフォリオの写真は自分が撮影しました。',
+      description: '料理やスイーツの写真・動画撮影も対応。 ポートフォリオ掲載の写真はすべて自ら撮影しました。魅力が伝わるビジュアルを丁寧に切り取ります。  ',
       category: 'creator',
-      slug:'PhotoMovie'
+      slug:'photo-video-shooting'
     },
     
   ]
