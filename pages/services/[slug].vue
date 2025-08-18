@@ -1,11 +1,34 @@
 <template>
+  <main class="service-detail inner">
+    <!-- パンくず -->
+    <nav class="breadcrumb">
+      <NuxtLink to="/">Home</NuxtLink> /
+      <NuxtLink to="/#service">Services</NuxtLink> /
+      <span>{{ service.title }}</span>
+    </nav>
+
+    <!-- コンテンツ -->
+    <h1>{{ service.title }}</h1>
+    <img :src="service.img" :alt="service.title" class="hero" />
+    <p class="desc" v-html="service.description" />
+
+    <!-- CTA -->
+    <NuxtLink to="/#contact" class="cta">お問い合わせはこちら</NuxtLink>
+  </main>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from "vue-router";
+import { services } from "@/data/services";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
+ const route =useRoute();
+ const slug = route.params.slug as string;
+
+ const service = services.find((s) => s.slug === slug)
+
+ //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
