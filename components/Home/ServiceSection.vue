@@ -27,7 +27,7 @@
             class="service-swiper"
             >
             <SwiperSlide v-for="service in filteredServices" :key="service.slug">
-              <ServiceCard :service="service" :to="`/service/${service.slug}`"/>
+              <ServiceCard :service="service" :to="`/services/${service.slug}`"/>
             </SwiperSlide>
           </Swiper>
             <button class="nav-button svc-next" aria-label="次へ">→</button>
@@ -38,7 +38,7 @@
           <ServiceCard v-for="service in filteredServices" 
           :key="service.slug" 
           :service="service"
-          :to="`service/${service.slug}`"/>
+          :to="`services/${service.slug}`"/>
         </ul>
 
       </div>
