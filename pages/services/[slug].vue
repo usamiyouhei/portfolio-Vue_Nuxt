@@ -19,14 +19,25 @@
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import { services } from "@/data/services";
+import { services, type Service } from '~/data/services'   // ← パス＆型import
+
+// import { services } from "@/data/services";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
  const route =useRoute();
  const slug = route.params.slug as string;
+const found = services.find(s => s.slug === slug)
+if (!found) {
+  throw createError({ statusCode: 404, statusMessage: 'Not Found' })
+}
+ const service:Service = found
 
- const service = services.find((s) => s.slug === slug)
+
+useHead({
+  title: `${service.title} | Services`,
+  meta: [{ name: 'description', content: service.description.replace(/<[^>]+>/g, '') }]
+})
 
  //------------------------------------------------------------------------------------------------------------
 // 引数
