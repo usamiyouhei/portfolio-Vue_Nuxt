@@ -1,56 +1,11 @@
 <template>
-  <main class="service-detail inner">
-    <!-- パンくず -->
-    <nav class="breadcrumb">
-      <NuxtLink to="/">Home</NuxtLink> /
-      <NuxtLink to="/#service">Services</NuxtLink> /
-      <span>{{ service.title }}</span>
-    </nav>
-
-    <!-- コンテンツ -->
-    <h1>{{ service.title }}</h1>
-    <img :src="service.img" :alt="service.title" class="hero" />
-    <p class="desc" v-html="service.description" />
-
-    <!-- CTA -->
-    <NuxtLink to="/#contact" class="cta">お問い合わせはこちら</NuxtLink>
-  </main>
-    <!-- <component :is="componentMap[service.category]" :service="service" /> -->
-
 </template>
 
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-import { services, type Service } from '~/data/services'   // ← パス＆型import
-
-// import { services } from "@/data/services";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
- const route =useRoute();
- const slug = route.params.slug as string;
-const found = services.find(s => s.slug === slug)
-if (!found) {
-  throw createError({ statusCode: 404, statusMessage: 'Not Found' })
-}
-const service:Service = found
-
-
-// 遅延ロード（バンドル分割）
-const WebDetail = defineAsyncComponent(() => import('~/components/services/WebDetail.vue'))
-const CreatorDetail = defineAsyncComponent(() => import('~/components/services/CreatorDetail.vue'))
-
-const componentMap = {
-  web: WebDetail,
-  creator: CreatorDetail
-} as const
-
-useHead({
-  title: `${service.title} | Services`,
-  meta: [{ name: 'description', content: service.description.replace(/<[^>]+>/g, '') }]
-})
-
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
