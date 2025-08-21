@@ -4,6 +4,8 @@
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
     <section v-if="service.features?.length"></section>
+    <section v-if="service.process?.length"></section>
+    <NuxtLink to="/#contact" class="cta">お問い合わせ</NuxtLink>
   </main>
 </template>
 
