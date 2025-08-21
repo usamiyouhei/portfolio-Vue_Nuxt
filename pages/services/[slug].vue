@@ -112,4 +112,24 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.service-detail { 
+  padding: 40px 0 80px;
+  margin-top: 40px;
+  width: 80%;
+}
+.hero { 
+  max-width: 880px;
+  width: 100%; 
+  object-fit: contain; 
+  margin: 16px 0 24px; 
+}
+.lead { line-height: 1.9; margin-bottom: 24px; }
+.block { margin: 32px 0; }
+.feature-list { display: grid; gap: .5rem; padding-left: 1rem; list-style: disc; }
+.process { display: grid; gap: .75rem; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.price { font-weight: 700; font-size: 1.1rem; }
+.cta { display:inline-block; margin-top: 24px; padding: 12px 18px; border-radius: 12px; background:#111; color:#fff; text-decoration:none; }
+.breadcrumb { font-size: .9rem; color: #666; margin-bottom: 8px; }
+
 </style>
