@@ -5,6 +5,8 @@ export type Service = {
     description: string;
     category: 'web' | 'creator';
     slug?: string;
+    features?: string[];
+    process?: {step: string, dec: string}[]
   }
 
 
