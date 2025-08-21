@@ -2,6 +2,8 @@
   <main>
     <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
+    <div v-html="service.description" class="lead"/>
+    <section v-if="service.features?.length"></section>
   </main>
 </template>
 
