@@ -1,11 +1,16 @@
 <template>
-  <div class="hamburger-button">
+  <div 
+    class="hamburger-button"
+    :class="{ active: isOpen }"
+    @click="toggleMenu">
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      <div class="slide-menu">
+      <div 
+        class="slide-menu"
+        :class="{ open: isOpen }">
         <ul class="slide-menu__items">
           <li class="slide-menu__item">
             <a href="#about" class="slide-menu__link">About</a>
@@ -46,6 +51,12 @@
 </template>
 
 <script setup lang="ts">
+
+const isOpen = ref(false);
+function toggleMenu() {
+  isOpen.value = !isOpen.value
+}
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -112,7 +123,21 @@ function onChange(value: any) {
 
 <style lang="scss" scoped>
 .slide-menu {
-  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: #fff;
+  transition: right 0.3s;
+  z-index: 998;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+/* isOpen が true のとき表示 */
+.slide-menu.open {
+  right: 0;
 }
 .hamburger-button {
   position: fixed;
@@ -157,5 +182,39 @@ function onChange(value: any) {
   transform: translateY(-50%) rotate(-45deg);
   z-index: 9999;
   background-color: #03440c;
+}
+
+.slide-menu ul {
+  margin: 40px 10px;
+  text-align: center;
+}
+.slide-menu li {
+  border-bottom: solid 2px #333;
+  width: 80px;
+  margin: 50px;
+  font-size: 20px;
+}
+.slide-menu.active {
+  display: flex;
+  animation: fadeIn 0.5s forwards;
+}
+@keyframes fadeIn {
+  0% {
+    top: 45%;
+    opacity: 0;
+  }
+
+  100% {
+    top: 50%;
+    opacity: 1;
+  }
+}
+.icon-button i {
+  font-size: 30px;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  cursor: pointer;
 }
 </style>
