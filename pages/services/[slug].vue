@@ -1,21 +1,6 @@
 <template>
-  <main class="service-detail inner">
-    <!-- パンくず -->
-    <nav class="breadcrumb">
-      <NuxtLink to="/">Home</NuxtLink> /
-      <NuxtLink to="/#service">Services</NuxtLink> /
-      <span>{{ service.title }}</span>
-    </nav>
 
-    <!-- コンテンツ -->
-    <h1>{{ service.title }}</h1>
-    <img :src="service.img" :alt="service.title" class="hero" />
-    <p class="desc" v-html="service.description" />
-
-    <!-- CTA -->
-    <NuxtLink to="/#contact" class="cta">お問い合わせはこちら</NuxtLink>
-  </main>
-    <!-- <component :is="componentMap[service.category]" :service="service" /> -->
+    <component :is="componentMap[service.category]" :service="service" />
 
 </template>
 
