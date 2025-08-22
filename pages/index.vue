@@ -1,7 +1,9 @@
 <template>
  <HomeHeroSection/>
  <HomeAboutSection/>
+ <CommonLoopText/>
  <HomeServiceSection/>
+ 
  <HomeNewsSection/>
  <HomeWorksSection/>
  <HomeContactSection/>
