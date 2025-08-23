@@ -1,22 +1,7 @@
 <template>
- <section class="inner">
-    <h1 class="visually-hidden">News</h1>
-    <ul class="grid">
-      <li v-for="n in items.slice(0,10)" :key="n.slug">
-        <NuxtLink :to="`/news/${n.slug}`" class="card">
-          <div class="thumb"><img :src="n.image" :alt="n.title" loading="lazy" /></div>
-          <time class="date">{{ n.date }}</time>
-          <h2 class="title">{{ n.title }}</h2>
-        </NuxtLink>
-      </li>
-    </ul>
-  </section>
 </template>
 
 <script setup lang="ts">
-import type { News } from "@/types/news";
-const items = await useFetch<News[]>('/api/news').then(r => r.data.value || [])
-
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -82,44 +67,4 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
-.grid {
-  display:grid;
-  gap:16px;
-  grid-template-columns: 1fr;
-}
-@media (min-width:640px){
-    .grid{
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-.card {
-    display:block;
-    background:#fff;
-    border-radius:14px;
-    padding:10px;
-    box-shadow:0 1px 0 rgba(0,0,0,.05);
-  }
-.thumb {
-    width:100%;
-    aspect-ratio:4/3;
-    overflow:hidden; border-radius:10px; margin-bottom:8px;
-  img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
-}
-.date{
-  font-size:12px;
-  color:#888;
-  display:block;
-  margin-bottom:4px;
-}
-.title{
-  font-size:16px;
-  font-weight:700;
-  line-height:1.35;
-}
-
 </style>
