@@ -1,21 +1,24 @@
 <template>
-    <div class="news__items">
-      <img :src="thumbnail" :alt="title" class="news-item__thumb">
-      <div class="news-item__info">
-        <time class="news-item__date" datetime="">{{ date }}</time>
-        <h3 class="news-item__title">{{ title }}</h3>
-      </div>
-    </div>
+    <li class="news-items">
+      <NuxtLink :to="`/news/${props.item.slug}`" class="news-item--link">
+        <div class="thumb">
+          <img :src="props.item.image" :alt="props.item.title" loading="lazy">
+        </div>
+        <div class="meta">
+          <time class="date">{{ props.item.date }}</time>
+          <h3 class="title">{{ props.item.title }}</h3>
+        </div>
+      </NuxtLink>
+    </li>
 </template>
 
 <script setup lang="ts">
+import type { News } from "@/types/news";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-defineProps<{
-  title: string;
-  date: string;
-  thumbnail: string;
+const props = defineProps<{
+  item: News
 }>()
 
 //------------------------------------------------------------------------------------------------------------
