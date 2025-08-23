@@ -5,27 +5,27 @@
           <SectionTitle sectionTitle="News" sectionSubTitle="お知らせ"/>
         </div>
         <ul class="news__items">
-          <NewsItem 
-            v-for="(item , i) in news.slice(0,3)"
-            key="i"
-            :title="item.title"
-            :date="item.date"
-            :thumbnail="item.thumbnail"
-            />
+          <li v-for="n in props.items" :key="n.id">
+            <NewsItem :item="n"/>
+          </li>
         </ul>
       </div>
-        <Button buttonText="Read More" link="/usami/news"/>
+      <div>
+        <NuxtLink class="more-link" to="/news">View More</NuxtLink>
+      </div>
     </section>
 </template>
 
 <script setup lang="ts">
 import SectionTitle from "../common/SectionTitle.vue";
 import NewsItem from "../Home/NewsItem.vue";
-import Button from "../common/Button.vue";
+import type { News } from "@/types/news";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-const news = [
+const props = defineProps<{ items: News [] }>()
+
+ const news = [
   {
     title:"新ポートフォリオ作成しております",
     date:"2024.01.29",
