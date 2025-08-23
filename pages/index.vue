@@ -75,4 +75,8 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
 </style>
