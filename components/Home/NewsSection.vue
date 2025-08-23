@@ -10,7 +10,7 @@
           </li>
         </ul>
       </div>
-      <div>
+      <div class="news__more">
         <NuxtLink class="more-link" to="/news">View More</NuxtLink>
       </div>
     </section>
@@ -223,4 +223,8 @@ function onChange(value: any) {
     width: 100%;
   }
 }
+.news-list { display: grid; gap: 16px; }
+.news__more { margin-top: 12px; text-align: center; }
+.more-link { display:inline-block; padding:10px 16px; border-radius:12px; border:1px solid #ddd; }
+
 </style>
