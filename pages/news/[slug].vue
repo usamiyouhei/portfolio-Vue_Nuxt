@@ -1,11 +1,38 @@
 <template>
+  <article class="inner">
+    <p class="back"><NuxtLink to="/news">← News一覧へ</NuxtLink></p>
+    <header>
+      <time class="date">{{ item.date }}</time>
+      <h1 class="title">{{ item.title }}</h1>
+      <img :src="item.image" :alt="item.title" />
+    </header>
+    <div class="content" v-if="item.body" v-html="item.body" />
+  </article>
 </template>
 
 <script setup lang="ts">
+import { useRoute } from "vue-router";
+import { news } from "~/data/news";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
+const route = useRoute()
+const item = news.find(n => n.slug === route.params.slug)
+
+if (!item) {
+  throw createError({ statusCode: 404, statusMessage: 'News not found' })
+}
+
+useHead({
+  title: `${item.title} | News`,
+  meta: [
+    { name: 'description', content: item.excerpt || item.title },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:title', content: item.title },
+    { property: 'og:image', content: item.image }
+  ],
+})
+ //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------

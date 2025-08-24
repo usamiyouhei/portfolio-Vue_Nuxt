@@ -22,11 +22,7 @@ import type { News } from "@/types/news";
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-const allNews: News[] = [
-  { id: 'n3', title: '新作デザートのお知らせ', date: '2025-08-21', slug: 'new-dessert', image: '/img/news-img3.jpg' },
-  { id: 'n2', title: 'イベント出店情報', date: '2025-08-19', slug: 'event-booth', image: '/img/news-img1.jpg' },
-  { id: 'n1', title: 'サイトをリニューアルしました', date: '2025-08-10', slug: 'site-renewal', image: '/img/news-img2.jpg' },
-]
+
 
 const latest3 = allNews
   .slice() // 破壊防止
