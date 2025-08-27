@@ -1,12 +1,12 @@
 <template>
   <article class="inner">
-    <p class="back"><NuxtLink to="/news">← News一覧へ</NuxtLink></p>
     <header>
       <time class="date">{{ item.date }}</time>
       <h1 class="title">{{ item.title }}</h1>
       <img :src="item.image" :alt="item.title" />
     </header>
     <div class="content" v-if="item.body" v-html="item.body" />
+    <p class="back"><NuxtLink to="/news">← News一覧へ</NuxtLink></p>
   </article>
 </template>
 
@@ -94,4 +94,7 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.inner {
+  margin-top: 80px;
+}
 </style>
