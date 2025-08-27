@@ -16,7 +16,8 @@
 <script setup lang="ts">
 import type { News } from "@/types/news";
 const items = await useFetch<News[]>('/api/news').then(r => r.data.value || [])
-
+import { useNews } from '@/composables/useNews' // さっき作ったやつ
+const { all } = useNews()
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
