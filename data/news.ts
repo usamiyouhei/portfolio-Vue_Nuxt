@@ -33,6 +33,9 @@ export const news: News[] = [
     slug: '',
     excerpt: '',
   },
+  { id: 'n10', title: '記事タイトル10', date: '2025-08-10', slug: 'article-10', image: '/img/news-img1.jpg' },
+  { id: 'n9', title: '記事タイトル9', date: '2025-08-09', slug: 'article-9', image: '/img/news-img2.jpg' },
+  { id: 'n8', title: '記事タイトル8', date: '2025-08-08', slug: 'article-8', image: '/img/news-img3.jpg' },
   {
     id: 'n5',
     title: '',
