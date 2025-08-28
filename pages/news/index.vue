@@ -2,7 +2,7 @@
  <section class="inner">
     <h1 class="visually-hidden">News</h1>
     <ul class="grid">
-      <li v-for="n in items.slice(0,10)" :key="n.slug">
+      <li v-for="n in paginatedItems" :key="n.slug">
         <NuxtLink :to="`/news/${n.slug}`" class="card">
           <div class="thumb"><img :src="n.image" :alt="n.title" loading="lazy" /></div>
           <time class="date">{{ n.date }}</time>
@@ -10,51 +10,75 @@
         </NuxtLink>
       </li>
     </ul>
+          <Pagination v-model="page" :total-pages="totalPages" :edge="1" :radius="1" />
+
+    
+      <Head>
+      <Link
+        v-if="currentPage > 1"
+        rel="prev"
+        :href="`/news?page=${currentPage - 1}`"
+      />
+      <Link
+        v-if="currentPage < totalPages"
+        rel="next"
+        :href="`/news?page=${currentPage + 1}`"
+      />
+    </Head>
   </section>
 </template>
 
 <script setup lang="ts">
 import type { News } from "@/types/news";
+import { useRoute, useRouter } from "vue-router";
 // const items = await useFetch<News[]>('/api/news').then(r => r.data.value || [])
 import { useNews } from '@/composables/useNews' // さっき作ったやつ
+import Pagination from '@/components/ui/Pagination.vue'
+
+
+const route = useRoute();
+const router = useRouter();
 const { all } = useNews()
 const items = computed(() => all.value.slice(0, 10))
+const perPage = 10
+
+const page = computed<number>({
+  get() {
+    const p = Number(route.query.page ?? 1)
+    return Number.isFinite(p) && p >= 1 ? p : 1
+  },
+  set(p: number) {
+    router.push({ query: { ...route.query, page: String(p) } })
+  }
+})
+
+// クエリから現在ページを取得（なければ1）
+const currentPage = computed(() => {
+  const p = Number(route.query.page || 1)
+  return isNaN(p) || p < 1 ? 1 : p
+})
+
+// 総ページ数
+const totalPages = computed<number>(() => 
+  Math.ceil(all.value.length / perPage)
+)
+
+// 現在のページに応じた記事
+const paginatedItems = computed(() => {
+  const start = (page.value - 1) * perPage
+  return all.value.slice(start, start + perPage)
+})
+
+const goToPage = (p: number) => {
+  if(p >= 1 && p <= totalPages.value){
+    router.push({query: {page: String(p)}})
+  }
+} 
 
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
-// 引数
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
 
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
 //------------------------------------------------------------------------------------------------------------
 //computed
 //------------------------------------------------------------------------------------------------------------
