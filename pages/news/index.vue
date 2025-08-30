@@ -29,17 +29,15 @@
 </template>
 
 <script setup lang="ts">
-import type { News } from "@/types/news";
 import { useRoute, useRouter } from "vue-router";
-// const items = await useFetch<News[]>('/api/news').then(r => r.data.value || [])
-import { useNews } from '@/composables/useNews' // さっき作ったやつ
+import { computed } from 'vue'
+import { useNews } from '@/composables/useNews'
 import Pagination from '@/components/ui/Pagination.vue'
 
 
 const route = useRoute();
 const router = useRouter();
 const { all } = useNews()
-const items = computed(() => all.value.slice(0, 10))
 const perPage = 10
 
 const page = computed<number>({
