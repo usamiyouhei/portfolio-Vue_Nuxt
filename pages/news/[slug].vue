@@ -1,35 +1,48 @@
 <template>
-  <article class="inner">
+  <article v-if="itemSafe" class="inner">
     <header>
-      <time class="date">{{ item.date }}</time>
-      <h1 class="title">{{ item.title }}</h1>
-      <img :src="item.image" :alt="item.title" />
+      <time class="date">{{ itemSafe.date }}</time>
+      <h1 class="title">{{ itemSafe.title }}</h1>
+      <img :src="itemSafe.image" :alt="itemSafe.title" />
     </header>
-    <div class="content" v-if="item.body" v-html="item.body" />
+    <div class="content" v-if="itemSafe.body" v-html="itemSafe.body" />
     <p class="back"><NuxtLink to="/news">← News一覧へ</NuxtLink></p>
   </article>
 </template>
 
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-import { news } from "~/data/news";
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useNews } from '@/composables/useNews'
+import type { News } from '@/types/news'
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 const route = useRoute()
-const item = news.find(n => n.slug === route.params.slug)
+const { all } = useNews()
 
-if (!item) {
-  throw createError({ statusCode: 404, statusMessage: 'News not found' })
-}
+// const item = computed(() => all.value.find(n => n.slug === route.params.slug))
+const itemSafe = computed<News>(() => {
+  const found = all.value.find(n => n.slug === route.params.slug)
+  if (!found) {
+    throw createError({ statusCode: 404, statusMessage: 'News not found' })
+  }
+  return found
+})
+
+// if (!item) {
+//   throw createError({ statusCode: 404, statusMessage: 'News not found' })
+// }
+
 
 useHead({
-  title: `${item.title} | News`,
+  title: computed(() => `${itemSafe.value.title} | News`),
   meta: [
-    { name: 'description', content: item.excerpt || item.title },
+    { name: 'description', content: computed(() => itemSafe.value.excerpt || itemSafe.value.title) },
     { property: 'og:type', content: 'article' },
-    { property: 'og:title', content: item.title },
-    { property: 'og:image', content: item.image }
+    { property: 'og:title', content: computed(() => itemSafe.value.title) },
+    { property: 'og:image', content: computed(() => itemSafe.value.image) },
   ],
 })
  //------------------------------------------------------------------------------------------------------------
