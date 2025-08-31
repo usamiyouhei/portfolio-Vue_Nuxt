@@ -8,8 +8,8 @@ const byDateDesc = (a: News, b: News) =>
 
 
 export function useNews() {
-  // ここを ref にしておくと後で追加/並び替えが楽
-  const all = ref<News[]>([...seed])
+  // ここが undefined にならないよう、必ず配列で初期化
+  const all = ref<News[]>(Array.isArray(seed) ? [...seed] : [])
   return { all }
 }
 

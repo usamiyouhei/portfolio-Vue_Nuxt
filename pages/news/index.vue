@@ -1,6 +1,9 @@
 <template>
  <section class="inner">
     <h1 class="visually-hidden">News</h1>
+
+    <NewsSection :items="paginatedItems" />
+
     <ul class="grid">
       <li v-for="n in paginatedItems" :key="n.slug">
         <NuxtLink :to="`/news/${n.slug}`" class="card">
@@ -12,18 +15,10 @@
     </ul>
           <Pagination v-model="page" :total-pages="totalPages" :edge="1" :radius="1" />
 
-    
       <Head>
-      <Link
-        v-if="currentPage > 1"
-        rel="prev"
-        :href="`/news?page=${currentPage - 1}`"
-      />
-      <Link
-        v-if="currentPage < totalPages"
-        rel="next"
-        :href="`/news?page=${currentPage + 1}`"
-      />
+        <Link v-if="page > 1" rel="prev" :href="`/news?page=${page - 1}`" />
+        <Link v-if="page < totalPages" rel="next" :href="`/news?page=${page + 1}`" />
+
     </Head>
   </section>
 </template>
@@ -33,16 +28,29 @@ import { useRoute, useRouter } from "vue-router";
 import { computed } from 'vue'
 import { useNews } from '@/composables/useNews'
 import Pagination from '@/components/ui/Pagination.vue'
+import NewsSection from '@/components/Home/NewsSection.vue' // ← 明示 import（auto-import でも可）
+
 
 
 const route = useRoute();
 const router = useRouter();
 const { all } = useNews()
+const allNews = all
 const perPage = 10
+
+const validItems = computed(() =>
+    all.value.filter(n =>
+    typeof n.slug === 'string' && n.slug.trim() &&
+    typeof n.title === 'string' && n.title.trim() &&
+    typeof n.date === 'string' && n.date.trim()
+  )
+)
 
 const page = computed<number>({
   get() {
-    const p = Number(route.query.page ?? 1)
+    const raw = route.query.page
+    const str = Array.isArray(raw) ? raw[0] : raw
+    const p = Number(str ?? 1)
     return Number.isFinite(p) && p >= 1 ? p : 1
   },
   set(p: number) {
@@ -51,20 +59,20 @@ const page = computed<number>({
 })
 
 // クエリから現在ページを取得（なければ1）
-const currentPage = computed(() => {
-  const p = Number(route.query.page || 1)
-  return isNaN(p) || p < 1 ? 1 : p
-})
+// const currentPage = computed(() => {
+//   const p = Number(route.query.page || 1)
+//   return isNaN(p) || p < 1 ? 1 : p
+// })
 
 // 総ページ数
 const totalPages = computed<number>(() => 
-  Math.ceil(all.value.length / perPage)
+  Math.ceil(validItems.value.length / perPage)
 )
 
 // 現在のページに応じた記事
 const paginatedItems = computed(() => {
   const start = (page.value - 1) * perPage
-  return all.value.slice(start, start + perPage)
+  return validItems.value.slice(start, start + perPage)
 })
 
 const goToPage = (p: number) => {
