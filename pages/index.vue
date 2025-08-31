@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import type { News } from "@/types/news";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -22,13 +23,15 @@ import type { News } from "@/types/news";
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
+  const { all } = useNews()
 
-
-const latest3 = allNews
-  .slice() // 破壊防止
-  .sort((a, b) => b.date.localeCompare(a.date))
-  .slice(0, 3)
-
+  const byDateDesc = (a: News, b: News) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+    const latest3 = computed(() =>
+    [...all.value]     .filter(n => n.slug && n.title && n.date)
+    .sort(byDateDesc)
+    .slice(0, 3)
+)
 //   const { data } = await useAsyncData<News[]>('news', () => $fetch('/api/news'))
 // const latest3 = computed(() =>
 //   (data.value ?? []).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3)

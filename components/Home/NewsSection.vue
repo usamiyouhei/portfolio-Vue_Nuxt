@@ -23,8 +23,11 @@ import type { News } from "@/types/news";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-const props = defineProps<{ items: News [] }>()
-
+// const props = defineProps<{ items: News [] }>()
+// items が来なくても空配列にする
+const props = withDefaults(defineProps<{ items?: News[] }>(), {
+  items: () => []
+})
 //  const news = [
 //   {
 //     title:"新ポートフォリオ作成しております",
