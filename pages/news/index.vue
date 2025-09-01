@@ -1,8 +1,8 @@
 <template>
- <section class="inner">
+ <section class="newsMorePage">
     <h1 class="visually-hidden">News</h1>
 
-    <NewsSection :items="paginatedItems" />
+    <!-- <NewsSection :items="paginatedItems" /> -->
 
     <ul class="grid">
       <li v-for="n in paginatedItems" :key="n.slug">
@@ -28,9 +28,7 @@ import { useRoute, useRouter } from "vue-router";
 import { computed } from 'vue'
 import { useNews } from '@/composables/useNews'
 import Pagination from '@/components/ui/Pagination.vue'
-import NewsSection from '@/components/Home/NewsSection.vue' // ← 明示 import（auto-import でも可）
-
-
+import NewsSection from '@/components/Home/NewsSection.vue'
 
 const route = useRoute();
 const router = useRouter();
@@ -115,6 +113,9 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+.newsMorePage {
+  margin-top: 80px;
+}
 .grid {
   display:grid;
   gap:16px;

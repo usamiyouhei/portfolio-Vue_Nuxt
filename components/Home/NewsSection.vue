@@ -5,13 +5,14 @@
           <SectionTitle sectionTitle="News" sectionSubTitle="お知らせ"/>
         </div>
         <ul class="news__items">
-          <li v-for="n in props.items" :key="n.id">
+          <li v-for="n in props.items" :key="n.slug" class="news-item">
             <NewsItem :item="n"/>
           </li>
         </ul>
       </div>
       <div class="news__more">
-        <NuxtLink class="more-link" to="/news">View More</NuxtLink>
+        <!-- <NuxtLink class="more-link" to="/news">View More</NuxtLink> -->
+        <Button buttonText="View More" link="/usami/news"/>
       </div>
     </section>
 </template>
@@ -20,6 +21,8 @@
 import SectionTitle from "../common/SectionTitle.vue";
 import NewsItem from "../Home/NewsItem.vue";
 import type { News } from "@/types/news";
+import  Button  from "../common/Button.vue";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -109,80 +112,48 @@ function onChange(value: any) {
 
 <style lang="scss" scoped>
 .news {
-  padding: 101px 0 30px;
+  margin-bottom: 10px;
 }
 .news__inner {
   position: relative;
   z-index: 100;
 }
 .news__items {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
   margin: 50px auto 0;
   width: 70%;
   text-align: center;
   position: relative;
   z-index: 100;
-}
-.news__items-wrap {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 30px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #a5a2a2;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.news-item__date {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 14px;
-  line-height: 1.786;
-  display: inline-block;
-  padding-bottom: 10px;
-  font-weight: bold;
-}
 .news__item {
-  text-align: start;
-  width: 50%;
-  margin-inline: auto;
-}
-.news-item__title {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.05em;
-  line-height: 1.667;
-  /* margin-left: 20px; */
-  width: 100%;
-  /* padding: 0 30px 30px; */
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  margin-bottom: 10px;
 }
 
-.news__img {
-  width: 200px;
-  /* padding-left: 80px; */
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333333;
-  background-color: #b9c7da;
-  height: 150px;
-  border-radius: 3px;
-  box-shadow: -2px -2px 5px 0px rgba(255, 255, 255, 0.3), 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+.news-list {
+  display: grid;
+  gap: 16px;
 }
 
-.news .read-more__button {
-  margin: 50px auto;
-  position: relative;
-  z-index: 100;
+.news__more {
+  margin-top: 12px;
+  text-align: center;
 }
-.button__wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
+
+.more-link {
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:12px;
+  border:1px solid #ddd;
 }
+
+
 @media screen and (max-width: 1024px) {
   .news .section-title {
     text-align: center;
@@ -226,8 +197,5 @@ function onChange(value: any) {
     width: 100%;
   }
 }
-.news-list { display: grid; gap: 16px; }
-.news__more { margin-top: 12px; text-align: center; }
-.more-link { display:inline-block; padding:10px 16px; border-radius:12px; border:1px solid #ddd; }
 
 </style>
