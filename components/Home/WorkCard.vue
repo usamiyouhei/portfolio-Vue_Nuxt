@@ -99,6 +99,7 @@ const props = defineProps<{
 // 引数
 //------------------------------------------------------------------------------------------------------------
 const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
+const isExternal = computed(() => !!props.work.extarnalURL);
 
 
 //------------------------------------------------------------------------------------------------------------

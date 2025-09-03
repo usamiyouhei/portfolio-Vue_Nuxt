@@ -1,26 +1,46 @@
 <template>
   <section class="works inner" id="works">
-      <div class="works__title section-title">
+    <div class="works__title section-title">
       <SectionTitle sectionTitle="Works" sectionSubTitle="制作実績" />
-      </div>
-      <div class="works__inner">
-        <ul class="works__list js-fadeIn">
-         <HomeWorksCard/>
-        </ul>
-      </div>
-      <a class="read-more__button" href="./works.html">
-        <span>Gallery page</span>
-      </a>
+    </div>
+
+    <div v-for="cat in categories" :key="cat" class="works-category">
+      <h3 class="works__heading">{{ catLabels[cat] }}</h3>
+      <Swiper>
+        <SwiperSlide v-for="w in byCat(cat)" :key="w.id">
+          <WorkCard :work="w"/>
+        </SwiperSlide>
+      </Swiper>
+        <a class="read-more__button" href="./works.html">
+          <span>Gallery page</span>
+        </a>
+    </div>
+
     </section>
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import  SectionTitle  from "../common/SectionTitle.vue";
-import WorksCard from "../Home/WorksCard.vue";
+import WorkCard from "../Home/WorkCard.vue";
+import type { Work } from "../../types/works";
+import { works } from "../../data/works";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
+
+type Cat = Work['category']
+
+const categories: Cat[] = ['patissier', 'programming', 'design', 'hobby']
+const catLabels: Record<Cat, string> = {
+  patissier: 'Patissier',
+  programming: 'Programming',
+  design: 'Design',
+  hobby: 'Hobby'
+}
+
+const byCat = (c: Cat): Work[] => works.filter(w => w.category === c)
+ //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
