@@ -9,5 +9,5 @@ export interface Work {
   date?: string | Date,
   description?: string,
   tags?: string[],
-  extarnalURL?: string,
+  extarnalUrl?: string,
 }
