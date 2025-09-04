@@ -1,9 +1,10 @@
 <template>
   <component
+    :is="isExternal ? 'a' : 'NuxtLink'"
     class="work-card"
   >
       <!-- thumbnail -->
-        <div class="work-card__thumbnaile">
+        <div class="work-card__thumbnail">
           <img src="" alt="">
           <div class="work-card__shade"></div>
 
@@ -23,61 +24,6 @@
           </ul>
 
         </div>
-
-     <!-- <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works1.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works2.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works3.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works4.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works5.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works6.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works7.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works8.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li>
-          <li class="fade-in fade-in-up works-item">
-            <a href="./コーディング練習/index.html"
-              ><div><img src="./img2/works9.jpg" alt="" /></div>
-              <h3>Web制作</h3></a
-            >
-          </li> -->
   </component>
 
 </template>
@@ -88,19 +34,40 @@ import { computed } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-const props = defineProps<{
+type Cat = Work['category']
+
+ const props = withDefaults(defineProps<{
   work: Work,
   compact?: boolean,
+  aspect?: '4x3' | '3x2' | '1x1'
   fallbackSrc?: string,
-}>()
+  catLabels?: Partial<Record<Work['category'], string>>
+}>(), {
+  compact: false,
+  catLabels: () => ({}),
+  fallbackSrc: '/img/placeholder-work.jpg'
+})
+
 
 
  //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
-const isExternal = computed(() => !!props.work.extarnalURL);
+const isExternal = computed(() => !!props.work.extarnalUrl);
+const permalink = computed(() => `works/${props.work.slug ?? props.work.id}`)
 
+const categoryLabel = computed(() => {
+  const base = { 
+    patissier: 'Patissier', 
+    programming: 'Programming', 
+    design: 'Design', 
+    hobby: 'Hobby'
+  } as const
+
+  const map = {...base, ...props.catLabels}
+  return map[props.work.category]
+})
 
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）

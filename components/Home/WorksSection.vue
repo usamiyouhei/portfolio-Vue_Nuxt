@@ -8,7 +8,7 @@
       <h3 class="works__heading">{{ catLabels[cat] }}</h3>
       <Swiper>
         <SwiperSlide v-for="w in byCat(cat)" :key="w.id">
-          <WorkCard :work="w"/>
+          <WorkCard :work="w" compact />
         </SwiperSlide>
       </Swiper>
         <a class="read-more__button" href="./works.html">
