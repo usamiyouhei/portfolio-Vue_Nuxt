@@ -1,7 +1,13 @@
 <template>
   <component
-    :is="isExternal ? 'a' : 'NuxtLink'"
+    :is="isExternal ? 'a' : NuxtLink"
+    :href="isExternal ? work.extarnalUrl : undefined"
+    :to="!isExternal ? permalink : undefined"
+    :target="isExternal ? '_blank' : undefined"
+    rel="noopener"
     class="work-card"
+    :class="[{'work-card--compact' : compact}, aspectClass]"
+    :aria-label="ariaLabel"
   >
       <!-- thumbnail -->
         <div class="work-card__thumbnail">
@@ -29,6 +35,7 @@
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from '#components';
 import type { Work } from "@/types/works";
 import { computed } from "vue";
 /**===================================================================================================================
@@ -68,6 +75,12 @@ const categoryLabel = computed(() => {
   const map = {...base, ...props.catLabels}
   return map[props.work.category]
 })
+
+const ariaLabel = computed(() => isExternal.value ? `${props.work.title}（外部リンク）` : props.work.title)
+
+
+
+const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.aspect !== '3x2', 'is-3x2': props.aspect === '3x2', 'is-1x1': props.aspect === '1x1' }))
 
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
@@ -128,6 +141,23 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+:root {
+  --c-card: #2f2a24;     /* 深いブラウン */
+  --c-text: #f5f0e6;     /* アイボリー系の文字色 */
+  --c-sub: #d6cbb7;      /* ベージュ寄りのサブテキスト */
+  --c-muted: #b39c82;    /* くすんだブラウン/グレー */
+  --c-accent: #c8a15a;   /* ゴールド寄りのアクセント */
+  --c-border: #3e342c;   /* 濃いブラウン（境界線） */
+}
+
+.work-card{
+  display:block; background:var(--c-card); color:var(--c-text);
+  border:1px solid var(--c-border); border-radius:16px; overflow:hidden;
+  text-decoration:none; transform:translateZ(0);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  &:hover{ transform:translateY(-4px); box-shadow:0 8px 28px rgba(0,0,0,.35); border-color:#2b2e44; }
+}
+
 .works-item {
   width: 31%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
