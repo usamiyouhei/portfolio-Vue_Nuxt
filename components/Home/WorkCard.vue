@@ -1,7 +1,7 @@
 <template>
   <component
     :is="isExternal ? 'a' : NuxtLink"
-    :href="isExternal ? work.extarnalUrl : undefined"
+    :href="isExternal ? work.externalUrl : undefined"
     :to="!isExternal ? permalink : undefined"
     :target="isExternal ? '_blank' : undefined"
     rel="noopener"
@@ -10,23 +10,23 @@
     :aria-label="ariaLabel"
   >
       <!-- thumbnail -->
-        <div class="work-card__thumbnail">
-          <img src="" alt="">
+        <div class="work-card__thumb">
+          <img :src="work.img || fallback" alt="work.title">
           <div class="work-card__shade"></div>
 
           <div class="work-card__meta">
-            <span class="work-card__badge">categoryLabel</span>
-            <time datetime="" class="work-card__date">shortDate</time>
+            <span class="work-card__badge">{{categoryLabel}}</span>
+            <time datetime="" class="work-card__date">{{shortDate}}</time>
 
-            <h3 class="work-card__title">title</h3>
-            <p class="work-card__subTitle">subTitle</p>
+            <h3 class="work-card__title">{{work.title}}</h3>
+            <p class="work-card__subTitle">{{work.subTitle}}</p>
           </div>
         </div>
 
-        <div class="work-card__body">
-          <p class="work-card__desc">description</p>
-          <ul class="work-card__tags">
-            <li class="work-card__tag">tag</li>
+        <div v-if="!compact" class="work-card__body">
+          <p v-if="work.description" class="work-card__desc">{{work.description}}</p>
+          <ul v-if="work.tags?.length" class="work-card__tags">
+            <li v-for="t in work.tags" :key="t" class="work-card__tag">{{t}}</li>
           </ul>
 
         </div>
@@ -57,12 +57,12 @@ type Cat = Work['category']
 
 
 
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
-const isExternal = computed(() => !!props.work.extarnalUrl);
-const permalink = computed(() => `works/${props.work.slug ?? props.work.id}`)
+const isExternal = computed(() => !!props.work.externalUrl);
+const permalink = computed(() => `/works/${props.work.slug ?? props.work.id}`)
 
 const categoryLabel = computed(() => {
   const base = { 
@@ -78,62 +78,23 @@ const categoryLabel = computed(() => {
 
 const ariaLabel = computed(() => isExternal.value ? `${props.work.title}（外部リンク）` : props.work.title)
 
-
+// 日付表示
+const isoDate = computed(() => {
+  if (!props.work.date) return undefined;
+  const d = typeof props.work.date === 'string' ? new Date(props.work.date) : props.work.date;
+  return d.toISOString();
+});
+const shortDate = computed(() => {
+  if (!props.work.date) return '';
+  const d = typeof props.work.date === 'string' ? new Date(props.work.date) : props.work.date;
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}`;
+});
 
 const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.aspect !== '3x2', 'is-3x2': props.aspect === '3x2', 'is-1x1': props.aspect === '1x1' }))
 
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -183,7 +144,12 @@ function onChange(value: any) {
 
   &--compact &__body{ display:none; }
 }
-
+.work-card__meta,
+.work-card__title,
+.work-card__subtitle,
+.work-card__shade {
+  pointer-events: none;   /* クリック/右クリックは親リンクへ通す */
+}
 // .works-item {
 //   width: 31%;
 //   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);

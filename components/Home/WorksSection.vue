@@ -5,6 +5,7 @@
         <SectionTitle sectionTitle="Works" sectionSubTitle="制作実績" />
       </div>
 
+      <div v-if="ready">
       <div v-for="cat in categories" :key="cat" class="works-category">
         <div class="works__head">
           <h3 class="works__cat">{{ catLabels[cat] }}</h3>
@@ -18,16 +19,26 @@
 
         <!-- PC : Slider -->
         <div v-if="mdUp && pcLayout === 'slider'">
+          <ClientOnly>
           <Swiper
+            :modules="[Navigation]"
             :slides-per-view="2"
             :space-between="20"
-            class="work__swiper"
-            :navigation="true"
+            class="works-swiper"
+            navigation
+            :loop="byCat(cat).length > 2"
+            :grab-cursor="true"
+            :prevent-clicks="false"
+            :prevent-clicks-propagation="false"
+            :centered-slides-bounds="true"
+            :slides-offset-before="12"
+            :slides-offset-after="12"  
             >
             <SwiperSlide v-for="w in byCat(cat)" :key="w.id">
               <WorkCard :work="w" compact aspect="3x2"/>
             </SwiperSlide>
           </Swiper>
+          </ClientOnly>
         </div>
 
         <!-- PC: grid 2×2 -->
@@ -39,17 +50,30 @@
 
         <!-- mobile: 常に1.2枚 + centered -->
         <div v-else>
+          <ClientOnly>
           <Swiper
+            :modules="[Navigation]"
             :slides-per-view="1.2"
             :space-between="16"
             :centered-slides="true"
-            class="work-swiper"
+            class="works-swiper"
+            navigation
+            :loop="byCat(cat).length > 1"
+            :grab-cursor="true"
+            :prevent-clicks="false"
+            :prevent-clicks-propagation="false"
+            :centered-slides-bounds="true"
+            :slides-offset-before="12"
+            :slides-offset-after="12"
+            :breakpoints="getBreakpoints(byCat(cat).length)"
           >
             <SwiperSlide
               v-for="w in byCat(cat)" :key="w.id">
               <WorkCard :work="w" compact aspect="3x2"/>
             </SwiperSlide>
           </Swiper>
+          </ClientOnly>
+        </div>
         </div>
       </div>
       <Button buttonText="View More" link="/usami/works"/>
@@ -58,7 +82,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation } from 'swiper/modules' 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import  SectionTitle  from "../common/SectionTitle.vue";
@@ -67,9 +93,10 @@ import  Button  from "../common/Button.vue";
 import type { Work } from "../../types/works";
 import { works } from "../../data/works";
 
+
 /**===================================================================================================================
- * 
- ===================================================================================================================**/
+ *
+===================================================================================================================**/
 
 type Cat = Work['category']
 
@@ -84,13 +111,30 @@ const catLabels: Record<Cat, string> = {
 const byCat = (c: Cat): Work[] => works.filter(w => w.category === c)
 
 const width = ref(0)
+const updateW = () => { width.value = window.innerWidth }
+onMounted(() => { updateW(); window.addEventListener('resize', updateW) })
+onBeforeUnmount(() => window.removeEventListener('resize', updateW))
 
-
-
+const ready = ref(false)
+onMounted(() => { ready.value = true; updateW(); window.addEventListener('resize', updateW) })
+onBeforeUnmount(() => window.removeEventListener('resize', updateW))
 
 const mdUp = computed(() => width.value >= 1024)
 
-const pcLayout = ref< 'slider'| 'grid' >('slider')
+const getBreakpoints = (count: number) => ({
+  768: { slidesPerView: 1.5, spaceBetween: 18 },
+  1024: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    centeredSlides: false,
+    slidesOffsetBefore: 0,
+    slidesOffsetAfter: 0,
+    // PC では 3枚以上のときだけループ
+    loop: count > 2,
+  },
+})
+
+const pcLayout = ref< 'slider' | 'grid' >('slider')
  //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
@@ -145,9 +189,18 @@ const pcLayout = ref< 'slider'| 'grid' >('slider')
   &__tag{ font-size:11px; color:var(--c-muted); border:1px solid #2a2d3f; border-radius:999px; padding:2px 8px; }
 
   &--compact &__body{ display:none; }
+  /* Swiper：前後チラ見せ & 端の見切れ防止 */
+  .works-swiper{ padding-inline: 12px; }
 }
+
+.works-category { margin: 28px 0 44px; }
+:deep(.swiper){ overflow: visible; min-height: 1px; }
+:deep(.swiper-slide){ height: auto; }
+
 :global(.swiper){ overflow:visible; }
 :global(.swiper-slide){ height:auto; }
+@media (min-width:1024px){ .works-swiper { padding-inline: 0; } }
+
 // .inner {
 //   /* width: 100%; */
 //   max-width: 1200px;
