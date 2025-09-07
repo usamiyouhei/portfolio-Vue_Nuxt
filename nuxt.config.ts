@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   components: true,
-  css: ['@/assets/css/main.css','@/assets/css/reset.css'],
+  css: [
+    '@/assets/css/main.css',
+    '@/assets/css/reset.css',
+    'swiper/css',
+    'swiper/css/navigation',
+  ],
 })
 
