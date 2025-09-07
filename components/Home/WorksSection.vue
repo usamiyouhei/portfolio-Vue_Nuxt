@@ -43,25 +43,30 @@
             :slides-per-view="1.2"
             :space-between="16"
             :centered-slides="true"
-            class="work-swiper">
-
+            class="work-swiper"
+          >
+            <SwiperSlide
+              v-for="w in byCat(cat)" :key="w.id">
+              <WorkCard :work="w" compact aspect="3x2"/>
+            </SwiperSlide>
           </Swiper>
-
         </div>
-          <a class="read-more__button" href="./works.html">
-            <span>Gallery page</span>
-          </a>
       </div>
+      <Button buttonText="View More" link="/usami/works"/>
     </div>
     </section>
 </template>
 
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css'
+import 'swiper/css/navigation'
 import  SectionTitle  from "../common/SectionTitle.vue";
 import WorkCard from "../Home/WorkCard.vue";
+import  Button  from "../common/Button.vue";
 import type { Work } from "../../types/works";
 import { works } from "../../data/works";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -92,55 +97,7 @@ const pcLayout = ref< 'slider'| 'grid' >('slider')
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
 
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -159,7 +116,38 @@ function onChange(value: any) {
   &__view{ display:none; gap:8px; }
   .view-btn{ font-size:12px; border:1px solid #2b2e44; background:#12131a; color:#c8cbe0; padding:6px 10px; border-radius:8px; cursor:pointer; }
   .view-btn.active{ border-color:#c9a227; color:#fff; }
+
+   /* PCグリッド */
+  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+  &__grid-item{ }
+
+  /* Swiper周り（前後チラ見せ） */
+  .works-swiper{ padding-right: 8px; }
+  &:hover &__thumb>img{ transform:scale(1.04); }
+  &.is-3x2 &__thumb::before{ aspect-ratio:3/2;}
+  &.is-1x1 &__thumb::before{ aspect-ratio:1/1;}
+
+  &__shade{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 55%); pointer-events:none; }
+
+  &__meta{ position:absolute; left:12px; right:12px; bottom:12px; display:flex; gap:8px; align-items:center; }
+  &__badge{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:4px 8px; border:1px solid rgba(255,255,255,.25); border-radius:999px; color:#fff; background:rgba(0,0,0,.25); backdrop-filter:blur(4px); }
+  &__date{ font-size:12px; color:rgba(255,255,255,.85); }
+
+  &__title{ position:absolute; left:12px; right:12px; bottom:42px; margin:0; font-size:16px; font-weight:700; line-height:1.25; color:#fff;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-shadow:0 1px 2px rgba(0,0,0,.35); }
+  &__subtitle{ position:absolute; left:12px; right:12px; bottom:66px; font-size:13px; color:rgba(255,255,255,.9);
+    display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+
+  &__body{ padding:12px 14px 14px; }
+  &__desc{ margin:0; font-size:14px; line-height:1.55; color:var(--c-sub);
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  &__tags{ margin:10px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px; }
+  &__tag{ font-size:11px; color:var(--c-muted); border:1px solid #2a2d3f; border-radius:999px; padding:2px 8px; }
+
+  &--compact &__body{ display:none; }
 }
+:global(.swiper){ overflow:visible; }
+:global(.swiper-slide){ height:auto; }
 // .inner {
 //   /* width: 100%; */
 //   max-width: 1200px;
