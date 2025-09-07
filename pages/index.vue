@@ -5,7 +5,7 @@
  <HomeServiceSection/>
  
  <HomeNewsSection :items="latest3"/>
- <HomeWorksSection/>
+ <HomeWorksSection2/>
  <!-- <HomeContactSection/> -->
 </template>
 
