@@ -6,6 +6,11 @@ export const works: Work[] = [
     title: 'デザート作品',
     img: '/img/works1.jpg',
     category: 'patissier',
+    // items:[
+    //   { id: 1, title: 'pari brest', img: 'img/mv2.jpg', date: '2025-08-30'},
+    //   { id: 2, title: 'pari brest', img: 'img/works8.jpg', date: '2025-07-30'}
+    // ],
+    slug: 'cake',
     date: '2025-10-10',
     tags: ['cake', 'dessert']
   },

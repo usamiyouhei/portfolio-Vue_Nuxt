@@ -12,16 +12,41 @@
             <h3 class="works__cat">{{ catLabels[cat] }}</h3>
 
             <!-- PCだけ出す切替 -->
-            <div class="works__view" v-if="mdUp">
+            <!-- <div class="works__view" v-if="mdUp">
               <button :class="['view-btn', { active: pcLayout === 'slider'}]" @click="pcLayout = 'slider'">スライド</button>
               <button :class="['view-btn', { active: pcLayout === 'grid'}]" @click="pcLayout = 'grid'">2×2</button>
-            </div>
+            </div> -->
           </div>
 
           <!-- PC: grid 2×2 -->
-          <ul v-if="mdUp && pcLayout === 'grid'" class="works__grid">
-            <li v-for="w in byCat(cat)" :key="w.id" class="works__grid-item">
-              <WorkCard :work="w" aspect="3x2" variant="gallery"/>
+          <ul v-if="mdUp" class="works__grid">
+            <li
+              v-for="(group, index) in groupsByCat(cat).filter(g => g.length > 0)" 
+              :key="index" 
+              class="works__grid-item"
+            >
+              <WorkCard
+                v-if="group.length > 1"
+                :work="group[0]"
+                aspect="3x2"
+                variant="gallery"
+              />
+
+              <ClientOnly v-else>
+                <Swiper
+                  :modules="[Navigation, Pagination]"
+                  navigation
+                  :pagination="{ clickable: true}"
+                  :slides-per-view="1"
+                  :loop="group.length > 1"
+                  class="work-inner-swiper"
+                  >
+                  <SwiperSlide
+                    v-for="w in group" :key="w.id">
+                    <WorkCard :work="w" aspect="3x2" variant="gallery"/>
+                  </SwiperSlide>
+                </Swiper>
+              </ClientOnly>
             </li>
           </ul>
 
@@ -41,7 +66,7 @@
               :centered-slides-bounds="true"
               :slides-offset-before="0"
               :slides-offset-after="0"
-              :loop="byCat(cat).length > 0"
+              :loop="byCat(cat).length > 1"
               :breakpoints="getBreakpoints(byCat(cat).length)"
               :prevent-clicks="false"
               :prevent-clicks-propagation="false"
@@ -65,6 +90,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import SectionTitle from '../common/SectionTitle.vue'
 import WorkCard from '../Home/WorkCard.vue'
 import Button from '../common/Button.vue'
@@ -78,6 +104,18 @@ const catLabels: Record<Cat,string> = {
 }
 const byCat = (c: Cat) => works.filter(w => w.category === c)
 
+// カテゴリー内の作品を４グループに均等分配
+const CELLS_PER_CATEGORY = 4
+const groupsByCat = (c: Cat): Work[][] => {
+  const arr = byCat(c)
+  // 空でも４マス分返す
+  const groups: Work[][] = Array.from({ length: CELLS_PER_CATEGORY }, () => [])
+  arr.forEach((w, i) => {
+    groups[i % CELLS_PER_CATEGORY].push(w)
+  })
+  return groups
+}
+
 const width = ref(0)
 const updateW = () => { width.value = window.innerWidth }
 const ready = ref(false)
@@ -85,7 +123,7 @@ onMounted(() => { ready.value = true; updateW(); window.addEventListener('resize
 onBeforeUnmount(() => window.removeEventListener('resize', updateW))
 const mdUp = computed(() => width.value >= 1024)
 
-const pcLayout = ref<'slider'|'grid'>('slider')
+// const pcLayout = ref<'slider'|'grid'>('slider')
 
 /** PCは2枚・中央寄せなし・オフセット0、loopは3枚以上で */
 const getBreakpoints = (count: number) => ({
@@ -116,6 +154,11 @@ const getBreakpoints = (count: number) => ({
   /* PCグリッド */
   &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
 }
+
+.work-inner-swiper{ width:100%; }
+:deep(.work-inner-swiper .swiper){ overflow:hidden; } /* はみ出し防止 */
+:deep(.work-inner-swiper .swiper-slide){ height:auto; }
+
 
 .works-category { margin: 28px 0 44px; }
 
@@ -149,6 +192,14 @@ const getBreakpoints = (count: number) => ({
 :deep(.swiper-pagination-bullet-active){
   background: #c9a227;          /* ゴールドに合わせる */
 }
+:deep(.work-inner-swiper .swiper-button-prev){ left:6px; }
+:deep(.work-inner-swiper .swiper-button-next){ right:6px; }
+:deep(.work-inner-swiper .swiper-button-prev:after),
+:deep(.work-inner-swiper .swiper-button-next:after){ font-size:16px; }
+
+:deep(.work-inner-swiper .swiper-pagination-bullets){ bottom:6px !important; }
+:deep(.work-inner-swiper .swiper-pagination-bullet){ width:6px; height:6px; background:rgba(0,0,0,.35); opacity:1; }
+:deep(.work-inner-swiper .swiper-pagination-bullet-active){ background:#c9a227; }
 /* 余白は slidesOffsetBefore/After で管理するので padding は付けない */
 .works-swiper { }
 @media (min-width:1024px){
