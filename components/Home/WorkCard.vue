@@ -5,33 +5,51 @@
     :to="!isExternal ? permalink : undefined"
     :target="isExternal ? '_blank' : undefined"
     rel="noopener"
-    class="work-card"
-    :class="[{'work-card--compact' : compact}, aspectClass]"
+    :class="[
+      props.variant === 'overlay' ? 'work-card' : 'card-gallery',
+      { 'work-card--compact': compact },
+      aspectClass
+    ]"
     :aria-label="ariaLabel"
   >
-      <!-- thumbnail -->
-        <div class="work-card__thumb">
-          <img :src="work.img || fallback" alt="work.title">
-          <div class="work-card__shade"></div>
+    <!-- overlay バリアント -->
+    <template v-if="props.variant === 'overlay'">
+      <div class="work-card__thumb">
+        <img :src="work.img || fallback" :alt="work.title" />
+        <div class="work-card__shade"></div>
 
-          <div class="work-card__meta">
-            <span class="work-card__badge">{{categoryLabel}}</span>
-            <time datetime="" class="work-card__date">{{shortDate}}</time>
+        <div class="work-card__meta">
+          <span class="work-card__badge">{{ categoryLabel }}</span>
+          <time v-if="work.date" :datetime="isoDate" class="work-card__date">{{ shortDate }}</time>
 
-            <h3 class="work-card__title">{{work.title}}</h3>
-            <p class="work-card__subTitle">{{work.subTitle}}</p>
-          </div>
+          <h3 class="work-card__title">{{ work.title }}</h3>
+          <p v-if="work.subTitle" class="work-card__subTitle">{{ work.subTitle }}</p>
         </div>
+      </div>
 
-        <div v-if="!compact" class="work-card__body">
-          <p v-if="work.description" class="work-card__desc">{{work.description}}</p>
-          <ul v-if="work.tags?.length" class="work-card__tags">
-            <li v-for="t in work.tags" :key="t" class="work-card__tag">{{t}}</li>
-          </ul>
+      <div v-if="!compact" class="work-card__body">
+        <p v-if="work.description" class="work-card__desc">{{ work.description }}</p>
+        <ul v-if="work.tags?.length" class="work-card__tags">
+          <li v-for="t in work.tags" :key="t" class="work-card__tag">{{ t }}</li>
+        </ul>
+      </div>
+    </template>
 
+    <!-- gallery バリアント -->
+    <template v-else>
+      <div class="card-gallery__media">
+        <img :src="work.img || fallback" :alt="work.title" loading="lazy" decoding="async" />
+      </div>
+      <div class="card-gallery__body">
+        <h3 class="card-gallery__title">{{ work.title }}</h3>
+        <p v-if="work.subTitle" class="card-gallery__sub">{{ work.subTitle }}</p>
+        <div class="card-gallery__meta">
+          <span class="card-gallery__badge">{{ categoryLabel }}</span>
+          <time v-if="work.date" :datetime="isoDate" class="card-gallery__date">{{ shortDate }}</time>
         </div>
+      </div>
+    </template>
   </component>
-
 </template>
 
 <script setup lang="ts">
@@ -42,6 +60,7 @@ import { computed } from "vue";
  * 
  ===================================================================================================================**/
 type Cat = Work['category']
+type Variant = 'overlay' | 'gallery'
 
  const props = withDefaults(defineProps<{
   work: Work,
@@ -49,10 +68,12 @@ type Cat = Work['category']
   aspect?: '4x3' | '3x2' | '1x1'
   fallbackSrc?: string,
   catLabels?: Partial<Record<Work['category'], string>>
+  variant?: Variant
 }>(), {
   compact: false,
   catLabels: () => ({}),
-  fallbackSrc: '/img/placeholder-work.jpg'
+  fallbackSrc: '/img/placeholder-work.jpg',
+  variant: 'overlay'
 })
 
 
@@ -149,6 +170,31 @@ const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.
 .work-card__subtitle,
 .work-card__shade {
   pointer-events: none;   /* クリック/右クリックは親リンクへ通す */
+}
+
+.card-gallery{
+  display:block; background:#fff; color:#222;
+  border-radius:16px; border:1px solid rgba(0,0,0,.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  overflow:hidden; text-decoration:none;
+  transition: transform .25s ease, box-shadow .25s ease;
+  padding: 20px;
+  &:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+
+  &__media{
+    position:relative; 
+    background:#eee;
+    border-radius:12px; 
+    overflow:hidden;
+    &::before{ content:""; display:block; aspect-ratio: 3 / 2; } /* 画像比率を固定 */
+    > img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  }
+  &__body{ padding:12px 2px 10px; }
+  &__title{ margin:0 0 6px; font-weight:700; font-size:16px; line-height:1.35; color:#1f2937; }
+  &__sub{ margin:0 0 10px; font-size:13px; color:#6b7280; }
+  &__meta{ display:flex; gap:8px; align-items:center; }
+  &__badge{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:4px 8px; border:1px solid #e5e7eb; border-radius:999px; color:#374151; background:#f9fafb; }
+  &__date{ font-size:12px; color:#6b7280; }
 }
 // .works-item {
 //   width: 31%;

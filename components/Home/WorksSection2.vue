@@ -21,7 +21,7 @@
           <!-- PC: grid 2×2 -->
           <ul v-if="mdUp && pcLayout === 'grid'" class="works__grid">
             <li v-for="w in byCat(cat)" :key="w.id" class="works__grid-item">
-              <WorkCard :work="w" aspect="3x2"/>
+              <WorkCard :work="w" aspect="3x2" variant="gallery"/>
             </li>
           </ul>
 
@@ -49,7 +49,7 @@
               :prevent-clicks-propagation="false"
             >
               <SwiperSlide v-for="w in byCat(cat)" :key="w.id">
-                <WorkCard :work="w" compact aspect="3x2"/>
+                <WorkCard :work="w" variant="gallery"/>
               </SwiperSlide>
             </Swiper>
           </ClientOnly>
