@@ -28,22 +28,20 @@
           <!-- Swiper（モバイル/PC共通・breakpointsで切替） -->
           <ClientOnly v-else>
             <Swiper
-              :modules="[Navigation]"
+              :modules="[Navigation, Pagination]"
               navigation
-              :allow-touch-move="false"
+              :pagination="{ clickable: true, dynamicBullets: true }"
+              :allow-touch-move="true"
               :grab-cursor="false"
               class="works-swiper"
               style="width:100%"
-
               :slides-per-view="1"
               :space-between="16"
               :centered-slides="true"
               :centered-slides-bounds="true"
-              :slides-offset-before="12"
-              :slides-offset-after="12"
+              :slides-offset-before="0"
+              :slides-offset-after="0"
               :loop="byCat(cat).length > 0"
-
-              
               :breakpoints="getBreakpoints(byCat(cat).length)"
               :prevent-clicks="false"
               :prevent-clicks-propagation="false"
@@ -64,7 +62,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import SectionTitle from '../common/SectionTitle.vue'
@@ -116,7 +114,7 @@ const getBreakpoints = (count: number) => ({
   .view-btn.active{ border-color:#c9a227; color:#fff; }
 
   /* PCグリッド */
-  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
 }
 
 .works-category { margin: 28px 0 44px; }
@@ -127,12 +125,29 @@ const getBreakpoints = (count: number) => ({
 
 :deep(.swiper-button-prev),
 :deep(.swiper-button-next){
-  color: #c9a227;           /* ゴールド系 */
+  color: #c9a227;   
+  width: 40px; 
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
 }
 :deep(.swiper-button-prev:after),
 :deep(.swiper-button-next:after){
   font-size: 18px;
   font-weight: bold;
+}
+
+:deep(.swiper-pagination-bullets){ bottom: 8px !important; }
+:deep(.swiper-pagination-bullet){
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,.6);
+  opacity: 1;
+}
+:deep(.swiper-pagination-bullet-active){
+  background: #c9a227;          /* ゴールドに合わせる */
 }
 /* 余白は slidesOffsetBefore/After で管理するので padding は付けない */
 .works-swiper { }
