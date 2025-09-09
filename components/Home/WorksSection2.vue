@@ -158,6 +158,11 @@ const getBreakpoints = (count: number) => ({
 </script>
 
 <style scoped lang="scss">
+:root {
+  --workcard-max: 240px;
+  --workcard-gap: 16px;
+}
+
 .works{
   padding: 32px 0 8px;
   &__inner{ max-width: 1120px; margin: 0 auto; padding: 0 ; }
@@ -169,9 +174,15 @@ const getBreakpoints = (count: number) => ({
   .view-btn.active{ border-color:#c9a227; color:#fff; }
 
   /* PCグリッド */
-  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--work-card-gap) }
+  &__grid-item{ display: flex; justify-content: center; align-items: flex-start;}
 }
-
+.works__grid-item > .card-gallery,
+.works__grid-item > .work-card,
+.works__grid-item > .card-gallery--empty{
+  width:100%;
+  max-width: var(--workcard-max);
+} 
 .work-inner-swiper{ width:100%; }
 :deep(.work-inner-swiper .swiper){ overflow:hidden; } /* はみ出し防止 */
 :deep(.work-inner-swiper .swiper-slide){ height:auto; }
@@ -218,8 +229,12 @@ const getBreakpoints = (count: number) => ({
 :deep(.work-inner-swiper .swiper-pagination-bullet){ width:6px; height:6px; background:rgba(0,0,0,.35); opacity:1; }
 :deep(.work-inner-swiper .swiper-pagination-bullet-active){ background:#c9a227; }
 /* 余白は slidesOffsetBefore/After で管理するので padding は付けない */
-.works-swiper { }
+
 @media (min-width:1024px){
+  :root {
+    --workcard-max: 300px;
+    --workcard-gap: 20px;
+  }
   .works__view{ display:flex; }
 }
 
@@ -239,7 +254,10 @@ const getBreakpoints = (count: number) => ({
 }
 
 @media (min-width:768px) and (max-width:1023px){
-  .works__grid{ gap: 20px; }
+  :root {
+    --workcard-max: 280px;
+    --workcard-gap: 18px;
+  }
   :deep(.work-inner-swiper .swiper-button-prev),
   :deep(.work-inner-swiper .swiper-button-next){
     width:28px; height:28px;
