@@ -63,17 +63,26 @@ type Cat = Work['category']
 type Variant = 'overlay' | 'gallery'
 
  const props = withDefaults(defineProps<{
-  work: Work,
+  work?: Work,
+  empty?: boolean,
+  category?: Cat,
+  placeholder?: {
+   title?: string,
+   subTitle?: string,
+   img?: string,
+   description?: string,
+  }
   compact?: boolean,
-  aspect?: '4x3' | '3x2' | '1x1'
+  aspect?: '4x3' | '3x2' | '1x1' | '16x9'
   fallbackSrc?: string,
   catLabels?: Partial<Record<Work['category'], string>>
   variant?: Variant
 }>(), {
+  empty: false,
   compact: false,
   catLabels: () => ({}),
-  fallbackSrc: '/img/placeholder-work.jpg',
-  variant: 'overlay'
+  fallbackSrc: '/img/noImg.png',
+  variant: 'gallery'
 })
 
 
@@ -81,8 +90,9 @@ type Variant = 'overlay' | 'gallery'
 //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
+const isEmpty = computed(() => props.empty || !props.work)
 const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
-const isExternal = computed(() => !!props.work.externalUrl);
+const isExternal = computed(() => !!props.work?.externalUrl);
 const permalink = computed(() =>   props.work ? `/works/${props.work.slug ?? props.work.id}` : '#')
 
 const categoryLabel = computed(() => {
