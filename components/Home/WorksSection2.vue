@@ -21,13 +21,14 @@
           <!-- PC: grid 2×2 -->
           <ul v-if="mdUp" class="works__grid">
             <li
-              v-for="(group, index) in groupsByCat(cat).filter(g => g.length > 0)" 
-              :key="index" 
+              v-for="cat in categories" 
+              :key="cat"
               class="works__grid-item"
             >
+
               <WorkCard
-                v-if="group.length > 1"
-                :work="group[0]"
+                v-if="byCat(cat).length === 1"
+                :work="byCat(cat)[0]"
                 aspect="3x2"
                 variant="gallery"
               />
@@ -38,11 +39,11 @@
                   navigation
                   :pagination="{ clickable: true}"
                   :slides-per-view="1"
-                  :loop="group.length > 1"
+                  :loop="byCat(cat).length > 1"
                   class="work-inner-swiper"
                   >
                   <SwiperSlide
-                    v-for="w in group" :key="w.id">
+                    v-for="w in byCat(cat)" :key="w.id">
                     <WorkCard :work="w" aspect="3x2" variant="gallery"/>
                   </SwiperSlide>
                 </Swiper>
