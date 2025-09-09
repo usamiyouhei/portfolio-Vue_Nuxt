@@ -5,79 +5,92 @@
         <SectionTitle sectionTitle="Works" sectionSubTitle="制作実績" />
       </div>
 
-      <!-- マウント後だけ描画してSSR/CSRズレを抑える -->
       <div v-if="ready">
-        <div v-for="cat in categories" :key="cat" class="works-category">
-          <div class="works__head">
-            <h3 class="works__cat">{{ catLabels[cat] }}</h3>
+        <!-- PC: 2×2 グリッド（カテゴリごとに1枠） -->
+        <template v-if="tableUp">
+          <ul class="works__grid">
+            
+              <!-- 0件カテゴリはスキップ -->
+              <li v-for="c in categories" :key="c" class="works__grid-item">
+                <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
-            <!-- PCだけ出す切替 -->
-            <!-- <div class="works__view" v-if="mdUp">
-              <button :class="['view-btn', { active: pcLayout === 'slider'}]" @click="pcLayout = 'slider'">スライド</button>
-              <button :class="['view-btn', { active: pcLayout === 'grid'}]" @click="pcLayout = 'grid'">2×2</button>
-            </div> -->
-          </div>
+                <!-- 0枚時 -->
+                <div v-if="byCat(c).length === 0" 
+                  class="card-gallery card-gallery--empty">
+                  <div class="card-gallery__media">
+                    <img :src="noImageSrc" alt="" loading="lazy" decoding="async">
+                  </div>
+                  <div class="card-gallery__body">
+                    <h3 class="card-gallery__title">Coming soon...</h3>
+                    <p class="card-gallery__sub">現在準備中</p>
+                  </div>
+                </div>
 
-          <!-- PC: grid 2×2 -->
-          <ul v-if="mdUp" class="works__grid">
-            <li
-              v-for="cat in categories" 
-              :key="cat"
-              class="works__grid-item"
-            >
+                <!-- 1枚だけ：カード単体 -->
+                <WorkCard
+                  v-if="byCat(c).length === 1"
+                  :work="byCat(c)[0]"
+                  variant="gallery"
+                  aspect="3x2"
+                />
 
-              <WorkCard
-                v-if="byCat(cat).length === 1"
-                :work="byCat(cat)[0]"
-                aspect="3x2"
-                variant="gallery"
-              />
+                <!-- 2枚以上：枠内だけ Swiper -->
+                <ClientOnly v-else>
+                  <Swiper
+                    :modules="[Navigation, Pagination]"
+                    navigation
+                    :pagination="{ clickable: true }"
+                    :slides-per-view="1"
+                    :space-between="16"
+                    :loop="byCat(c).length > 1"
+                    class="work-inner-swiper"
+                  >
+                    <SwiperSlide v-for="w in byCat(c)" :key="w.id">
+                      <WorkCard :work="w" variant="gallery" aspect="3x2" />
+                    </SwiperSlide>
+                  </Swiper>
+                </ClientOnly>
+              </li>
+            
+          </ul>
+        </template>
+
+        <!-- Mobile: カテゴリごとに縦並び + 全幅Swiper -->
+        <template v-else>
+            <div v-for="c in categories" :key="c" class="works-category">
+              <h3 class="works__cat">{{ catLabels[c] }}</h3>
+
+              <!-- 0枚時 -->
+               <div v-if="byCat(c).length === 0"
+                 class="card-gallery card-gallery--empty">
+                <div class="card-gallery__media">
+                    <img :src="noImageSrc" alt="" loading="lazy" decoding="async">
+                  </div>
+                  <div class="card-gallery__body">
+                    <h3 class="card-gallery__title">Coming soon...</h3>
+                    <p class="card-gallery__sub">現在準備中</p>
+                  </div>
+                </div>
 
               <ClientOnly v-else>
                 <Swiper
                   :modules="[Navigation, Pagination]"
                   navigation
-                  :pagination="{ clickable: true}"
+                  :pagination="{ clickable: true, dynamicBullets: true }"
                   :slides-per-view="1"
-                  :loop="byCat(cat).length > 1"
-                  class="work-inner-swiper"
-                  >
-                  <SwiperSlide
-                    v-for="w in byCat(cat)" :key="w.id">
-                    <WorkCard :work="w" aspect="3x2" variant="gallery"/>
+                  :space-between="16"
+                  :loop="byCat(c).length > 1"
+                  :breakpoints="getBreakpoints(byCat(c).length)"
+                  class="works-swiper"
+                  style="width:100%"
+                >
+                  <SwiperSlide v-for="w in byCat(c)" :key="w.id">
+                    <WorkCard :work="w" variant="gallery" />
                   </SwiperSlide>
                 </Swiper>
               </ClientOnly>
-            </li>
-          </ul>
-
-          <!-- Swiper（モバイル/PC共通・breakpointsで切替） -->
-          <ClientOnly v-else>
-            <Swiper
-              :modules="[Navigation, Pagination]"
-              navigation
-              :pagination="{ clickable: true, dynamicBullets: true }"
-              :allow-touch-move="true"
-              :grab-cursor="false"
-              class="works-swiper"
-              style="width:100%"
-              :slides-per-view="1"
-              :space-between="16"
-              :centered-slides="true"
-              :centered-slides-bounds="true"
-              :slides-offset-before="0"
-              :slides-offset-after="0"
-              :loop="byCat(cat).length > 1"
-              :breakpoints="getBreakpoints(byCat(cat).length)"
-              :prevent-clicks="false"
-              :prevent-clicks-propagation="false"
-            >
-              <SwiperSlide v-for="w in byCat(cat)" :key="w.id">
-                <WorkCard :work="w" variant="gallery"/>
-              </SwiperSlide>
-            </Swiper>
-          </ClientOnly>
-        </div>
+            </div>
+          </template>
       </div>
 
       <Button buttonText="View More" link="/usami/works"/>
@@ -105,6 +118,8 @@ const catLabels: Record<Cat,string> = {
 }
 const byCat = (c: Cat) => works.filter(w => w.category === c)
 
+const noImageSrc = '/img/noImg.png'
+
 // カテゴリー内の作品を４グループに均等分配
 const CELLS_PER_CATEGORY = 4
 const groupsByCat = (c: Cat): Work[][] => {
@@ -123,6 +138,7 @@ const ready = ref(false)
 onMounted(() => { ready.value = true; updateW(); window.addEventListener('resize', updateW) })
 onBeforeUnmount(() => window.removeEventListener('resize', updateW))
 const mdUp = computed(() => width.value >= 1024)
+const tableUp = computed(() => width.value >= 768)
 
 // const pcLayout = ref<'slider'|'grid'>('slider')
 
@@ -153,7 +169,7 @@ const getBreakpoints = (count: number) => ({
   .view-btn.active{ border-color:#c9a227; color:#fff; }
 
   /* PCグリッド */
-  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
 }
 
 .work-inner-swiper{ width:100%; }
@@ -205,5 +221,32 @@ const getBreakpoints = (count: number) => ({
 .works-swiper { }
 @media (min-width:1024px){
   .works__view{ display:flex; }
+}
+
+.card-gallery--empty{
+  border:1px dashed #e5e7eb;           /* 破線で“空”を表現 */
+  background:#fafafa;
+  box-shadow:none;
+}
+.card-gallery--empty .card-gallery__media{
+  background:#f3f4f6;
+}
+.card-gallery--empty .card-gallery__title{
+  color:#6b7280;
+}
+.card-gallery--empty .card-gallery__sub{
+  color:#9ca3af;
+}
+
+@media (min-width:768px) and (max-width:1023px){
+  .works__grid{ gap: 20px; }
+  :deep(.work-inner-swiper .swiper-button-prev),
+  :deep(.work-inner-swiper .swiper-button-next){
+    width:28px; height:28px;
+  }
+  :deep(.work-inner-swiper .swiper-button-prev:after),
+  :deep(.work-inner-swiper .swiper-button-next:after){ font-size:16px; }
+  :deep(.work-inner-swiper .swiper-pagination-bullets){ bottom:6px !important; }
+  :deep(.work-inner-swiper .swiper-pagination-bullet){ width:6px; height:6px; }
 }
 </style>

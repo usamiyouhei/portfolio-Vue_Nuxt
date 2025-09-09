@@ -1,5 +1,5 @@
 <template>
-  <component
+  <component v-if="work"
     :is="isExternal ? 'a' : NuxtLink"
     :href="isExternal ? work.externalUrl : undefined"
     :to="!isExternal ? permalink : undefined"
@@ -83,7 +83,7 @@ type Variant = 'overlay' | 'gallery'
 //------------------------------------------------------------------------------------------------------------
 const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
 const isExternal = computed(() => !!props.work.externalUrl);
-const permalink = computed(() => `/works/${props.work.slug ?? props.work.id}`)
+const permalink = computed(() =>   props.work ? `/works/${props.work.slug ?? props.work.id}` : '#')
 
 const categoryLabel = computed(() => {
   const base = { 
@@ -189,7 +189,7 @@ const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.
     &::before{ content:""; display:block; aspect-ratio: 3 / 2; } /* 画像比率を固定 */
     > img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   }
-  &__body{ padding:12px 2px 10px; }
+  &__body{ padding:10px 12px 12px; }
   &__title{ margin:0 0 6px; font-weight:700; font-size:16px; line-height:1.35; color:#1f2937; }
   &__sub{ margin:0 0 10px; font-size:13px; color:#6b7280; }
   &__meta{ display:flex; gap:8px; align-items:center; }
