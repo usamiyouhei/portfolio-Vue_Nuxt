@@ -2,10 +2,7 @@
   <section class="contact" id="contact">
       <div class="contact__inner inner">
         <div class="contact__wrap">
-          <div class="contact__title section-title">
-            <span class="section-title__main">Contact</span>
-            <h2 class="section-title__sub">お問い合わせ</h2>
-          </div>
+          <SectionTitle sectionTitle="Contact" sectionSubTitle="お問い合わせ" />
           <p class="contact__text">
             無料相談も行っておりますので<br />
             お気軽にお問い合せください。<br />
@@ -57,6 +54,8 @@
 </template>
 
 <script setup lang="ts">
+import SectionTitle from "../common/SectionTitle.vue";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -126,7 +125,6 @@ function onChange(value: any) {
   background-image: url(./img2/contact-back.jpg);
 }
 .contact__inner {
-  display: flex;
   justify-content: center;
   margin: 80px auto 0;
 }
@@ -134,14 +132,7 @@ function onChange(value: any) {
   padding: 20px 0;
   margin: 20px;
 }
-.contact .section-title {
-  margin: 30px auto;
-  width: 270px;
-}
-.contact .section-title span {
-  position: absolute;
-  left: 50px;
-}
+
 .contact .section-title h2 {
   position: absolute;
   right: 90px;
