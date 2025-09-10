@@ -1,9 +1,7 @@
 <template>
   <section class="works" id="works">
     <div class="works__inner">
-      <div class="works__title section-title">
         <SectionTitle sectionTitle="Works" sectionSubTitle="制作実績" />
-      </div>
 
       <div v-if="ready">
         <!-- PC: 2×2 グリッド（カテゴリごとに1枠） -->
@@ -74,6 +72,7 @@
                   :pagination="{ clickable: true, dynamicBullets: true }"
                   :slides-per-view="1"
                   :space-between="16"
+                  :key="`swiper-${c}`"
                   :loop="byCat(c).length > 1"
                   :breakpoints="getBreakpoints(byCat(c).length)"
                   class="works-swiper"
@@ -143,13 +142,20 @@ const getBreakpoints = (count: number) => ({
 <style scoped lang="scss">
 
 .works{
-  --workcard-max: 240px;
+  --workcard-max: 400px;
   --workcard-gap: 16px;
   padding: 32px 0 8px;
-  &__inner{ max-width: 1120px; margin: 0 auto; padding: 0 ; }
+  &__inner{ max-width: 1120px; margin: 0 auto; padding: 0 16px; }
   &__title{ font-size: 28px; margin: 0 0 12px; display:flex; align-items: baseline; gap: 10px; }
   &__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; }
-  &__cat{ font-size: 18px; margin: 0; text-transform: capitalize; }
+  &__cat{ 
+    font-size: 18px; 
+    margin: 0;
+    width: 100%;
+    max-width: var(--workcard-max);
+    padding: 0 4px;
+    text-transform: capitalize;
+  }
   &__view{ display:none; gap:8px; }
   .view-btn{ font-size:12px; border:1px solid #2b2e44; background:#12131a; color:#c8cbe0; padding:6px 10px; border-radius:8px; cursor:pointer; }
   .view-btn.active{ border-color:#c9a227; color:#fff; }
@@ -161,40 +167,47 @@ const getBreakpoints = (count: number) => ({
     gap: var(--workcard-gap);
     list-style:none; margin:0; padding:0;
   }
-  &__grid-item{ display: flex; justify-content: center; align-items: flex-start;}
+  &__grid-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-// .works__grid-item > .card-gallery,
-// .works__grid-item > .work-card {
-//   width:100%;
-//   width: var(--workcard-max);
-// } 
 
-// .work-inner-swiper{ width:100%; }
-// :deep(.work-inner-swiper .swiper){ overflow:hidden; } /* はみ出し防止 */
-// :deep(.work-inner-swiper .swiper-slide){ height:auto; }
+.works__grid-item > :deep(.work-inner-swiper){
+  width:100%;
+  max-width: var(--workcard-max);  /* 240 / 280 / 300 を使っているやつ */
+}
 
-// /* ← スワイパー側にも同じ制約を適用（これが無いと大きくなる） */
-// :deep(.work-inner-swiper .swiper-slide),
-// :deep(.works-swiper .swiper-slide){
-//   display: flex;
-//   justify-content: center;
-// }
-// :deep(.work-inner-swiper .swiper-slide > .card-gallery),
-// :deep(.work-inner-swiper .swiper-slide > .work-card),
-// :deep(.works-swiper .swiper-slide > .card-gallery),
-// :deep(.works-swiper .swiper-slide > .work-card){
-//   width: 100%;
-//   width: var(--workcard-max);
-// }
+
 
 :deep(.card-gallery),
 :deep(.work-card){
   width: 100%;
   max-width: var(--workcard-max);
-  margin: 0 auto;          /* 中央寄せ */
+  margin: 0 auto;
 }
 
-.works-category { margin: 28px 0 44px; }
+/* スライドは中身を中央寄せ（幅はカード側で決める） */
+:deep(.work-inner-swiper .swiper-slide),
+:deep(.works-swiper .swiper-slide){
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.works-category { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 16px;
+  margin: 28px 0 44px; }
+
+  .works-category :deep(.works-swiper),
+  .works-category > .card-gallery{
+    width: 100%;
+    max-width: var(--workcard-max);
+  }
 
 /* Swiperは“チラ見せ”＋初期高さを確保（チラつき対策） */
 :deep(.swiper){ overflow: hidden; min-height: 1px; }
@@ -226,8 +239,9 @@ const getBreakpoints = (count: number) => ({
 :deep(.swiper-pagination-bullet-active){
   background: #c9a227;          /* ゴールドに合わせる */
 }
-:deep(.work-inner-swiper .swiper-button-prev){ left:6px; }
-:deep(.work-inner-swiper .swiper-button-next){ right:6px; }
+
+:deep(.work-inner-swiper .swiper-button-prev){ left: calc(50% - var(--workcard-max)/2 - 8px); }
+:deep(.work-inner-swiper .swiper-button-next){ right: calc(50% - var(--workcard-max)/2 - 8px); }
 :deep(.work-inner-swiper .swiper-button-prev:after),
 :deep(.work-inner-swiper .swiper-button-next:after){ font-size:16px; }
 
@@ -242,6 +256,9 @@ const getBreakpoints = (count: number) => ({
     --workcard-gap: 20px;
   }
   .works__view{ display:flex; }
+  .works__inner {
+    padding: 0;
+  }
 }
 
 .card-gallery--empty{
@@ -263,6 +280,9 @@ const getBreakpoints = (count: number) => ({
   .works {
     --workcard-max: 280px;
     --workcard-gap: 18px;
+  }
+  .works__inner {
+    padding: 0 24px;
   }
   :deep(.work-inner-swiper .swiper-button-prev),
   :deep(.work-inner-swiper .swiper-button-next){

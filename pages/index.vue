@@ -6,7 +6,7 @@
  
  <HomeNewsSection :items="latest3"/>
  <HomeWorksSection2/>
- <!-- <HomeContactSection/> -->
+ <HomeContactSection/>
 </template>
 
 <script setup lang="ts">
