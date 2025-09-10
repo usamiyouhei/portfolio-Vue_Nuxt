@@ -7,7 +7,7 @@
 
       <div v-if="ready">
         <!-- PC: 2×2 グリッド（カテゴリごとに1枠） -->
-        <template v-if="tableUp">
+        <template v-if="tabletUp">
           <ul class="works__grid">
             
               <!-- 0件カテゴリはスキップ -->
@@ -25,7 +25,7 @@
 
                 <!-- 1枚だけ：カード単体 -->
                 <WorkCard
-                  v-if="byCat(c).length === 1"
+                  v-else-if="byCat(c).length === 1"
                   :work="byCat(c)[0]"
                   variant="gallery"
                   aspect="3x2"
@@ -48,7 +48,6 @@
                   </Swiper>
                 </ClientOnly>
               </li>
-            
           </ul>
         </template>
 
@@ -58,16 +57,15 @@
               <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
               <!-- 0枚時 -->
-               <div v-if="byCat(c).length === 0"
-                 class="card-gallery card-gallery--empty">
-                <div class="card-gallery__media">
-                    <img :src="noImageSrc" alt="" loading="lazy" decoding="async">
-                  </div>
-                  <div class="card-gallery__body">
-                    <h3 class="card-gallery__title">Coming soon...</h3>
-                    <p class="card-gallery__sub">現在準備中</p>
-                  </div>
-                </div>
+              <template v-if="byCat(c).length === 0">
+                <WorkCard 
+                  :empty="true"
+                  :category="c"
+                  :placeholder-data="{ title: 'Coming soon...' , subTitle: '現在準備中'}"
+                  variant="gallery"
+                  aspect="3x2"
+                />
+                </template>
 
               <ClientOnly v-else>
                 <Swiper
@@ -79,7 +77,6 @@
                   :loop="byCat(c).length > 1"
                   :breakpoints="getBreakpoints(byCat(c).length)"
                   class="works-swiper"
-                  style="width:100%"
                 >
                   <SwiperSlide v-for="w in byCat(c)" :key="w.id">
                     <WorkCard :work="w" variant="gallery" />
@@ -117,17 +114,6 @@ const byCat = (c: Cat) => works.filter(w => w.category === c)
 
 const noImageSrc = '/img/noImg.png'
 
-// カテゴリー内の作品を４グループに均等分配
-const CELLS_PER_CATEGORY = 4
-const groupsByCat = (c: Cat): Work[][] => {
-  const arr = byCat(c)
-  // 空でも４マス分返す
-  const groups: Work[][] = Array.from({ length: CELLS_PER_CATEGORY }, () => [])
-  arr.forEach((w, i) => {
-    groups[i % CELLS_PER_CATEGORY].push(w)
-  })
-  return groups
-}
 
 const width = ref(0)
 const updateW = () => { width.value = window.innerWidth }
@@ -135,7 +121,7 @@ const ready = ref(false)
 onMounted(() => { ready.value = true; updateW(); window.addEventListener('resize', updateW) })
 onBeforeUnmount(() => window.removeEventListener('resize', updateW))
 const mdUp = computed(() => width.value >= 1024)
-const tableUp = computed(() => width.value >= 768)
+const tabletUp = computed(() => width.value >= 768)
 
 // const pcLayout = ref<'slider'|'grid'>('slider')
 
@@ -155,10 +141,6 @@ const getBreakpoints = (count: number) => ({
 </script>
 
 <style scoped lang="scss">
-:root {
-  --workcard-max: 240px;
-  --workcard-gap: 16px;
-}
 
 .works{
   --workcard-max: 240px;
@@ -173,19 +155,44 @@ const getBreakpoints = (count: number) => ({
   .view-btn.active{ border-color:#c9a227; color:#fff; }
 
   /* PCグリッド */
-  &__grid{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--work-card-gap) }
+  &__grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: var(--workcard-gap);
+    list-style:none; margin:0; padding:0;
+  }
   &__grid-item{ display: flex; justify-content: center; align-items: flex-start;}
 }
-.works__grid-item > .card-gallery,
-.works__grid-item > .work-card,
-.works__grid-item > .card-gallery--empty{
-  width:100%;
-  max-width: var(--workcard-max);
-} 
-.work-inner-swiper{ width:100%; }
-:deep(.work-inner-swiper .swiper){ overflow:hidden; } /* はみ出し防止 */
-:deep(.work-inner-swiper .swiper-slide){ height:auto; }
+// .works__grid-item > .card-gallery,
+// .works__grid-item > .work-card {
+//   width:100%;
+//   width: var(--workcard-max);
+// } 
 
+// .work-inner-swiper{ width:100%; }
+// :deep(.work-inner-swiper .swiper){ overflow:hidden; } /* はみ出し防止 */
+// :deep(.work-inner-swiper .swiper-slide){ height:auto; }
+
+// /* ← スワイパー側にも同じ制約を適用（これが無いと大きくなる） */
+// :deep(.work-inner-swiper .swiper-slide),
+// :deep(.works-swiper .swiper-slide){
+//   display: flex;
+//   justify-content: center;
+// }
+// :deep(.work-inner-swiper .swiper-slide > .card-gallery),
+// :deep(.work-inner-swiper .swiper-slide > .work-card),
+// :deep(.works-swiper .swiper-slide > .card-gallery),
+// :deep(.works-swiper .swiper-slide > .work-card){
+//   width: 100%;
+//   width: var(--workcard-max);
+// }
+
+:deep(.card-gallery),
+:deep(.work-card){
+  width: 100%;
+  max-width: var(--workcard-max);
+  margin: 0 auto;          /* 中央寄せ */
+}
 
 .works-category { margin: 28px 0 44px; }
 
@@ -230,7 +237,7 @@ const getBreakpoints = (count: number) => ({
 /* 余白は slidesOffsetBefore/After で管理するので padding は付けない */
 
 @media (min-width:1024px){
-  :root {
+  .works {
     --workcard-max: 300px;
     --workcard-gap: 20px;
   }
@@ -253,7 +260,7 @@ const getBreakpoints = (count: number) => ({
 }
 
 @media (min-width:768px) and (max-width:1023px){
-  :root {
+  .works {
     --workcard-max: 280px;
     --workcard-gap: 18px;
   }

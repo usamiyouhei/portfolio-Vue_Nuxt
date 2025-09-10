@@ -1,13 +1,13 @@
 <template>
-  <component v-if="work"
-    :is="isExternal ? 'div' : (isExternal ? 'a' : NuxtLink)"
-    :href="!isEmpty && isExternal ? work.externalUrl : undefined"
-    :to="!isEmpty && isExternal ? permalink : undefined"
-    :target="!isEmpty && isExternal ? '_blank' : undefined"
+  <component 
+    :is="rootTag"
+    :href="href"
+    :to="to"
+    :target="target"
     rel="noopener"
     :class="[
       props.variant === 'overlay' ? 'work-card' : 'card-gallery',
-      { 'work-card--compact': compact, 'isEmpty': isEmpty },
+      { 'work-card--compact': compact, 'is-empty': isEmpty },
       aspectClass
     ]"
     :aria-label="ariaLabel"
@@ -17,22 +17,22 @@
     <!-- overlay バリアント -->
     <template v-if="props.variant === 'overlay'">
       <div class="work-card__thumb">
-        <img :src="work.img || fallback" :alt="work.title" />
+        <img :src="work?.img || fallback" :alt="work?.title" />
         <div class="work-card__shade"></div>
 
         <div class="work-card__meta">
           <span class="work-card__badge">{{ categoryLabel }}</span>
-          <time v-if="work.date" :datetime="isoDate" class="work-card__date">{{ shortDate }}</time>
+          <time v-if="work?.date" :datetime="isoDate" class="work-card__date">{{ shortDate }}</time>
 
-          <h3 class="work-card__title">{{ work.title }}</h3>
-          <p v-if="work.subTitle" class="work-card__subTitle">{{ work.subTitle }}</p>
+          <h3 class="work-card__title">{{ work?.title }}</h3>
+          <p v-if="work?.subTitle" class="work-card__subTitle">{{ work?.subTitle }}</p>
         </div>
       </div>
 
       <div v-if="!compact" class="work-card__body">
-        <p v-if="work.description" class="work-card__desc">{{ work.description }}</p>
-        <ul v-if="work.tags?.length" class="work-card__tags">
-          <li v-for="t in work.tags" :key="t" class="work-card__tag">{{ t }}</li>
+        <p v-if="work?.description" class="work-card__desc">{{ work?.description }}</p>
+        <ul v-if="work?.tags?.length" class="work-card__tags">
+          <li v-for="t in work?.tags" :key="t" class="work-card__tag">{{ t }}</li>
         </ul>
       </div>
     </template>
@@ -43,11 +43,11 @@
         <img :src="imgSrc" :alt="title" loading="lazy" decoding="async" />
       </div>
       <div class="card-gallery__body">
-        <h3 class="card-gallery__title">{{ work.title }}</h3>
-        <p v-if="work.subTitle" class="card-gallery__sub">{{ work.subTitle }}</p>
+        <h3 class="card-gallery__title">{{ title }}</h3>
+        <p v-if="subTitle" class="card-gallery__sub">{{ subTitle }}</p>
         <div class="card-gallery__meta">
           <span class="card-gallery__badge">{{ categoryLabel }}</span>
-          <time v-if="work.date" :datetime="isoDate" class="card-gallery__date">{{ shortDate }}</time>
+          <time v-if="!isEmpty && work?.date" :datetime="isoDate" class="card-gallery__date">{{ shortDate }}</time>
         </div>
       </div>
     </template>
@@ -109,6 +109,14 @@ const subTitle = computed(() =>
 const isExternal = computed(() => !!props.work?.externalUrl);
 const permalink = computed(() =>   props.work ? `/works/${props.work.slug ?? props.work.id}` : '#')
 
+const rootTag = computed(() => {
+  if (isEmpty.value) return 'div'
+  return isExternal.value ? 'a' : NuxtLink
+})
+
+const href   = computed(() => (!isEmpty.value && isExternal.value) ? props.work!.externalUrl : undefined)
+const to     = computed(() => (!isEmpty.value && !isExternal.value) ? `/works/${props.work!.slug ?? props.work!.id}` : undefined)
+const target = computed(() => (!isEmpty.value && isExternal.value) ? '_blank' : undefined)
 const categoryLabel = computed(() => {
   const base = { 
     patissier: 'Patissier', 
