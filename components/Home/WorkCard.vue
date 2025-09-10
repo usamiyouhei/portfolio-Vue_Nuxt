@@ -1,16 +1,18 @@
 <template>
   <component v-if="work"
-    :is="isExternal ? 'a' : NuxtLink"
-    :href="isExternal ? work.externalUrl : undefined"
-    :to="!isExternal ? permalink : undefined"
-    :target="isExternal ? '_blank' : undefined"
+    :is="isExternal ? 'div' : (isExternal ? 'a' : NuxtLink)"
+    :href="!isEmpty && isExternal ? work.externalUrl : undefined"
+    :to="!isEmpty && isExternal ? permalink : undefined"
+    :target="!isEmpty && isExternal ? '_blank' : undefined"
     rel="noopener"
     :class="[
       props.variant === 'overlay' ? 'work-card' : 'card-gallery',
-      { 'work-card--compact': compact },
+      { 'work-card--compact': compact, 'isEmpty': isEmpty },
       aspectClass
     ]"
     :aria-label="ariaLabel"
+    :aria-disabled="isEmpty ? 'true' : undefined"
+    tabindex="0"
   >
     <!-- overlay バリアント -->
     <template v-if="props.variant === 'overlay'">
@@ -38,7 +40,7 @@
     <!-- gallery バリアント -->
     <template v-else>
       <div class="card-gallery__media">
-        <img :src="work.img || fallback" :alt="work.title" loading="lazy" decoding="async" />
+        <img :src="imgSrc" :alt="title" loading="lazy" decoding="async" />
       </div>
       <div class="card-gallery__body">
         <h3 class="card-gallery__title">{{ work.title }}</h3>
@@ -66,7 +68,7 @@ type Variant = 'overlay' | 'gallery'
   work?: Work,
   empty?: boolean,
   category?: Cat,
-  placeholder?: {
+  placeholderData?: {
    title?: string,
    subTitle?: string,
    img?: string,
@@ -82,7 +84,8 @@ type Variant = 'overlay' | 'gallery'
   compact: false,
   catLabels: () => ({}),
   fallbackSrc: '/img/noImg.png',
-  variant: 'gallery'
+  variant: 'gallery',
+  placeholderData: () => ({})
 })
 
 
@@ -91,7 +94,18 @@ type Variant = 'overlay' | 'gallery'
 // 引数
 //------------------------------------------------------------------------------------------------------------
 const isEmpty = computed(() => props.empty || !props.work)
-const fallback = computed(() => props.fallbackSrc ?? '/img/placeholder-work.jpg')
+const fallback = computed(() => props.fallbackSrc ?? '/img/noImg.png')
+const imgSrc = computed(() => 
+  isEmpty.value ? (props.placeholderData?.img || fallback.value) : (props.work?.img || fallback.value)
+)
+
+const title = computed(() => 
+  isEmpty.value ? (props.placeholderData?.title || 'Coming soon...') : (props.work?.title || '')
+)
+
+const subTitle = computed(() => 
+  isEmpty.value ? (props.placeholderData?.subTitle || '現在準備中') : (props.work?.subTitle || '')
+)
 const isExternal = computed(() => !!props.work?.externalUrl);
 const permalink = computed(() =>   props.work ? `/works/${props.work.slug ?? props.work.id}` : '#')
 
@@ -104,24 +118,28 @@ const categoryLabel = computed(() => {
   } as const
 
   const map = {...base, ...props.catLabels}
-  return map[props.work.category]
+  const cat: Cat | undefined = isEmpty.value ? props.category : props.work?.category
+  return cat ? map[cat] :''
 })
 
-const ariaLabel = computed(() => isExternal.value ? `${props.work.title}（外部リンク）` : props.work.title)
+const ariaLabel = computed(() => isExternal.value ? `${props.work?.title}（外部リンク）` : props.work?.title)
 
 // 日付表示
 const isoDate = computed(() => {
-  if (!props.work.date) return undefined;
-  const d = typeof props.work.date === 'string' ? new Date(props.work.date) : props.work.date;
+  if (!props.work?.date) return undefined;
+  const d = typeof props.work?.date === 'string' ? new Date(props.work?.date) : props.work?.date;
   return d.toISOString();
 });
 const shortDate = computed(() => {
-  if (!props.work.date) return '';
-  const d = typeof props.work.date === 'string' ? new Date(props.work.date) : props.work.date;
+  if (!props.work?.date) return '';
+  const d = typeof props.work?.date === 'string' ? new Date(props.work?.date) : props.work?.date;
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}`;
 });
 
-const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.aspect !== '3x2', 'is-3x2': props.aspect === '3x2', 'is-1x1': props.aspect === '1x1' }))
+const aspectClass = computed(() => ({ 
+  'is-4x3': props.aspect !== '1x1' && props.aspect !== '3x2', 
+  'is-3x2': props.aspect === '3x2', 
+  'is-1x1': props.aspect === '1x1' }))
 
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
@@ -206,6 +224,18 @@ const aspectClass = computed(() => ({ 'is-4x3': props.aspect !== '1x1' && props.
   &__badge{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:4px 8px; border:1px solid #e5e7eb; border-radius:999px; color:#374151; background:#f9fafb; }
   &__date{ font-size:12px; color:#6b7280; }
 }
+
+.card-gallery.is-empty{
+  border:1px dashed #e5e7eb;
+  background:#fafafa;
+  box-shadow:none;
+  pointer-events:none; /* クリック無効 */
+}
+.card-gallery.is-16x9 .card-gallery__media::before{ content:""; display:block; aspect-ratio:16/9; }
+.card-gallery.is-3x2  .card-gallery__media::before{ content:""; display:block; aspect-ratio:3/2; }
+.card-gallery.is-4x3  .card-gallery__media::before{ content:""; display:block; aspect-ratio:4/3; }
+.card-gallery.is-1x1  .card-gallery__media::before{ content:""; display:block; aspect-ratio:1/1; }
+
 // .works-item {
 //   width: 31%;
 //   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);

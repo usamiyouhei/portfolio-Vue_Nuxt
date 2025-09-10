@@ -15,16 +15,13 @@
                 <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
                 <!-- 0枚時 -->
-                <div v-if="byCat(c).length === 0" 
-                  class="card-gallery card-gallery--empty">
-                  <div class="card-gallery__media">
-                    <img :src="noImageSrc" alt="" loading="lazy" decoding="async">
-                  </div>
-                  <div class="card-gallery__body">
-                    <h3 class="card-gallery__title">Coming soon...</h3>
-                    <p class="card-gallery__sub">現在準備中</p>
-                  </div>
-                </div>
+                <WorkCard v-if="byCat(c).length === 0"
+                  :empty="true"
+                  :category="c"
+                  :placeholder-data="{ title: 'Coming soon...' , subTitle: '現在準備中'}"
+                  variant="gallery"
+                  aspect="3x2"
+                />
 
                 <!-- 1枚だけ：カード単体 -->
                 <WorkCard
@@ -164,6 +161,8 @@ const getBreakpoints = (count: number) => ({
 }
 
 .works{
+  --workcard-max: 240px;
+  --workcard-gap: 16px;
   padding: 32px 0 8px;
   &__inner{ max-width: 1120px; margin: 0 auto; padding: 0 ; }
   &__title{ font-size: 28px; margin: 0 0 12px; display:flex; align-items: baseline; gap: 10px; }
