@@ -122,7 +122,9 @@ function onChange(value: any) {
 
 <style lang="scss" scoped>
 .contact {
-  background-image: url(./img2/contact-back.jpg);
+   background-image: url(/img/news-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .contact__inner {
   justify-content: center;
@@ -142,13 +144,11 @@ function onChange(value: any) {
   margin: 30px auto;
   line-height: 1.78;
   letter-spacing: 0.05em;
-  background-color: rgba(220, 220, 220, 0.3);
 }
 
 .contact__form {
-  margin: 50px 20px 0 20px;
-  width: 50%;
-  background-color: rgba(220, 220, 220, 0.3);
+  margin: 0 auto;
+  width: 100%;
   text-align: center;
 }
 .contact__form dl {
@@ -156,13 +156,13 @@ function onChange(value: any) {
   flex-wrap: wrap;
 }
 .contact__form dt {
-  width: 50%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: end;
 }
 .contact__form dd {
-  width: 40%;
+  width: 70%;
   min-width: 30%;
   border-radius: 6px;
   margin: 0;

@@ -105,12 +105,9 @@ function onChange(value: any) {
 <style lang="scss" scoped>
 #footer {
   width: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(126, 64, 91, 0.857),
-    rgba(128, 100, 67, 0.859),
-    rgb(212, 169, 118)
-  );
+   background-image: url(/img/footer-background.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
 }
 
