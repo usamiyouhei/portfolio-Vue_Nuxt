@@ -38,7 +38,13 @@
               <label class="form__label" for="email">
                 メールアドレス<span class="req" aria-hidden="true">必須</span>
               </label>
-              <input class="form__control" type="email" id="email" name="your-email" />
+              <input 
+                class="form__control" 
+                type="email" 
+                id="email" 
+                name="your-email"
+                
+              />
             </div>
 
             <div class="form__row">
@@ -163,6 +169,7 @@ const onSubmit = () => {
   background-image: url(/img/news-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  padding-bottom: 60px;
 
   @media (min-width: 768px) {
     display: flex;
@@ -173,13 +180,13 @@ const onSubmit = () => {
 }
 .contact__inner {
   justify-content: center;
-  margin: 80px auto 0;
+  margin: 0px auto 0;
   width: 80%;
 }
 
 .contact__wrap {
   padding: 20px 0;
-  margin: 20px;
+  margin: 20px auto;
   @media (min-width: 768px) {
     flex: 1;
     max-width: 50%;
@@ -255,6 +262,14 @@ const onSubmit = () => {
 
 .form__textarea .form__control {
   resize: vertical;
+  min-height: 140px;
+}
+
+
+.form__error {
+  color: #d33;
+  font-size: 12px;
+  margin-top: 6px;
 }
 
 
