@@ -14,35 +14,43 @@
             朝5時〜23時
           </p>
         </div>
+
         <div class="contact__form">
-          <form action="#" method="post">
-            <dl>
-              <dt><label for="name">お名前：</label></dt>
-              <dd><input type="text" id="name" name="your-name" /></dd>
-              <dt><label for="email">メールアドレス：</label></dt>
-              <dd><input type="email" id="email" name="your-email" /></dd>
-              <dt><label for="email">お問い合せ内容：</label></dt>
-              <dd>
-                <select name="" id="">
-                  <option value="-----">------------</option>
-                  <option value="webcontents">Web制作</option>
-                  <option value="webdesign">Figmaデザイン</option>
-                  <option value="consaltant">飲食業コンサル</option>
-                  <option value="cake">お菓子について</option>
-                  <option value="photo">写真撮影</option>
-                  <option value="other">その他</option>
-                </select>
-              </dd>
-              <dt><label for="message">内容：</label></dt>
-              <dd>
+          <form class="form" action="#" method="post">
+            <div class="form_row">
+              <label for="name">お名前</label>
+              <input type="text" id="name" name="your-name" />
+            </div>
+
+            <div class="form_row">
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" name="your-email" />
+            </div>
+
+            <div class="form_row">
+              <label for="email">お問い合せ内容</label>
+              <select name="" id="">
+                <option value="-----">------------</option>
+                <option value="webcontents">Web制作</option>
+                <option value="appcreate">アプリ開発</option>
+                <option value="webdesign">Figmaデザイン</option>
+                <option value="consaltant">飲食業コンサル</option>
+                <option value="cake">お菓子について</option>
+                <option value="photo">写真撮影</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+
+            <div class="form_row form_row--textarea">
+              <label for="message">内容</label>
                 <textarea
                   id="message"
                   name="your-message"
                   cols="30"
                   rows="10"
                 ></textarea>
-              </dd>
-            </dl>
+            </div>
+
             <button type="submit">
               送信
               <i class="fa-solid fa-angles-right"></i>
@@ -65,55 +73,6 @@ import SectionTitle from "../common/SectionTitle.vue";
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
