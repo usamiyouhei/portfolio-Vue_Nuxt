@@ -189,7 +189,18 @@ const onSubmit = () => {
 
 .contact__text {
   text-align: center;
+  margin: 30px auto;
+  line-height: 1.78;
+  letter-spacing: 0.05em;
+}
+
+.contact__form {
   margin: 0 auto;
+  width: 100%;
+  @media (max-width: 768px) {
+    flex: 1;
+    max-width: 50%;
+  }
 }
 
 .form {
@@ -205,15 +216,41 @@ const onSubmit = () => {
 
 .form__label {
   font-size: 14px;
+  color: var(--c-text);
   letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.req {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 999px;
+  border: 1px solid  #c9a227;
+  color: #ff4d8d;
+  background: #fff;
 }
 
 .form__control {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #d3d5db;
+  border: 1px solid  #e2e4ea;
   border-radius: 8px;
   background: #fff;
+  color: #111111;
+  transition: box-shadow .15s ease, border-color .15s ease;
+  
+  &:focus {
+    outline: none;
+    border-color: #c9a227;
+    box-shadow:  0 0 0 3px rgba(201, 162, 39, 0.32);
+  }
+  &.is-invalid {
+    border-color: #d33;
+  }
 }
 
 .form__textarea .form__control {
