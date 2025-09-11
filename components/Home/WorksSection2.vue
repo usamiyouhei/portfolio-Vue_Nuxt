@@ -86,7 +86,7 @@
           </template>
       </div>
 
-      <Button buttonText="View More" link="/usami/works"/>
+      <!-- <Button buttonText="View More" link="/usami/works"/> -->
     </div>
   </section>
 </template>

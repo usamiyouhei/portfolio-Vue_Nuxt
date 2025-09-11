@@ -123,6 +123,10 @@ import { ref, computed } from "vue";
 </script>
 
 <style lang="scss" scoped>
+.service {
+  background-image: url(/img/news-background.jpg);
+  background-size: cover;
+}
 // tab
 .category-tabs {
   display: flex;

@@ -112,6 +112,9 @@ function onChange(value: any) {
 
 <style lang="scss" scoped>
 .news {
+  background-image: url(/img/news-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-bottom: 10px;
 }
 .news__inner {
