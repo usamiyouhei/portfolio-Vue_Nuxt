@@ -11,28 +11,31 @@
           </ul>
         </nav>
         <div class="footer__icon">
-          <a href="https://twitter.com/" target="_blank"
-            ><i class="fa-brands fa-x-twitter"></i
-          ></a>
-          <a href="https://www.instagram.com/" target="_blank"
-            ><i class="fa-brands fa-square-instagram"></i
-          ></a>
-          <a href="https://www.facebook.com/"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <a href="https://github.com/usamiyouhei"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a href="https://www.youtube.com/"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
+          <a href="https://twitter.com/" target="_blank">
+            <span class="icon icon--x" aria-hidden="true"></span>
+          </a>
+          <a href="https://instagram.com/your-id" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="/brands/instagram-gradient.svg" alt="Instagram" width="24" height="24" />
+          </a>
+          <a href="https://www.facebook.com/">
+            <img src="/brands/facebook.svg" alt="facebook" width="24" height="24" />
+          </a>
+          <a href="https://github.com/usamiyouhei">
+            <img src="/brands/github.svg" alt="github" width="24" height="24" />
+          </a>
+          <a href="https://www.youtube.com/">
+            <img src="/brands/youtube.svg" alt="youtube" width="24" height="24" />
+          </a>
         </div>
-        <div class="footer__info inner">
+        <!-- <div class="footer__info inner">
           <h4>Infomation</h4>
-        </div>
+        </div> -->
       </div>
       <div class="footer__copy-right">
-        <p>&copy;y.usami</p>
+        <!-- <p>&copy;y.usami</p> -->
+        <p class="footer__copy">
+          © 2025 Youhei Usami. All Rights Reserved.
+        </p>
       </div>
     </footer>
 </template>
@@ -44,58 +47,6 @@
 //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -105,7 +56,7 @@ function onChange(value: any) {
 <style lang="scss" scoped>
 #footer {
   width: 100%;
-   background-image: url(/img/footer-background.svg);
+  background-image: url(/img/footer-background.svg);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -123,21 +74,48 @@ function onChange(value: any) {
   color: #fff;
 }
 
-.footer__icon i {
-  font-size: 20px;
-  padding: 10px;
-  margin: 0 30px;
-  color: #333;
-  cursor: pointer;
+/* ------------------------
+   SNSアイコン
+------------------------ */
+
+.icon {
+  display: inline-block;
+  inline-size: 24px;
+  block-size: 24px;
+  background-color: currentColor; /* 色はここで制御 */
+  -webkit-mask: center / contain no-repeat;
+          mask: center / contain no-repeat;
 }
-.footer__icon {
-  text-align: center;
+
+/* 各ブランドSVGをマスクに設定 */
+.icon--x        { -webkit-mask-image: url('/brands/x.svg');         mask-image: url('/brands/x.svg'); }
+.icon--insta    { -webkit-mask-image: url('/brands/instagram-gradient.svg'); mask-image: url('/brands/instagram.svg'); }
+.icon--github   { -webkit-mask-image: url('/brands/github.svg');    mask-image: url('/brands/github.svg'); }
+.icon--youtube  { -webkit-mask-image: url('/brands/youtube.svg');   mask-image: url('/brands/youtube.svg'); }
+.icon--facebook { -webkit-mask-image: url('/brands/facebook.svg');  mask-image: url('/brands/facebook.svg'); }
+
+.footer__sns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 16px 0;
 }
-.footer__info {
-  letter-spacing: 2px;
-  line-height: 1.5;
-  display: block;
-  max-width: 500px;
+
+.footer__sns a {
+  color: #fff; /* 初期は白 */
+  transition: color .2s ease, transform .2s ease;
+  line-height: 0;
+}
+
+.footer__sns a:hover {
+  color: #c9a227; /* ホバーでゴールド */
+  transform: translateY(-2px);
+}
+
+.footer__sns a:focus-visible {
+  outline: 2px solid #c9a227;
+  outline-offset: 4px;
+  border-radius: 9999px;
 }
 
 .footer__copy-right p {
