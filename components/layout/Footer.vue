@@ -15,16 +15,16 @@
             <span class="icon icon--x" aria-hidden="true"></span>
           </a>
           <a href="https://instagram.com/your-id" target="_blank" rel="noopener" aria-label="Instagram">
-            <img src="/brands/instagram-gradient.svg" alt="Instagram" width="24" height="24" />
+            <span class="icon icon--insta" aria-hidden="true"></span>
           </a>
           <a href="https://www.facebook.com/">
-            <img src="/brands/facebook.svg" alt="facebook" width="24" height="24" />
+            <span class="icon icon--facebook" aria-hidden="true"></span>
           </a>
           <a href="https://github.com/usamiyouhei">
-            <img src="/brands/github.svg" alt="github" width="24" height="24" />
+            <span class="icon icon--github" aria-hidden="true"></span>
           </a>
           <a href="https://www.youtube.com/">
-            <img src="/brands/youtube.svg" alt="youtube" width="24" height="24" />
+            <span class="icon icon--youtube" aria-hidden="true"></span>
           </a>
         </div>
         <!-- <div class="footer__info inner">
@@ -89,7 +89,7 @@
 
 /* 各ブランドSVGをマスクに設定 */
 .icon--x        { -webkit-mask-image: url('/brands/x.svg');         mask-image: url('/brands/x.svg'); }
-.icon--insta    { -webkit-mask-image: url('/brands/instagram-gradient.svg'); mask-image: url('/brands/instagram.svg'); }
+.icon--insta    { -webkit-mask-image: url('/brands/instagram.svg'); mask-image: url('/brands/instagram.svg'); }
 .icon--github   { -webkit-mask-image: url('/brands/github.svg');    mask-image: url('/brands/github.svg'); }
 .icon--youtube  { -webkit-mask-image: url('/brands/youtube.svg');   mask-image: url('/brands/youtube.svg'); }
 .icon--facebook { -webkit-mask-image: url('/brands/facebook.svg');  mask-image: url('/brands/facebook.svg'); }
