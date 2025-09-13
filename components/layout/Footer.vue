@@ -10,21 +10,21 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <div class="footer__icon">
-          <a href="https://twitter.com/" target="_blank">
-            <span class="icon icon--x" aria-hidden="true"></span>
+        <div class="footer__sns">
+          <a href="https://twitter.com" target="_blank" rel="noopener">
+            <img src="/brands/x-color.svg" alt="X" width="24" height="24">
           </a>
-          <a href="https://instagram.com/your-id" target="_blank" rel="noopener" aria-label="Instagram">
-            <span class="icon icon--insta" aria-hidden="true"></span>
+          <a href="https://instagram.com" target="_blank" rel="noopener">
+            <img src="/brands/instagram-color.svg" alt="Instagram" width="24" height="24">
           </a>
-          <a href="https://www.facebook.com/">
-            <span class="icon icon--facebook" aria-hidden="true"></span>
+          <a href="https://github.com/usamiyouhei" target="_blank" rel="noopener">
+            <img src="/brands/github-color.svg" alt="GitHub" width="24" height="24">
           </a>
-          <a href="https://github.com/usamiyouhei">
-            <span class="icon icon--github" aria-hidden="true"></span>
+          <a href="https://youtube.com" target="_blank" rel="noopener">
+            <img src="/brands/youtube-color.svg" alt="YouTube" width="24" height="24">
           </a>
-          <a href="https://www.youtube.com/">
-            <span class="icon icon--youtube" aria-hidden="true"></span>
+          <a href="https://facebook.com" target="_blank" rel="noopener">
+            <img src="/brands/facebook-color.svg" alt="Facebook" width="24" height="24">
           </a>
         </div>
         <!-- <div class="footer__info inner">
@@ -60,6 +60,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
+}
+
+.footer__nav {
+  font-family: "Italianno";
+  font-size: 32px;
 }
 
 .footer ul {
@@ -105,6 +110,17 @@
   color: #fff; /* 初期は白 */
   transition: color .2s ease, transform .2s ease;
   line-height: 0;
+}
+
+.footer__sns a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.footer__sns a:hover img {
+  transform: scale(1.15);   /* 少し拡大 */
+  filter: brightness(1.1); /* 少し明るくして映え感UP */
 }
 
 .footer__sns a:hover {
