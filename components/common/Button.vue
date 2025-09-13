@@ -31,7 +31,8 @@ defineProps<{
   padding: 14px 20px;
   border-radius: 20px;
   border: 2px solid #ccc;
-  background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  // background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(to top, #ffffff 0%, #fce6b8 100%);
   box-shadow: inset 1px 1px 1px #fff;
   font-family: "Italianno", cursive;
   font-size: 28px;
@@ -44,11 +45,17 @@ defineProps<{
   overflow: hidden;
 }
 
+.read-more__button:hover {
+  transform: translateY(4px);
+  background: linear-gradient(to top, #ffffff 0%, #fce6b8 100%);
+
+}
+
 .read-more__button::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(203, 122, 157, 0.699), #f4fcfe);
+  background: linear-gradient(to bottom, #ffffff 0%, #fce6b8 100%);
   opacity: 0.3;
   border-radius: 18px;
   z-index: 0;
@@ -67,27 +74,27 @@ defineProps<{
   gap: 8px;
 }
 
-.read-more__button span::after {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid #666;
-  border-right: 2px solid #666;
-  transform: rotate(45deg);
-  animation: slideBlink 1s linear infinite;
-  position: relative;
-  top: 1px;
-}
+// .read-more__button span::after {
+//   content: "";
+//   display: inline-block;
+//   width: 10px;
+//   height: 10px;
+//   border-top: 2px solid #666;
+//   border-right: 2px solid #666;
+//   transform: rotate(45deg);
+//   animation: slideBlink 1s linear infinite;
+//   position: relative;
+//   top: 1px;
+// }
 
-@keyframes slideBlink {
-  from {
-    opacity: 0;
-    transform: rotate(45deg) translateX(0);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(45deg) translateX(6px);
-  }
-}
+// @keyframes slideBlink {
+//   from {
+//     opacity: 0;
+//     transform: rotate(45deg) translateX(0);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: rotate(45deg) translateX(10px);
+//   }
+// }
 </style>
