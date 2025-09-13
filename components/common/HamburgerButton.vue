@@ -30,22 +30,22 @@
             >
           </li>
         </ul>
-        <div class="icon-button" id="elementToToggle">
-          <a href="https://twitter.com/" target="_blank"
-            ><i class="fa-brands fa-x-twitter"></i
-          ></a>
-          <a href="https://www.instagram.com/" target="_blank"
-            ><i class="fa-brands fa-square-instagram"></i
-          ></a>
-          <a href="https://www.facebook.com/"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <a href="https://github.com/usamiyouhei"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a href="https://www.youtube.com/"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
+        <div class="slide-menu__sns" aria-label="Social links">
+          <a href="https://twitter.com/your-id" target="_blank" rel="noopener" aria-label="X">
+            <img src="/brands/x-color.svg" alt="X" width="28" height="28" />
+          </a>
+          <a href="https://instagram.com/your-id" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="/brands/instagram-color.svg" alt="Instagram" width="28" height="28" />
+          </a>
+          <a href="https://github.com/usamiyouhei" target="_blank" rel="noopener" aria-label="GitHub">
+            <img src="/brands/github-color.svg" alt="GitHub" width="28" height="28" />
+          </a>
+          <a href="https://youtube.com/@your-id" target="_blank" rel="noopener" aria-label="YouTube">
+            <img src="/brands/youtube-color.svg" alt="YouTube" width="28" height="28" />
+          </a>
+          <a href="https://facebook.com/your-id" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="/brands/facebook-color.svg" alt="Facebook" width="28" height="28" />
+          </a>
         </div>
       </div>
 </template>
@@ -66,55 +66,6 @@ function toggleMenu() {
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -133,6 +84,7 @@ function onChange(value: any) {
   z-index: 998;
   padding: 40px 20px;
   overflow-y: auto;
+  font-family: "Italianno";
 }
 
 /* isOpen が true のとき表示 */
@@ -209,12 +161,37 @@ function onChange(value: any) {
     opacity: 1;
   }
 }
-.icon-button i {
-  font-size: 30px;
+.slide-menu__sns {
+  margin: 12px auto 0px;
+  padding-top: 12px;
   display: flex;
-  text-align: center;
-  padding: 10px;
-  color: #333;
-  cursor: pointer;
+  justify-content: center;
+  gap: 18px;
+  border-top: 1px solid rgba(0,0,0,.08);
 }
+
+.slide-menu__sns a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  transition: transform .25s ease, filter .25s ease, background-color .25s ease;
+}
+
+.slide-menu__sns a:hover,
+.slide-menu__sns a:focus-visible {
+  transform: scale(1.12);          /* 少し拡大 */
+  filter: brightness(1.06);         /* ほんのり明るく */
+  background-color: rgba(0,0,0,.04);/* うっすら下地 */
+  outline: none;
+}
+
+.slide-menu__sns img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
 </style>
