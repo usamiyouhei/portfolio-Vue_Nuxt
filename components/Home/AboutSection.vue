@@ -17,8 +17,8 @@
         </div>
       </div>
     </div>
-   <Button buttonText="View More" link="/usami/about"/>
   </section>
+  <Button buttonText="View More" link="/usami/about"/>
 </template>
 
 <script setup lang="ts">
@@ -33,55 +33,6 @@ import  Button  from "../common/Button.vue";
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -92,30 +43,32 @@ function onChange(value: any) {
 a {
   text-decoration: none;
 }
-.inner {
-  /* width: 100%; */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+// .inner {
+//   /* width: 100%; */
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 20px;
+// }
 .about {
   margin: 80px 0 0;
   width: 100%;
+  display: flex;
   justify-content: center;
 }
-.about .show {
-  animation: var(--fadeAnimation);
-}
+// .about .show {
+//   animation: var(--fadeAnimation);
+// }
 .about__wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  gap: 30px;
   background-image: url(/public/img/aboutback.png);
   background-size: 300px 250px;
   background-repeat: no-repeat;
-  background-position: 30%;
+  background-position: center;
   &.is-scrollIn {
     opacity: 1;
     transform: translate(0, -50px);
@@ -123,24 +76,23 @@ a {
 }
 .about img {
   object-fit: cover;
-  border-radius: 10px;
-  width: 20%;
+  border-radius: 12px;
+  width: 60%;
+  max-width: 300px;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-/* .about .section-title {
-  margin-left: 10%;
-} */
+
 .about__text {
-  width: 40%;
+  width: 100%;
+  max-width: 600px;
   line-height: 1.88;
   letter-spacing: 0.05em;
   font-size: 16px;
-  margin: 20px 0px 20px 50px;
-  /* text-align: center; */
+  // margin: 20px 0px 20px 50px;
+   text-align: left; 
 }
-.about__policy {
-  font-size: 30px;
-  font-weight: bold;
-}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -179,8 +131,13 @@ a {
   }
 }
 @media screen and (max-width: 375px) {
+  .about__wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 60px;
+  }
   .about__text {
-    width: 100%;
+    font-size: 18px;
   }
 }
 </style>
