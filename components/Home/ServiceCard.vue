@@ -84,8 +84,8 @@ import { ref,computed } from "vue";
 .svc-card {
   display: flex;
   flex-direction: column;
-  height: 460px;
-  padding: 20px;
+  // height: 460px;
+  padding: 40px;
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 2px 12px rgba(0,0,0,.06);

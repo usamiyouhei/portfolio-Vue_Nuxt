@@ -82,7 +82,7 @@ function onChange(value: any) {
 <style lang="scss" scoped>
 .mv {
   margin: 0 auto;
-  height: 1000px;
+  // height: 1000px;
   text-align: center;
   background-color: #fdfbfb;
 }
