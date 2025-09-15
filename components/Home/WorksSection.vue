@@ -149,12 +149,13 @@ const getBreakpoints = (count: number) => ({
   &__title{ font-size: 28px; margin: 0 0 12px; display:flex; align-items: baseline; gap: 10px; }
   &__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; }
   &__cat{ 
-    font-size: 20px; 
+    font-size: 24px;
     margin-bottom: 10px;
     width: 100%;
     max-width: var(--workcard-max);
     padding: 0 4px;
     text-transform: capitalize;
+    // font-family: 'Italianno';
   }
   &__view{ display:none; gap:8px; }
   .view-btn{ font-size:12px; border:1px solid #2b2e44; background:#12131a; color:#c8cbe0; padding:6px 10px; border-radius:8px; cursor:pointer; }
