@@ -149,8 +149,8 @@ const getBreakpoints = (count: number) => ({
   &__title{ font-size: 28px; margin: 0 0 12px; display:flex; align-items: baseline; gap: 10px; }
   &__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; }
   &__cat{ 
-    font-size: 18px; 
-    margin: 0;
+    font-size: 20px; 
+    margin-bottom: 10px;
     width: 100%;
     max-width: var(--workcard-max);
     padding: 0 4px;
