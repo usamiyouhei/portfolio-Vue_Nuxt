@@ -116,6 +116,7 @@ function onChange(value: any) {
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 10px;
+  padding-bottom: 40px;
 }
 .news__inner {
   position: relative;

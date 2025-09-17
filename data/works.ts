@@ -3,8 +3,8 @@ import type { Work } from "../types/works";
 export const works: Work[] = [
   {
     id: 1,
-    title: 'デザート作品',
-    img: '/img/works1.jpg',
+    title: 'pari brest',
+    img: '/img/mv2.jpg',
     category: 'patissier',
     // items:[
     //   { id: 1, title: 'pari brest', img: 'img/mv2.jpg', date: '2025-08-30'},
@@ -16,9 +16,9 @@ export const works: Work[] = [
   },
   {
     id: 2,
-    title: 'ToDo App',
-    img: '/img/works2.jpg',
-    category: 'programming',
+    title: '苺',
+    img: '/img/p-img2.jpg',
+    category: 'patissier',
     slug: 'todo-app',
     date: '2025-09-04',
     tags: ['App',]
@@ -37,6 +37,42 @@ export const works: Work[] = [
     title: 'photo',
     img: '/img/photographing.jpg',
     category: 'programming',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 5,
+    title: 'photo',
+    img: '/img/photographing.jpg',
+    category: 'design',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 6,
+    title: 'photo',
+    img: '/img/photographing.jpg',
+    category: 'design',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 7,
+    title: 'photo',
+    img: '/img/photographing.jpg',
+    category: 'hobby',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 8,
+    title: 'photo',
+    img: '/img/photographing.jpg',
+    category: 'hobby',
     slug: 'hobby',
     date: '2025-07-10',
     tags: ['Asisai',]
