@@ -126,6 +126,7 @@ import { ref, computed } from "vue";
 .service {
   background-image: url(/img/news-background.jpg);
   background-size: cover;
+  padding-bottom: 30px;
 }
 // tab
 .category-tabs {
