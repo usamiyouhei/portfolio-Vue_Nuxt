@@ -154,6 +154,15 @@ import { ref, computed } from "vue";
 .service-swiper {
   width: 100%;
   padding: 16px 24px 36px;
+  // スライドを親の高さに揃える
+  :deep(.swiper-wrapper) {
+    align-items: stretch;
+  }
+  :deep(.swiper-slide) {
+    height: auto;
+  }
+  /* スライド直下のカードを100%に */
+  :deep(.swiper-slide > *) { height: 100%; }
  /* pagination の位置を下＆余白 */
   :deep(.swiper-pagination) {
     position: static;
@@ -215,11 +224,14 @@ import { ref, computed } from "vue";
 .svc-prev { left: 36px; }
 .svc-next { right: 36px; }
 
+@media (min-width: 768px) {
+  .svc-prev { left: 60px; }
+  .svc-next { right: 60px; }
+}
 /* グリッド（PC用） */
 .service__items {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
   padding: 0;
   // margin: 0px auto 0px;
 }
@@ -230,6 +242,9 @@ import { ref, computed } from "vue";
 
 @media (min-width: 1024px) {
   .only-mobile { display: none; }
-  .only-desktop { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .only-desktop { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+   }
 }
 </style>
