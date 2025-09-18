@@ -221,7 +221,7 @@ const onSubmit = () => {
 
 .contact__text {
   text-align: center;
-  margin: 30px auto;
+  margin: 20px auto 0;
   line-height: 1.78;
   letter-spacing: 0.05em;
 }
