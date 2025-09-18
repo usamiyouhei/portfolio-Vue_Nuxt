@@ -61,8 +61,8 @@ export const works: Work[] = [
   },
   {
     id: 7,
-    title: 'photo',
-    img: '/img/photographing.jpg',
+    title: '紫陽花',
+    img: '/img/Hg-img2.jpg',
     category: 'hobby',
     slug: 'hobby',
     date: '2025-07-10',
@@ -70,8 +70,8 @@ export const works: Work[] = [
   },
   {
     id: 8,
-    title: 'photo',
-    img: '/img/photographing.jpg',
+    title: 'dessert',
+    img: '/img/Dg-img1.jpg',
     category: 'hobby',
     slug: 'hobby',
     date: '2025-07-10',
