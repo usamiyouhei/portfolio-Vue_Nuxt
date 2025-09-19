@@ -70,8 +70,9 @@ import { ref,computed } from "vue";
 <style lang="scss" scoped>
 .service__item {
   list-style: none;
-  width: 70%;
-  margin: 24px auto;
+  width: 80%;
+  // max-width: 340px;
+  margin: 10px auto;
   text-align: center;
   cursor: pointer;
 }
@@ -84,8 +85,8 @@ import { ref,computed } from "vue";
 .svc-card {
   display: flex;
   flex-direction: column;
-  // height: 460px;
-  padding: 40px;
+  height: 480px;
+  padding: 20px;
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 2px 12px rgba(0,0,0,.06);
@@ -113,6 +114,19 @@ import { ref,computed } from "vue";
 @media (max-width: 480px) {
   .svc-card { height: 500px; padding: 16px; }
   .svc-card__img { max-height: 200px; }
+}
+@media (min-width: 768px) {
+  .service__item {
+  list-style: none;
+  width: 80%;
+}
+}
+@media (min-width: 1024px) {
+  .service__item {
+  list-style: none;
+  width: 100%;
+  // max-width: 200px;
+}
 }
 
 /* アニメの初期値 */

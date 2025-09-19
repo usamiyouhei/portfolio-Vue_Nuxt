@@ -9,6 +9,7 @@
       </div>
 
       <div 
+        ref="menuRef"
         class="slide-menu"
         :class="{ open: isOpen }"
         >
@@ -52,9 +53,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue"; 
+
 
 const isOpen = ref(false);
+const menuRef = ref<HTMLElement | null>(null)
 function toggleMenu() {
   isOpen.value = !isOpen.value
 }
@@ -68,6 +71,22 @@ function closeMenu() {
 //   isOpen.value = false
 // }
 
+function handleClickOutside(e: MouseEvent) {
+  if(isOpen.value) {
+    const menu = menuRef.value;
+    const btn = document.querySelector('.hamburger-button')
+    if(menu && !menu.contains(e.target as Node) && !btn?.contains(e.target as Node)){
+      closeMenu()
+    }
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside)
+})
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside)
+})
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -106,7 +125,6 @@ function closeMenu() {
   position: fixed;
   width: 30px;
   height: 30px;
-  position: absolute;
   top: 20px;
   right: 20px;
   font-size: 0.7rem;

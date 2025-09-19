@@ -87,11 +87,12 @@ const props = defineProps<{
 @media (min-width: 768px) {
   .news-item {
     display: block;
+    width: 100%;
   }
 
   .news-item__thumb {
     width: 100%;
-    height: 180px;
+    height: 240px;
   }
   .news-item__body {
     flex: none;
