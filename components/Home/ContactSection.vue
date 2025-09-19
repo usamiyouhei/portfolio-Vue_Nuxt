@@ -195,15 +195,17 @@ const onSubmit = () => {
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 60px;
-
+  overflow-x: clip;
+  width: 100%;
   @media (min-width: 768px) {
-    display: flex;
+    display: block;
     gap: 60px;
     align-items: flex-start;
-    max-width: 1000px;
+    // max-width: 1000px;
   }
 }
 .contact__inner {
+  max-width: 1100px;
   justify-content: center;
   margin: 0px auto 0;
   width: 80%;

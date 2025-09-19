@@ -127,6 +127,13 @@ import { ref, computed } from "vue";
   background-image: url(/img/news-background.jpg);
   background-size: cover;
   padding-bottom: 30px;
+  overflow-x: clip;
+  width: 100%;
+}
+.service__inner.inner{
+  max-width: 1200px;         /* 画面が広くてもここで打ち止め */
+  margin: 0 auto;
+  padding-inline: 16px;
 }
 // tab
 .category-tabs {
@@ -155,6 +162,8 @@ import { ref, computed } from "vue";
   width: 100%;
   padding: 16px 24px 36px;
   // スライドを親の高さに揃える
+  box-sizing: border-box;
+  max-width: 100%;
   :deep(.swiper-wrapper) {
     align-items: stretch;
   }
@@ -193,6 +202,7 @@ import { ref, computed } from "vue";
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
+  padding-inline: 36px; 
 }
 .nav-button {
   position: absolute;
@@ -232,19 +242,33 @@ import { ref, computed } from "vue";
 .service__items {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: stretch;
+  list-style: none;
   padding: 0;
   // margin: 0px auto 0px;
 }
+
+.service__items > * { 
+  max-width: 320px;   /* カード1枚の最大幅を小さめに固定 */
+  height: 100%;
+ }
 .service__items.-single { display: block; } /* 1枚だけ中央に */
 
 .only-mobile { display: block; }
-.only-desktop { display: none; }
+.only-desktop { 
+  display: none;
+ }
 
 @media (min-width: 1024px) {
   .only-mobile { display: none; }
   .only-desktop { 
     display: grid; 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;        /* 全体の最大幅を制限（お好みで） */
+    justify-content: center;
+    margin-bottom: 20px;
    }
+  
 }
 </style>
