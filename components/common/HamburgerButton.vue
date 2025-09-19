@@ -10,22 +10,23 @@
 
       <div 
         class="slide-menu"
-        :class="{ open: isOpen }">
+        :class="{ open: isOpen }"
+        >
         <ul class="slide-menu__items">
           <li class="slide-menu__item">
-            <a href="#about" class="slide-menu__link">About</a>
+            <a href="#about" class="slide-menu__link" @click="closeMenu">About</a>
           </li>
           <li class="slide-menu__item">
-            <a href="#service" class="slide-menu__link">Service</a>
+            <a href="#service" class="slide-menu__link" @click="closeMenu">Service</a>
           </li>
           <li class="slide-menu__item">
-            <a href="#news" class="slide-menu__link">News</a>
+            <a href="#news" class="slide-menu__link" @click="closeMenu">News</a>
           </li>
           <li class="slide-menu__item">
-            <a href="#works" class="slide-menu__link">Works</a>
+            <a href="#works" class="slide-menu__link" @click="closeMenu">Works</a>
           </li>
           <li class="slide-menu__item">
-            <a href="#contact" class="slide-menu__link slide-menu__link--contact"
+            <a href="#contact" class="slide-menu__link slide-menu__link--contact" @click="closeMenu"
               >Contact</a
             >
           </li>
@@ -57,6 +58,15 @@ const isOpen = ref(false);
 function toggleMenu() {
   isOpen.value = !isOpen.value
 }
+function closeMenu() {
+  isOpen.value = false
+}
+
+// function onMenuClick(e: MouseEvent) {
+//   const target = e.target as HTMLElement;
+//   if(target.closest('slide-menu__link'))
+//   isOpen.value = false
+// }
 
 /**===================================================================================================================
  * 
