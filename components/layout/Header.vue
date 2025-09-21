@@ -2,24 +2,41 @@
   <header class="header" id="header">
     <div class="header_inner">
       <h1 class="header_logo">
-        <a href="/usami/top"><img src="/img/youhei-usami-logo.svg" alt="宇佐美洋平 名前のロゴ" /></a>
+        <NuxtLink to="/">
+          <img src="/img/youhei-usami-logo.svg" alt="宇佐美洋平 名前のロゴ" />
+        </NuxtLink>
       </h1>
 
       <nav class="header_nav">
         <NavButton/>
       </nav>
-      <HamburgerButton/>
+      <HamburgerButton />
+      <!-- <HamburgerButton v-if="isMobile"/> -->
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { ref,onMounted, onBeforeUnmount } from "vue";
 import  NavButton  from "../common/NavButton.vue";
 import HamburgerButton from "../common/HamburgerButton.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 
+//  const isMobile = ref(window.innerWidth < 768)
+
+//  function updateSize() {
+//   isMobile.value = window.innerWidth < 768
+//  }
+
+//  onMounted(() => {
+//   window.addEventListener("resize", updateSize)
+//  })
+
+//  onBeforeUnmount(() => {
+//   window.removeEventListener("resize", updateSize)
+//  })
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

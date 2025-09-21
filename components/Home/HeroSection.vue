@@ -95,7 +95,8 @@ function onChange(value: any) {
   position: relative;
   max-width: 1500px;
   /* width: 100%; */
-  height: 700px;
+  // height: 700px;
+  height: clamp(360px, 60vh, 700px);  /* 端末に応じて伸縮 */
   overflow: hidden;
   border-radius: 30px;
   margin: 0 auto;
@@ -104,7 +105,7 @@ function onChange(value: any) {
 .main-img {
   width: 100%;
   /* width: 800px; */
-  height: 900px;
+  height: 100%;
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
