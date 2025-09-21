@@ -222,5 +222,14 @@ onBeforeUnmount(() => {
   height: 28px;
   display: block;
 }
+/* HamburgerButton.vue の style 内に追加 */
+.hamburger-button {
+  display: block; /* モバイルでは表示 */
+}
 
+@media (min-width: 768px) {
+  .hamburger-button {
+    display: none; /* タブレット以上では非表示 */
+  }
+}
 </style>
