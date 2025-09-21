@@ -88,7 +88,7 @@ export const allNews: News[] = [
     date: '2025-10-23',
     image: '/img/news-img2.jpg',
     slug: '2025-10-23_new_portfolio',
-    excerpt: '新しいデザインでポートフォリオを制作中です。',
+    excerpt: '新しいデザインでポートフォリオを制作中です',
   },
   {
     id: 'n2',

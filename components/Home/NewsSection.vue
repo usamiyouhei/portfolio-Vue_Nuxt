@@ -75,7 +75,7 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
   gap: 16px;
   grid-template-columns: 1fr;
   margin: 30px auto 0;
-  width: min(900px, 92%);
+  width: min(900px, 80%);
   text-align: center;
   position: relative;
   z-index: 100;
