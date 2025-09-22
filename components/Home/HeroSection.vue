@@ -113,6 +113,7 @@ function onChange(value: any) {
   opacity: 0;
   /* name fade １５ */
   animation: fade 30s infinite;
+  will-change: transform, opacity; 
   overflow: hidden;
 }
 .kv div:first-of-type {
