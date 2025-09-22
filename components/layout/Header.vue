@@ -49,23 +49,30 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   top: 0;
   /* left: 0; */
   width: 100%;
-  height: 75px;
+  height: 64px;
   background-color: #fff;
   opacity: 0.8;
+}
+@media (min-width: 768) {
+  
 }
 
 .header_inner {
   display: flex;
   align-items: center;
-  height: inherit;
-  padding-left: 22px;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+  padding: 0 16px;
 }
 
 .header_name {
   margin-right: auto;
 }
 .header_logo {
-  width: 30%;
+  flex: 0 0 auto;
+  width: clamp(140px, 22vw, 220px); /* 最小140px、画面に応じて伸縮、最大220px */
+  line-height: 0;
 }
 .header_nav {
   display: none;
@@ -85,6 +92,9 @@ import HamburgerButton from "../common/HamburgerButton.vue";
 
 /* タブレット以上 */
 @media (min-width: 768px) {
+  .header {
+    height: 72px;
+  }
   .header_nav {
     display: flex;
     display: block;
@@ -93,6 +103,9 @@ import HamburgerButton from "../common/HamburgerButton.vue";
 
 /* PCサイズ以上 */
 @media (min-width: 1024px) {
+  .header {
+    height: 80px;
+  }
   .header_nav {
     justify-content: space-between;
   }
