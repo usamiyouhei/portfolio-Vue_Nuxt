@@ -116,6 +116,7 @@ import HamburgerButton from "../common/HamburgerButton.vue";
     display: flex;
     align-items: center;
   }
+  .header_nav ul
 
   .menu-toggle {
     display: none;

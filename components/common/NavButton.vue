@@ -62,7 +62,7 @@
 }
 
 .header_link.header_link-contact {
-  padding: 0 24px;
+  padding: 0 16px;
   color: #ffffff;
   background-color: #c67dad;
   border-bottom-left-radius: 20px;
@@ -75,6 +75,9 @@
 .header_link::after {
   content: "";
   width: 0;
+}
+.header_link:hover {
+  color: #aa3769;
 }
 
 .header_link:hover::after {
@@ -92,6 +95,7 @@
   transition-property: width;
   background-color: #cba96d;
 }
+
 
 
 </style>
