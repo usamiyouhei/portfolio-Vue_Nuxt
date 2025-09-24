@@ -95,6 +95,25 @@
   transition-property: width;
   background-color: #cba96d;
 }
+.header_link-contact{
+  justify-self: end; white-space: nowrap;
+  border: 1px solid #666;
+  border-radius: 999px;              /* pill 形状 */
+  padding: 10px 22px;                /* ← コンパクトに */
+  position: relative; overflow: hidden;
+  background: transparent; color:#141414;
+}
+
+.header_link-contact::after{
+  content:""; position:absolute; left:0; top:0;
+  height: 400%; width: 140%;
+  background:#e9af53; transition: transform .5s ease-in-out;
+  transform: translateX(-110%) translateY(-20%) rotate(45deg);
+}
+.header_link-contact:hover span{ color:#fff; }
+.header_link-contact:hover::after{
+  transform: translateX(-6%) translateY(-25%) rotate(45deg);
+}
 
 
 
