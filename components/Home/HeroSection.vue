@@ -94,6 +94,7 @@ function onChange(value: any) {
 .kv {
   position: relative;
   max-width: 1500px;
+  min-height: 90vh;
   /* width: 100%; */
   // height: 700px;
   height: clamp(360px, 60vh, 700px);  /* 端末に応じて伸縮 */
