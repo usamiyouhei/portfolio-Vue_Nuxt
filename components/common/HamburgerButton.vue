@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 70%;
+  width: 50%;
   height: 100vh;
   background: #fff;
   transition: right 0.3s;
@@ -169,11 +169,37 @@ onBeforeUnmount(() => {
   margin: 40px 10px;
   text-align: center;
 }
-.slide-menu li {
-  border-bottom: solid 2px #333;
-  width: 80px;
-  margin: 50px;
-  font-size: 20px;
+// .slide-menu li {
+//   border-bottom: solid 2px #333;
+//   width: 80px;
+//   margin: 50px;
+//   font-size: 20px;
+// }
+
+.slide-menu__link {
+  font-family: "Italianno";
+  font-size: 35px;
+  letter-spacing: 0.1rem;
+}
+
+.slide-menu__link::after {
+  content: "";
+  width: 0;
+}
+
+.slide-menu__link:hover::after {
+  width: 100%;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: block;
+  border-radius: 2px;
+  height: 2px;
+  transition: width 0.3s;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  background-color: #cba96d;
 }
 .slide-menu.active {
   display: flex;
