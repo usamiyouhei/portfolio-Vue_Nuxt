@@ -179,12 +179,17 @@ onBeforeUnmount(() => {
 .slide-menu__link {
   font-family: "Italianno";
   font-size: 35px;
+  padding: 50px;
   letter-spacing: 0.1rem;
 }
 
 .slide-menu__link::after {
   content: "";
   width: 0;
+}
+
+.slide-menu__link:hover {
+    color: #aa3769;
 }
 
 .slide-menu__link:hover::after {
