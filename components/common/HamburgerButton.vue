@@ -179,7 +179,7 @@ onBeforeUnmount(() => {
 .slide-menu__link {
   font-family: "Italianno";
   font-size: 35px;
-  padding: 50px;
+  margin: 50px 0;
   letter-spacing: 0.1rem;
 }
 

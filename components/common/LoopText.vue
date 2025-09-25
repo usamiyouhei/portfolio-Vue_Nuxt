@@ -1,5 +1,6 @@
 <template>
-  <div class="loop__wrap">
+  <div class="scroll-fixed">
+    <div class="loop__wrap">
       <div class="loop__wrap--first">
         Web Designer &nbsp;Programmer &nbsp;Dessert Creator &nbsp;
       </div>
@@ -7,6 +8,7 @@
         Web Designer &nbsp;Programmer &nbsp;Dessert Creator &nbsp;
       </div>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -75,27 +77,36 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
+/* scroll */
+.scroll-fixed {
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
 .loop__wrap {
   display: flex;
-  /* width:  100%; */
-  height: 300px;
-  overflow: hidden;
-  margin: 50px 0;
+  position: relative;
+  z-index: -100;
 }
 
 .loop__wrap div {
   flex: 0 0 auto;
   white-space: nowrap;
-  font-size: 250px;
-  font-weight: 900;
+  font-size: 180px;
+  font-weight: 600;
   overflow: hidden;
   margin: 0 auto;
 }
 .loop__wrap--first {
-  color: #e6d3bb;
+  color: #dd9b45;
 }
 .loop__wrap--second {
-  color: #e9cfad;
+  color: #dd9b45;
 }
 .loop__wrap div:nth-child(odd) {
   animation: loop 200s -100s linear infinite;
