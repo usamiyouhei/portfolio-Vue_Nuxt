@@ -1,5 +1,5 @@
 <template>
-   <div class="button__wrap">
+   <div class="btn-wrap">
         <a class="read-more__button" href="/usami/about">
         <span>{{ buttonText }}</span>
       </a>
@@ -16,85 +16,113 @@ defineProps<{
 </script>
 
 <style lang="scss" scoped>
-.button__wrap {
+
+/* read-more__button */
+.btn-wrap {
+  /* display: block; */
+  margin-inline: auto;
   display: flex;
-  align-items: center;
+  text-align: center;
   justify-content: center;
-  margin-top: 50px;
+  margin: 50px 0;
+}
+.btn {
+  /* font-size: 1.6rem; */
+  /* font-weight: 700; */
+  /* line-height: 1.5; */
+  position: relative;
+  /* display: inline-block; */
+  /* padding: 1rem 4rem; */
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #8d8d8d;
+  border-radius: 0.5rem;
 }
 
 .read-more__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  padding: 14px 20px;
-  border-radius: 20px;
-  border: 2px solid #ccc;
-  // background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
-  background: linear-gradient(to top, #ffffff 0%, #fce6b8 100%);
-  box-shadow: inset 1px 1px 1px #fff;
-  font-family: "Italianno", cursive;
-  font-size: 28px;
-  letter-spacing: 0.05em;
-  color: #333;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+  margin-bottom: 12px;
+  padding: 0;
+  font-family: "Italianno";
+  font-size: 30px;
+  -webkit-transition: all 0.3s;
 
-.read-more__button:hover {
-  transform: translateY(4px);
-  background: linear-gradient(to top, #ffffff 0%, #fce6b8 100%);
+  transition: all 0.3s;
 
-}
-
-.read-more__button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, #ffffff 0%, #fce6b8 100%);
-  opacity: 0.3;
-  border-radius: 18px;
-  z-index: 0;
-  transition: opacity 0.5s ease-out;
-}
-
-.read-more__button:hover::before {
-  opacity: 0;
+  border-radius: 0;
 }
 
 .read-more__button span {
   position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: block;
+  padding: 1.25rem 3rem;
+  color: #333;
+  border: 1px solid #898989;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 30%,
+    rgb(253, 226, 179) 70%
+  );
 }
 
-// .read-more__button span::after {
-//   content: "";
-//   display: inline-block;
-//   width: 10px;
-//   height: 10px;
-//   border-top: 2px solid #666;
-//   border-right: 2px solid #666;
-//   transform: rotate(45deg);
-//   animation: slideBlink 1s linear infinite;
-//   position: relative;
-//   top: 1px;
-// }
+.read-more__button::after span {
+  content: "";
+  position: relative;
+  width: 10px; /* ボックスの横幅を指定する */
+  height: 10px; /* ボックスの高さを指定する */
+  border-top: 1px solid #666666; /* 境界線の上部を実線に指定する*/
+  border-right: 1px solid #666666; /* 境界線の上部を実線に指定する*/
+  transform: rotate(45deg); /* ボックスを回転させる（右向き矢印） */
+  top: 11px;
+  animation: slideBlink 1s linear infinite;
+}
+@keyframes slideBlink {
+  /* アニメーションの内容 */
+  from {
+    /* アニメーション開始時のスタイル */
+    opacity: 0;
+    left: 8px;
+  }
+  to {
+    /* アニメーション終了時のスタイル */
+    opacity: 1;
+    left: 25px;
+  }
+}
 
-// @keyframes slideBlink {
-//   from {
-//     opacity: 0;
-//     transform: rotate(45deg) translateX(0);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: rotate(45deg) translateX(10px);
-//   }
-// }
+.read-more__button span:hover {
+  background: linear-gradient(
+    to top,
+    rgb(255, 255, 255) 30%,
+    rgb(255, 244, 225) 70%
+  );
+}
+
+.read-more__button:hover {
+  -webkit-transform: translate(0, 5px);
+  transform: translate(0, 5px);
+}
+
+.read-more__button:hover:before {
+  bottom: -5px;
+}
+
+.read-more__button:active {
+  -webkit-transform: translate(0, 7px);
+  transform: translate(0, 7px);
+}
+
+.read-more__button:active:before {
+  bottom: -1px;
+}
+
 </style>
