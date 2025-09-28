@@ -197,11 +197,22 @@ const getBreakpoints = (count: number) => ({
   align-items: flex-start;
 }
 
+.works_cat {
+  font-size: 4rem;
+  font-family: 'Italianno';
+  letter-spacing: 0.15rem;
+  font-weight: 300;
+}
+
 .works-category { 
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-inline: 16px;
+  font-size: 4rem;
+  font-family: 'Italianno';
+  letter-spacing: 0.15rem;
+  font-weight: 300;
   margin: 28px 0 44px; }
 
   .works-category :deep(.works-swiper),

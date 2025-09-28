@@ -1,16 +1,19 @@
 <template>
    <div class="btn-wrap">
-        <a class="read-more__button" href="/usami/about">
-        <span>{{ buttonText }}</span>
+      <NuxtLink v-if="props.to" class="read-more__button" :to="props.to">
+        <span>{{ props.buttonText }}</span>
+      </NuxtLink>
+      <a v-else-if="props.href" class="read-more__button" :href="props.href" target="_blank" rel="noopener">
+        <span>{{ props.buttonText }}</span>
       </a>
     </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  buttonText: string;
-  link: string;
-}>()
+type ButtonProps =
+|{buttonText: string, to: string, href?: undefined }
+|{buttonText: string, href: string, to?: undefined }
+const props = defineProps<ButtonProps>()
 
 
 </script>

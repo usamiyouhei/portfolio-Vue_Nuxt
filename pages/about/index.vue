@@ -1,7 +1,15 @@
 <template>
+  <main class="about-page">
+    <header class="about_page--hero inner">
+      <SectionTitle sectionTitle="About" sectionSubTitle="経歴・スキル"></SectionTitle>
+      
+    </header>
+  </main>
 </template>
 
 <script setup lang="ts">
+import SectionTitle from '~/components/common/SectionTitle.vue';
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
