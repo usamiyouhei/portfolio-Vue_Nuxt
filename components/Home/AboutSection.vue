@@ -3,7 +3,7 @@
     <div class="about__inner inner" id="fadeElement">
        <SectionTitle sectionTitle="About" sectionSubTitle="自己紹介"></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
-        <img src="/public/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
+        <img src="/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
         <div class="about__text">
           <p>
             はじめまして。
@@ -18,7 +18,7 @@
       </div>
     </div>
   </section>
-  <Button buttonText="View More" link="/usami/about"/>
+  <Button buttonText="View More" to="/about"/>
 </template>
 
 <script setup lang="ts">
@@ -27,7 +27,10 @@ import  Button  from "../common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-//------------------------------------------------------------------------------------------------------------
+definePageMeta({
+  redirect: '/about'
+})
+ //------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------

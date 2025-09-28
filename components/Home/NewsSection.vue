@@ -12,7 +12,7 @@
       </div>
       <div class="news__more">
         <!-- <NuxtLink class="more-link" to="/news">View More</NuxtLink> -->
-        <Button buttonText="View More" link="/usami/news"/>
+        <Button buttonText="View More" to="/news"/>
       </div>
     </section>
 </template>
