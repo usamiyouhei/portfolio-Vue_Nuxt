@@ -38,7 +38,7 @@ const props= defineProps<{ skills: Skill[]}>()
 }
 
 .skills__card {
-  background: rgba(255, 255, 255, .04);
+  background: rgba(255, 255, 255, .8);
   border: 1px solid rgba(255, 255, 255, .8);
   border-radius: 14px;
   padding: 14px;
@@ -62,12 +62,14 @@ const props= defineProps<{ skills: Skill[]}>()
   font-size: 12px;
   opacity: .75;
 }
+
 .skills__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 8px;
 }
+
 .skills__tag {
   font-size: 12px; 
   padding: 4px 8px; 
