@@ -34,11 +34,10 @@ const props = defineProps<{ items: TimelineItem[]}>()
   &::before {
     content: '';
     position: absolute;
-    left: 10px;
-    top: 0;
-    bottom: 0;
+    inset: 0 auto 0 10px;
     width: 2px;
-    background: rgba(255,255,255,.15);
+    background: rgba(0,0,0,.5);
+    z-index: 0;
   }
 }
 
@@ -49,8 +48,8 @@ const props = defineProps<{ items: TimelineItem[]}>()
 
 .timeline__dot {
   position: absolute;
-  left: -1px;
-  top: 6px;
+  left: -14px;
+  top: 30px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
