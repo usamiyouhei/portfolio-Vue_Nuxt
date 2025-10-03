@@ -31,4 +31,48 @@ const props= defineProps<{ skills: Skill[]}>()
 </script>
 
 <style lang="scss" scoped>
+.skills {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.skills__card {
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.skills__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 10px;
+  align-items: center;
+}
+.skills__name {
+  font-weight: 600;
+}
+.skills__meter {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 8px;
+}
+.skills__lvl {
+  font-size: 12px;
+  opacity: .75;
+}
+.skills__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.skills__tag {
+  font-size: 12px; 
+  padding: 4px 8px; 
+  border-radius: 999px;
+  background: rgba(199,160,73,.15); 
+  border: 1px solid rgba(199,160,73,.35);
+}
 </style>
