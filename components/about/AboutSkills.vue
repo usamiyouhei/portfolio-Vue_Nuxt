@@ -35,6 +35,8 @@ const props= defineProps<{ skills: Skill[]}>()
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  margin-bottom: 50px;
+  padding: 0 30px;
 }
 
 .skills__card {
