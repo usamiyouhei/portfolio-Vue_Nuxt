@@ -28,4 +28,47 @@ const props = defineProps<{ items: TimelineItem[]}>()
 </script>
 
 <style lang="scss" scoped>
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255,255,255,.15);
+  }
+}
+
+.timeline__item {
+  position: relative;
+  margin: 22px 0;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -1px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c7a049;
+  box-shadow: 0 0 0 4px rgba(199,160,73,.18);
+}
+
+.timeline__period {
+  font-size: 13px;
+  opacity: 0.7;
+}
+.timeline__title {
+  font-size: 18px;
+  margin-top: 2px;
+}
+.timeline__detail {
+  margin-top: 6px;
+  opacity: .75;
+  line-height: 1.8;
+}
 </style>
