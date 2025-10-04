@@ -27,4 +27,37 @@ const props = defineProps<{ story: Story}>()
 </script>
 
 <style lang="scss" scoped>
+.story {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  @media (min-width: 900px) {
+    grid-template-columns: 48% 1fr;
+    gap: 28px;
+  }
+}
+.story__media {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px; 
+  overflow: hidden;
+}
+
+.story__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.story__cap {
+  font-size: 12px;
+  opacity: .7;
+  padding: 8px 10px;
+}
+
+.story__body .story__p {
+  line-height: 1.9;
+  opacity: .9;
+  margin-bottom: 10px;
+}
 </style>
