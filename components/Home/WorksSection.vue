@@ -7,7 +7,6 @@
         <!-- PC: 2×2 グリッド（カテゴリごとに1枠） -->
         <template v-if="tabletUp">
           <ul class="works__grid">
-            
               <!-- 0件カテゴリはスキップ -->
               <li v-for="c in categories" :key="c" class="works__grid-item">
                 <h3 class="works__cat">{{ catLabels[c] }}</h3>
@@ -37,7 +36,7 @@
                     :pagination="{ clickable: true }"
                     :slides-per-view="1"
                     :space-between="16"
-                    :loop="byCat(c).length > 1"
+                    :loop="getLoop(byCat(c).length)"
                     class="work-inner-swiper"
                   >
                     <SwiperSlide v-for="w in byCat(c)" :key="w.id">
@@ -73,7 +72,7 @@
                   :slides-per-view="1"
                   :space-between="16"
                   :key="`swiper-${c}`"
-                  :loop="byCat(c).length > 1"
+                  :loop="getLoop(byCat(c).length)"
                   :breakpoints="getBreakpoints(byCat(c).length)"
                   class="works-swiper"
                 >
@@ -142,6 +141,7 @@ const tabletUp = computed(() => width.value >= 768)
 
 // const pcLayout = ref<'slider'|'grid'>('slider')
 
+const getLoop = (count: number) => count > 1
 /** PCは2枚・中央寄せなし・オフセット0、loopは3枚以上で */
 const getBreakpoints = (count: number) => ({
   768:  { slidesPerView: 1.5, spaceBetween: 18 },
@@ -152,7 +152,6 @@ const getBreakpoints = (count: number) => ({
     centeredSlidesBounds: false,
     slidesOffsetBefore: 0,
     slidesOffsetAfter: 0,
-    loop: count > 2,
   },
 })
 </script>
