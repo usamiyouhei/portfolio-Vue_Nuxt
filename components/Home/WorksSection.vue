@@ -109,10 +109,28 @@ const categories: Cat[] = ['patissier','programming','design','hobby']
 const catLabels: Record<Cat,string> = {
   patissier:'Patissier', programming:'Programming', design:'Design', hobby:'Hobby'
 }
-const byCat = (c: Cat) => works.filter(w => w.category === c)
+
 
 const noImageSrc = '/img/noImg.png'
 
+const CAT_ROUTE: Record<Cat, string > = {
+ 'patissier':  '/works/patissier',
+ 'programming':  '/works/programming' ,
+ 'design':  '/works/design' ,
+ 'hobby':  '/works/hobby'
+}
+
+const catRoute = (c: Cat) => CAT_ROUTE[c]
+
+const worksByCat = computed<Record<Cat, Work[]>>(() => {
+  const map: Record<Cat, Work[]> = {
+    patissier:[], programming:[], design:[], hobby:[]
+  }
+  for(const w of works) map[w.category].push(w)
+  return map
+})
+
+const byCat = (c: Cat) => worksByCat.value[c]
 
 const width = ref(0)
 const updateW = () => { width.value = window.innerWidth }

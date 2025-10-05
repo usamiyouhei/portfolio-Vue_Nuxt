@@ -1,4 +1,15 @@
 <template>
+  <section class="patissier">
+    <header class="head">
+      <h1 class="title">Patissier Gallery</h1>
+      <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
+        <button></button>
+      </nav>
+        <p class="hint">写真とタイトルだけの静かなギャラリー。クリックで詳細がモーダル表示。</p>
+    </header>
+
+    
+  </section>
 </template>
 
 <script setup lang="ts">
