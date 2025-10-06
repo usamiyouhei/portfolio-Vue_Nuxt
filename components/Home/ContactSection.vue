@@ -99,7 +99,7 @@
                 <p v-if="errors.message" class="form__error" id="err_message" role="alert">{{ errors.message }}</p>
             </div>
 
-            <Button class="form__submit" buttonText="submit" link="/usami/news">
+            <Button class="form__submit" buttonText="submit" to="/usami/news">
                 送信
             </Button>
             <!-- <button class="form__submit" type="submit">
