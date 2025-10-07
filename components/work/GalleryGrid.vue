@@ -1,9 +1,10 @@
 <template>
   <div class="grid">
-    <button v-for="w in items" :key="w.id"  class="card">
+    <button v-for="w in items" :key="w.id"  class="card" @click="emit('open', w.id)">
       <div class="thumb">
-        <img src="" alt="">
+        <img :src="w.cover || '/img/noImg.png'" :alt="w.title" loading="lazy">
       </div>
+      <h3 class="title">{{ w.title }}</h3>
     </button>
   </div>
 </template>
@@ -18,7 +19,7 @@ type Item = {
 }
 
 const props = defineProps<{ items: Item[] }>()
-
+const emit = defineEmits<{ open:[id:string] }>()
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
