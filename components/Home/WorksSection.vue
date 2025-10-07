@@ -9,27 +9,32 @@
           <ul class="works__grid">
               <!-- 0件カテゴリはスキップ -->
               <li v-for="c in categories" :key="c" class="works__grid-item">
-                <h3 class="works__cat">{{ catLabels[c] }}</h3>
+                  <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
                 <!-- 0枚時 -->
-                <WorkCard v-if="byCat(c).length === 0"
+                 <template v-if="byCat(c).length === 0">
+                <WorkCard 
                   :empty="true"
                   :category="c"
                   :placeholder-data="{ title: 'Coming soon...' , subTitle: '現在準備中'}"
                   variant="gallery"
                   aspect="3x2"
                 />
+                </template>
 
                 <!-- 1枚だけ：カード単体 -->
+                 <template v-else-if="byCat(c).length === 1">
+                <NuxtLink :to="catRoute(c)" class="works-link">
                 <WorkCard
-                  v-else-if="byCat(c).length === 1"
                   :work="byCat(c)[0]"
                   variant="gallery"
                   aspect="3x2"
                 />
-
+                </NuxtLink>
+                </template>
                 <!-- 2枚以上：枠内だけ Swiper -->
-                <ClientOnly v-else>
+                 <template v-else>
+                <ClientOnly >
                   <Swiper
                     :modules="[Navigation, Pagination]"
                     navigation
@@ -40,10 +45,13 @@
                     class="work-inner-swiper"
                   >
                     <SwiperSlide v-for="w in byCat(c)" :key="w.id">
+                      <NuxtLink :to="catRoute(c)" class="works-link">
                       <WorkCard :work="w" variant="gallery" aspect="3x2" />
+                      </NuxtLink>
                     </SwiperSlide>
                   </Swiper>
                 </ClientOnly>
+                </template>
               </li>
           </ul>
         </template>
@@ -84,7 +92,6 @@
             </div>
           </template>
       </div>
-
       <!-- <Button buttonText="View More" link="/usami/works"/> -->
     </div>
   </section>
