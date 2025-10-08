@@ -53,6 +53,12 @@ function setTab(t: PatissierTab) {
 function openModal(id: string){
   router.replace({ query: {...route.query, id }})
 }
+
+function closeModal(){
+  const q = {...route.query}
+  delete(q as any).id
+  router.replace({query: q})
+}
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

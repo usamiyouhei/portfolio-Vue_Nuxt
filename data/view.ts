@@ -1,21 +1,21 @@
 
 export const patissierWorks = [
-  { id:'w1', slug:'yuzu-panna', title:'柚子パンナコッタ', cover:'/img/panna.jpg', category:'dessert',
-    images:['/img/panna-1.jpg','/img/panna-2.jpg'],
+  { id:'w1', slug:'yuzu-panna', title:'sakura dessert', cover:'/img/Dg-img1.jpg', category:'dessert',
+    images:['/img/Dg-img1.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
     tools:['銀彩小鉢','耐熱ゴムベラ']
   },
-  { id:'w2', slug:'yuzu-panna', title:'柚子パンナコッタ', cover:'/img/panna.jpg', category:'sweets',
-    images:['/img/panna-1.jpg','/img/panna-2.jpg'],
+  { id:'w2', slug:'yuzu-panna', title:'柚子パンナコッタ', cover:'/img/Dg-img2.jpg', category:'sweets',
+    images:['/img/Dg-img1.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
     tools:['銀彩小鉢','耐熱ゴムベラ']
   },
-  { id:'w3', slug:'yuzu-panna', title:'柚子パンナコッタ', cover:'/img/panna.jpg', category:'cake',
-    images:['/img/'],
+  { id:'w3', slug:'yuzu-panna', title:'柚子パンナコッタ', cover:'/img/Dg-img3.jpg', category:'cake',
+    images:['/img/Dg-img1.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
