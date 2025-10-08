@@ -46,5 +46,30 @@ const emit = defineEmits<{ open:[id:string] }>()
     grid-template-columns: repeat(5,1fr);
   }
 }
-
+.card {
+  display: block;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.thumb {
+  aspect-ratio: 4/3;
+  background: #f4f4f4;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.title {
+  font-size: 14px;
+  padding: 10px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
