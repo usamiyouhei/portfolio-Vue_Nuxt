@@ -3,7 +3,11 @@
     <header class="head">
       <h1 class="title">Patissier Gallery</h1>
       <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
-        <button></button>
+        <button v-for="t in tabs" :key="t.key"
+          :class="['tab', { active: tab === t.key}]" role="tab.key"
+          :aria-selected="tab === t.key" @click="setTab(t.key)"
+          >{{ t.label }}
+        </button>
       </nav>
         <p class="hint">写真とタイトルだけの静かなギャラリー。クリックで詳細がモーダル表示。</p>
     </header>
@@ -14,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { works } from '~/data/works';;
+import { patissierWorks } from '~/data/view';;
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -28,7 +32,27 @@ const tab = computed<PatissierTab>(() => (['dessert', 'sweets', 'cake'].includes
 : 'dessert'
 ))
 
-const list = computed(() =>  works.filter(w => w.category === ))
+const tabs:{ key: PatissierTab, label: string }[] = [
+  { key: 'dessert', label: 'デザート'},
+  { key: 'sweets', label: 'お菓子'},
+  { key: 'cake', label: 'ケーキ'}
+]
+const list = computed(() =>  patissierWorks.filter(w => w.category === tab.value))
+
+// モーダル深リンク：?id=xxx
+const modalId = computed(() => route.query.id as string | undefined)
+const active = computed(() => modalId.value
+? list.value.find(w => w.id === modalId.value || w.slug === modalId.value)
+: null)
+
+
+function setTab(t: PatissierTab) {
+  router.replace({ query: {...route.query, tab: t, id: undefined}})
+}
+
+function openModal(id: string){
+  router.replace({ query: {...route.query, id }})
+}
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
