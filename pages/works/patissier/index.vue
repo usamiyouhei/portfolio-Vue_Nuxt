@@ -12,7 +12,8 @@
         <p class="hint">写真とタイトルだけの静かなギャラリー。クリックで詳細がモーダル表示。</p>
     </header>
 
-    <WorkGalleryGrid :items="list"/>
+    <WorkGalleryGrid :items="list" @open="openModal"/>
+    <WorkLightboxModal v-if="active" :work="active" :siblings="list" @close="closeModal"/>
   </section>
 </template>
 
