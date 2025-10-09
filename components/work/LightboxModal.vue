@@ -143,5 +143,45 @@ function nav(delta: number) {
   padding: 10px;
   border-radius: 14px;
 }
-
+.body {
+  padding: 16px;
+}
+.media {
+  display: grid;
+  gap: 10px;
+}
+.media img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1fr, 1fr);
+  }
+}
+.section {
+  margin-top: 14px;
+}
+.section h3 {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.chips li {
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+}
 </style>
