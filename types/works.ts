@@ -1,5 +1,6 @@
 
 export type Cat = 'patissier' | 'programming' | 'design' | 'hobby'
+export type DevType = 'site' | 'app'
 export interface Work {
   id: number | string,
   title: string,
@@ -17,7 +18,12 @@ export interface Work {
   platingNotes?: string[],
   tools?: string[],
   // programming
+  type?: DevType,
+  problem?: string,
+  solution?: string[],
   stack?: string[],
+  cover?: string,
+  features?: string[],
   links?:{ demo?: string, repo?: string, article?: string}
 
 

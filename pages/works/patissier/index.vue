@@ -67,6 +67,35 @@ function closeModal(){
 
 <style lang="scss" scoped>
 .patissier {
-  margin-top: 80px;
+  margin-top: 60px;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 24px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(22px, 2.6vw, 34px);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0 6px;
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.tab.active {
+  border-color: #f7b;
+  box-shadow:0 0 0 2px rgba(255,128,170,.15) inset
+}
+.hint {
+  opacity: .75;
+  font-size: 13px;
 }
 </style>

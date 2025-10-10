@@ -1,3 +1,5 @@
+import type { Work } from "~/types/works";
+
 
 export const patissierWorks = [
   { id:'w1', slug:'sakura', title:'sakura dessert', cover:'/img/Dg-img1.jpg', category:'dessert',
@@ -44,7 +46,7 @@ export const patissierWorks = [
   },
 ]
 
-export const programmingWorks = [
+export const programmingWorks:Work[] = [
   { id:'p1', slug:'todo-next', title:'Todo App (Next.js)', cover:'/img/todo.jpg', category:'programming', type:'app',
     description:'学習用のタスク管理アプリ。',
     problem:'学習記録と進捗の可視化がしたい',
