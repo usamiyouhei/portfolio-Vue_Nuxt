@@ -46,7 +46,13 @@
                   >
                     <SwiperSlide v-for="w in byCat(c)" :key="w.id">
                       <NuxtLink :to="catRoute(c)" class="works-link">
-                      <WorkCard :work="w" variant="gallery" aspect="3x2" />
+                      <WorkCard
+                        :work="w"
+                        variant="gallery"
+                        aspect="3x2"
+                        :to="c === 'programming'
+                        ? '/works/programming'
+                        : undefined"  />
                       </NuxtLink>
                     </SwiperSlide>
                   </Swiper>
@@ -69,6 +75,9 @@
                   :placeholder-data="{ title: 'Coming soon...' , subTitle: '現在準備中'}"
                   variant="gallery"
                   aspect="3x2"
+                  :to="c === 'programming'
+                  ? '/works/programming'
+                  : undefined"
                 />
                 </template>
 
@@ -85,7 +94,13 @@
                   class="works-swiper"
                 >
                   <SwiperSlide v-for="w in byCat(c)" :key="w.id">
-                    <WorkCard :work="w" variant="gallery" />
+                    <WorkCard
+                      :work="w"
+                      variant="gallery"
+                      :to="c === 'programming'
+                      ? '/works/programming'
+                      : undefined"
+                    />
                   </SwiperSlide>
                 </Swiper>
               </ClientOnly>

@@ -95,9 +95,11 @@ type Variant = 'overlay' | 'gallery'
 //------------------------------------------------------------------------------------------------------------
 const isEmpty = computed(() => props.empty || !props.work)
 const fallback = computed(() => props.fallbackSrc ?? '/img/noImg.png')
-const imgSrc = computed(() => 
-  isEmpty.value ? (props.placeholderData?.img || fallback.value) : (props.work?.img || fallback.value)
-)
+const imgSrc = computed(() => {
+  // isEmpty.value ? (props.placeholderData?.img || fallback.value) : (props.work?.img || fallback.value)
+  const w = props.work as any
+  return w?.img || w?.cover || (w?.images?.[0]) || fallback.value
+})
 
 const title = computed(() => 
   isEmpty.value ? (props.placeholderData?.title || 'Coming soon...') : (props.work?.title || '')
