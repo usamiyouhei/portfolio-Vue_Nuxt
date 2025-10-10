@@ -54,8 +54,8 @@
       </div>
 
       <footer class="footer">
-        <button @click="nav(-1)">← Prev</button>
-        <button @click="nav(1)">Next →</button>
+        <button class="button" @click="nav(-1)">← Prev</button>
+        <button class="button" @click="nav(1)">Next →</button>
       </footer>
     </article>
   </div>
@@ -135,7 +135,7 @@ function nav(delta: number) {
 }
 .title {
   font-weight: 800;
-  font-size: clamp(16px, 2vw,20px);
+  font-size: clamp(36px, 2vw,48px);
 }
 .x {
   font-size: 22px;
@@ -183,5 +183,10 @@ function nav(delta: number) {
   justify-content: space-between;
   padding: 12px 16px;
   border-top: 1px solid #eee;
+}
+
+.button {
+  border-radius: 20px;
+  padding: 10px;
 }
 </style>

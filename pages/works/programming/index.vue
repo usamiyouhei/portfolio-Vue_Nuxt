@@ -9,13 +9,17 @@
       </nav>
       <p class="hint">クリックで詳細ページ（課題→解決・機能・スタック・学び）へ。</p>
     </header>
+
+    <div class="grid">
+      <WorkCard v-for="w in list" :key="w.id" :work="w"/>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import WorkCard  from '@/components/Home/WorkCard.vue';
-
+import { programmingWorks } from '~/data/view';
 
 /**===================================================================================================================
  * 
@@ -30,6 +34,8 @@ const tab = computed<DevTab>(() => (['site', 'app'].includes(String(route.query.
 : 'site'
 ))
 const tabs = [{key: 'site' , label: 'Webサイト'},{key: 'app', label: 'Web App'}]
+
+const list = computed(() => programmingWorks.filter(w => w.type === tab.value))
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
