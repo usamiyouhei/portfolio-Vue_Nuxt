@@ -25,6 +25,5 @@ export interface Work {
   cover?: string,
   features?: string[],
   links?:{ demo?: string, repo?: string, article?: string}
-
-
+  lessons?: string[],
 }

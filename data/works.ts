@@ -10,7 +10,7 @@ export const works: Work[] = [
     //   { id: 1, title: 'pari brest', img: 'img/mv2.jpg', date: '2025-08-30'},
     //   { id: 2, title: 'pari brest', img: 'img/works8.jpg', date: '2025-07-30'}
     // ],
-    slug: 'patissier',
+    slug: 'pari brest',
     date: '2025-10-10',
     tags: ['cake', 'dessert']
   },
@@ -19,7 +19,7 @@ export const works: Work[] = [
     title: '苺',
     img: '/img/p-img2.jpg',
     category: 'patissier',
-    slug: 'patissier',
+    slug: 'strawberry',
     date: '2025-09-04',
     tags: ['App',]
   },
@@ -28,7 +28,7 @@ export const works: Work[] = [
     title: 'Logo Design',
     img: '/img/figma-img2.jpg',
     category: 'programming',
-    slug: 'programming',
+    slug: 'logo-design',
     date: '2025-08-30',
     tags: ['Logo',]
   },
