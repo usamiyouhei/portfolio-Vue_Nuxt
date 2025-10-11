@@ -53,7 +53,7 @@ a {
 //   padding: 0 20px;
 // }
 .about {
-  margin: 80px 0 0;
+  margin: 40px 0 0;
   width: 100%;
   display: flex;
   justify-content: center;
