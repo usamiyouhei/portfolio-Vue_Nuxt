@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="creator-detail">
     <h1>{{ service.title }}</h1>
-    <img :src="service.img" :alt="service.title">
+    <img class="creator-img" :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
     <section v-if="service.features?.length"></section>
     <section v-if="service.process?.length"></section>
@@ -22,5 +22,10 @@ defineProps<{ service: Service }>()
 </script>
 
 <style lang="scss" scoped>
-
+.creator-detail {
+  margin-top: 80px;
+}
+.creator-img {
+  width: 60%;
+}
 </style>
