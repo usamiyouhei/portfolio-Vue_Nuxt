@@ -47,16 +47,17 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   position: fixed;
   z-index: 1000;
   top: 0;
-  /* left: 0; */
+  left: 0;
+  right: 0;
   width: 100%;
   height: 64px;
   background-color: #fff;
   opacity: 0.8;
   overflow: visible;
 
-  padding-left: max(16px, env(safe-area-inset-left));
+  // padding-left: max(16px, env(safe-area-inset-left));
   // padding-right: max(16px, env(safe-area-inset-right));
-  max-width: 1200px;
+  // max-width: 1200px;
   margin-inline: auto;
 }
 @media (min-width: 768) {
@@ -69,6 +70,8 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   justify-content: space-between;
   gap: clamp(8px, 3vw, 28px);
   height: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
   // padding: 0 16px;
 }
 

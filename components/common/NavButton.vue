@@ -99,7 +99,7 @@
   background-color: #cba96d;
 }
 .header_link-contact{
-   border: 1px solid #666666;
+  border: 1px solid #666666;
   border-radius: 4px;
   display: block;
   text-align: center;
@@ -109,7 +109,7 @@
   color: #141414;
   background-color: transparent;
   padding: 10px 40px;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 .header_link-contact span {
