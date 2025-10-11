@@ -3,11 +3,11 @@
       <div class="footer__container">
         <nav class="footer__nav inner">
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><NuxtLink to="/#about">About</NuxtLink></li>
+            <li><NuxtLink to="/#service">Service</NuxtLink></li>
+            <li><NuxtLink to="/#news">News</NuxtLink></li>
+            <li><NuxtLink to="/#works">Works</NuxtLink></li>
+            <li><NuxtLink to="/#contact">Contact</NuxtLink></li>
           </ul>
         </nav>
         <div class="footer__sns">

@@ -1,21 +1,21 @@
 <template>
           <ul class="header_items">
             <li class="header_item">
-              <a href="#about" class="header_link">About</a>
+              <NuxtLink to="/#about" class="header_link">About</NuxtLink>
             </li>
             <li class="header_item">
-              <a href="#service" class="header_link">Service</a>
+              <NuxtLink to="/#service" class="header_link">Service</NuxtLink>
             </li>
             <li class="header_item">
-              <a href="#news" class="header_link">News</a>
+              <NuxtLink to="/#news" class="header_link">News</NuxtLink>
             </li>
             <li class="header_item">
-              <a href="#works" class="header_link">Works</a>
+              <NuxtLink to="/#works" class="header_link">Works</NuxtLink>
             </li>
             <li class="header_item">
-              <a href="#contact" class="header_link-contact"
-                ><span>Contact</span></a
-              >
+              <NuxtLink to="/#contact" class="header_link-contact"
+                ><span>Contact</span>
+              </NuxtLink>
             </li>
           </ul>
 </template>
