@@ -56,6 +56,7 @@ onMounted(() => {
   // height: 70vh;
   height: clamp(360px, 70vh, 680px);  /* 端末に応じて伸縮 */
   overflow: hidden;
+  aspect-ratio: 16 / 9; 
   border-radius:40px 0 0 40px;
   margin-left: 5%;
 }
@@ -152,8 +153,8 @@ onMounted(() => {
 
 .kv__scroll {
   position: absolute;
-  bottom: 100px;
-  left: 2%;
+  bottom: clamp(40px, 8vw, 120px);
+  left: clamp(8px, 2vw, 32px);
   color: #333;
   letter-spacing: 0.2rem;
   line-height: 1;
@@ -189,6 +190,13 @@ onMounted(() => {
   100% {
     transform: scale(1, 0);
     transform-origin: 0 100%;
+  }
+}
+@media (min-aspect-ratio: 16/9) and (min-width: 1400px) {
+  .main-img {
+    background-position: center 40%;
+    /* coverのまま被写体位置だけ微調整 */
+    /* 必要なら scale(1.04) 程度を keyframes に限定してもOK */
   }
 }
 </style>
