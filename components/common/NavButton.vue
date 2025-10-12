@@ -125,7 +125,7 @@ watch(
   position: relative;
   color: #141414;
   background-color: transparent;
-  padding: 10px 40px;
+  padding: 4px 34px;
   margin: 5px auto;
 }
 
@@ -143,11 +143,11 @@ watch(
   width: 150%;
   background: #e9af53;
   transition: all 0.5s ease-in-out;
-  transform: translateX(-110%) translateY(-20%) rotate(45deg);
+  transform: translateX(-110%) translateY(-22%) rotate(45deg);
 }
 .header_link-contact:hover span { color:#fff; }
 .header_link-contact:hover::after{
-  transform: translateX(-6%) translateY(-25%) rotate(45deg);
+  transform: translateX(-6%) translateY(-20%) rotate(45deg);
 }
 
 

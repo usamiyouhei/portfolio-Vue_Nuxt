@@ -33,7 +33,7 @@
                 </NuxtLink>
                 </template>
                 <!-- 2枚以上：枠内だけ Swiper -->
-                 <template v-else>
+                <template v-else>
                 <ClientOnly >
                   <Swiper
                     :modules="[Navigation, Pagination]"
