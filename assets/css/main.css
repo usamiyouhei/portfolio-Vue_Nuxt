@@ -45,3 +45,10 @@ p {
 .md-show {
   display: none;
 }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+#about, #service, #news, #works, #contact {
+  scroll-margin-top: 72px; /* ヘッダー高さに合わせて調整 */
+}
