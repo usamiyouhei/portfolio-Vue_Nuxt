@@ -63,30 +63,40 @@ import { computed } from "vue";
  ===================================================================================================================**/
 type Cat = Work['category']
 type Variant = 'overlay' | 'gallery'
+type Size = 'md' | 'lg'
 
  const props = withDefaults(defineProps<{
   work?: Work,
   empty?: boolean,
   category?: Cat,
   placeholderData?: {
-   title?: string,
-   subTitle?: string,
-   img?: string,
-   description?: string,
+  title?: string,
+  subTitle?: string,
+  img?: string,
+  description?: string,
   }
   compact?: boolean,
   aspect?: '4x3' | '3x2' | '1x1' | '16x9'
   fallbackSrc?: string,
   catLabels?: Partial<Record<Work['category'], string>>
   variant?: Variant
+  showNav?: boolean
+  size?: Size
 }>(), {
   empty: false,
   compact: false,
   catLabels: () => ({}),
   fallbackSrc: '/img/noImg.png',
   variant: 'gallery',
-  placeholderData: () => ({})
+  placeholderData: () => ({}),
+  showNav: true,
+  size:'md',
 })
+
+const emits = defineEmits<{
+  (e: 'prev'): void;
+  (e: 'next'): void;
+}>()
 
 
 

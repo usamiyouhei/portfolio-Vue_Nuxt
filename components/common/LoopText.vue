@@ -87,7 +87,7 @@ function onChange(value: any) {
   display: inline-flex;           /* 横一列 */
   white-space: nowrap;            /* 改行させない */
   line-height: 1;                 /* 余白を詰めて一段表示 */
-  animation: marquee 40s linear infinite;
+  animation: marquee 80s linear infinite;
   will-change: transform;
 }
 

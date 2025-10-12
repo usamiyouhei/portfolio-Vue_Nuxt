@@ -23,10 +23,12 @@
       <AboutSkills :skills="skills" />
     </section>
   </main>
+  <LoopText/>
 </template>
 
 <script setup lang="ts">
 import SectionTitle from '~/components/common/SectionTitle.vue';
+import LoopText from '~/components/common/LoopText.vue';
 import type { TimelineItem } from '~/components/about/AboutTimeline.vue';
 import type { Skill } from '~/components/about/AboutSkills.vue';
 import type { Story } from '~/components/about/AboutStory.vue';
