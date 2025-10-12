@@ -12,7 +12,7 @@
                   <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
                 <!-- 0枚時 -->
-                 <template v-if="byCat(c).length === 0">
+                <template v-if="byCat(c).length === 0">
                 <WorkCard 
                   :empty="true"
                   :category="c"
@@ -23,12 +23,13 @@
                 </template>
 
                 <!-- 1枚だけ：カード単体 -->
-                 <template v-else-if="byCat(c).length === 1">
+                <template v-else-if="byCat(c).length === 1">
                 <NuxtLink :to="catRoute(c)" class="works-link">
                 <WorkCard
                   :work="byCat(c)[0]"
                   variant="gallery"
                   aspect="3x2"
+                  :to="catRoute(c)"
                 />
                 </NuxtLink>
                 </template>
@@ -45,15 +46,13 @@
                     class="work-inner-swiper"
                   >
                     <SwiperSlide v-for="w in byCat(c)" :key="w.id">
-                      <NuxtLink :to="catRoute(c)" class="works-link">
+                      <!-- <NuxtLink :to="catRoute(c)" class="works-link"> -->
                       <WorkCard
                         :work="w"
                         variant="gallery"
                         aspect="3x2"
-                        :to="c === 'programming'
-                        ? '/works/programming'
-                        : undefined"  />
-                      </NuxtLink>
+                        :to="catRoute(c)" />
+                      <!-- </NuxtLink> -->
                     </SwiperSlide>
                   </Swiper>
                 </ClientOnly>
@@ -75,9 +74,7 @@
                   :placeholder-data="{ title: 'Coming soon...' , subTitle: '現在準備中'}"
                   variant="gallery"
                   aspect="3x2"
-                  :to="c === 'programming'
-                  ? '/works/programming'
-                  : undefined"
+                  :to="catRoute(c)"
                 />
                 </template>
 
@@ -97,9 +94,7 @@
                     <WorkCard
                       :work="w"
                       variant="gallery"
-                      :to="c === 'programming'
-                      ? '/works/programming'
-                      : undefined"
+                      :to="catRoute(c)"
                     />
                   </SwiperSlide>
                 </Swiper>
@@ -284,15 +279,19 @@ const getBreakpoints = (count: number) => ({
 :deep(.swiper-pagination-bullets){ bottom: 8px !important; }
 :deep(.swiper-pagination-bullet){
   width: 8px; height: 8px;
-  background: rgba(255,255,255,.6);
+  background: #d1d5db;
   opacity: 1;
 }
 :deep(.swiper-pagination-bullet-active){
   background: #c9a227;          /* ゴールドに合わせる */
 }
 
-:deep(.work-inner-swiper .swiper-button-prev){ left: calc(50% - var(--workcard-max)/2 - 8px); }
-:deep(.work-inner-swiper .swiper-button-next){ right: calc(50% - var(--workcard-max)/2 - 8px); }
+:deep(.work-inner-swiper .swiper-button-prev){ 
+  left: 8px; 
+}
+:deep(.work-inner-swiper .swiper-button-next){ 
+  right: 8px; 
+}
 :deep(.work-inner-swiper .swiper-button-prev:after),
 :deep(.work-inner-swiper .swiper-button-next:after){ font-size:16px; }
 
