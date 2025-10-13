@@ -3,11 +3,11 @@
       <div class="footer__container">
         <nav class="footer__nav inner">
           <ul>
-            <li><NuxtLink to="/#about">About</NuxtLink></li>
-            <li><NuxtLink to="/#service">Service</NuxtLink></li>
-            <li><NuxtLink to="/#news">News</NuxtLink></li>
-            <li><NuxtLink to="/#works">Works</NuxtLink></li>
-            <li><NuxtLink to="/#contact">Contact</NuxtLink></li>
+            <li><NuxtLink to="/#about" class="footer_link">About</NuxtLink></li>
+            <li><NuxtLink to="/#service" class="footer_link">Service</NuxtLink></li>
+            <li><NuxtLink to="/#news" class="footer_link">News</NuxtLink></li>
+            <li><NuxtLink to="/#works" class="footer_link">Works</NuxtLink></li>
+            <li><NuxtLink to="/#contact" class="footer_link">Contact</NuxtLink></li>
           </ul>
         </nav>
         <div class="footer__sns">
@@ -73,6 +73,31 @@
   justify-content: space-around;
   padding: 70px 0;
   margin: 0;
+}
+
+.footer_link::after {
+  content: "";
+  width: 0;
+}
+
+.footer_link:hover {
+  color: #aa3769;
+}
+
+.footer_link:hover::after {
+  width: 100%;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: block;
+  height: 3px;
+  transition: width 0.3s;
+  transition-behavior: normal;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: width;
+  background-color: #cba96d;
 }
 
 .footer a {
