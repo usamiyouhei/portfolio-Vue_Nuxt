@@ -11,7 +11,7 @@
           <img v-for="(src, i) in imgs" :src="src" :key="i" :alt="`${work.title} ${i + 1}`" loading="lazy">
         </div>
 
-        <section v-if="work.description" class="section">
+        <section v-if="work.description" class="story">
           {{ work.description }}
         </section>
 
@@ -53,8 +53,8 @@
       </div>
 
       <footer class="footer">
-        <button class="button" @click="nav(-1)">← Prev</button>
-        <button class="button" @click="nav(1)">Next →</button>
+        <button class="button ghost" @click="nav(-1)">← Prev</button>
+        <button class="button ghost" @click="nav(1)">Next →</button>
       </footer>
     </article>
   </div>
@@ -118,12 +118,20 @@ function nav(delta: number) {
   z-index: 60;
 }
 .modal {
-  max-width: 760px;
+  max-width: min(92vw, 780px);
   width: 90%;
   height: 78vh;
   overflow: hidden;
   background: #fff;
   border-radius: 14px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  animation: fadeIn 220ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .head {
   display: flex;
@@ -134,7 +142,9 @@ function nav(delta: number) {
 }
 .title {
   font-weight: 800;
+  line-height: 1.2;
   font-size: clamp(36px, 2vw,48px);
+  letter-spacing: .2;
 }
 .x {
   font-size: 22px;
@@ -143,27 +153,37 @@ function nav(delta: number) {
   border-radius: 14px;
 }
 .body {
+  overflow: auto;
   padding: 16px;
 }
 .media {
   display: grid;
   gap: 10px;
+  place-items: center;
 }
 .media img {
-  width: 85%;
+  width: min(80%, 680px);
   height: auto;
   display: block;
   border-radius: 10px;
   object-fit: contain;
-  margin-inline: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+
 }
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(1fr, 1fr);
   }
 }
-.section {
-  margin-top: 14px;
+.story {
+  margin-top: 12px;
+  font-size: 14.5;
+  line-height: 1.7;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 3行で省略 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .section h3 {
   font-weight: 700;
@@ -183,12 +203,17 @@ function nav(delta: number) {
 .footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 16px;
   border-top: 1px solid #eee;
 }
 
 .button {
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 999px;
+  padding: 10px 14px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
 }
 </style>
