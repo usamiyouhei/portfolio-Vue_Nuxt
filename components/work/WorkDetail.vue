@@ -2,6 +2,10 @@
   <main class="detail">
     <!-- Hero -->
     <header class="hero">
+      <div class="hero_inner">
+        <h1 class="hero_title">{{ work.title }}</h1>
+        <p class="hero_meta">{{ metaLine }}</p>
+      </div>
 
     </header>
   </main>
