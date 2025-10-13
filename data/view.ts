@@ -2,29 +2,29 @@ import type { Work } from "~/types/works";
 
 
 export const patissierWorks = [
-  { id:'w1', slug:'sakura', title:'sakura dessert', cover:'/img/Dg-img1.jpg', category:'dessert',
-    images:['/img/Dg-img1.jpg'],
+  { id:'w1', slug:'sakura', title:'sakura dessert', cover:'/img/sakura-dessert.jpg', category:'dessert',
+    images:['/img/sakura-dessert.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
     tools:['銀彩小鉢','耐熱ゴムベラ']
   },
-  { id:'w2', slug:'yuzu-panna', title:'sakura dessert', cover:'/img/Dg-img1.jpg', category:'dessert',
-    images:['/img/Dg-img1.jpg'],
+  { id:'w2', slug:'yuzu-panna', title:'chocolate dessert', cover:'/img/chocolate-dessert.jpg', category:'dessert',
+    images:['/img/chocolate-dessert.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
     tools:['銀彩小鉢','耐熱ゴムベラ']
   },
-  { id:'w3', slug:'yuzu-panna', title:'sakura dessert', cover:'', category:'dessert',
-    images:['/img/Dg-img1.jpg'],
+  { id:'w3', slug:'yuzu-panna', title:'orange dessert', cover:'/img/orange-dessert.jpg', category:'dessert',
+    images:['/img/orange-dessert.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
     tools:['銀彩小鉢','耐熱ゴムベラ']
   },
-  { id:'w4', slug:'yuzu-panna', title:'sakura dessert', cover:'/img/Dg-img1.jpg', category:'dessert',
-    images:['/img/Dg-img1.jpg'],
+  { id:'w4', slug:'yuzu-panna', title:'muscut dessert', cover:'/img/muscut-dessert.jpg', category:'dessert',
+    images:['/img/muscut-dessert.jpg'],
     description:'和柑橘の香りを主役にした口溶けの良いパンナコッタ。',
     recipe:{ ingredients:['生クリーム 300','牛乳 200','砂糖 60','ゼラチン 8','柚子皮','柚子果汁'], steps:['加熱','氷水で冷やす','型に流す'] },
     platingNotes:['器はマットな白','トップに柚子皮の微粉','苦味バランス重視'],
