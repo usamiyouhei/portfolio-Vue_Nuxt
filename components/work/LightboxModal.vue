@@ -12,11 +12,10 @@
         </div>
 
         <section v-if="work.description" class="section">
-          <h3>Story</h3>
           {{ work.description }}
         </section>
 
-        <section v-if="work.platingNotes?.length" class="section">
+        <!-- <section v-if="work.platingNotes?.length" class="section">
           <h3>Plating & Concept</h3>
           <ul>
             <li v-for="(t, i) in work.platingNotes">
@@ -50,7 +49,7 @@
           <ul class="chips">
             <li v-for="(t, i) in work.tools" :key="i">{{ t }}</li>
           </ul>
-        </section>
+        </section> -->
       </div>
 
       <footer class="footer">
@@ -119,10 +118,10 @@ function nav(delta: number) {
   z-index: 60;
 }
 .modal {
-  max-width: 980px;
-  width: 100%;
-  height: 90vh;
-  overflow: auto;
+  max-width: 760px;
+  width: 90%;
+  height: 78vh;
+  overflow: hidden;
   background: #fff;
   border-radius: 14px;
 }
@@ -151,9 +150,12 @@ function nav(delta: number) {
   gap: 10px;
 }
 .media img {
-  width: 100%;
+  width: 85%;
+  height: auto;
   display: block;
   border-radius: 10px;
+  object-fit: contain;
+  margin-inline: auto;
 }
 @media (min-width: 768px) {
   .grid {
