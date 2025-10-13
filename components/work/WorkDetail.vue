@@ -6,6 +6,9 @@
         <h1 class="hero_title">{{ work.title }}</h1>
         <p class="hero_meta">{{ metaLine }}</p>
       </div>
+      <figure class="hero_media">
+
+      </figure>
 
     </header>
   </main>
