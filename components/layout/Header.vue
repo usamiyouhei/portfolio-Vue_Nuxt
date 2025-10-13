@@ -72,7 +72,7 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   height: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  // padding: 0 16px;
+  padding: 0 16px;
 }
 
 .header_name {
