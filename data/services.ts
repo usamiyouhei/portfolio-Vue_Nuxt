@@ -6,7 +6,9 @@ export type Service = {
     category: 'web' | 'creator';
     slug?: string;
     features?: string[];
-    process?: {step: string, dec: string}[]
+    process?: {step: string, dec: string}[];
+    heroImage?: string;
+    
   }
 
 
