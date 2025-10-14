@@ -1,7 +1,7 @@
 <template>
   <article class="story">
     <figure class="story__media">
-      <img :src="story.photo" :alt="story.caption" loading="lazy">
+      <img :src="story.photo" :alt="story.caption" class="story__photo" loading="lazy">
       <figcaption class="story__cap">{{ story.caption }}</figcaption>
     </figure>
     <div class="story__body">
@@ -44,7 +44,7 @@ const props = defineProps<{ story: Story}>()
 }
 
 .story__media img {
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
 }
