@@ -1,3 +1,18 @@
+export type ServiceCategory = 'web' | 'creator'
+
+export type ServiceBlock = {
+  id: string;
+  title: string;
+  body: string;
+}
+
+export type PriceTable = {
+  plans: string[];
+  rows:{
+    feature: string;
+    values: string[];
+  }[];
+}
 
 export type Service = {
     title: string;
@@ -8,8 +23,11 @@ export type Service = {
     features?: string[];
     process?: {step: string, dec: string}[];
     heroImage?: string;
-    
+    blocks?: ServiceBlock[];
+    priceTable?: PriceTable;
   }
+
+
 
 
 export const services: Service[] = [

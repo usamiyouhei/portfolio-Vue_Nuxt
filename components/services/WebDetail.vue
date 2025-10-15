@@ -1,5 +1,20 @@
 <template>
   <main>
+    <section class="fv">
+      <div class="fv__bg">
+        <h1 id="page-title" class="page_title">{{ service.title }}</h1>
+      </div>
+    </section>
+
+    <section class="inner">
+      <ul class="service-lists">
+        <li class="service-block">
+          <header class="block-head">
+            <h2 class="block-title"></h2>
+          </header>
+        </li>
+      </ul>
+    </section>
     <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
