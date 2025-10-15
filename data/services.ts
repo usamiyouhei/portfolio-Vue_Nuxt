@@ -1,3 +1,18 @@
+export type ServiceCategory = 'web' | 'creator'
+
+export type ServiceBlock = {
+  id: string;
+  title: string;
+  body: string;
+}
+
+export type PriceTable = {
+  plans: string[];
+  rows:{
+    feature: string;
+    values: string[];
+  }[];
+}
 
 export type Service = {
     title: string;
@@ -8,8 +23,11 @@ export type Service = {
     features?: string[];
     process?: {step: string, dec: string}[];
     heroImage?: string;
-    
+    blocks?: ServiceBlock[];
+    priceTable?: PriceTable;
   }
+
+
 
 
 export const services: Service[] = [
@@ -18,7 +36,26 @@ export const services: Service[] = [
       img: '/img/Static website-development.svg',
       description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
-      slug:'website-development'
+      slug:'website-development',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: `新規サイトの制作はもちろん、<br class="md-show" />
+          レスポンシブコーディングやアニメーションなど
+          動きのあるサイト制作も可能です。`
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body:`現在、サンプルサイトを製作中です。`
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body:'目安ですので、予算なども踏まえてお気軽にご相談ください。'
+        }
+      ]
     },
     { 
       title: "Webデザイン", 
