@@ -8,13 +8,19 @@
 
     <section class="inner">
       <ul class="service-lists">
-        <li class="service-block">
+        <li v-for="b in service.blocks" :key="b.id" class="service-block">
           <header class="block-head">
-            <h2 class="block-title"></h2>
+            <h2 class="block-title">{{ b.title }}</h2>
           </header>
+          <p class="block-text" v-html="b.body" />
+          <ServicesPriceCompareTable v-if="b.id === 'price-guide' && service.priceTable" :table="service.priceTable"/>
         </li>
       </ul>
     </section>
+
+
+
+
     <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
@@ -26,6 +32,8 @@
 
 <script setup lang="ts">
 import type { Service } from "~/data/services";
+import { computed } from "vue";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
