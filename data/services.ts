@@ -54,8 +54,22 @@ export const services: Service[] = [
           id:'price-guide',
           title:'制作料金目安',
           body:'目安ですので、予算なども踏まえてお気軽にご相談ください。'
-        }
-      ]
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '名刺代わりの簡単サイト<br><strong>初期費用 約23万円</strong>',
+            'しっかりとした企業サイト<br><strong>初期費用 約45万円</strong>',
+            '集客に強い作り込み<br><strong>初期費用 約60万円</strong>',
+            ],
+          }
+        ],
+
+        },
     },
     { 
       title: "Webデザイン", 
