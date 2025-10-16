@@ -1,9 +1,8 @@
 <template>
   <main>
     <section class="fv">
-      <div class="fv__bg">
+        <div class="fv__bg" :style="bgStyle"/>
         <h1 id="page-title" class="page_title">{{ service.title }}</h1>
-      </div>
     </section>
 
     <section class="inner">
@@ -37,68 +36,55 @@ import { computed } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-defineProps<{ service: Service }>()
+const props = defineProps<{ service: Service }>()
 
- //------------------------------------------------------------------------------------------------------------
-// 引数
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// 定数・変数（state）
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
 
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
 
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
-
+const bgStyle = computed(() => ({
+  backgroundImage: props.service.heroImage ? `url('${ props.service.heroImage}')`: 'none'
+}))
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
 </script>
 
 <style lang="scss" scoped>
+.fv {
+  position: relative;
+  margin-top: 80px;
+  height: clamp(160px, 32vw, 320px);
+  background-size: contain;
+}
+.fv__bg {
+  position: absolute;
+  inset:0; background:center/cover no-repeat; 
+  filter:brightness(.6);
+}
+.page_title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 16px 24px;
+}
+.service-lists {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+}
+.service-block {
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 0 0;
+}
 </style>

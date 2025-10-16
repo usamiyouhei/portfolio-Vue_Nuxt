@@ -37,6 +37,7 @@ export const services: Service[] = [
       description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
       slug:'website-development',
+      heroImage: '/img/web-site-service-img.jpg',
       blocks:[
         {
           id:'summary',
