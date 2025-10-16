@@ -33,7 +33,7 @@ export type Service = {
 export const services: Service[] = [
     { 
       title: "Webサイト制作", 
-      img: '/img/Static website-development.svg',
+      img: '/img/web-site-service-img.jpg',
       description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
       slug:'website-development',
@@ -66,7 +66,16 @@ export const services: Service[] = [
             'しっかりとした企業サイト<br><strong>初期費用 約45万円</strong>',
             '集客に強い作り込み<br><strong>初期費用 約60万円</strong>',
             ],
-          }
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+
         ],
 
         },

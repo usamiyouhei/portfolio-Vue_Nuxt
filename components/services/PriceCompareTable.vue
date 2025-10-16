@@ -10,9 +10,9 @@
             <th class="th"></th>
           </tr>
 
-          <tr>
-            <th class="th"></th>
-            <th class="th"></th>
+          <tr v-for="(row , i) in table.rows" :key="i">
+            <th class="th sticky" v-html="row.feature"/>
+            <td v-for="(val , j) in row.values" class="td" v-html="val"/>
           </tr>
         </tbody>
       </table>
