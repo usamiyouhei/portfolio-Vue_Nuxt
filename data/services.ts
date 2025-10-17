@@ -162,28 +162,248 @@ export const services: Service[] = [
       img: '/img/Setup-amico.svg',
       description: '既存サイトの改善や調整もお任せください。デザインの刷新から細かな修正まで柔軟に対応。課題を解決し、より効果的なサイトへと導きます。  ',
       category: 'web',
-      slug:'website-renovation'
+      slug:'website-renovation',
+      heroImage: '/img/web_design-img.jpg',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: ``
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body: ``
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body: `目安ですので、予算なども踏まえてお気軽にご相談ください。`
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '',
+            '',
+            '',
+            ],
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+          {
+            feature: '原稿',
+            values: ['お客様ご用意', '取材・作成代行', '取材・作成代行']
+          },
+          {
+            feature: 'デザイン案',
+            values: ['1案まで', '2案', '2案']
+          },
+          {
+            feature: '修正',
+            values: ['2回まで', '3回', '4回']
+          },
+          {
+            feature: 'スマホ/タブレット対応',
+            values: ['△（スマホ）', '◎（両対応）', '◎（両対応）']
+          }
+        ],
+        },
     },
      { 
       title: "レシピ開発", 
       img: '/img/Recipe book-amico.svg',
       description: '20年以上の経験と新作開発のノウハウを活かし、1品からオリジナルレシピを制作いたします。栄養学の観点から、体に優しいメニュー提案も可能です。  ',
       category: 'creator',
-      slug:'recipe-development'
+      slug:'recipe-development',
+      heroImage: '/img/web_design-img.jpg',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: ``
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body: ``
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body: `目安ですので、予算なども踏まえてお気軽にご相談ください。`
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '',
+            '',
+            '',
+            ],
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+          {
+            feature: '原稿',
+            values: ['お客様ご用意', '取材・作成代行', '取材・作成代行']
+          },
+          {
+            feature: 'デザイン案',
+            values: ['1案まで', '2案', '2案']
+          },
+          {
+            feature: '修正',
+            values: ['2回まで', '3回', '4回']
+          },
+          {
+            feature: 'スマホ/タブレット対応',
+            values: ['△（スマホ）', '◎（両対応）', '◎（両対応）']
+          }
+        ],
+        },
     },
     { 
       title: "飲食店コンサルタント", 
       img: '/img/Marketing consulting-rafiki.svg',
       description: '飲食店やパティシエとしての現場経験をもとに、ケーキ屋・カフェ・デザート専門店などをサポート。店舗運営やメニュー開発まで幅広くご相談いただけます。  ',
       category: 'creator',
-      slug:'restaurant-consulting'
+      slug:'restaurant-consulting',
+      heroImage: '/img/web_design-img.jpg',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: ``
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body: ``
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body: `目安ですので、予算なども踏まえてお気軽にご相談ください。`
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '',
+            '',
+            '',
+            ],
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+          {
+            feature: '原稿',
+            values: ['お客様ご用意', '取材・作成代行', '取材・作成代行']
+          },
+          {
+            feature: 'デザイン案',
+            values: ['1案まで', '2案', '2案']
+          },
+          {
+            feature: '修正',
+            values: ['2回まで', '3回', '4回']
+          },
+          {
+            feature: 'スマホ/タブレット対応',
+            values: ['△（スマホ）', '◎（両対応）', '◎（両対応）']
+          }
+        ],
+        },
     },
     { 
       title: "写真・動画撮影", 
       img: '/img/Photo-amico.svg',
       description: '料理やスイーツの写真・動画撮影も対応。 ポートフォリオ掲載の写真はすべて自ら撮影しました。魅力が伝わるビジュアルを丁寧に切り取ります。  ',
       category: 'creator',
-      slug:'photo-video-shooting'
+      slug:'photo-video-shooting',
+      heroImage: '/img/web_design-img.jpg',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: ``
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body: ``
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body: `目安ですので、予算なども踏まえてお気軽にご相談ください。`
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '',
+            '',
+            '',
+            ],
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+          {
+            feature: '原稿',
+            values: ['お客様ご用意', '取材・作成代行', '取材・作成代行']
+          },
+          {
+            feature: 'デザイン案',
+            values: ['1案まで', '2案', '2案']
+          },
+          {
+            feature: '修正',
+            values: ['2回まで', '3回', '4回']
+          },
+          {
+            feature: 'スマホ/タブレット対応',
+            values: ['△（スマホ）', '◎（両対応）', '◎（両対応）']
+          }
+        ],
+        },
     },
     
   ]

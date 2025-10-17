@@ -36,12 +36,31 @@
 
 <script setup lang="ts">
 import type { Service } from "~/data/services";
-import { computed } from "vue";
+import { ref, computed, onMounted } from "vue";
+import { useIntersectionObserver } from '@vueuse/core';
 
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 const props = defineProps<{ service: Service }>()
+// 1️⃣ ref配列を用意（v-forで監視対象をまとめる）
+const blockRefs = ref<HTMLElement[]>([])
+// 2️⃣ 表示状態を保持する配列
+const visible = ref<boolean[]>([])
+
+onMounted(() => {
+  blockRefs.value.forEach((el, i) => {
+    if(!el) return
+    const { stop } = useIntersectionObserver(el,([entry]) => {
+        if(entry.isIntersecting) {
+          visible.value[i] = true;
+          stop()
+        }
+      },
+      { threshold: 0.2 }
+    )
+  }) 
+})
 
 
 
