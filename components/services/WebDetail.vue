@@ -83,6 +83,9 @@ const bgStyle = computed(() => ({
   margin-top: 80px;
   height: clamp(160px, 32vw, 320px);
   background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .fv__bg {
   position: absolute;
@@ -91,9 +94,6 @@ const bgStyle = computed(() => ({
 }
 .page_title {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #fff;
   font-size: clamp(28px, 4.5vw, 56px);
   font-weight: 800;
