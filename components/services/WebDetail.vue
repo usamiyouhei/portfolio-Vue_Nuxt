@@ -7,7 +7,12 @@
 
     <section class="inner">
       <ul class="service-lists">
-        <li v-for="b in service.blocks" :key="b.id" class="service-block">
+        <li v-for="( b, i ) in service.blocks" 
+            :key="b.id"
+            ref="blockRefs"
+            class="service-block fade"
+            :class="{'fade--in': visible[i]}"
+            >
           <header class="block-head">
             <h2 class="block-title">{{ b.title }}</h2>
           </header>
@@ -148,5 +153,16 @@ const bgStyle = computed(() => ({
 .cta-btn:hover{ 
   transform: translateY(-1px);
   opacity:.95; 
-  }
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8 ease, transform 0.8s ease;
+}
+
+.fade--in {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
