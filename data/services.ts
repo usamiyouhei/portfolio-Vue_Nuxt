@@ -33,7 +33,7 @@ export type Service = {
 export const services: Service[] = [
     { 
       title: "Webサイト制作", 
-      img: '/img/web-site-service-img.jpg',
+      img: 'website-development.svg',
       description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
       slug:'website-development',
@@ -100,7 +100,62 @@ export const services: Service[] = [
       img: '/img/UI-UX design-amico.svg',
       description: 'ヒアリングを通じてご要望やイメージを丁寧に汲み取り、ユーザーに伝わるデザインをご提案。世界観を大切にした、より良いビジュアルを形にします。  ',
       category: 'web',
-      slug:'web-design'
+      slug:'web-design',
+      heroImage: '/img/web_design-img.jpg',
+      blocks:[
+        {
+          id:'summary',
+          title:'サービス概要',
+          body: ``
+        },
+        {
+          id:'track-record',
+          title:'サービス実績',
+          body: ``
+        },
+        {
+          id:'price-guide',
+          title:'制作料金目安',
+          body: `目安ですので、予算なども踏まえてお気軽にご相談ください。`
+        },
+      ],
+      priceTable: {
+        plans:['ライト', 'スタンダード', 'プレミアム'],
+        rows: [
+          { 
+            feature: '目的 / 料金目安',
+            values: [
+            '',
+            '',
+            '',
+            ],
+          },
+          {
+            feature: '全体ページ数',
+            values: ['約6ページ', '約12ページ', '約20ページ']
+          },
+          {
+            feature: '更新機能',
+            values: ['△（1件）<br><small>例：お知らせ</small>', '◎（3件）<br><small>例：お知らせ/ブログ/商品</small>', '◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>']
+          },
+          {
+            feature: '原稿',
+            values: ['お客様ご用意', '取材・作成代行', '取材・作成代行']
+          },
+          {
+            feature: 'デザイン案',
+            values: ['1案まで', '2案', '2案']
+          },
+          {
+            feature: '修正',
+            values: ['2回まで', '3回', '4回']
+          },
+          {
+            feature: 'スマホ/タブレット対応',
+            values: ['△（スマホ）', '◎（両対応）', '◎（両対応）']
+          }
+        ],
+        },
     },
     { 
       title: "Webサイトリニューアル", 
