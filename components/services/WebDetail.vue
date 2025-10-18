@@ -94,9 +94,13 @@ const bgStyle = computed(() => ({
 }
 .page_title {
   position: relative;
-  color: #fff;
-  font-size: clamp(28px, 4.5vw, 56px);
-  font-weight: 800;
+  background-color: #fff;
+  border-radius: 12px;
+  font-family: "Italianno";
+  color: #333;
+  padding: 6px 12px;
+  font-size: clamp(56px, 4.5vw, 82px);
+  // font-weight: 600;
   letter-spacing: 0.04em;
 }
 .inner {
@@ -155,14 +159,14 @@ const bgStyle = computed(() => ({
   opacity:.95; 
 }
 
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8 ease, transform 0.8s ease;
-}
+// .fade {
+//   opacity: 0;
+//   transform: translateY(20px);
+//   transition: opacity 0.8 ease, transform 0.8s ease;
+// }
 
-.fade--in {
-  opacity: 1;
-  transform: translateY(0);
-}
+// .fade--in {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
 </style>
