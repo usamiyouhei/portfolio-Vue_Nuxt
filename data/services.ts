@@ -32,7 +32,7 @@ export type Service = {
 
 export const services: Service[] = [
     { 
-      title: "Webサイト制作", 
+      title: "Website service", 
       img: 'website-development.svg',
       description: '新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ',
       category: 'web',
