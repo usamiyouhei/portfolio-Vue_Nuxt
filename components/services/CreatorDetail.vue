@@ -7,6 +7,7 @@
   <section class="inner">
     <ul class="service-lists">
       <CommonAutoGallery/>
+      <CommonAutoGallery2/>
       <li v-for="(b, i) in service.blocks"
         :key="i"
         class="service-block"
@@ -46,7 +47,7 @@ const bgStyle = computed(() => ({
 </script>
 
 <style lang="scss" scoped>
-.creator-detail {
+.fv {
   margin-top: 80px;
 }
 .creator-img {

@@ -1,32 +1,23 @@
 <template>
-  <Swiper
-    :modules="[Autoplay, FreeMode]"
-    :slides-per-view="'auto'"
-    :loop="true"
-    :space-between="20"
-    :autoplay="{
-      delay: 0,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: false
-      }"
-    :speed="8000"
-    :free-mode="true"
-    :free-mode-momentum="false"
-    :allowTouchMove="false"
-    grabCursor
-    class="auto-gallery"
-  >
-  <SwiperSlide v-for="( img, i ) in [...images, ...images]" :key="i" class="auto-gallery__slide">
-    <img :src="img" alt="" loading="lazy" />
-  </SwiperSlide>
-  </Swiper>
+  <div class="free">
+    <div class="free__track">
+      <div v-for="(img, i) in images" 
+          :key="`a-${i}`" 
+          class="free__slide"
+        >
+        <img :src="img" alt="" loading="lazy">
+      </div>
+      <div v-for="(img, i) in images" 
+          :key="`b-${i}`" 
+          class="free__slide"
+        >
+        <img :src="img" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { Autoplay,FreeMode } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -37,8 +28,10 @@ const images = [
   '/img/Dg-img10.jpg',
   '/img/Dg-img11.jpg',
   '/img/Dg-img12.jpg',
+  '/img/Dg-img10.jpg',
+  '/img/Dg-img11.jpg',
+  '/img/Dg-img12.jpg',
 ]
-
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -46,19 +39,34 @@ const images = [
 </script>
 
 <style lang="scss" scoped>
-.auto-gallery {
-  width: 100%;
+.free {
   overflow: hidden;
+  width: 100%;
 }
 
-.auto-gallery__slide {
-  width: auto;
-  padding: 0 10px;
+.free__track {
+  display: flex;
+  width: max-content;
+  animation: scroll 10s linear infinite ;
+}
+
+.free__slide {
   flex-shrink: 0;
+  padding: 10px;
 }
 
-.auto-gallery__slide img {
+.free__slide img {
   height: 200px;
   object-fit: cover;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 </style>
