@@ -6,7 +6,7 @@
 
   <section class="inner">
     <ul class="service-lists">
-      <CommonAutoGallery/>
+      <!-- <CommonAutoGallery/> -->
       <CommonAutoGallery2 :images="imageList" :speed="20" :reverse="true" :height="300"/>
       <li v-for="(b, i) in service.blocks"
         :key="i"
