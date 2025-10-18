@@ -23,12 +23,12 @@ import 'swiper/css';
  * 
  ===================================================================================================================**/
 const images = [
-  '/img/Dg-img1.jpg',
-  '/img/Dg-img2.jpg',
-  '/img/Dg-img3.jpg',
-  '/img/Dg-img4.jpg',
-  '/img/Dg-img5.jpg',
-  '/img/Dg-img6.jpg',
+  '/img/Dg-img7.jpg',
+  '/img/Dg-img8.jpg',
+  '/img/Dg-img9.jpg',
+  '/img/Dg-img10.jpg',
+  '/img/Dg-img11.jpg',
+  '/img/Dg-img12.jpg',
 ]
 
 

@@ -1,4 +1,24 @@
 <template>
+  <section class="fv">
+    <div class="fv__bg" :style="bgStyle"/>
+    <h1 id="page-title" class="page-title">{{ service.title }}</h1>
+  </section>
+
+  <section class="inner">
+    <ul class="service-lists">
+      <CommonAutoGallery/>
+      <li v-for="(b, i) in service.blocks"
+        :key="i"
+        class="service-block"
+      >
+        <header class="block-head">
+          <h2 class="block-title">{{ b.title }}</h2>
+        </header>
+        <p class="block-text" v-html="b.body"/>
+        <ServicesPriceCompareTable v-if="b.id === 'price-guide' && service.priceTable " :table="service.priceTable"/>
+      </li>
+    </ul>
+  </section>
   <main class="creator-detail">
     <h1>{{ service.title }}</h1>
     <img class="creator-img" :src="service.img" :alt="service.title">
@@ -11,10 +31,14 @@
 
 <script setup lang="ts">
 import type { Service } from '~/data/services'
-defineProps<{ service: Service }>()
+import { ref, computed } from "vue";
+const props = defineProps<{ service: Service }>()
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
+const bgStyle = computed(() => ({
+  backgroundImage: props.service.heroImage ? `url{${props.service.heroImage}}` : 'none'
+}))
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
