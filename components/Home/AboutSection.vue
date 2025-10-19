@@ -3,7 +3,7 @@
     <div class="about__inner inner" id="fadeElement">
        <SectionTitle sectionTitle="About" sectionSubTitle="自己紹介"></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
-        <img src="/img/about-my-photo.jpg" alt="本人の写真" loading="lazy" />
+        <img src="/public/img/about/about_my_photo.jpg" alt="本人の写真" loading="lazy" />
         <div class="about__text">
           <p>
             はじめまして。
