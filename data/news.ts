@@ -31,8 +31,8 @@ export const allNews: News[] = [
     title: '記事タイトル10',
     date: '2025-08-10',
     slug: 'article-10',
-    image: '/img/news-img1.jpg',
-    excerpt: '新しいデザインでポートフォリオを制作中です。',
+    image: '/img/news/news-img_flower_1.jpg',
+    excerpt: '記事１０',
   },
   {
     id: 'n9',
@@ -86,15 +86,16 @@ export const allNews: News[] = [
     id: 'n3',
     title: 'New Portfolio',
     date: '2025-10-23',
-    image: '/img/news-img2.jpg',
+    image: '/img/news/news-img2_new_portfolio.jpg',
     slug: '2025-10-23_new_portfolio',
     excerpt: '新しいデザインでポートフォリオを制作中です',
+    body:'新しいポートフォリオです。Vue,Nuxtで作成しました'
   },
   {
     id: 'n2',
     title: '新作デザートのお知らせ',
     date: '2025-1-23',
-    image: '/img/news-img3.jpg',
+    image: '/img/news/news-img2_new_portfolio.jpg',
     slug: 'article-2',
     excerpt: '新しいデザインでポートフォリオを制作中です。',
   },
@@ -102,9 +103,10 @@ export const allNews: News[] = [
     id: 'n1',
     title: '記事タイトル1',
     date: '2025-10-23',
-    image: '/img/news-img1.jpg',
+    image: '/img/news/news-img2_new_portfolio.jpg',
     slug: 'article-1',
     excerpt: '新しいデザインでポートフォリオを制作中です。',
+    body:'新しいポートフォリオです。Vue,Nuxtで作成しました'
   },
 ]
 // export const allNews: News[] = [

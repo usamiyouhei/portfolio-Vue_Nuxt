@@ -15,5 +15,13 @@ export default defineNuxtConfig({
     devServer: {
     https: false, // ★ 明示的にオフ
   },
+  // app: {
+  //   head: {
+  //     link: [
+  //       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+  //       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  //     ],
+  //   },
+  // },
 })
 
