@@ -88,8 +88,21 @@ useHead({
   h2, h3 {
     font-weight: 600;
     margin-top: 2rem;
-    
+    margin-bottom: 1rem;
   }
+  p {
+    margin-bottom: 1.5rem;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 20px auto;
+    border-radius: 6px;
+  }
+}
+
+.back {
+  text-align: center;
 }
 
 </style>
