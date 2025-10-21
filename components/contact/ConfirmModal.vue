@@ -2,6 +2,7 @@
   <div class="overlay">
     <div class="modal">
       <h3>以下の内容で送信しますか？</h3>
+      
     </div>
   </div>
 </template>
