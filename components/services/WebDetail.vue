@@ -27,6 +27,7 @@
     </section>
 
     <div class="cta">
+      <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
       <button class="cta-btn" @click="showContact = true">
         お問い合わせ
       </button>
@@ -45,7 +46,7 @@
 import type { Service } from "~/data/services";
 import { ref, computed, onMounted } from "vue";
 import { useIntersectionObserver } from '@vueuse/core';
-
+import Button from '../common/Button.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
