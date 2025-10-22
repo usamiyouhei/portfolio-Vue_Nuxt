@@ -27,10 +27,12 @@
     </section>
 
     <div class="cta">
-      <NuxtLink to="/#contact" class="cta-btn">お問い合わせ</NuxtLink>
+      <button class="cta-btn" @click="showContact = true">
+        お問い合わせ
+      </button>
     </div>
 
-
+   <ContactModal v-if="showContact" @close="showContact = false"/>
     <!-- <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
@@ -67,7 +69,7 @@ onMounted(() => {
   }) 
 })
 
-
+const showContact = ref(false)
 
 const bgStyle = computed(() => ({
   backgroundImage: props.service.heroImage ? `url('${ props.service.heroImage}')`: 'none'
