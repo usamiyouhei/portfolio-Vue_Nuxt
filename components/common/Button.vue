@@ -1,18 +1,51 @@
 <template>
    <div class="btn-wrap">
-      <NuxtLink v-if="props.to" class="read-more__button" :to="props.to">
+      <NuxtLink v-if="props.to"
+        class="read-more__button"
+        :to="props.to"
+        >
         <span>{{ props.buttonText }}</span>
       </NuxtLink>
-      <a v-else-if="props.href" class="read-more__button" :href="props.href" target="_blank" rel="noopener">
+
+      <a v-else-if="props.href"
+        class="read-more__button"
+        :href="props.href" target="_blank"
+        rel="noopener"
+        >
         <span>{{ props.buttonText }}</span>
       </a>
+
+      <button v-else
+        type="button"
+        class="read-more__button"
+        @click="props.onClick"
+        >
+        {{ props.buttonText }}
+      </button>
     </div>
 </template>
 
 <script setup lang="ts">
 type ButtonProps =
-|{buttonText: string, to: string, href?: undefined }
-|{buttonText: string, href: string, to?: undefined }
+|{
+  buttonText: string
+  to: string
+  href?: undefined
+  onClick?: undefined
+  }
+|{
+  buttonText: string
+  href: string
+  to?: undefined
+  onClick?: undefined
+}
+|{
+  buttonText: string
+  onClick: () => void
+  href?: string
+  to?: string
+}
+
 const props = defineProps<ButtonProps>()
 
 
