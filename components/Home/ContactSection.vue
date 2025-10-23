@@ -134,5 +134,8 @@ const onSubmit = () => {
   letter-spacing: 0.05em;
 }
 
-
+// .form--page {
+//   max-width: 600px;
+//   margin: auto;
+// }
 </style>

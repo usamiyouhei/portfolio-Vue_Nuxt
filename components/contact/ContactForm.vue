@@ -155,9 +155,10 @@ const handleSubmit = async () => {
 </script>
 
 <style lang="scss" scoped>
-
+// @use '~/assets/scss/components/contact/form' as *;
 .contact__form {
   margin: 0 auto;
+  // max-width: 640px;
   width: 100%;
   @media (max-width: 768px) {
     flex: 1;
