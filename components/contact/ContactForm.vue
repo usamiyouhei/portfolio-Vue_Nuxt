@@ -85,16 +85,19 @@
                 <p v-if="errors.message" class="form__error" id="err_message" role="alert">{{ errors.message }}</p>
             </div>
 
-            <Button class="form__submit" buttonText="submit" to="/usami/news">
+            <!-- <Button class="form__submit" buttonText="submit" to="/usami/news">
                 確認する
-            </Button>
-            
+            </Button> -->
+
+            <div class="cta">
+              <Button buttonText="確認する" :onClick="() => (showContact = true)"/>
+            </div>
+
             <ContactConfirmModal
               v-if="showConfirm"
               :form="form"
               @close="showConfirm = false"
               @confirm="handleSubmit"/>
-
           </form>
         </div>
 </template>
@@ -103,6 +106,7 @@
 import { ref, reactive } from "vue";
 import { useRouter } from 'vue-router';
 import type { ContactFormData, ContactFormErrors } from "~/types/contact";
+import Button from '../common/Button.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -120,6 +124,7 @@ const errors = ref<ContactFormErrors>({
   message: "",
 })
 
+const showContact = ref(false)
 const showConfirm = ref(false)
 const router = useRouter()
 

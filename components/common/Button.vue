@@ -20,7 +20,9 @@
         class="read-more__button"
         @click="props.onClick"
         >
-        {{ props.buttonText }}
+        <span>
+          {{ props.buttonText }}
+        </span>
       </button>
     </div>
 </template>
@@ -85,10 +87,11 @@ const props = defineProps<ButtonProps>()
 }
 
 .read-more__button {
+  all: unset; 
   margin-bottom: 12px;
   padding: 0;
   font-family: "Italianno";
-  font-size: 30px;
+  font-size: 20px;
   -webkit-transition: all 0.3s;
 
   transition: all 0.3s;
@@ -110,7 +113,7 @@ const props = defineProps<ButtonProps>()
   );
 }
 
-.read-more__button::after span {
+.read-more__button span ::after  {
   content: "";
   position: relative;
   width: 10px; /* ボックスの横幅を指定する */
@@ -161,4 +164,19 @@ const props = defineProps<ButtonProps>()
   bottom: -1px;
 }
 
+.contact__button {
+  //  display: inline-block;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 30%,
+    rgb(253, 226, 179) 70%
+  );
+  position: relative;
+  display: block;
+  padding: 1.25rem 3rem;
+  color: #333;
+  border: 1px solid #898989;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
 </style>

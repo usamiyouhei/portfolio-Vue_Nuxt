@@ -7,10 +7,14 @@
       <h3 class="title">{{ w.title }}</h3>
     </button>
   </div>
+
+  <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
+  <ContactModal v-if="showContact" @close="showContact = false"/>
+
 </template>
 
 <script setup lang="ts">
-
+import Button from '../common/Button.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -20,6 +24,9 @@ type Item = {
 
 const props = defineProps<{ items: Item[] }>()
 const emit = defineEmits<{ open:[id:string] }>()
+
+const showContact = ref(false)
+
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
