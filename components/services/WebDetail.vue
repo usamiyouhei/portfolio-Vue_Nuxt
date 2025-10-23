@@ -27,10 +27,7 @@
     </section>
 
     <div class="cta">
-      <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
-      <button class="cta-btn" @click="showContact = true">
-        お問い合わせ
-      </button>
+      <Button buttonText="Contact" :onClick="() => (showContact = true)"/>
     </div>
 
    <ContactModal v-if="showContact" @close="showContact = false"/>
