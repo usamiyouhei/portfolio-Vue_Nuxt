@@ -49,15 +49,17 @@ const root = ref<HTMLElement | null>(null)
 
 .price-scroll {
   position: relative;
-  overflow: auto;
-  padding: 0 16px;
+  overflow-x: auto;
+  padding: 0 ;
+  -webkit-overflow-scrolling: touch;
+  display: block;
 }
 
 .price-table {
   border-collapse: separate;
   border-spacing: 0;
   min-width: 760px;
-  width: 100%;
+  width: auto;
   background: #fff;
 }
 

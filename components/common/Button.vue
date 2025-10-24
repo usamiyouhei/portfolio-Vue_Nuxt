@@ -164,19 +164,23 @@ const props = defineProps<ButtonProps>()
   bottom: -1px;
 }
 
-.contact__button {
-  //  display: inline-block;
-  background: linear-gradient(
-    to bottom,
-    rgb(255, 255, 255) 30%,
-    rgb(253, 226, 179) 70%
-  );
-  position: relative;
-  display: block;
-  padding: 1.25rem 3rem;
-  color: #333;
-  border: 1px solid #898989;
-  border-radius: 0.5rem;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .read-more__button span {
+    font-size: 16px;
+    padding: 0.9rem 2.4rem;
+  }
+}
+@media (max-width: 480px ) {
+  .read-more__button span {
+    font-size: 14px;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 360px) {
+    .read-more__button span {
+    font-size: 13px;
+    padding: 0.7rem 1.6rem;
+  }
 }
 </style>
