@@ -2,7 +2,7 @@
   <div class="overlay" @click.self="$emit('close')">
     <div class="modal">
       <h2 class="modal-title">お問い合わせ</h2>
-      <ContactForm formClass="form--modal"/>
+      <ContactForm mode="modal" formClass="form--modal"/>
       <button class="close" @click="$emit('close')">×</button>
     </div>
   </div>
@@ -37,6 +37,11 @@ defineEmits(["close"])
   padding: 2rem;
   width: 90%;
   max-width: 480px;
+
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
 
 .form--modal {

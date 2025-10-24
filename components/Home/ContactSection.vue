@@ -13,7 +13,7 @@
           </p>
         </div>
 
-        <ContactForm formClass="form--page"/>
+        <ContactForm mode="page" formClass="form--page"/>
       </div>
     </section>
 </template>
