@@ -17,9 +17,9 @@
         </tbody>
       </table>
 
-      <span class="shadow shadow--left" />
-      <span class="shadow shadow--right" />
     </div>
+    <!-- <span class="shadow shadow--left" />
+    <span class="shadow shadow--right" /> -->
   </div>
 </template>
 
@@ -45,20 +45,25 @@ const root = ref<HTMLElement | null>(null)
   font-size: 12px;
   color: #666;
   padding: 0 16px 6px;
+    @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 .price-scroll {
   position: relative;
-  overflow-x: auto;
-  padding: 0 ;
-  -webkit-overflow-scrolling: touch;
   display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .price-table {
   border-collapse: separate;
   border-spacing: 0;
-  min-width: 760px;
+  min-width: 1200px;
   width: auto;
   background: #fff;
 }
@@ -73,7 +78,7 @@ const root = ref<HTMLElement | null>(null)
 .th {
   background: #fafafa;
   font-weight: 700;
-  white-space: none;
+  white-space: nowrap;
 }
 
 .td :where(h4,p){
@@ -100,5 +105,15 @@ const root = ref<HTMLElement | null>(null)
 .shadow--right{
   right:16px; background:linear-gradient(270deg,#fff 0%,rgba(255,255,255,0) 100%);
 }
+@media (max-width: 768px) {
+  .price-table {
+    min-width: 900px;
+  }
+}
 
+@media (max-width: 480px) {
+  .price-table {
+    min-width: 700px;
+  }
+}
 </style>
