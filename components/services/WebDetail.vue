@@ -30,7 +30,7 @@
       <Button buttonText="Contact" :onClick="() => (showContact = true)"/>
     </div>
 
-   <ContactModal v-if="showContact" @close="showContact = false"/>
+   <ContactModal v-if="showContact"  @close="showContact = false"/>
     <!-- <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
@@ -89,7 +89,8 @@ const bgStyle = computed(() => ({
 }
 .fv__bg {
   position: absolute;
-  inset:0; background:center/cover no-repeat; 
+  inset:0; 
+  background:center/cover no-repeat; 
   filter:brightness(.6);
 }
 .page_title {
@@ -159,6 +160,25 @@ const bgStyle = computed(() => ({
   opacity:.95; 
 }
 
+@media (max-width: 768px) {
+  .fv {
+    height: 240px;
+  }
+  .page_title {
+    font-size: 42px;
+    padding: 4px 10px;
+  }
+  .block-text {
+    padding: 8px 12px 12px;
+    line-height: 1.7;
+  }
+}
+@media (max-width: 480px) {
+  .cta-btn {
+    min-width: 200px;
+    font-size: 14px;
+  }
+}
 // .fade {
 //   opacity: 0;
 //   transform: translateY(20px);

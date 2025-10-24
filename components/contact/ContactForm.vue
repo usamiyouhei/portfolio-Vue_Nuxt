@@ -1,5 +1,5 @@
 <template>
-  <div class="contact__form">
+  <div class="contact__form" :class="[`contact__form--${mode}`]">
           <form class="form" action="#" method="post" @submit.prevent="openConfirm" novalidate>
             <div class="form__row">
               <label class="form__label" for="name">
@@ -110,7 +110,11 @@ import Button from '../common/Button.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-const form = ref<ContactFormData>({
+defineProps<{
+  mode?: 'page' | 'modal'
+}>()
+
+ const form = ref<ContactFormData>({
   name: "",
   email: "",
   topic: "",
@@ -160,6 +164,17 @@ const handleSubmit = async () => {
   margin: 0 auto;
   // max-width: 640px;
   width: 100%;
+
+  &--page {
+    padding: 4rem 2rem;
+  }
+
+  &--modal {
+    padding: 0.8rem 0;
+    background: transparent;
+    max-height: none;
+    overflow: visible;
+  }
   @media (max-width: 768px) {
     flex: 1;
     max-width: 50%;
