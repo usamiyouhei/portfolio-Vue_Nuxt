@@ -60,7 +60,7 @@ export const services: Service[] = [
       priceTable: {
         plans:['ライト', 'スタンダード', 'プレミアム'],
         rows: [
-          { 
+          {
             feature: '目的 / 料金目安',
             values: [
             '名刺代わりの簡単サイト<br><strong>初期費用 約23万円</strong>',
