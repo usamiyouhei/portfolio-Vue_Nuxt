@@ -27,7 +27,7 @@
     </section>
 
     <div class="cta">
-      <Button buttonText="Contact" :onClick="() => (showContact = true)"/>
+      <Button  buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
     </div>
 
    <ContactModal v-if="showContact"  @close="showContact = false"/>
@@ -100,7 +100,7 @@ const bgStyle = computed(() => ({
   font-family: "Italianno";
   color: #333;
   padding: 6px 12px;
-  font-size: clamp(56px, 4.5vw, 82px);
+  font-size: clamp(48px, 5vw, 82px);
   // font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -172,11 +172,49 @@ const bgStyle = computed(() => ({
     padding: 8px 12px 12px;
     line-height: 1.7;
   }
+  .fv__bg {
+    background-position: center top;
+  }
+  .cta-btn {
+    min-width: 220px;
+  }
 }
 @media (max-width: 480px) {
+  .fv {
+    height: 200px;
+  }
+
+  .page_title {
+    font-size: 34px;
+  }
+  .block-title {
+    font-size: 20px;
+  }
+  .cta {
+    padding: 16px 0 40px;
+  }
   .cta-btn {
     min-width: 200px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page_title {
+    font-size: 28px;
+    padding: 3px 8px;
+  }
+  .block-text {
     font-size: 14px;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    min-width: 160px;
+    height: 36px;
+    font-size: 13px;
+  }
+  .inner {
+    padding: 24px 10px;
   }
 }
 // .fade {
