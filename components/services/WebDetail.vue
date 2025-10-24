@@ -17,7 +17,9 @@
             <h2 class="block-title">{{ b.title }}</h2>
           </header>
           <p class="block-text" v-html="b.body" />
-          <ServicesPriceCompareTable v-if="b.id === 'price-guide' && service.priceTable" :table="service.priceTable"/>
+          <div class="table-scroll">
+            <ServicesPriceCompareTable v-if="b.id === 'price-guide' && service.priceTable" :table="service.priceTable"/>
+          </div>
         </li>
 
         <li class="service-block">
@@ -131,6 +133,25 @@ const bgStyle = computed(() => ({
 .block-text {
   padding: 8px 16px 16px;
   line-height: 1.9;
+}
+.table-scroll {
+  display: block;
+  overflow-x: auto;
+   -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
+  width: 100%;
+
+  ::v-deep(table) {
+    min-width: 600px;
+    border-collapse: collapse;
+  }
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+  }
 }
 .consult {
   padding: 0 16px 16px;
