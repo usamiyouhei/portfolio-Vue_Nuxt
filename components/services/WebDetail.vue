@@ -115,8 +115,9 @@ const bgStyle = computed(() => ({
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: block;
   gap: 24px;
+  overflow: visible;
 }
 .block-head {
   padding: 8px 16px;
@@ -126,6 +127,7 @@ const bgStyle = computed(() => ({
   border-radius: 12px;
   padding: 8px 0 0;
   overflow: visible;
+  margin-bottom: 24px;
 }
 
 .block-title {

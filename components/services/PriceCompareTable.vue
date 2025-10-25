@@ -17,9 +17,9 @@
         </tbody>
       </table>
 
+      <span class="shadow shadow--left" />
+      <span class="shadow shadow--right" />
     </div>
-    <!-- <span class="shadow shadow--left" />
-    <span class="shadow shadow--right" /> -->
   </div>
 </template>
 
@@ -40,6 +40,7 @@ const root = ref<HTMLElement | null>(null)
 <style lang="scss" scoped>
 .price-wrap {
   padding: 4px 0 16px;
+  overflow: visible !important;
 }
 .scroll-hint {
   font-size: 12px;
@@ -52,12 +53,13 @@ const root = ref<HTMLElement | null>(null)
 
 .price-scroll {
   position: relative;
-  display: block;
+  display: inline-block;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+   white-space: nowrap;
 }
 
 .price-table {
@@ -88,7 +90,7 @@ const root = ref<HTMLElement | null>(null)
 .sticky {
   position: sticky;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   background: #fafafa;
 }
 
