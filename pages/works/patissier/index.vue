@@ -1,5 +1,6 @@
 <template>
   <section class="patissier">
+    <Breadcrumb :crumbs="crumbs"/>
     <header class="head">
       <h1 class="title">Patissier Gallery</h1>
       <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
@@ -19,7 +20,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { patissierWorks } from '~/data/view';;
+import { patissierWorks } from '~/data/view';
+import { useBreadcrumb } from '@/composables/useBreadcrumb';
+import Breadcrumb from '~/components/common/Breadcrumb.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -39,6 +42,7 @@ const tabs:{ key: PatissierTab, label: string }[] = [
   { key: 'cake', label: 'ケーキ'}
 ]
 const list = computed(() =>  patissierWorks.filter(w => w.category === tab.value))
+const { crumbs } = useBreadcrumb('works', 'Patissier')
 
 // モーダル深リンク：?id=xxx
 const modalId = computed(() => route.query.id as string | undefined)
@@ -60,6 +64,8 @@ function closeModal(){
   delete(q as any).id
   router.replace({query: q})
 }
+
+
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

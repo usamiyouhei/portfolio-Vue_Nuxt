@@ -1,5 +1,7 @@
 <template>
   <article class="container">
+    <Breadcrumb :crumbs="crumbs"/>
+
     <header class="head">
       <nav class="bc">
         <NuxtLink to="/">Home</NuxtLink> /
@@ -20,7 +22,8 @@
 <script setup lang="ts">
 import { programmingWorks } from '~/data/view';
 import { useRoute } from 'vue-router';
-
+import Breadcrumb from '~/components/common/Breadcrumb.vue';
+import { useBreadcrumb } from '#imports';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -32,6 +35,9 @@ const work = programmingWorks.find( w => w.slug === slug || String(w.id) === slu
 if(!work) {
   throw createError({ statusCode: 404 , statusMessage: 'Work not found'})
 }
+
+const { crumbs } = useBreadcrumb('works', work.title)
+
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

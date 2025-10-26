@@ -1,5 +1,7 @@
 <template>
   <article v-if="itemSafe" class="inner">
+    <Breadcrumb :crumbs="crumbs"/>
+
     <header>
       <time class="date">{{ itemSafe.date }}</time>
       <h1 class="title">{{ itemSafe.title }}</h1>
@@ -15,7 +17,8 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useNews } from '@/composables/useNews'
 import type { News } from '@/types/news'
-
+import { useBreadcrumb } from '@/composables/useBreadcrumb';
+import Breadcrumb from '~/components/common/Breadcrumb.vue';
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -31,6 +34,7 @@ const itemSafe = computed<News>(() => {
   return found
 })
 
+const { crumbs } = useBreadcrumb('news', itemSafe.value.title)
 // if (!item) {
 //   throw createError({ statusCode: 404, statusMessage: 'News not found' })
 // }
