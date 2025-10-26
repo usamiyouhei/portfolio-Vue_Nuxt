@@ -30,27 +30,22 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .news-item {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   transition: transform .18s ease, box-shadow .18s ease;
   cursor: pointer;
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0,0,0,.10);
+    color: #b8860b; 
   }
 }
 
 .news-item__thumb {
-  flex: 0 0 220px;
-  aspect-ratio: 3/2;
-  // width: 120px;
-  // height: 74px;
+  flex: 0 0 100px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-radius: 14px;
   img {
     width: 100%;
     height: 100%;
@@ -61,7 +56,7 @@ const props = defineProps<{
 
 .news-item__body {
   min-width: 0;
-  flex: 1 1 auto;
+  flex: 1;
 }
 
 .news-item__date {
@@ -72,7 +67,7 @@ const props = defineProps<{
 }
 
 .news_item__title {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
   display: -webkit-box;
@@ -81,7 +76,7 @@ const props = defineProps<{
   overflow: hidden;
 }
 .news-item__excerpt {
-  font-size: 14px;
+  font-size: 13px;
   color: #444;
   line-height: 1.7;
   display: -webkit-box;
@@ -90,12 +85,17 @@ const props = defineProps<{
   overflow: hidden;
 }
 
-@media (max-width:480px){
+@media (max-width:479px){
   .news-item{
-    align-items:flex-start;
+    flex-direction: column;
+    align-items:center;
+    text-align: center;
   }
   .news-item__thumb{
-    width:96px; height:64px;
+    flex: none;
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
   }
   .news-item__body {
     margin: auto;
@@ -103,22 +103,41 @@ const props = defineProps<{
 }
 
 /* タブレット以上: サムネを少し大きく */
-@media (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 767px) {
   .news-item {
-  gap: 10px; 
-  padding: 10px 12px; 
-  border-radius: 14px;
+  gap: 12px;
+  padding: 12px 14px;
   }
-
   .news-item__thumb {
-    flex-basis: 110px; 
-    aspect-ratio: 16 / 10; 
-    border-radius: 10px; 
+    flex: 0 0 120px;
+    aspect-ratio: 4 / 3;
   }
   .news-item__body {
     flex: none;
   }
-  .news-item__title { font-size: 16px; }
-  .news-item__excerpt { font-size: 13px; -webkit-line-clamp: 2; }
+  .news-item__title {
+    font-size: 15px;
+  }
+  .news-item__excerpt {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .news-item {
+    gap: 16px;
+    padding: 16px;
+  }
+  .news-item__thumb {
+    flex: 0 0 160px;
+    aspect-ratio: 4 / 3;
+  }
+  .news-item__title {
+    font-size: 16px;
+  }
+  .news-item__excerpt {
+    font-size: 16px;
+  }
 }
 </style>

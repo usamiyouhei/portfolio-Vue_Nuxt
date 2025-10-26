@@ -62,5 +62,8 @@ const props = defineProps<{
       color: #000;
     }
   }
+  span {
+    color: #aaa;
+  }
 }
 </style>

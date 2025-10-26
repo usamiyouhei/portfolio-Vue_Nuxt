@@ -31,23 +31,6 @@ import  Button  from "../common/Button.vue";
 const props = withDefaults(defineProps<{ items?: News[] }>(), {
   items: () => []
 })
-//  const news = [
-//   {
-//     title:"新ポートフォリオ作成しております",
-//     date:"2024.01.29",
-//     thumbnail:"/img/news-img2.jpg"
-//   },
-//   {
-//     title:"あけましておめでとうございます",
-//     date:"2024.01.01",
-//     thumbnail:"/img/news-img1.jpg"
-//   },
-//   {
-//     title:"クリスマスデザートコーススタート",
-//     date:"2023.12.15",
-//     thumbnail:"/img/news-img3.jpg"
-//   },
-// ]
 
  //------------------------------------------------------------------------------------------------------------
 // 引数
