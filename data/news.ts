@@ -32,7 +32,7 @@ export const allNews: News[] = [
     date: '2025-08-10',
     slug: 'article-10',
     image: '/img/news/news-img_flower_1.jpg',
-    excerpt: '記事１０',
+    excerpt: '記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０',
   },
   {
     id: 'n9',
@@ -84,7 +84,7 @@ export const allNews: News[] = [
   },
   {
     id: 'n3',
-    title: 'New Portfolio',
+    title: 'New Portfolio new',
     date: '2025-10-23',
     image: '/img/news/news-img2_new_portfolio.jpg',
     slug: '2025-10-23_new_portfolio',
