@@ -5,7 +5,9 @@
         </div>
         <div class="news-item__body">
           <time class="news-item__date">{{ props.item.date }}</time>
-          <h3 class="news_item__title">{{ props.item.title }}</h3>
+          <h3 class="news_item__title">
+            {{ props.item.title }}
+          </h3>
           <p v-if="props.item.excerpt" class="news_item__excerpt">
             {{ props.item.excerpt }}
           </p>
@@ -67,15 +69,18 @@ const props = defineProps<{
 }
 
 .news_item__title {
+  position: relative;
   font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
+  border-bottom: 2px solid #b8860b;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
 }
-.news-item__excerpt {
+.news_item__excerpt {
   font-size: 13px;
   color: #444;
   line-height: 1.7;
@@ -111,6 +116,7 @@ const props = defineProps<{
   .news-item__thumb {
     flex: 0 0 120px;
     aspect-ratio: 4 / 3;
+    border-radius: 12px;
   }
   .news-item__body {
     flex: none;
@@ -118,7 +124,7 @@ const props = defineProps<{
   .news-item__title {
     font-size: 15px;
   }
-  .news-item__excerpt {
+  .news_item__excerpt {
     font-size: 13px;
     -webkit-line-clamp: 2;
   }
@@ -132,12 +138,29 @@ const props = defineProps<{
   .news-item__thumb {
     flex: 0 0 160px;
     aspect-ratio: 4 / 3;
+    border-radius: 12px;
   }
   .news-item__title {
     font-size: 16px;
   }
-  .news-item__excerpt {
+  .news_item__excerpt {
     font-size: 16px;
   }
 }
+
+@media (min-width: 1024px) {
+  .news-items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .news {
+    margin: 60px 0 80px;
+  }
+  .news-item__thumb {
+    flex: 0 0 160px;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+  }
+}
+
 </style>
