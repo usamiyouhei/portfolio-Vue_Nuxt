@@ -132,9 +132,9 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
     width: 100%;
   }
 }
-@media (min-width: 1024px) {
-  .news__items {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+// @media (min-width: 1024px) {
+//   .news__items {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
 </style>

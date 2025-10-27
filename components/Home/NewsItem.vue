@@ -40,7 +40,7 @@ const props = defineProps<{
   cursor: pointer;
   &:hover {
     transform: translateY(-2px);
-    color: #b8860b; 
+    color: #b8860b;
   }
 }
 
@@ -69,7 +69,6 @@ const props = defineProps<{
 }
 
 .news_item__title {
-  position: relative;
   font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
@@ -78,7 +77,7 @@ const props = defineProps<{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
+  
 }
 .news_item__excerpt {
   font-size: 13px;
