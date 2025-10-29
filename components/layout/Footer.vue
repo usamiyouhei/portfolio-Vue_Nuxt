@@ -165,4 +165,25 @@
   margin-bottom: 0;
   font-size: 0.85rem;
 }
+
+@media (max-width: 767px) {
+  .footer ul {
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+    // padding: 40px 0 20px;
+  }
+  .footer__container {
+    display: flex;
+  }
+  .footer__nav {
+    font-size: 36px;
+  }
+  .footer__sns {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px;
+  }
+}
 </style>
