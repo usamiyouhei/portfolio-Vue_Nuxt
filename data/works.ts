@@ -25,8 +25,8 @@ export const works: Work[] = [
   },
   {
     id: 3,
-    title: 'Logo Design',
-    img: '/img/figma-img2.jpg',
+    title: 'web site 1',
+    img: '/img/works1.jpg',
     category: 'programming',
     slug: 'logo-design',
     date: '2025-08-30',
@@ -34,8 +34,8 @@ export const works: Work[] = [
   },
   {
     id: 4,
-    title: 'photo',
-    img: '/img/photographing.jpg',
+    title: 'web site2',
+    img: '/img/works2.jpg',
     category: 'programming',
     slug: 'hobby',
     date: '2025-07-10',
@@ -43,8 +43,8 @@ export const works: Work[] = [
   },
   {
     id: 5,
-    title: 'photo',
-    img: '/img/photographing.jpg',
+    title: 'design 1',
+    img: '/img/figma-fv.jpg',
     category: 'design',
     slug: 'hobby',
     date: '2025-07-10',
@@ -52,8 +52,8 @@ export const works: Work[] = [
   },
   {
     id: 6,
-    title: 'photo',
-    img: '/img/photographing.jpg',
+    title: 'design 2',
+    img: '/img/figma-img2.jpg',
     category: 'design',
     slug: 'hobby',
     date: '2025-07-10',
@@ -62,7 +62,7 @@ export const works: Work[] = [
   {
     id: 7,
     title: '紫陽花',
-    img: '/img/Hg-img2.jpg',
+    img: '/img/hobby/ajisai.jpg',
     category: 'hobby',
     slug: 'hobby',
     date: '2025-07-10',
@@ -70,11 +70,20 @@ export const works: Work[] = [
   },
   {
     id: 8,
-    title: 'dessert',
-    img: '/img/Dg-img1.jpg',
+    title: 'wine',
+    img: '/img/hobby/wine_1.jpg',
     category: 'hobby',
     slug: 'hobby',
     date: '2025-07-10',
-    tags: ['Asisai',]
+    tags: ['wine',]
+  },
+  {
+    id: 9,
+    title: '器',
+    img: '/img/hobby/utsuwa_1.jpg',
+    category: 'hobby',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['wine',]
   }
 ]
