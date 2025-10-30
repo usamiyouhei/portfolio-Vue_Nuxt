@@ -127,6 +127,71 @@ const onSubmit = () => {
   .contact__inner {
     padding: 60px 20px;
   }
+   .contact__wrap {
+    text-align: center;
 
+    p {
+      font-size: 0.9rem;
+      margin-top: 16px;
+    }
+  }
+
+  .contact__text {
+    margin: 20px auto 0;
+  }
+
+  .form--page {
+    width: 100%;
+  }
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contact__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 40px 100px;
+  }
+
+  .contact__wrap {
+    max-width: 70%;
+    margin: 0 auto;
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .form--page {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 100px 60px 120px;
+  }
+
+  .contact__wrap {
+    flex: 1;
+    max-width: 45%;
+    text-align: left;
+
+    p {
+      font-size: 1rem;
+      margin-top: 20px;
+      line-height: 1.9;
+    }
+  }
+
+  .form--page {
+    flex: 1;
+    max-width: 50%;
+  }
+}
+
 </style>
