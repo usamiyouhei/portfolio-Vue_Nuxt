@@ -166,8 +166,9 @@ const handleSubmit = async () => {
 
   &--page {
     padding: 1rem 1.5rem;
-     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
+    background-color: rgba(255,255,255,0.65);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
   }
 
   &--modal {
@@ -265,5 +266,50 @@ const handleSubmit = async () => {
     text-align: center;
   }
 }
-
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contact__form {
+    max-width: 680px;
+    padding: 3rem 2rem;
+  }
+  .form {
+    gap: 18px;
+  }
+  .form__row {
+    flex-direction: row;
+    align-items: center;
+  }
+  .form__label {
+    width: 35%;
+    text-align: right;
+    padding-right: 12px;
+    font-size: 15px;
+  }
+  .form__control {
+    width: 60%;
+    font-size: 15px;
+  }
+  .form__row--textarea {
+    align-items: flex-start;
+  }
+  .form__row--textarea .form__label {
+    padding-top: 8px;
+  }
+  @media (min-width: 1024px) {
+    .contact__form {
+      max-width: 900px;
+      padding: 4rem 3rem;
+    }
+    .form {
+      gap: 22px;
+    }
+    .form__label {
+      width: 25%;
+      text-align: right;
+      font-size: 16px;
+    }
+    .form__control {
+      width: 70%;
+    }
+  }
+}
 </style>
