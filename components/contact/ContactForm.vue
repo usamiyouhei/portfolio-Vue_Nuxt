@@ -162,11 +162,12 @@ const handleSubmit = async () => {
 // @use '~/assets/scss/components/contact/form' as *;
 .contact__form {
   margin: 0 auto;
-  // max-width: 640px;
   width: 100%;
 
   &--page {
-    padding: 4rem 2rem;
+    padding: 3rem 1.5rem;
+     background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
   }
 
   &--modal {
@@ -205,7 +206,7 @@ const handleSubmit = async () => {
   display: inline-block;
   font-size: 11px;
   line-height: 1;
-  padding: 4px 6px;
+  padding: 3px 6px;
   border-radius: 999px;
   border: 1px solid  #c9a227;
   color: #ff4d8d;
