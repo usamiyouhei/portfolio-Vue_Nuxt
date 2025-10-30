@@ -100,42 +100,33 @@ const onSubmit = () => {
   background-image: url(/img/news-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 60px;
   overflow-x: clip;
   width: 100%;
-  @media (min-width: 768px) {
-    display: block;
-    gap: 60px;
-    align-items: flex-start;
-    // max-width: 1000px;
-  }
+  margin-top: 40px;
 }
 .contact__inner {
   max-width: 1100px;
-  justify-content: center;
-  margin: 0px auto 0;
-  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px 20px;
+  gap: 40px;
 }
 
 .contact__wrap {
-  padding: 20px 0;
-  margin: 20px auto;
-  @media (min-width: 768px) {
-    flex: 1;
-    max-width: 50%;
-    text-align: center;
+  text-align: center;
+  padding: 0 12px;
+  p {
+    line-height: 1.78;
+    letter-spacing: 0.05;
+    margin-top: 20px;
   }
 }
 
-.contact__text {
-  text-align: center;
-  margin: 20px auto 0;
-  line-height: 1.78;
-  letter-spacing: 0.05em;
-}
+@media (max-width: 767px) {
+  .contact__inner {
+    padding: 60px 20px;
+  }
 
-// .form--page {
-//   max-width: 600px;
-//   margin: auto;
-// }
+}
 </style>
