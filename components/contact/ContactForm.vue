@@ -165,7 +165,7 @@ const handleSubmit = async () => {
   width: 100%;
 
   &--page {
-    padding: 3rem 1.5rem;
+    padding: 1rem 1.5rem;
      background-color: rgba(255, 255, 255, 0.8);
     border-radius: 12px;
   }
@@ -175,10 +175,6 @@ const handleSubmit = async () => {
     background: transparent;
     max-height: none;
     overflow: visible;
-  }
-  @media (max-width: 768px) {
-    flex: 1;
-    max-width: 50%;
   }
 }
 
@@ -245,21 +241,18 @@ const handleSubmit = async () => {
 }
 
 
-@media (min-width: 768px) {
-  .form {
-    gap: 18px;
-  }
-  .form__row {
-    flex-direction: row;
-    align-items: center;
+@media (min-width: 767px) {
+  .contact__form {
+    padding: 2rem 1rem;
   }
   .form__label {
-    width: 30%;
-    text-align: right;
-    padding-right: 12px;
+    font-size: 15px;
   }
   .form__control {
-    width: 70%;
+    font-size: 15px;
+  }
+  .form__row {
+    gap: 10px;
   }
   .form__row--textarea {
     align-items: flex-start;
@@ -267,7 +260,10 @@ const handleSubmit = async () => {
   .form__row--textarea .form__label {
     padding-top: 10px;
   }
-
+  .cta {
+    margin-top: 24px;
+    text-align: center;
+  }
 }
 
 </style>
