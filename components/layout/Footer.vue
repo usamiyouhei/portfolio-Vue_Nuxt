@@ -60,8 +60,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
+  color: #fff; // デフォルト文字色（上書き可）
 }
 
+/* --------------------------------
+   Nav
+--------------------------------- */
 .footer__nav {
   font-family: "Italianno";
   font-size: 32px;
@@ -73,11 +77,25 @@
   justify-content: space-around;
   padding: 70px 0;
   margin: 0;
+  list-style: none;
+}
+
+.footer_link {
+  position: relative;
+  color: #d7b97a; /* ペールゴールド */
+  text-decoration: none;
+  transition: color .3s ease;
 }
 
 .footer_link::after {
   content: "";
+  position: absolute;
+  left: 0;
+  top: 30px;
+  height: 3px;
   width: 0;
+  background-color: #cba96d;
+  transition: width .3s ease;
 }
 
 .footer_link:hover {
@@ -86,38 +104,30 @@
 
 .footer_link:hover::after {
   width: 100%;
-  position: absolute;
-  top: 30px;
-  left: 0;
-  display: block;
-  height: 3px;
-  transition: width 0.3s;
-  transition-behavior: normal;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-  transition-property: width;
-  background-color: #cba96d;
 }
 
+/* a のデフォルト色（リンク以外に適用） */
 .footer a {
-  color: #fff;
+  color: #444;
 }
 
-/* ------------------------
-   SNSアイコン
------------------------- */
-
+/* --------------------------------
+   SNS アイコン
+--------------------------------- */
 .icon {
   display: inline-block;
-  inline-size: 24px;
-  block-size: 24px;
-  background-color: currentColor; /* 色はここで制御 */
-  -webkit-mask: center / contain no-repeat;
-          mask: center / contain no-repeat;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  /* ↓ shorthand は外して安全側に寄せる */
+  /* -webkit-mask: center / contain no-repeat;
+     mask: center / contain no-repeat; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
-/* 各ブランドSVGをマスクに設定 */
+/* 各ブランドは mask-image を使う場合は下のように: */
 .icon--x        { -webkit-mask-image: url('/brands/x.svg');         mask-image: url('/brands/x.svg'); }
 .icon--insta    { -webkit-mask-image: url('/brands/instagram.svg'); mask-image: url('/brands/instagram.svg'); }
 .icon--github   { -webkit-mask-image: url('/brands/github.svg');    mask-image: url('/brands/github.svg'); }
@@ -132,24 +142,23 @@
 }
 
 .footer__sns a {
-  color: #fff; /* 初期は白 */
-  transition: color .2s ease, transform .2s ease;
   line-height: 0;
+  transition: color .2s ease, transform .2s ease;
 }
 
 .footer__sns a img {
   width: 24px;
   height: 24px;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition: transform .25s ease, filter .25s ease;
 }
 
 .footer__sns a:hover img {
-  transform: scale(1.15);   /* 少し拡大 */
-  filter: brightness(1.1); /* 少し明るくして映え感UP */
+  transform: scale(1.15);
+  filter: brightness(1.1);
 }
 
 .footer__sns a:hover {
-  color: #c9a227; /* ホバーでゴールド */
+  color: #c9a227;
   transform: translateY(-2px);
 }
 
@@ -159,6 +168,9 @@
   border-radius: 9999px;
 }
 
+/* --------------------------------
+   Copy
+--------------------------------- */
 .footer__copy-right p {
   text-align: center;
   padding-bottom: 20px;
@@ -166,24 +178,44 @@
   font-size: 0.85rem;
 }
 
+/* --------------------------------
+   〜767px：左右2列（Nav左 / SNS右）
+--------------------------------- */
 @media (max-width: 767px) {
-  .footer ul {
-    flex-direction: column;
-    align-items: start;
-    gap: 12px;
-    // padding: 40px 0 20px;
-  }
   .footer__container {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 40px 0;
   }
+
   .footer__nav {
     font-size: 36px;
+    text-align: right;
+    flex: 1;
   }
+
+  .footer ul {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 0 1rem 0 0;
+    margin: 0;
+  }
+
   .footer__sns {
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 24px;
+    align-items: flex-start;
+    flex: 1;
+    gap: 16px;
+    padding: 0 0 0 1rem;
+  }
+
+  .footer__sns a img {
+    width: 28px;
+    height: 28px;
   }
 }
 </style>
