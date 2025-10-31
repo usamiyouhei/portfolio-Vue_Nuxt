@@ -68,7 +68,7 @@ a {
   flex-direction: column;
   width: 100%;
   gap: 30px;
-  background-image: url(/public/img/aboutback.png);
+  background-image: url(/public/img/about/aboutback.png);
   background-size: 300px 250px;
   background-repeat: no-repeat;
   background-position: center;

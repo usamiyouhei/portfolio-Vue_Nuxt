@@ -73,23 +73,23 @@ onMounted(() => {
   overflow: hidden;
   object-fit: cover;
   &:first-of-type {
-    background-image: url(../img/hero/kv-img_1_pari_brest.jpg);
+    background-image: url(public/img/hero/kv-img_1_pari_brest.jpg);
     animation-delay: 0s;
   }
   &:nth-of-type(2) {
-    background-image: url(../img/hero/kv-img_2_make_dessert_2.jpg);
+    background-image: url(public/img/hero/kv-img_2_make_dessert_2.jpg);
     animation-delay: 6s;
   }
   &:nth-of-type(3) {
-    background-image: url(../img/hero/kv-img_3_typing.jpg);
+    background-image: url(public/img/hero/kv-img_3_typing.jpg);
     animation-delay: 12s;
   }
   &:nth-of-type(4) {
-    background-image: url(../img/hero/kv-img_4_lemon_dessert.jpg);
+    background-image: url(public/img/hero/kv-img_4_lemon_dessert.jpg);
     animation-delay: 18s;
   }
   &:nth-of-type(5) {
-    background-image: url(../img/kv-img-5.jpg);
+    background-image: url(public/img/hero/kv-img_5_pc.jpg);
     animation-delay: 24s;
   }
 }

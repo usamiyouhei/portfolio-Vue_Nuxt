@@ -178,7 +178,7 @@ const props = defineProps<{
     margin: 60px 0 80px;
   }
   .news-item__thumb {
-    flex: 0 0 160px;
+    // flex: 0 0 160px;
     aspect-ratio: 4 / 3;
     border-radius: 12px;
   }
