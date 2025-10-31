@@ -54,17 +54,10 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
   z-index: 100;
 }
 .news__items {
-  display: flex;
-  gap: 16px;
-  grid-template-columns: 1fr;
-  margin: 30px auto 0;
-  width: min(900px, 80%);
-  text-align: center;
-  position: relative;
-  z-index: 100;
-  // @media (min-width: 768px) {
-  //   grid-template-columns: repeat(3, 1fr);
-  // }
+  display: grid;
+  gap: 24px;
+  margin: 40px auto 0;
+  width: min(1000px, 90%);
 }
 
 .news__item {
