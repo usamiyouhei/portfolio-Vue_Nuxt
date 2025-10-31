@@ -5,10 +5,10 @@
         </div>
         <div class="news-item__body">
           <time class="news-item__date">{{ props.item.date }}</time>
-          <h3 class="news_item__title">
+          <h3 class="news-item__title">
             {{ props.item.title }}
           </h3>
-          <p v-if="props.item.excerpt" class="news_item__excerpt">
+          <p v-if="props.item.excerpt" class="news-item__excerpt">
             {{ props.item.excerpt }}
           </p>
         </div>
@@ -68,18 +68,17 @@ const props = defineProps<{
   margin-bottom: 4px;
 }
 
-.news_item__title {
+.news-item__title {
   font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
-  border-bottom: 2px solid #b8860b;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   
 }
-.news_item__excerpt {
+.news-item__excerpt {
   font-size: 13px;
   color: #444;
   line-height: 1.7;
@@ -107,35 +106,58 @@ const props = defineProps<{
 }
 
 /* タブレット以上: サムネを少し大きく */
-@media (min-width: 480px) and (max-width: 767px) {
+@media (min-width: 375px) and (max-width: 768px) {
   .news-item {
-  gap: 12px;
-  padding: 12px 14px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 12px;
+    padding: 12px 14px;
   }
   .news-item__thumb {
-    flex: 0 0 120px;
-    aspect-ratio: 4 / 3;
+    width: 100%;
+    max-width:500px;
     border-radius: 12px;
+    overflow: hidden;
   }
   .news-item__body {
-    flex: none;
+    width: 100%;
+    max-width: 340px;
   }
+
+  .news-item__date {
+    font-size: 13px;
+  }
+
   .news-item__title {
     font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 4px;
   }
   .news_item__excerpt {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    display: -webkit-box;
     -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .news-item {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .news-item {
     gap: 16px;
     padding: 16px;
   }
   .news-item__thumb {
-    flex: 0 0 160px;
+    width: clamp(180px, 40%, 260px);
     aspect-ratio: 4 / 3;
     border-radius: 12px;
   }
@@ -148,7 +170,7 @@ const props = defineProps<{
 }
 
 @media (min-width: 1024px) {
-  .news-items {
+  .news-item {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }

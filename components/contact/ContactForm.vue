@@ -294,22 +294,37 @@ const handleSubmit = async () => {
   .form__row--textarea .form__label {
     padding-top: 8px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
     .contact__form {
       max-width: 900px;
-      padding: 4rem 3rem;
+      padding: 4rem 2rem;
     }
     .form {
       gap: 22px;
     }
+    .form__row {
+      flex-direction: row;
+    }
     .form__label {
-      width: 25%;
-      text-align: right;
-      font-size: 16px;
-    }
-    .form__control {
-      width: 70%;
-    }
+    width: 40%;
+    text-align: right;
+    font-size: 16px;
+  }
+
+  .form__control {
+    width: 70%;
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .form__row--textarea .form__label {
+    padding-top: 10px;
+  }
+
+  .cta {
+    text-align: right;
+    margin-top: 32px;
   }
 }
 </style>
