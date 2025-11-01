@@ -32,40 +32,46 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .news-item {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
-  transition: transform .18s ease, box-shadow .18s ease;
-  cursor: pointer;
-  &:hover {
-    transform: translateY(-2px);
-    color: #b8860b;
-  }
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.3);
+  transition: transform .2s ease;
+  &:hover{ transform: translateY(-3px); }
+  // transition: transform .18s ease, box-shadow .18s ease;
+  // cursor: pointer;
+  // &:hover {
+  //   transform: translateY(-2px);
+  //   color: #b8860b;
+  // }
 }
 
 .news-item__thumb {
-  flex: 0 0 100px;
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
   overflow: hidden;
+  position: relative;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display:block;
+    transition: transform 0.4s ease;
+  }
+   &:hover img {
+    transform: scale(1.08);
   }
 }
 
 .news-item__body {
-  min-width: 0;
-  flex: 1;
+  width: 100%;
+  text-align: center;
 }
 
 .news-item__date {
   font-size: 12px;
   color: #888;
-  display:block;
-  margin-bottom: 4px;
 }
 
 .news-item__title {
@@ -76,7 +82,6 @@ const props = defineProps<{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  
 }
 .news-item__excerpt {
   font-size: 13px;
@@ -88,72 +93,74 @@ const props = defineProps<{
   overflow: hidden;
 }
 
-@media (max-width:479px){
+@media (min-width:426px) and (max-width: 767px){
   .news-item{
-    flex-direction: column;
+    flex-direction: row;
     align-items:center;
-    text-align: center;
+    gap: 16px;
+    padding: 16px;
   }
   .news-item__thumb{
-    flex: none;
-    width: 100%;
+    flex: 0 0 40%;
+    aspect-ratio: 4 / 3;
     max-width: 280px;
     border-radius: 12px;
   }
   .news-item__body {
-    margin: auto;
+    flex: 1;
+    width: 100%;
+    text-align: left;
   }
 }
 
 /* タブレット以上: サムネを少し大きく */
-@media (min-width: 375px) and (max-width: 768px) {
-  .news-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    gap: 12px;
-    padding: 12px 14px;
-  }
-  .news-item__thumb {
-    width: 100%;
-    max-width:500px;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .news-item__body {
-    width: 100%;
-    max-width: 340px;
-  }
+// @media (min-width: 375px) and (max-width: 768px) {
+//   .news-item {
+//     flex-direction: column;
+//     align-items: center;
+//     text-align: center;
+//     width: 100%;
+//     gap: 12px;
+//     padding: 12px 14px;
+//   }
+//   .news-item__thumb {
+//     width: 100%;
+//     max-width:500px;
+//     border-radius: 12px;
+//     overflow: hidden;
+//   }
+//   .news-item__body {
+//     width: 100%;
+//     max-width: 340px;
+//   }
 
-  .news-item__date {
-    font-size: 13px;
-  }
+//   .news-item__date {
+//     font-size: 13px;
+//   }
 
-  .news-item__title {
-    font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 4px;
-  }
-  .news_item__excerpt {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #555;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
+//   .news-item__title {
+//     font-size: 15px;
+//     line-height: 1.5;
+//     margin-bottom: 4px;
+//   }
+//   .news_item__excerpt {
+//     font-size: 14px;
+//     line-height: 1.6;
+//     color: #555;
+//     display: -webkit-box;
+//     -webkit-line-clamp: 2;
+//     -webkit-box-orient: vertical;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+// }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .news-item {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .news-item {
-    gap: 16px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
     padding: 16px;
   }
   .news-item__thumb {
@@ -161,11 +168,17 @@ const props = defineProps<{
     aspect-ratio: 4 / 3;
     border-radius: 12px;
   }
+  .news-item__body {
+  width: 100%;
+  text-align: center;
+  padding: 10px 2px 0;
+}
   .news-item__title {
     font-size: 16px;
   }
   .news_item__excerpt {
     font-size: 16px;
+    -webkit-line-clamp: 3;
   }
 }
 
