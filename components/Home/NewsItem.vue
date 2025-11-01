@@ -39,12 +39,6 @@ const props = defineProps<{
   background: rgba(255,255,255,.3);
   transition: transform .2s ease;
   &:hover{ transform: translateY(-3px); }
-  // transition: transform .18s ease, box-shadow .18s ease;
-  // cursor: pointer;
-  // &:hover {
-  //   transform: translateY(-2px);
-  //   color: #b8860b;
-  // }
 }
 
 .news-item__thumb {

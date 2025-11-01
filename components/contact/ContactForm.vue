@@ -261,10 +261,10 @@ const handleSubmit = async () => {
   .form__row--textarea .form__label {
     padding-top: 10px;
   }
-  .cta {
-    margin-top: 24px;
-    text-align: center;
-  }
+  // .cta {
+  //   margin-top: 10px;
+  //   text-align: center;
+  // }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .contact__form {
@@ -324,7 +324,7 @@ const handleSubmit = async () => {
 
   .cta {
     text-align: right;
-    margin-top: 32px;
+    margin-top: 10px;
   }
 }
 </style>

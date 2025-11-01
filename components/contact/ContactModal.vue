@@ -57,4 +57,17 @@ defineEmits(["close"])
   font-size: 1.8rem;
   cursor: pointer;
 }
+
+@media (max-width: 425px) {
+  .overlay {
+    align-items: flex-start;
+  }
+  .modal {
+    width: 100%;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+}
 </style>
