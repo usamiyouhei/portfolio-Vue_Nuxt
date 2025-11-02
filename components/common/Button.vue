@@ -62,7 +62,7 @@ const props = defineProps<ButtonProps>()
   display: flex;
   text-align: center;
   justify-content: center;
-  margin: 50px 0;
+  margin: 12px 0;
 }
 .btn {
   /* font-size: 1.6rem; */

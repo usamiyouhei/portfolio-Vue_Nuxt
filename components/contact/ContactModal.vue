@@ -34,11 +34,10 @@ defineEmits(["close"])
   position: relative;
   background-color: #fff;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   width: 90%;
   max-width: 480px;
-
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
@@ -63,8 +62,8 @@ defineEmits(["close"])
     align-items: flex-start;
   }
   .modal {
-    width: 100%;
-    height: 100vh;
+    width: 90%;
+    height: 90vh;
     max-width: none;
     max-height: none;
     border-radius: 0;
