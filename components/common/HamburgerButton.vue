@@ -87,6 +87,14 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside)
 })
+
+watch(isOpen, (open) => {
+  if(open) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -176,7 +184,7 @@ onBeforeUnmount(() => {
 //   font-size: 20px;
 // }
 .slide-menu__item {
-  padding-bottom: 10px;
+  padding-bottom: 14px;
 }
 
 .slide-menu__link {

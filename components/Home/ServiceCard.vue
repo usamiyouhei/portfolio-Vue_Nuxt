@@ -111,9 +111,34 @@ import { ref,computed } from "vue";
   text-align: left;
 }
 
+@media (max-width: 425px) {
+  .service__item {
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+  .svc-card {
+    height: auto;
+    min-height: 420px;
+    padding: 16px 14px;
+  }
+  .svc-card__img {
+    max-height: 160px;
+    margin-bottom: 10px;
+  }
+  .svc-card__desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
 @media (max-width: 480px) {
-  .svc-card { height: 500px; padding: 16px; }
-  .svc-card__img { max-height: 200px; }
+  .svc-card {
+    height: 500px;
+    padding: 16px;
+  }
+  .svc-card__img {
+    max-height: 200px;
+  }
 }
 @media (min-width: 768px) {
   .service__item {

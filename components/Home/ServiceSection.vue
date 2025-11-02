@@ -24,6 +24,12 @@
             :pagination="{ clickable: true }"
             :navigation="{ nextEl: '.svc-next', prevEl: '.svc-prev' }"
             :keyboard="{ enabled: true}"
+            :breakpoints="{
+              0:{slidesPerView: 1, spaceBetween: 0},
+              426:{slidesPerView: 1, spaceBetween: 12},
+              768:{slidesPerView: 1, spaceBetween: 16},
+              // 1024:{slidesPerView: 3, spaceBetween: 24},
+            }"
             class="service-swiper"
             >
             <SwiperSlide v-for="service in filteredServices" :key="service.slug">
@@ -160,10 +166,12 @@ import { ref, computed } from "vue";
 /* スワイパーの土台 */
 .service-swiper {
   width: 100%;
-  padding: 16px 24px 36px;
+  // padding: 16px 24px 36px;
   // スライドを親の高さに揃える
   box-sizing: border-box;
   max-width: 100%;
+  padding: 16px 48px 36px;
+  overflow: hidden;
   :deep(.swiper-wrapper) {
     align-items: stretch;
   }
