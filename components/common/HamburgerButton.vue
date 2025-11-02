@@ -15,21 +15,21 @@
         >
         <ul class="slide-menu__items">
           <li class="slide-menu__item">
-            <a href="#about" class="slide-menu__link" @click="closeMenu">About</a>
+            <NuxtLink href="/#about" class="slide-menu__link" @click="closeMenu">About</NuxtLink>
           </li>
           <li class="slide-menu__item">
-            <a href="#service" class="slide-menu__link" @click="closeMenu">Service</a>
+            <NuxtLink href="/#service" class="slide-menu__link" @click="closeMenu">Service</NuxtLink>
           </li>
           <li class="slide-menu__item">
-            <a href="#news" class="slide-menu__link" @click="closeMenu">News</a>
+            <NuxtLink href="/#news" class="slide-menu__link" @click="closeMenu">News</NuxtLink>
           </li>
           <li class="slide-menu__item">
-            <a href="#works" class="slide-menu__link" @click="closeMenu">Works</a>
+            <NuxtLink href="/#works" class="slide-menu__link" @click="closeMenu">Works</NuxtLink>
           </li>
           <li class="slide-menu__item">
-            <a href="#contact" class="slide-menu__link slide-menu__link--contact" @click="closeMenu"
-              >Contact</a
-            >
+            <NuxtLink href="/#contact" class="slide-menu__link slide-menu__link--contact" @click="closeMenu"
+              ><span>Contact</span>
+              </NuxtLink>
           </li>
         </ul>
         <div class="slide-menu__sns" aria-label="Social links">
@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 50%;
+  width: 40%;
   height: 100vh;
   background: #fff;
   transition: right 0.3s;
@@ -175,6 +175,9 @@ onBeforeUnmount(() => {
 //   margin: 50px;
 //   font-size: 20px;
 // }
+.slide-menu__item {
+  padding-bottom: 10px;
+}
 
 .slide-menu__link {
   font-family: "Italianno";
@@ -224,7 +227,7 @@ onBeforeUnmount(() => {
 .slide-menu__sns {
   margin: 12px auto 0px;
   padding-top: 12px;
-  display: flex;
+  display: grid;
   justify-content: center;
   gap: 18px;
   border-top: 1px solid rgba(0,0,0,.08);
