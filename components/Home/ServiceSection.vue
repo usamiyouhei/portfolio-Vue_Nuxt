@@ -25,8 +25,8 @@
             :navigation="{ nextEl: '.svc-next', prevEl: '.svc-prev' }"
             :keyboard="{ enabled: true}"
             :breakpoints="{
-              0:{slidesPerView: 1, spaceBetween: 0},
-              426:{slidesPerView: 1, spaceBetween: 12},
+              0:{slidesPerView: 'auto', spaceBetween: 0, centeredSlides: true},
+              426:{slidesPerView: 1, spaceBetween: 0},
               768:{slidesPerView: 1, spaceBetween: 16},
               // 1024:{slidesPerView: 3, spaceBetween: 24},
             }"
@@ -170,7 +170,7 @@ import { ref, computed } from "vue";
   // スライドを親の高さに揃える
   box-sizing: border-box;
   max-width: 100%;
-  padding: 16px 48px 36px;
+  padding: 16px 0px 36px;
   overflow: hidden;
   :deep(.swiper-wrapper) {
     align-items: stretch;
@@ -179,7 +179,11 @@ import { ref, computed } from "vue";
     height: auto;
   }
   /* スライド直下のカードを100%に */
-  :deep(.swiper-slide > *) { height: 100%; }
+  :deep(.swiper-slide > *) {
+    width: 90%;
+    max-width: 340px;
+    height: 100%;
+   }
  /* pagination の位置を下＆余白 */
   :deep(.swiper-pagination) {
     position: static;
@@ -210,7 +214,6 @@ import { ref, computed } from "vue";
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
-  padding-inline: 36px; 
 }
 .nav-button {
   position: absolute;
@@ -239,12 +242,17 @@ import { ref, computed } from "vue";
   transform: none;
 }
 
-.svc-prev { left: 36px; }
-.svc-next { right: 36px; }
+.svc-prev { left: -16px; }
+.svc-next { right: -16px; }
+
+// @media (min-width: 426px) {
+//   .svc-prev { left: 10px; }
+//   .svc-next { right: 10px; }
+// }
 
 @media (min-width: 768px) {
-  .svc-prev { left: 60px; }
-  .svc-next { right: 60px; }
+  .svc-prev { left: 80px; }
+  .svc-next { right: 80px; }
 }
 /* グリッド（PC用） */
 .service__items {

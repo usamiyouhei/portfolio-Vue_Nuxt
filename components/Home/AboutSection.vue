@@ -6,7 +6,7 @@
         <img src="/public/img/about/about_my_photo.jpg" alt="本人の写真" loading="lazy" />
         <div class="about__text">
           <p>
-            はじめまして。
+            はじめまして。<br/>
             宇佐美洋平と申します。<br/>
             一皿のデザートと、体験のデザイン。<br/>
             パティシエとして、“記憶に残る時間”を作り続けてきました。<br/>
@@ -68,7 +68,7 @@ a {
   flex-direction: column;
   width: 100%;
   gap: 30px;
-  background-image: url(/public/img/about/aboutback.png);
+  // background-image: url(/public/img/about/aboutback.png);
   background-size: 300px 250px;
   background-repeat: no-repeat;
   background-position: center;
@@ -102,9 +102,9 @@ a {
   .about__wrap {
     flex-direction: row;
     align-items: center;
-   justify-content: space-between;
-   gap: 40px;
-   background-position: left center;
+    justify-content: space-between;
+    gap: 40px;
+    background-position: left center;
   }
   .about__inner {
     margin: 0 auto;
@@ -114,11 +114,15 @@ a {
   .about img {
     max-width: 280px;
     width: 40%;
-    
   }
   .about__text {
-   width: 55%;
-   font-size: 17px;
+    width: 55%;
+    font-size: 17px;
+  }
+}
+@media (max-width: 425px) {
+  .about__text {
+    padding: 0 18px;
   }
 }
 @media screen and (min-width: 1024px) {
