@@ -44,7 +44,7 @@ export const works: Work[] = [
   {
     id: 5,
     title: 'web site2',
-    img: '/img/works2.jpg',
+    img: '/img/app/UsaTube_logo.png',
     category: 'app',
     slug: 'hobby',
     date: '2025-07-10',
