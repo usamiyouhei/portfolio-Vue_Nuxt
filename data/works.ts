@@ -27,7 +27,7 @@ export const works: Work[] = [
     id: 3,
     title: 'web site 1',
     img: '/img/works1.jpg',
-    category: 'programming',
+    category: 'website',
     slug: 'logo-design',
     date: '2025-08-30',
     tags: ['Logo',]
@@ -36,13 +36,31 @@ export const works: Work[] = [
     id: 4,
     title: 'web site2',
     img: '/img/works2.jpg',
-    category: 'programming',
+    category: 'website',
     slug: 'hobby',
     date: '2025-07-10',
     tags: ['Asisai',]
   },
   {
     id: 5,
+    title: 'web site2',
+    img: '/img/works2.jpg',
+    category: 'app',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 6,
+    title: 'web site2',
+    img: '/img/works2.jpg',
+    category: 'app',
+    slug: 'hobby',
+    date: '2025-07-10',
+    tags: ['Asisai',]
+  },
+  {
+    id: 7,
     title: 'design 1',
     img: '/img/figma-fv.jpg',
     category: 'design',
@@ -51,7 +69,7 @@ export const works: Work[] = [
     tags: ['Asisai',]
   },
   {
-    id: 6,
+    id: 8,
     title: 'design 2',
     img: '/img/figma-img2.jpg',
     category: 'design',
@@ -60,7 +78,7 @@ export const works: Work[] = [
     tags: ['Asisai',]
   },
   {
-    id: 7,
+    id: 9,
     title: '紫陽花',
     img: '/img/hobby/ajisai.jpg',
     category: 'hobby',
@@ -69,7 +87,7 @@ export const works: Work[] = [
     tags: ['Asisai',]
   },
   {
-    id: 8,
+    id: 10,
     title: 'wine',
     img: '/img/hobby/wine_1.jpg',
     category: 'hobby',
@@ -78,7 +96,7 @@ export const works: Work[] = [
     tags: ['wine',]
   },
   {
-    id: 9,
+    id: 11,
     title: '器',
     img: '/img/hobby/utsuwa_1.jpg',
     category: 'hobby',

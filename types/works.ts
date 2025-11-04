@@ -1,5 +1,5 @@
 
-export type Cat = 'patissier' | 'programming' | 'design' | 'hobby'
+export type Cat = 'patissier' | 'website' | 'app' | 'design' | 'hobby'
 export type DevType = 'site' | 'app'
 export interface Work {
   id: number | string,

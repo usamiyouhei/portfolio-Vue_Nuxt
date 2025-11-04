@@ -47,7 +47,7 @@ export const patissierWorks = [
 ]
 
 export const programmingWorks:Work[] = [
-  { id:'p1', slug:'todo-next', title:'Todo App (Next.js)', cover:'/img/camp-fv-img.jpg', category:'programming', type:'app',
+  { id:'p1', slug:'todo-next', title:'Todo App (Next.js)', cover:'/img/camp-fv-img.jpg', category:'app', type:'app',
     description:'学習用のタスク管理アプリ。',
     problem:'学習記録と進捗の可視化がしたい',
     solution:['タグ/フィルタ','ローカル→Supabase移行','PWA対応'],
@@ -56,7 +56,7 @@ export const programmingWorks:Work[] = [
     links:{ demo:'https://example.com', repo:'https://github.com/youheiusami/todo' },
     lessons:['型で負債を減らす','DBスキーマを先に固める']
   },
-  { id:'p2', slug:'portfolio', title:'portfolio', cover:'/img/news-img2.jpg', category:'programming', type:'site',
+  { id:'p2', slug:'portfolio', title:'portfolio', cover:'/img/news/news-img2_new_portfolio.jpg', category:'website', type:'site',
     description:'学習用のタスク管理アプリ。',
     problem:'学習記録と進捗の可視化がしたい',
     solution:['タグ/フィルタ','ローカル→Supabase移行','PWA対応'],
