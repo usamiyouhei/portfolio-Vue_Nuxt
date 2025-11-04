@@ -125,7 +125,7 @@ watch(
   position: relative;
   color: #141414;
   background-color: transparent;
-  padding: 4px 34px;
+  padding: 4px 24px;
   margin: 5px auto;
 }
 
@@ -137,7 +137,7 @@ watch(
 .header_link-contact::after{
   content: "";
   position: absolute;
-  left: 0;
+  left: -10px;
   top: 0;
   height: 490%;
   width: 150%;
