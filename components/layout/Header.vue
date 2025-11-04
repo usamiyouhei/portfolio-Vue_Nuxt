@@ -68,7 +68,7 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(8px, 3vw, 28px);
+  // gap: clamp(8px, 3vw, 28px);
   height: 100%;
   max-width: 1200px;
   margin-inline: auto;
@@ -82,7 +82,7 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   flex: 0 0 auto;
   width: clamp(140px, 22vw, 220px); /* 最小140px、画面に応じて伸縮、最大220px */
   line-height: 0;
-  margin-right: clamp(12px, 5vw, 64px);
+  margin-right: clamp(4px, 5vw, 64px);
 }
 
 .header_logo img {
