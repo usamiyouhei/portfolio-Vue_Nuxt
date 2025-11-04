@@ -121,9 +121,9 @@ import type { Work } from '../../types/works'
 import { works } from '../../data/works'
 
 type Cat = Work['category']
-const categories: Cat[] = ['patissier','programming','design','hobby']
+const categories: Cat[] = ['patissier','website', 'app' ,'design','hobby']
 const catLabels: Record<Cat,string> = {
-  patissier:'Patissier', programming:'Programming', design:'Design', hobby:'Hobby'
+  patissier:'Patissier', website:'website', app: 'app', design:'Design', hobby:'Hobby'
 }
 
 
@@ -131,7 +131,8 @@ const noImageSrc = '/img/noImg.png'
 
 const CAT_ROUTE: Record<Cat, string > = {
  'patissier':  '/works/patissier',
- 'programming':  '/works/programming' ,
+ 'website':  '/works/website' ,
+ 'app':  '/works/webapp' ,
  'design':  '/works/design' ,
  'hobby':  '/works/hobby'
 }
@@ -140,7 +141,7 @@ const catRoute = (c: Cat) => CAT_ROUTE[c]
 
 const worksByCat = computed<Record<Cat, Work[]>>(() => {
   const map: Record<Cat, Work[]> = {
-    patissier:[], programming:[], design:[], hobby:[]
+    patissier:[], website:[], app:[], design:[], hobby:[]
   }
   for(const w of works) map[w.category].push(w)
   return map
