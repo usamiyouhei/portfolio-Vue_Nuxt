@@ -118,7 +118,7 @@ import { ref,computed } from "vue";
     margin: 0 auto 20px;
   }
   .svc-card {
-    height: auto !important;
+    height: 100% !important;
     min-height: auto !important;
     padding: 16px 16px 10px;
   }
