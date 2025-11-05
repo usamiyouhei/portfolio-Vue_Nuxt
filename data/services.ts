@@ -125,9 +125,9 @@ export const services: Service[] = [
           { 
             feature: '目的 / 料金目安',
             values: [
-            '',
-            '',
-            '',
+            '名刺代わりの簡単サイト<br><strong>初期費用 約23万円</strong>',
+            'しっかりとした企業サイト<br><strong>初期費用 約45万円</strong>',
+            '集客に強い作り込み<br><strong>初期費用 約60万円</strong>',
             ],
           },
           {
@@ -187,9 +187,9 @@ export const services: Service[] = [
           { 
             feature: '目的 / 料金目安',
             values: [
-            '',
-            '',
-            '',
+            '名刺代わりの簡単サイト<br><strong>初期費用 約23万円</strong>',
+            'しっかりとした企業サイト<br><strong>初期費用 約45万円</strong>',
+            '集客に強い作り込み<br><strong>初期費用 約60万円</strong>',
             ],
           },
           {
@@ -249,9 +249,9 @@ export const services: Service[] = [
           { 
             feature: '目的 / 料金目安',
             values: [
-            '',
-            '',
-            '',
+            'レシピ１品<br><strong> 約２万円</strong>',
+            'レシピ６品<br><strong> 約１０万円</strong>',
+            'レシピ１０品<br><strong> 約１５万円</strong>',
             ],
           },
           {

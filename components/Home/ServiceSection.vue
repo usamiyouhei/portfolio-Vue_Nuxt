@@ -173,16 +173,17 @@ import { ref, computed } from "vue";
   padding: 16px 0px 36px;
   overflow: hidden;
   :deep(.swiper-wrapper) {
-    align-items: stretch;
+    align-items: flex-start;
   }
   :deep(.swiper-slide) {
     height: auto;
   }
   /* スライド直下のカードを100%に */
   :deep(.swiper-slide > *) {
-    width: 90%;
-    max-width: 340px;
+    width:  clamp(280px, 80vw, 480px);
+    max-width: 100%;
     height: 100%;
+    margin: 0 auto;
    }
  /* pagination の位置を下＆余白 */
   :deep(.swiper-pagination) {
