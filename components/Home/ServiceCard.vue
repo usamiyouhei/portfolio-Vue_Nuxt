@@ -85,7 +85,8 @@ import { ref,computed } from "vue";
 .svc-card {
   display: flex;
   flex-direction: column;
-  height: 480px;
+  height: auto;
+  min-height: clamp(400px, 65vh, 520px);
   padding: 20px;
   border-radius: 20px;
   background-color: #fff;
@@ -117,9 +118,9 @@ import { ref,computed } from "vue";
     margin: 0 auto 20px;
   }
   .svc-card {
-    height: auto;
-    min-height: 420px;
-    padding: 16px 14px;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 16px 10px;
   }
   .svc-card__img {
     max-height: 160px;
@@ -133,7 +134,7 @@ import { ref,computed } from "vue";
 
 @media (max-width: 480px) {
   .svc-card {
-    height: 500px;
+    height: auto !important;
     padding: 16px;
   }
   .svc-card__img {

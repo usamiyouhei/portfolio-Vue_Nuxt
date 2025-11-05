@@ -75,7 +75,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding: 70px 0;
+  padding: 50px 0px;
   margin: 0;
   list-style: none;
 }
@@ -181,7 +181,7 @@
 /* --------------------------------
    〜767px：左右2列（Nav左 / SNS右）
 --------------------------------- */
-@media (max-width: 767px) {
+@media (max-width: 567px) {
   .footer__container {
     display: flex;
     flex-direction: row;
