@@ -173,7 +173,7 @@ import { ref, computed } from "vue";
   padding: 16px 0px 36px;
   overflow: hidden;
   :deep(.swiper-wrapper) {
-    align-items: flex-start;
+    align-items: stretch;
   }
   :deep(.swiper-slide) {
     height: auto;
