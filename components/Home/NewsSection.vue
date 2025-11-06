@@ -1,27 +1,27 @@
 <template>
-    <section id="news" class="news">
-      <div class="news__inner inner">
-        <div class="news__title section-title">
-          <SectionTitle sectionTitle="News" sectionSubTitle="お知らせ"/>
-        </div>
-        <ul class="news__items">
-          <li v-for="n in props.items" :key="n.slug" class="news-item">
-            <NewsItem :item="n"/>
-          </li>
-        </ul>
+  <section id="news" class="news">
+    <div class="news__inner inner">
+      <div class="news__title section-title">
+        <SectionTitle sectionTitle="News" sectionSubTitle="お知らせ" />
       </div>
-      <div class="news__more">
-        <!-- <NuxtLink class="more-link" to="/news">View More</NuxtLink> -->
-        <Button buttonText="View More" to="/news"/>
-      </div>
-    </section>
+      <ul class="news__items">
+        <li v-for="n in props.items" :key="n.slug" class="news-item">
+          <NewsItem :item="n" />
+        </li>
+      </ul>
+    </div>
+    <div class="news__more">
+      <!-- <NuxtLink class="more-link" to="/news">View More</NuxtLink> -->
+      <Button buttonText="View More" to="/news" />
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import SectionTitle from "../common/SectionTitle.vue";
 import NewsItem from "../Home/NewsItem.vue";
 import type { News } from "@/types/news";
-import  Button  from "../common/Button.vue";
+import Button from "../common/Button.vue";
 
 /**===================================================================================================================
  * 
@@ -29,10 +29,10 @@ import  Button  from "../common/Button.vue";
 // const props = defineProps<{ items: News [] }>()
 // items が来なくても空配列にする
 const props = withDefaults(defineProps<{ items?: News[] }>(), {
-  items: () => []
-})
+  items: () => [],
+});
 
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 
@@ -43,11 +43,11 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
 
 <style lang="scss" scoped>
 .news {
-  background-image: url(/img/news-background.jpg);
+  background-image: url(/img/background-img/news-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 10px;
-  padding: 20px 0px;
+  padding: 30px 0px;
 }
 .news__inner {
   position: relative;
@@ -83,20 +83,17 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
   }
 }
 
-
-
 .news__more {
   margin-top: 24px;
   text-align: center;
 }
 
 .more-link {
-  display:inline-block;
-  padding:10px 16px;
-  border-radius:12px;
-  border:1px solid #ddd;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
 }
-
 
 // @media (max-width: 1024px) {
 //   .news .section-title {
@@ -141,5 +138,4 @@ const props = withDefaults(defineProps<{ items?: News[] }>(), {
 //     width: 100%;
 //   }
 // }
-
 </style>

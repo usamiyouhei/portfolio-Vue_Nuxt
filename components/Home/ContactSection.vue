@@ -1,75 +1,81 @@
 <template>
   <section class="contact" id="contact">
-      <div class="contact__inner inner">
-        <div class="contact__wrap">
-          <SectionTitle sectionTitle="Contact" sectionSubTitle="お問い合わせ" />
-          <p class="contact__text">
+    <div class="contact__inner inner">
+      <div class="contact__wrap">
+        <SectionTitle sectionTitle="Contact" sectionSubTitle="お問い合わせ" />
+        <p class="contact__text">
           無料相談も行っておりますので、どうぞお気軽にご連絡ください。<br />
           可能な限り当日中に、遅くとも2〜3日以内にご返信いたします。
-          </p>
-          <p class="contact__text">
-            稼働時間<br />
-            朝10時〜22時
-          </p>
-        </div>
-
-        <ContactForm mode="page" formClass="form--page"/>
+        </p>
+        <p class="contact__text">
+          稼働時間<br />
+          朝10時〜22時
+        </p>
       </div>
-    </section>
+
+      <ContactForm mode="page" formClass="form--page" />
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import SectionTitle from "../common/SectionTitle.vue";
-import  Button  from "../common/Button.vue";
+import Button from "../common/Button.vue";
 import { reactive } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 type Form = {
-  name: string,
-  email: string,
-  topic: string,
-  message: string,
-}
+  name: string;
+  email: string;
+  topic: string;
+  message: string;
+};
 
-type Errors = Partial<Record<keyof Form, string>>
+type Errors = Partial<Record<keyof Form, string>>;
 
 const form = reactive<Form>({
-  name: '',
-  email: '',
-  topic: '',
-  message: ''
-}) 
+  name: "",
+  email: "",
+  topic: "",
+  message: "",
+});
 
-const errors = reactive<Errors>({})
+const errors = reactive<Errors>({});
 
 const validate = () => {
-  errors.name = form.name ? '' : 'お名前を入力してください。'
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
-  errors.email = form.email ? (emailOk ? '' : 'メールの形式が正しくありません。') : 'メールアドレスを入力してください。'
-  errors.topic = form.topic ? '' : 'お問い合わせ内容を選択してください。'
-  errors.message = form.message ? '' : '内容を入力してください。'
+  errors.name = form.name ? "" : "お名前を入力してください。";
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+  errors.email = form.email
+    ? emailOk
+      ? ""
+      : "メールの形式が正しくありません。"
+    : "メールアドレスを入力してください。";
+  errors.topic = form.topic ? "" : "お問い合わせ内容を選択してください。";
+  errors.message = form.message ? "" : "内容を入力してください。";
 
   // 一つでもエラーがあれば無効
-  return Object.values(errors).every((v) => !v)
-}
+  return Object.values(errors).every((v) => !v);
+};
 
 const onSubmit = () => {
-  if(!validate()){
+  if (!validate()) {
     // 最初のエラー要素にフォーカス
-    const firstErrKey = (Object.keys(errors) as (keyof Form) []).find(k => !!errors[k])
-    if(firstErrKey){
-      const el = document.getElementById(firstErrKey)
-      el?.focus()
+    const firstErrKey = (Object.keys(errors) as (keyof Form)[]).find(
+      (k) => !!errors[k]
+    );
+    if (firstErrKey) {
+      const el = document.getElementById(firstErrKey);
+      el?.focus();
     }
-    return
+    return;
   }
   // 送信処理
-  console.log('submit payload:', { ...form });
-  alert('送信しました！')
-}
+  console.log("submit payload:", { ...form });
+  alert("送信しました！");
+};
 
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
@@ -88,8 +94,8 @@ const onSubmit = () => {
   --c-text: #111111;
   --c-muted: #8b90a0;
 
-  --c-pink: #ff4d8d;   /* アクセント */
-  --c-gold: #c9a227;   /* 強調（ブランド） */
+  --c-pink: #ff4d8d; /* アクセント */
+  --c-gold: #c9a227; /* 強調（ブランド） */
 
   --c-border: #e2e4ea;
   --c-danger: #d33;
@@ -97,12 +103,12 @@ const onSubmit = () => {
 }
 
 .contact {
-  background-image: url(/img/news-background.jpg);
+  background-image: url(/img/background-img/news-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   overflow-x: clip;
   width: 100%;
-  margin-top: 40px;
+  padding: 30px 0;
 }
 .contact__inner {
   max-width: 1100px;
@@ -124,10 +130,10 @@ const onSubmit = () => {
 }
 
 @media (max-width: 767px) {
-  .contact__inner {
-    padding: 60px 20px;
-  }
-   .contact__wrap {
+  // .contact__inner {
+  //   padding: 60px 20px;
+  // }
+  .contact__wrap {
     text-align: center;
 
     p {
@@ -150,7 +156,7 @@ const onSubmit = () => {
     flex-direction: column;
     align-items: center;
     gap: 60px;
-    padding: 80px 40px 100px;
+    // padding: 80px 40px 100px;
   }
 
   .contact__wrap {
@@ -193,5 +199,4 @@ const onSubmit = () => {
     max-width: 50%;
   }
 }
-
 </style>

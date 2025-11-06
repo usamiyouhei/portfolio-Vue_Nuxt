@@ -1,36 +1,45 @@
 <template>
   <section class="about scroll-point" id="about">
     <div class="about__inner inner" id="fadeElement">
-       <SectionTitle sectionTitle="About" sectionSubTitle="自己紹介"></SectionTitle>
+      <SectionTitle
+        sectionTitle="About"
+        sectionSubTitle="自己紹介"
+      ></SectionTitle>
       <div class="about__wrap fade-in fade-in-up">
-        <img src="/public/img/about/about_my_photo.jpg" alt="本人の写真" loading="lazy" />
+        <img
+          src="/public/img/about/about_my_photo.jpg"
+          alt="本人の写真"
+          loading="lazy"
+        />
         <div class="about__text">
           <p>
-            はじめまして。<br/>
-            宇佐美洋平と申します。<br/>
-            一皿のデザートと、体験のデザイン。<br/>
-            パティシエとして、“記憶に残る時間”を作り続けてきました。<br/>
+            はじめまして。<br />
+            宇佐美洋平と申します。<br />
+            一皿のデザートと、体験のデザイン。<br />
+            パティシエとして、“記憶に残る時間”を作り続けてきました。<br />
             いまはその表現を、デジタルにも広げています。
           </p>
-          <p>行動力、柔軟な視点、細部までのこだわり。<br/>
-            この3つを大切にしながら、デジタルとアナログのものづくりをしています。</p>
+          <p>
+            行動力、柔軟な視点、細部までのこだわり。<br />
+            この3つを大切にしながら、デジタルとアナログのものづくりをしています。
+          </p>
         </div>
       </div>
     </div>
   </section>
-  <Button buttonText="View More" to="/about"/>
+  <Button buttonText="View More" to="/about" />
 </template>
 
 <script setup lang="ts">
-import  SectionTitle  from "../common/SectionTitle.vue";
-import  Button  from "../common/Button.vue";
+import SectionTitle from "../common/SectionTitle.vue";
+import Button from "../common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 definePageMeta({
-  redirect: '/about'
-})
- //------------------------------------------------------------------------------------------------------------
+  redirect: "/about",
+});
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
@@ -46,26 +55,23 @@ definePageMeta({
 a {
   text-decoration: none;
 }
-// .inner {
-//   /* width: 100%; */
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   padding: 0 20px;
-// }
+
 .about {
-  margin: 40px 0 0;
+  margin: 80px 0 0;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-// .about .show {
-//   animation: var(--fadeAnimation);
-// }
+
+.about__inner {
+  margin-top: 20px;
+}
 .about__wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 16px;
   width: 100%;
   gap: 30px;
   // background-image: url(/public/img/about/aboutback.png);
@@ -93,10 +99,8 @@ a {
   letter-spacing: 0.05em;
   font-size: 16px;
   // margin: 20px 0px 20px 50px;
-   text-align: left; 
+  text-align: left;
 }
-
-
 
 @media screen and (min-width: 768px) {
   .about__wrap {
@@ -139,5 +143,4 @@ a {
     max-width: 320px;
   }
 }
-
 </style>
