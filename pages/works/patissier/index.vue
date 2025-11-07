@@ -15,6 +15,28 @@
           preload="metadata"
         ></video>
       </div>
+
+      <div class="kv__video-wrap fade-in fade-in-up">
+        <h3 class="kv__video-title">
+          動画クリエイター&emsp;シライフウタ様&emsp;<br
+            class="md-show pc-show"
+          />コラボ動画
+        </h3>
+        <time class="kv__video-time" datetime="2022-2-18">2022.2.18</time>
+
+        <p class="kv__video-text">
+          Instagram、ティックトックで人気の<br
+            class="md-show"
+          />動画クリエイター<br class="md-none" />
+          シライフウタさんに<br class="md-show" />撮影して頂きました&#33;<br
+            class="sp-show"
+          />
+          流れるような動きでストーリー性のある<br
+            class="md-show"
+          />動画に仕上がりました。
+        </p>
+      </div>
+
       <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
         <button
           v-for="t in tabs"
@@ -122,6 +144,21 @@ function closeModal() {
     display: block;
   }
 }
+
+.kv__video-wrap {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 0;
+  margin: 20px 0 40px;
+}
+.kv__video-title {
+  line-height: 1.88;
+  text-align: center;
+  width: 100%;
+}
+
 .tabs {
   display: flex;
   gap: 10px;
