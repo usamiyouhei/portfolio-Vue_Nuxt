@@ -108,7 +108,20 @@ function closeModal() {
   font-weight: 800;
   font-size: clamp(22px, 2.6vw, 34px);
 }
-
+.video-wrap {
+  position: relative;
+  margin: 16px 0 24px;
+  max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  .video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
 .tabs {
   display: flex;
   gap: 10px;
