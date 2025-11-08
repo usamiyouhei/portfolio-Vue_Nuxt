@@ -1,31 +1,38 @@
 <template>
   <div class="grid">
-    <button v-for="w in items" :key="w.id"  class="card" @click="emit('open', w.id)">
+    <button
+      v-for="w in items"
+      :key="w.id"
+      class="card"
+      @click="emit('open', w.id)"
+    >
       <div class="thumb">
-        <img :src="w.cover || '/img/noImg.png'" :alt="w.title" loading="lazy">
+        <img :src="w.cover || '/img/noImg.png'" :alt="w.title" loading="lazy" />
       </div>
       <h3 class="title">{{ w.title }}</h3>
     </button>
   </div>
 
-  <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
-  <ContactModal v-if="showContact" @close="showContact = false"/>
-
+  <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)" />
+  <ContactModal v-if="showContact" @close="showContact = false" />
 </template>
 
 <script setup lang="ts">
-import Button from '../common/Button.vue';
+import Button from "../common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 type Item = {
-  id: string, slug: string, title: string, cover?: string
-}
+  id: string;
+  slug: string;
+  title: string;
+  cover?: string;
+};
 
-const props = defineProps<{ items: Item[] }>()
-const emit = defineEmits<{ open:[id:string] }>()
+const props = defineProps<{ items: Item[] }>();
+const emit = defineEmits<{ open: [id: string] }>();
 
-const showContact = ref(false)
+const showContact = ref(false);
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -36,11 +43,11 @@ const showContact = ref(false)
 .grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(2,minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 @media (min-width: 640px) {
   .grid {
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 900px) {
@@ -50,7 +57,7 @@ const showContact = ref(false)
 }
 @media (min-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 .card {
@@ -60,6 +67,14 @@ const showContact = ref(false)
   border: 1px solid #eee;
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+  }
 }
 .thumb {
   aspect-ratio: 4/3;
