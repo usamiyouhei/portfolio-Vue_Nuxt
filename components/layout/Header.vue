@@ -3,12 +3,12 @@
     <div class="header_inner">
       <h1 class="header_logo">
         <NuxtLink to="/">
-          <img src="/img/youhei-usami-logo.svg" alt="宇佐美洋平 名前のロゴ" />
+          <img src="/img/yohei_usami_logo.svg" alt="宇佐美洋平 名前のロゴ" />
         </NuxtLink>
       </h1>
 
       <nav class="header_nav">
-        <NavButton/>
+        <NavButton />
       </nav>
       <HamburgerButton />
       <!-- <HamburgerButton v-if="isMobile"/> -->
@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref,onMounted, onBeforeUnmount } from "vue";
-import  NavButton  from "../common/NavButton.vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import NavButton from "../common/NavButton.vue";
 import HamburgerButton from "../common/HamburgerButton.vue";
 /**===================================================================================================================
  * 
@@ -61,7 +61,6 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   margin-inline: auto;
 }
 @media (min-width: 768) {
-  
 }
 
 .header_inner {
@@ -109,7 +108,6 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   height: inherit;
 }
 
-
 /* タブレット以上 */
 @media (min-width: 768px) {
   .header {
@@ -119,13 +117,10 @@ import HamburgerButton from "../common/HamburgerButton.vue";
     display: flex;
     align-items: center;
   }
-  .header_nav ul
-
-  .menu-toggle {
+  .header_nav ul .menu-toggle {
     display: none;
   }
 }
-
 
 /* PCサイズ以上 */
 @media (min-width: 1024px) {
@@ -136,6 +131,4 @@ import HamburgerButton from "../common/HamburgerButton.vue";
     justify-content: space-between;
   }
 }
-
-
 </style>
