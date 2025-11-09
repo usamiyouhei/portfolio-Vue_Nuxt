@@ -1,30 +1,23 @@
 <template>
-  <div class="free" :style="{ height: `${height}px`}">
-    <div class="free__track"
+  <div class="free" :style="{ height: `${height}px` }">
+    <div
+      class="free__track"
       :class="{ 'is-reverse': reverse }"
-          :style="{
-            animationDuration: `${speed}s`
-          }">
-      <div v-for="(img, i) in props.images" 
-          :key="`a-${i}`" 
-          class="free__slide"
-          
-        >
-        <img :src="img" alt="" loading="lazy">
+      :style="{
+        animationDuration: `${speed}s`,
+      }"
+    >
+      <div v-for="(img, i) in props.images" :key="`a-${i}`" class="free__slide">
+        <img :src="img" alt="" loading="lazy" />
       </div>
-      <div v-for="(img, i) in props.images" 
-          :key="`b-${i}`" 
-          class="free__slide"
-        >
-        <img :src="img" alt="" loading="lazy">
+      <div v-for="(img, i) in props.images" :key="`b-${i}`" class="free__slide">
+        <img :src="img" alt="" loading="lazy" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
-
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -35,16 +28,19 @@
 //   reverse?: boolean
 // }>()
 
-const props = withDefaults(defineProps<{
-  images: string[],
-  speed?: number,
-  height?: number,
-  reverse?: boolean
-}>(),{
-  speed: 30,
-  height: 200,
-  reverse: false
-})
+const props = withDefaults(
+  defineProps<{
+    images: string[];
+    speed?: number;
+    height?: number;
+    reverse?: boolean;
+  }>(),
+  {
+    speed: 30,
+    height: 300,
+    reverse: false,
+  }
+);
 //  const images = [
 //   '/img/Dg-img7.jpg',
 //   '/img/Dg-img8.jpg',
@@ -108,5 +104,4 @@ const props = withDefaults(defineProps<{
     transform: translateX(0);
   }
 }
-
 </style>

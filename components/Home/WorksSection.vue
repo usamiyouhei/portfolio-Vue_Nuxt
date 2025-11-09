@@ -126,24 +126,24 @@ import { works } from "../../data/works";
 type Cat = Work["category"];
 const categories: Cat[] = [
   "patissier",
-  "movieediting",
+  "VisualProduction",
   "programming",
   "design",
   "hobby",
 ];
 const catLabels: Record<Cat, string> = {
-  patissier: "Patissier",
-  movieediting: "Movie Editing",
+  patissier: "Dessert Creation",
+  VisualProduction: "Visual Production",
   programming: "Programming",
-  design: "Design",
-  hobby: "Hobby",
+  design: "Brand & Visual Design",
+  hobby: "Passion Projects",
 };
 
 const noImageSrc = "/img/noImg.png";
 
 const CAT_ROUTE: Record<Cat, string> = {
   patissier: "/works/patissier",
-  movieediting: "/works/movieediting",
+  VisualProduction: "/works/VisualProduction",
   programming: "/works/programming",
   design: "/works/design",
   hobby: "/works/hobby",
@@ -154,7 +154,7 @@ const catRoute = (c: Cat) => CAT_ROUTE[c];
 const worksByCat = computed<Record<Cat, Work[]>>(() => {
   const map: Record<Cat, Work[]> = {
     patissier: [],
-    movieediting: [],
+    VisualProduction: [],
     programming: [],
     design: [],
     hobby: [],

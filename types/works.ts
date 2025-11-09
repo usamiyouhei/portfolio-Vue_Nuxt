@@ -1,6 +1,6 @@
 export type Cat =
   | "patissier"
-  | "movieediting"
+  | "VisualProduction"
   | "programming"
   | "design"
   | "hobby";
