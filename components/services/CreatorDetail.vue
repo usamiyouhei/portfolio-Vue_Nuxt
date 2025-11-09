@@ -1,8 +1,11 @@
 <template>
   <section class="fv">
     <div class="fv__bg" :style="bgStyle" />
-    <h1 id="page-title" class="page-title">{{ service.title }}</h1>
-    <p class="page-subtitle fade-in-up-delay">{{ service.subTitle }}</p>
+
+    <div class="fv__content">
+      <h1 id="page-title" class="page-title">{{ service.title }}</h1>
+      <p class="page-subtitle fade-in-up-delay">{{ service.subTitle }}</p>
+    </div>
   </section>
 
   <section class="inner">
@@ -68,32 +71,49 @@ const imageList = [
 <style lang="scss" scoped>
 .fv {
   position: relative;
-  margin-top: 80px;
-  height: clamp(160px, 32vw, 320px);
+  margin-top: 72px;
+  height: clamp(220px, 40vw, 420px);
   background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.fv__bg {
-  position: absolute;
-  inset: 0;
-  background: center/cover no-repeat;
-  filter: brightness(0.6);
+  overflow: hidden;
+
+  .fv__bg {
+    position: absolute;
+    inset: 0;
+    background: center/cover no-repeat;
+    filter: brightness(0.6);
+    transform: scale(1.05);
+  }
+
+  .fv__content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+  }
 }
 .creator-img {
   width: 60%;
 }
 .page-title {
-  position: relative;
-  background-color: #fff;
-  border-radius: 12px;
-  font-family: "Italianno";
-  color: #333;
-  padding: 6px 12px;
-  font-size: clamp(48px, 5vw, 82px);
-  // font-weight: 600;
+  // position: absolute;
+  font-family: "Playfair Display", "Italianno", cursive;
+  font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.page-subtitle {
+  font-size: clamp(14px, 1.6vw, 18px);
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Noto Sans JP", sans-serif;
 }
 .inner {
   max-width: 1120px;
@@ -109,14 +129,23 @@ const imageList = [
   overflow: visible;
 }
 .block-head {
-  padding: 8px 16px;
+  margin-bottom: 12px;
 }
 .service-block {
-  background: #fff;
-  border-radius: 12px;
-  padding: 8px 0 0;
+  background: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 24px 20px;
   overflow: visible;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .block-title {
@@ -173,6 +202,24 @@ const imageList = [
 .cta-btn:hover {
   transform: translateY(-1px);
   opacity: 0.95;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 1s ease forwards;
+}
+.fade-in-up-delay {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 1.3s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {

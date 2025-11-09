@@ -31,7 +31,7 @@ export type Service = {
 export const services: Service[] = [
   {
     title: "Website service",
-    subTitle: "ウェブサイトサービス",
+    subTitle: "ウェブサイト制作",
     img: "website-development.svg",
     description:
       "新規サイトの立ち上げから運用まで幅広く対応。レスポンシブデザインで、スマホやタブレットでも快適に。動きを取り入れたアニメーションで魅力的な体験を演出します。  ",
@@ -42,9 +42,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: `新規サイトの制作はもちろん、<br class="md-show" />
-          レスポンシブコーディングやアニメーションなど
-          動きのあるサイト制作も可能です。`,
+        body: `新規サイトの立ち上げはもちろん、スマートフォンやタブレットなど各デバイスに対応したレスポンシブコーディング、視覚的に印象を高めるアニメーション実装など、ユーザー体験を意識した動きのあるWebサイト制作が可能です。目的やコンセプトに合わせて、デザインから構築まで一貫してサポートいたします。`,
       },
       {
         id: "track-record",
@@ -100,7 +98,8 @@ export const services: Service[] = [
     },
   },
   {
-    title: "Webデザイン",
+    title: "Web Design",
+    subTitle: "デザイン制作",
     img: "/img/UI-UX design-amico.svg",
     description:
       "ヒアリングを通じてご要望やイメージを丁寧に汲み取り、ユーザーに伝わるデザインをご提案。世界観を大切にした、より良いビジュアルを形にします。  ",
@@ -111,7 +110,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: ``,
+        body: `新規Webサイトのデザインカンプ制作から、ブランドの印象を左右するロゴデザインまで幅広く対応いたします。クライアント様のイメージや想いを丁寧にヒアリングし、売上やブランド価値の向上につながるデザインをご提案いたします。細部までこだわり、長く愛されるビジュアルを目指します。`,
       },
       {
         id: "track-record",
@@ -167,7 +166,8 @@ export const services: Service[] = [
     },
   },
   {
-    title: "Webサイトリニューアル",
+    title: "Web site Renewal",
+    subTitle: "ウェブサイト リニューアル",
     img: "/img/Setup-amico.svg",
     description:
       "既存サイトの改善や調整もお任せください。デザインの刷新から細かな修正まで柔軟に対応。課題を解決し、より効果的なサイトへと導きます。  ",
@@ -178,7 +178,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: ``,
+        body: `現状のホームページのデザイン改善やUI/UXの見直し、機能面のアップデート、フルリニューアルまで柔軟に対応いたします。アクセス解析やユーザー行動のデータを踏まえ、課題を一緒に発見しながら最適な改善策をご提案します。お困りごとの解決を共に探していく“伴走型”サポートを心がけています。`,
       },
       {
         id: "track-record",
@@ -234,7 +234,8 @@ export const services: Service[] = [
     },
   },
   {
-    title: "レシピ開発",
+    title: "Recipe Development",
+    subTitle: "レシピ開発",
     img: "/img/Recipe book-amico.svg",
     description:
       "20年以上の経験と新作開発のノウハウを活かし、1品からオリジナルレシピを制作いたします。栄養学の観点から、体に優しいメニュー提案も可能です。  ",
@@ -245,7 +246,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: ``,
+        body: `新規レシピの開発はもちろん、既存レシピの改善・アレンジ、スイーツや和菓子などの専門的なレシピ制作まで幅広く対応いたします。味や見た目のバランス、素材の魅せ方を大切にしながら、“記憶に残る一皿”を生み出すお手伝いをいたします。個人様から企業様まで、目的に合わせたレシピ提案が可能です。`,
       },
       {
         id: "track-record",
@@ -301,7 +302,8 @@ export const services: Service[] = [
     },
   },
   {
-    title: "飲食店コンサルタント",
+    title: "Consultant",
+    subTitle: "飲食店コンサルタント",
     img: "/img/Marketing consulting-rafiki.svg",
     description:
       "飲食店やパティシエとしての現場経験をもとに、ケーキ屋・カフェ・デザート専門店などをサポート。店舗運営やメニュー開発まで幅広くご相談いただけます。  ",
@@ -312,7 +314,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: ``,
+        body: `飲食業界で20年以上の経験を活かし、店舗の新規開業からメニュー開発、提供オペレーションまで、飲食店運営に関わるあらゆる分野をサポートいたします。コンセプト設計やブランドづくりの段階からご相談可能で、現場目線でのアドバイスも含めた実践的な支援を行います。詳細なサービス内容は下記の表にてご確認ください。`,
       },
       {
         id: "track-record",
@@ -364,7 +366,8 @@ export const services: Service[] = [
     },
   },
   {
-    title: "写真・動画撮影",
+    title: "Photo & Video Shooting",
+    subTitle: "写真・動画撮影",
     img: "/img/Photo-amico.svg",
     description:
       "料理やスイーツの写真・動画撮影も対応。 ポートフォリオ掲載の写真はすべて自ら撮影しました。魅力が伝わるビジュアルを丁寧に切り取ります。  ",
@@ -375,7 +378,7 @@ export const services: Service[] = [
       {
         id: "summary",
         title: "サービス概要",
-        body: ``,
+        body: `商品・料理・空間など、さまざまなジャンルの写真撮影・動画撮影に対応しています。光の演出や構図にもこだわり、被写体の魅力を最大限に引き出すビジュアルを制作します。編集・カラー調整・音楽挿入などの映像編集も一括で対応でき、SNSやWeb掲載に最適な素材をご提供いたします。`,
       },
       {
         id: "track-record",
