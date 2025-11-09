@@ -27,7 +27,7 @@ export const works: Work[] = [
     id: 12,
     title: "",
     img: "",
-    category: "movieediting",
+    category: "VisualProduction",
     slug: "",
     date: "",
     tags: [""],

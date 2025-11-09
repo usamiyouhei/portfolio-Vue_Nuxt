@@ -1,38 +1,44 @@
 <template>
   <main>
     <section class="fv">
-        <div class="fv__bg" :style="bgStyle"/>
-        <h1 id="page-title" class="page_title">{{ service.title }}</h1>
+      <div class="fv__bg" :style="bgStyle" />
+      <h1 id="page-title" class="page_title">{{ service.title }}</h1>
     </section>
 
     <section class="inner">
       <ul class="service-lists">
-        <li v-for="( b, i ) in service.blocks" 
-            :key="b.id"
-            ref="blockRefs"
-            class="service-block fade"
-            :class="{'fade--in': visible[i]}"
-            >
+        <li
+          v-for="(b, i) in service.blocks"
+          :key="b.id"
+          ref="blockRefs"
+          class="service-block fade"
+          :class="{ 'fade--in': visible[i] }"
+        >
           <header class="block-head">
             <h2 class="block-title">{{ b.title }}</h2>
           </header>
           <p class="block-text" v-html="b.body" />
           <!-- <div class="table-scroll"> -->
-            <ServicesPriceCompareTable v-if="b.id === 'price-guide' && service.priceTable" :table="service.priceTable"/>
+          <ServicesPriceCompareTable
+            v-if="b.id === 'price-guide' && service.priceTable"
+            :table="service.priceTable"
+          />
           <!-- </div> -->
         </li>
 
         <li class="service-block">
-          <p class="consult">プロの Zoom 相談（1h〜）：2,000円（税込）も承ります。</p>
+          <p class="consult">
+            プロの Zoom 相談（1h〜）：2,000円（税込）も承ります。
+          </p>
         </li>
       </ul>
     </section>
 
     <div class="cta">
-      <Button  buttonText="お問い合わせ" :onClick="() => (showContact = true)"/>
+      <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)" />
     </div>
 
-   <ContactModal v-if="showContact"  @close="showContact = false"/>
+    <ContactModal v-if="showContact" @close="showContact = false" />
     <!-- <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
@@ -44,36 +50,40 @@
 <script setup lang="ts">
 import type { Service } from "~/data/services";
 import { ref, computed, onMounted } from "vue";
-import { useIntersectionObserver } from '@vueuse/core';
-import Button from '../common/Button.vue';
+import { useIntersectionObserver } from "@vueuse/core";
+import Button from "../common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-const props = defineProps<{ service: Service }>()
+const props = defineProps<{ service: Service }>();
 // 1️⃣ ref配列を用意（v-forで監視対象をまとめる）
-const blockRefs = ref<HTMLElement[]>([])
+const blockRefs = ref<HTMLElement[]>([]);
 // 2️⃣ 表示状態を保持する配列
-const visible = ref<boolean[]>([])
+const visible = ref<boolean[]>([]);
 
 onMounted(() => {
   blockRefs.value.forEach((el, i) => {
-    if(!el) return
-    const { stop } = useIntersectionObserver(el,([entry]) => {
-        if(entry.isIntersecting) {
+    if (!el) return;
+    const { stop } = useIntersectionObserver(
+      el,
+      ([entry]) => {
+        if (entry.isIntersecting) {
           visible.value[i] = true;
-          stop()
+          stop();
         }
       },
       { threshold: 0.2 }
-    )
-  }) 
-})
+    );
+  });
+});
 
-const showContact = ref(false)
+const showContact = ref(false);
 
 const bgStyle = computed(() => ({
-  backgroundImage: props.service.heroImage ? `url('${ props.service.heroImage}')`: 'none'
-}))
+  backgroundImage: props.service.heroImage
+    ? `url('${props.service.heroImage}')`
+    : "none",
+}));
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -91,9 +101,9 @@ const bgStyle = computed(() => ({
 }
 .fv__bg {
   position: absolute;
-  inset:0; 
-  background:center/cover no-repeat; 
-  filter:brightness(.6);
+  inset: 0;
+  background: center/cover no-repeat;
+  filter: brightness(0.6);
 }
 .page_title {
   position: relative;
@@ -140,21 +150,21 @@ const bgStyle = computed(() => ({
 .table-scroll {
   display: block;
   overflow-x: auto;
-   -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
+  -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
   width: 100%;
 
   ::v-deep(table) {
     min-width: 600px;
     border-collapse: collapse;
   }
-::v-deep(.price-scroll) {
-  overflow-x: auto;
-}
+  ::v-deep(.price-scroll) {
+    overflow-x: auto;
+  }
   &::-webkit-scrollbar {
     height: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
   }
 }
@@ -176,14 +186,14 @@ const bgStyle = computed(() => ({
   background: #111;
   color: #fff;
   border-radius: 999px;
-  font-weight:800;
-  letter-spacing:.03em;
-  transition: transform .2s ease, opacity .2s ease;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.cta-btn:hover{ 
+.cta-btn:hover {
   transform: translateY(-1px);
-  opacity:.95; 
+  opacity: 0.95;
 }
 
 @media (max-width: 768px) {
