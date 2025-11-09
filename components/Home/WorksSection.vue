@@ -132,11 +132,11 @@ const categories: Cat[] = [
   "hobby",
 ];
 const catLabels: Record<Cat, string> = {
-  patissier: "Dessert Creation",
-  VisualProduction: "Visual Production",
-  programming: "Programming",
-  design: "Brand & Visual Design",
-  hobby: "Passion Projects",
+  patissier: "Pâtissier Works",
+  VisualProduction: "Visual Works",
+  programming: "Web Development",
+  design: "Design Works",
+  hobby: "Side Projects",
 };
 
 const noImageSrc = "/img/noImg.png";

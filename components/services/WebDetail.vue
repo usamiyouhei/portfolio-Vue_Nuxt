@@ -2,7 +2,11 @@
   <main>
     <section class="fv">
       <div class="fv__bg" :style="bgStyle" />
-      <h1 id="page-title" class="page_title">{{ service.title }}</h1>
+
+      <div class="fv__content">
+        <h1 id="page-title" class="page_title">{{ service.title }}</h1>
+        <p class="page-subtitle fade-in-up-delay">{{ service.subTitle }}</p>
+      </div>
     </section>
 
     <section class="inner">
@@ -92,29 +96,45 @@ const bgStyle = computed(() => ({
 <style lang="scss" scoped>
 .fv {
   position: relative;
-  margin-top: 80px;
-  height: clamp(160px, 32vw, 320px);
+  margin-top: 72px;
+  height: clamp(220px, 40vw, 420px);
   background-size: contain;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+
+  .fv__bg {
+    position: absolute;
+    inset: 0;
+    background: center/cover no-repeat;
+    filter: brightness(0.6);
+    transform: scale(1.05);
+  }
+
+  .fv__content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+  }
 }
-.fv__bg {
-  position: absolute;
-  inset: 0;
-  background: center/cover no-repeat;
-  filter: brightness(0.6);
-}
-.page_title {
-  position: relative;
-  background-color: #fff;
-  border-radius: 12px;
-  font-family: "Italianno";
-  color: #333;
-  padding: 6px 12px;
-  font-size: clamp(48px, 5vw, 82px);
-  // font-weight: 600;
+.page-title {
+  font-family: "Playfair Display", "Italianno", cursive;
+  font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.page-subtitle {
+  font-size: clamp(14px, 1.6vw, 18px);
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Noto Sans JP", sans-serif;
 }
 .inner {
   max-width: 1120px;
@@ -129,24 +149,45 @@ const bgStyle = computed(() => ({
   gap: 24px;
   overflow: visible;
 }
+
 .block-head {
-  padding: 8px 16px;
+  margin-bottom: 12px;
 }
+
 .service-block {
-  background: #fff;
-  border-radius: 12px;
-  padding: 8px 0 0;
+  background: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 24px 20px;
   overflow: visible;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .block-title {
   font-size: clamp(20px, 2.6vw, 28px);
+
+  & ::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    border-radius: 999px;
+    border: solid 2px #bf901a;
+  }
 }
+
 .block-text {
   padding: 8px 16px 16px;
   line-height: 1.9;
 }
+
 .table-scroll {
   display: block;
   overflow-x: auto;
