@@ -155,13 +155,14 @@ const bgStyle = computed(() => ({
 }
 
 .service-block {
+  border-left: 4px solid #cba96d;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
   background: rgba(255, 255, 255, 0.75);
   text-align: center;
   backdrop-filter: blur(6px);
-  border-radius: 16px;
-  padding: 24px 20px;
   overflow: visible;
-  margin-bottom: 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -172,35 +173,40 @@ const bgStyle = computed(() => ({
 }
 
 .block-title {
+  position: relative;
   font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  color: #222;
+  padding: 8px;
+  margin: 16px;
 
-  & ::after {
+  &::after {
+    position: absolute;
     content: "";
-    width: 100%;
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    width: 130px;
     height: 3px;
     border-radius: 999px;
-    border: solid 2px #bf901a;
+    background: linear-gradient(90deg, #d4af37, #bf901a, #e5c87b);
   }
 }
 
 .block-text {
-  padding: 8px 16px 16px;
+  text-align: justify;
   line-height: 1.9;
+  color: #333;
 }
 
 .table-scroll {
   display: block;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
+  -webkit-overflow-scrolling: touch;
   width: 100%;
 
-  ::v-deep(table) {
-    min-width: 600px;
-    border-collapse: collapse;
-  }
-  ::v-deep(.price-scroll) {
-    overflow-x: auto;
-  }
   &::-webkit-scrollbar {
     height: 6px;
   }
@@ -208,6 +214,15 @@ const bgStyle = computed(() => ({
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
   }
+}
+
+:deep(.table-scroll table) {
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+:deep(.table-scroll .price-scroll) {
+  overflow-x: auto;
 }
 .consult {
   padding: 0 16px 16px;
