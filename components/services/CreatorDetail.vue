@@ -98,7 +98,7 @@ const imageList = [
   width: 60%;
 }
 .page-title {
-  // position: absolute;
+  /* position: absolute; */
   font-family: "Playfair Display", "Italianno", cursive;
   font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
@@ -150,7 +150,24 @@ const imageList = [
 
 .block-title {
   font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 600;
+  display: inline-block;
+  padding: 8px;
+  margin: 16px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    bottom: -2px;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #d4af37, #bf901a, #e5c87b);
+  }
 }
+
 .block-text {
   padding: 8px 16px 16px;
   line-height: 1.9;
@@ -161,13 +178,6 @@ const imageList = [
   -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
   width: 100%;
 
-  ::v-deep(table) {
-    min-width: 600px;
-    border-collapse: collapse;
-  }
-  ::v-deep(.price-scroll) {
-    overflow-x: auto;
-  }
   &::-webkit-scrollbar {
     height: 6px;
   }
@@ -175,6 +185,15 @@ const imageList = [
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
   }
+}
+
+:deep(.table-scroll table) {
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+:deep(.table-scroll .price-scroll) {
+  overflow-x: auto;
 }
 .consult {
   padding: 0 16px 16px;
