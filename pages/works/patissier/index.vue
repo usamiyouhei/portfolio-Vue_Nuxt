@@ -4,37 +4,35 @@
     <header class="head">
       <h1 class="title">Patissier Gallery</h1>
 
-      <div class="video-wrap">
-        <video
-          src="@/public/videos/dessert_une_assiette.mp4"
-          class="video"
-          controls
-          playsinline
-          muted
-          loop
-          preload="metadata"
-        ></video>
-      </div>
+      <div class="video-section">
+        <div class="video-wrap">
+          <video
+            src="@/public/videos/dessert_une_assiette.mp4"
+            class="video"
+            controls
+            playsinline
+            muted
+            loop
+            preload="metadata"
+          ></video>
+        </div>
 
-      <div class="kv__video-wrap fade-in fade-in-up">
-        <h3 class="kv__video-title">
-          動画クリエイター&emsp;シライフウタ様&emsp;<br
-            class="md-show pc-show"
-          />コラボ動画
-        </h3>
-        <time class="kv__video-time" datetime="2022-2-18">2022.2.18</time>
+        <div class="video-caption fade-in fade-in-up">
+          <h3 class="video-title">
+            動画クリエイター・<span class="highlight">シライフウタ</span
+            >様との<br class="md-show" />コラボレーション動画
+          </h3>
+          <time class="video-time" datetime="2022-2-18">2022.2.18</time>
 
-        <p class="kv__video-text">
-          Instagram、ティックトックで人気の<br
-            class="md-show"
-          />動画クリエイター<br class="md-none" />
-          シライフウタさんに<br class="md-show" />撮影して頂きました&#33;<br
-            class="sp-show"
-          />
-          流れるような動きでストーリー性のある<br
-            class="md-show"
-          />動画に仕上がりました。
-        </p>
+          <p class="video-text">
+            InstagramやTikTokで人気の動画クリエイター
+            <span class="highlight">シライフウタ</span
+            >様に撮影していただいた特別映像です。<br />
+            菓子作りの繊細な手仕事や、素材の香り・質感までも感じられるような、
+            流れるようなカメラワークで“デセール・アン・アシェット”の世界観を表現しています。<br />
+            一皿に込めた想いと、瞬間の美しさを映像でお楽しみください。
+          </p>
+        </div>
       </div>
 
       <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
@@ -130,13 +128,29 @@ function closeModal() {
   font-weight: 800;
   font-size: clamp(22px, 2.6vw, 34px);
 }
+
+.video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 32px 0 48px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    text-align: left;
+  }
+}
+
 .video-wrap {
-  position: relative;
-  margin: 16px 0 24px;
-  max-width: 500px;
+  flex: 1;
+  max-width: 480px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   .video {
     width: 100%;
     height: auto;
@@ -145,18 +159,38 @@ function closeModal() {
   }
 }
 
-.kv__video-wrap {
-  width: 100%;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px 0;
-  margin: 20px 0 40px;
-}
-.kv__video-title {
-  line-height: 1.88;
-  text-align: center;
-  width: 100%;
+.video-caption {
+  flex: 1;
+  max-width: 600px;
+  // text-align: center;
+  // background-color: #fff;
+  // border-radius: 8px;
+  // padding: 20px 0;
+  // margin: 20px 0 40px;
+
+  .video-title {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .video-time {
+    display: block;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 16px;
+  }
+
+  .video-text {
+    line-height: 1.9;
+    font-size: 15px;
+    color: #333;
+  }
+  .highlight {
+    color: #f48fb1;
+    font-weight: 600;
+  }
 }
 
 .tabs {
