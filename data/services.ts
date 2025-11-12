@@ -26,6 +26,7 @@ export type Service = {
   heroImage?: string;
   blocks?: ServiceBlock[];
   priceTable?: PriceTable;
+  consultText?: string;
 };
 
 export const services: Service[] = [
@@ -96,6 +97,8 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: `専門的なご相談も <strong>Zoom（1時間 2,000円〜）</strong> にて承ります。<br />
+      制作の方向性や課題の整理など、プロの視点からサポートいたします。`,
   },
   {
     title: "Web Design",
@@ -164,6 +167,11 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: `
+    デザインの方向性やコンセプト設計など、<br />
+    初期段階のご相談も <strong>Zoom（1時間 2,000円〜）</strong> にて承ります。<br />
+    ヒアリングを通して、目的や理想の世界観を一緒に形にしていきます。
+    `,
   },
   {
     title: "Web site Renewal",
@@ -232,6 +240,11 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: `
+    現在のサイトの課題や改善点を整理し、<br />
+    より効果的なリニューアルの方向性を <strong>Zoom（1時間 2,000円〜）</strong> にてご提案します。<br />
+    デザイン・構成・導線など、現状分析から丁寧にサポートいたします。
+`,
   },
   {
     title: "Recipe Development",
@@ -300,6 +313,8 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: `試作やレシピ改善など、オンラインにてご相談を承っております。<br />
+      <strong>Zoom（約1時間 2,000円〜）</strong> でお気軽にご相談ください。`,
   },
   {
     title: "Consultant",
@@ -364,6 +379,11 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: `
+    メニュー開発や開業準備、店舗運営など、<br />
+    飲食店に関するご相談を <strong>Zoom（1時間 2,000円〜）</strong> にて承ります。<br />
+    22年の現場経験をもとに、課題の整理から実践的な改善提案まで丁寧にサポートいたします。
+    `,
   },
   {
     title: "Photo & Video Shooting",
@@ -428,5 +448,7 @@ export const services: Service[] = [
         },
       ],
     },
+    consultText: ` 撮影構成・カット内容のご相談もオンラインで可能です。<br />
+      <strong>Zoom（1時間 2,000円〜）</strong> にて丁寧にサポートいたします。`,
   },
 ];

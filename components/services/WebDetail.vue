@@ -31,9 +31,7 @@
         </li>
 
         <li class="service-block">
-          <p class="consult">
-            プロの Zoom 相談（1h〜）：2,000円（税込）も承ります。
-          </p>
+          <p class="consult" v-html="service.consultText" />
         </li>
       </ul>
     </section>
@@ -188,7 +186,7 @@ const bgStyle = computed(() => ({
     left: 50%;
     bottom: -2px;
     transform: translateX(-50%);
-    width: 130px;
+    width: 100%;
     height: 3px;
     border-radius: 999px;
     background: linear-gradient(90deg, #d4af37, #bf901a, #e5c87b);
@@ -225,7 +223,7 @@ const bgStyle = computed(() => ({
   overflow-x: auto;
 }
 .consult {
-  padding: 0 16px 16px;
+  padding: 10px;
 }
 .cta {
   display: grid;
