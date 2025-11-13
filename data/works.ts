@@ -25,8 +25,17 @@ export const works: Work[] = [
   },
   {
     id: 12,
-    title: "",
-    img: "",
+    title: "fruits",
+    img: "/img/VisualProduction/autum-fruits.jpg",
+    category: "VisualProduction",
+    slug: "",
+    date: "",
+    tags: [""],
+  },
+  {
+    id: 13,
+    title: "fruits2",
+    img: "/img/VisualProduction/autum-fruits2.jpg",
     category: "VisualProduction",
     slug: "",
     date: "",
@@ -35,7 +44,7 @@ export const works: Work[] = [
   {
     id: 3,
     title: "web site 1",
-    img: "/img/works1.jpg",
+    img: "/img/web-site/pon-design-fv.jpg",
     category: "programming",
     slug: "logo-design",
     date: "2025-08-30",
