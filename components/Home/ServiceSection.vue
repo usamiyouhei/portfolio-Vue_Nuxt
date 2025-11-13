@@ -172,7 +172,7 @@ const catLabels: Record<Category, string> = {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin: 0 0 1rem;
+  margin: 1rem 0 1rem;
 }
 .tab {
   padding: 0.5rem 1rem;
