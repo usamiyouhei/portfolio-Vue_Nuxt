@@ -2,9 +2,9 @@
   <main>
     <section class="fv">
       <div class="fv__bg" :style="bgStyle" />
-
+      <Breadcrumb :crumbs="crumbs" />
       <div class="fv__content">
-        <h1 id="page-title" class="page_title">{{ service.title }}</h1>
+        <h1 id="page-title" class="page-title">{{ service.title }}</h1>
         <p class="page-subtitle fade-in-up-delay">{{ service.subTitle }}</p>
       </div>
     </section>
@@ -54,6 +54,8 @@ import type { Service } from "~/data/services";
 import { ref, computed, onMounted } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
 import Button from "../common/Button.vue";
+import { useBreadcrumb } from "@/composables/useBreadcrumb";
+import Breadcrumb from "~/components/common/Breadcrumb.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -86,6 +88,8 @@ const bgStyle = computed(() => ({
     ? `url('${props.service.heroImage}')`
     : "none",
 }));
+
+const { crumbs } = useBreadcrumb("service", props.service.slug);
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -307,14 +311,4 @@ const bgStyle = computed(() => ({
     padding: 24px 10px;
   }
 }
-// .fade {
-//   opacity: 0;
-//   transform: translateY(20px);
-//   transition: opacity 0.8 ease, transform 0.8s ease;
-// }
-
-// .fade--in {
-//   opacity: 1;
-//   transform: translateY(0);
-// }
 </style>

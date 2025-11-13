@@ -3,62 +3,76 @@
     <header class="head">
       <h1 class="title">Hobby Gallery</h1>
       <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
-        <button v-for="t in tabs" :key="t.key"
-          :class="['tab', { active: tab === t.key}]" role="tab.key"
-          :aria-selected="tab === t.key" @click="setTab(t.key)"
-          >{{ t.label }}
+        <button
+          v-for="t in tabs"
+          :key="t.key"
+          :class="['tab', { active: tab === t.key }]"
+          role="tab.key"
+          :aria-selected="tab === t.key"
+          @click="setTab(t.key)"
+        >
+          {{ t.label }}
         </button>
       </nav>
-        <p class="hint">クリックで詳細がモーダル表示。</p>
+      <p class="hint">クリックで詳細がモーダル表示。</p>
     </header>
 
-    <WorkGalleryGrid :items="list" @open="openModal"/>
-    <WorkLightboxModal v-if="active" :work="active" :siblings="list" @close="closeModal"/>
+    <WorkGalleryGrid :items="list" @open="openModal" />
+    <WorkLightboxModal
+      v-if="active"
+      :work="active"
+      :siblings="list"
+      @close="closeModal"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { patissierWorks } from '~/data/view';;
+import { computed } from "vue";
+import { patissierWorks } from "~/data/view";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type PatissierTab = 'photo' | 'food' | 'economy'
+type PatissierTab = "ingredients" | "food" | "economy";
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const tab = computed<PatissierTab>(() => (['photo', 'food', 'economy'].includes(String(route.query.tab))
-? route.query.tab as PatissierTab
-: 'photo'
-))
+const tab = computed<PatissierTab>(() =>
+  ["ingredients", "food", "economy"].includes(String(route.query.tab))
+    ? (route.query.tab as PatissierTab)
+    : "ingredients"
+);
 
-const tabs:{ key: PatissierTab, label: string }[] = [
-  { key: 'photo', label: '写真'},
-  { key: 'food', label: '食事'},
-  { key: 'economy', label: '経済'}
-]
-const list = computed(() =>  patissierWorks.filter(w => w.category === tab.value))
+const tabs: { key: PatissierTab; label: string }[] = [
+  { key: "ingredients", label: "食材" },
+  { key: "food", label: "食事" },
+  { key: "economy", label: "経済" },
+];
+const list = computed(() =>
+  patissierWorks.filter((w) => w.category === tab.value)
+);
 
 // モーダル深リンク：?id=xxx
-const modalId = computed(() => route.query.id as string | undefined)
-const active = computed(() => modalId.value
-? list.value.find(w => w.id === modalId.value || w.slug === modalId.value)
-: null)
-
+const modalId = computed(() => route.query.id as string | undefined);
+const active = computed(() =>
+  modalId.value
+    ? list.value.find((w) => w.id === modalId.value || w.slug === modalId.value)
+    : null
+);
 
 function setTab(t: PatissierTab) {
-  router.replace({ query: {...route.query, tab: t, id: undefined}})
+  router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 
-function openModal(id: string){
-  router.replace({ query: {...route.query, id }})
+function openModal(id: string) {
+  router.replace({ query: { ...route.query, id } });
 }
 
-function closeModal(){
-  const q = {...route.query}
-  delete(q as any).id
-  router.replace({query: q})
+function closeModal() {
+  const q = { ...route.query };
+  delete (q as any).id;
+  router.replace({ query: q });
 }
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -92,10 +106,10 @@ function closeModal(){
 }
 .tab.active {
   border-color: #f7b;
-  box-shadow:0 0 0 2px rgba(255,128,170,.15) inset
+  box-shadow: 0 0 0 2px rgba(255, 128, 170, 0.15) inset;
 }
 .hint {
-  opacity: .75;
+  opacity: 0.75;
   font-size: 13px;
 }
 </style>
