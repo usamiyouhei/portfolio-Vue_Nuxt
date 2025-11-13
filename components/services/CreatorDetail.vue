@@ -1,6 +1,7 @@
 <template>
   <section class="fv">
     <div class="fv__bg" :style="bgStyle" />
+    <Breadcrumb :crumbs="crumbs" />
 
     <div class="fv__content">
       <h1 id="page-title" class="page-title">{{ service.title }}</h1>
@@ -42,6 +43,9 @@
 <script setup lang="ts">
 import type { Service } from "~/data/services";
 import { ref, computed } from "vue";
+import { useBreadcrumb } from "@/composables/useBreadcrumb";
+import Breadcrumb from "~/components/common/Breadcrumb.vue";
+
 const props = defineProps<{ service: Service }>();
 /**===================================================================================================================
  * 
@@ -63,6 +67,8 @@ const imageList = [
   "/img/sweets/fig_dessert.jpg",
   "/img/sweets/muscut_dessert.jpg",
 ];
+
+const { crumbs } = useBreadcrumb("service", props.service.slug);
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -94,11 +100,8 @@ const imageList = [
     z-index: 2;
   }
 }
-.creator-img {
-  width: 60%;
-}
+
 .page-title {
-  /* position: absolute; */
   font-family: "Playfair Display", "Italianno", cursive;
   font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
@@ -115,11 +118,13 @@ const imageList = [
   color: rgba(255, 255, 255, 0.9);
   font-family: "Noto Sans JP", sans-serif;
 }
+
 .inner {
   max-width: 1120px;
   margin: 0 auto;
   padding: 32px 16px 24px;
 }
+
 .service-lists {
   list-style: none;
   margin: 0;
@@ -128,17 +133,20 @@ const imageList = [
   gap: 24px;
   overflow: visible;
 }
+
 .block-head {
   margin-bottom: 12px;
 }
+
 .service-block {
+  border-left: 4px solid #cba96d; /* ← WebDetail と同じ */
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
   background: rgba(255, 255, 255, 0.75);
   text-align: center;
   backdrop-filter: blur(6px);
-  border-radius: 16px;
-  padding: 24px 20px;
   overflow: visible;
-  margin-bottom: 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
@@ -149,9 +157,12 @@ const imageList = [
 }
 
 .block-title {
+  position: relative;
   font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 600;
   display: inline-block;
+  text-align: center;
+  color: #222;
   padding: 8px;
   margin: 16px;
 
@@ -161,7 +172,7 @@ const imageList = [
     left: 50%;
     bottom: -2px;
     transform: translateX(-50%);
-    width: 130px;
+    width: 100%; /* ← WebDetail と同じ（レスポンシブ対応） */
     height: 3px;
     border-radius: 999px;
     background: linear-gradient(90deg, #d4af37, #bf901a, #e5c87b);
@@ -169,13 +180,15 @@ const imageList = [
 }
 
 .block-text {
-  padding: 8px 16px 16px;
+  text-align: justify; /* ← WebDetail と同じ */
   line-height: 1.9;
+  color: #333;
 }
+
 .table-scroll {
   display: block;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; // スマホでスムーズにスクロール
+  -webkit-overflow-scrolling: touch;
   width: 100%;
 
   &::-webkit-scrollbar {
@@ -192,35 +205,14 @@ const imageList = [
   border-collapse: collapse;
 }
 
-:deep(.table-scroll .price-scroll) {
-  overflow-x: auto;
-}
 .consult {
-  padding: 0 16px 16px;
+  padding: 10px; /* ← WebDetail と合わせる */
 }
+
 .cta {
   display: grid;
   place-items: center;
   padding: 24px 0 56px;
-}
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 280px;
-  height: 40px;
-  padding: 0 20px;
-  background: #111;
-  color: #fff;
-  border-radius: 999px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.cta-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
 }
 
 .fade-in-up {
@@ -228,6 +220,7 @@ const imageList = [
   transform: translateY(16px);
   animation: fadeUp 1s ease forwards;
 }
+
 .fade-in-up-delay {
   opacity: 0;
   transform: translateY(16px);
@@ -250,16 +243,13 @@ const imageList = [
     padding: 4px 10px;
   }
   .block-text {
-    padding: 8px 12px 12px;
     line-height: 1.7;
   }
   .fv__bg {
     background-position: center top;
   }
-  .cta-btn {
-    min-width: 220px;
-  }
 }
+
 @media (max-width: 480px) {
   .fv {
     height: 200px;
@@ -274,10 +264,6 @@ const imageList = [
   .cta {
     padding: 16px 0 40px;
   }
-  .cta-btn {
-    min-width: 200px;
-    font-size: 10px;
-  }
 }
 
 @media (max-width: 360px) {
@@ -288,11 +274,6 @@ const imageList = [
   .block-text {
     font-size: 14px;
     line-height: 1.7;
-  }
-  .cta-btn {
-    min-width: 160px;
-    height: 36px;
-    font-size: 13px;
   }
   .inner {
     padding: 24px 10px;

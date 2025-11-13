@@ -3,7 +3,7 @@
   <section class="movie-editing">
     <Breadcrumb :crumbs="crumbs" />
     <header class="head">
-      <h1 class="title">Movie Gallery</h1>
+      <h1 class="title">Visual Production Gallery</h1>
 
       <div class="video-wrap">
         <video
@@ -38,7 +38,7 @@
         </p>
       </div>
 
-      <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
+      <nav class="tabs" role="tablist" aria-label="VisualProduction Tabs">
         <button
           v-for="t in tabs"
           :key="t.key"
@@ -71,26 +71,29 @@ import Breadcrumb from "~/components/common/Breadcrumb.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type PatissierTab = "dessert" | "sweets" | "cake";
+type VisualProductionTab = "flowers" | "houseplants" | "landscape" | "youtube";
 
 const route = useRoute();
 const router = useRouter();
 
-const tab = computed<PatissierTab>(() =>
-  ["dessert", "sweets", "cake"].includes(String(route.query.tab))
-    ? (route.query.tab as PatissierTab)
-    : "dessert"
+const tab = computed<VisualProductionTab>(() =>
+  ["flowers", "houseplants", "landscape", "youtube"].includes(
+    String(route.query.tab)
+  )
+    ? (route.query.tab as VisualProductionTab)
+    : "flowers"
 );
 
-const tabs: { key: PatissierTab; label: string }[] = [
-  { key: "dessert", label: "デザート" },
-  { key: "sweets", label: "お菓子" },
-  { key: "cake", label: "ケーキ" },
+const tabs: { key: VisualProductionTab; label: string }[] = [
+  { key: "flowers", label: "生花" },
+  { key: "houseplants", label: "観葉植物" },
+  { key: "landscape", label: "風景" },
+  { key: "youtube", label: "YouTube動画" },
 ];
 const list = computed(() =>
   patissierWorks.filter((w) => w.category === tab.value)
 );
-const { crumbs } = useBreadcrumb("works", "Movie Editing");
+const { crumbs } = useBreadcrumb("works", "Visual Production");
 
 // モーダル深リンク：?id=xxx
 const modalId = computed(() => route.query.id as string | undefined);
@@ -100,7 +103,7 @@ const active = computed(() =>
     : null
 );
 
-function setTab(t: PatissierTab) {
+function setTab(t: VisualProductionTab) {
   router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 

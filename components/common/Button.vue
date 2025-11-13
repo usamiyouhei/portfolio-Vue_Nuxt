@@ -1,60 +1,57 @@
 <template>
-   <div class="btn-wrap">
-      <NuxtLink v-if="props.to"
-        class="read-more__button"
-        :to="props.to"
-        >
-        <span>{{ props.buttonText }}</span>
-      </NuxtLink>
+  <div class="btn-wrap">
+    <NuxtLink v-if="props.to" class="read-more__button" :to="props.to">
+      <span>{{ props.buttonText }}</span>
+    </NuxtLink>
 
-      <a v-else-if="props.href"
-        class="read-more__button"
-        :href="props.href" target="_blank"
-        rel="noopener"
-        >
-        <span>{{ props.buttonText }}</span>
-      </a>
+    <a
+      v-else-if="props.href"
+      class="read-more__button"
+      :href="props.href"
+      target="_blank"
+      rel="noopener"
+    >
+      <span>{{ props.buttonText }}</span>
+    </a>
 
-      <button v-else
-        type="button"
-        class="read-more__button"
-        @click="props.onClick"
-        >
-        <span>
-          {{ props.buttonText }}
-        </span>
-      </button>
-    </div>
+    <button
+      v-else
+      type="button"
+      class="read-more__button"
+      @click="props.onClick"
+    >
+      <span>
+        {{ props.buttonText }}
+      </span>
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 type ButtonProps =
-|{
-  buttonText: string
-  to: string
-  href?: undefined
-  onClick?: undefined
-  }
-|{
-  buttonText: string
-  href: string
-  to?: undefined
-  onClick?: undefined
-}
-|{
-  buttonText: string
-  onClick: () => void
-  href?: string
-  to?: string
-}
+  | {
+      buttonText: string;
+      to: string;
+      href?: undefined;
+      onClick?: undefined;
+    }
+  | {
+      buttonText: string;
+      href: string;
+      to?: undefined;
+      onClick?: undefined;
+    }
+  | {
+      buttonText: string;
+      onClick: () => void;
+      href?: string;
+      to?: string;
+    };
 
-const props = defineProps<ButtonProps>()
-
-
+const props = defineProps<ButtonProps>();
 </script>
 
 <style lang="scss" scoped>
-
 /* read-more__button */
 .btn-wrap {
   /* display: block; */
@@ -87,10 +84,10 @@ const props = defineProps<ButtonProps>()
 }
 
 .read-more__button {
-  all: unset; 
+  all: unset;
   margin-bottom: 12px;
   padding: 0;
-  font-family: "Italianno";
+  font-family: "Playfair Display", serif;
   font-size: 20px;
   -webkit-transition: all 0.3s;
 
@@ -113,7 +110,7 @@ const props = defineProps<ButtonProps>()
   );
 }
 
-.read-more__button span ::after  {
+.read-more__button span ::after {
   content: "";
   position: relative;
   width: 10px; /* ボックスの横幅を指定する */
@@ -170,7 +167,7 @@ const props = defineProps<ButtonProps>()
     padding: 0.9rem 2.4rem;
   }
 }
-@media (max-width: 480px ) {
+@media (max-width: 480px) {
   .read-more__button span {
     font-size: 14px;
     padding: 0.8rem 2rem;
@@ -178,7 +175,7 @@ const props = defineProps<ButtonProps>()
 }
 
 @media (max-width: 360px) {
-    .read-more__button span {
+  .read-more__button span {
     font-size: 13px;
     padding: 0.7rem 1.6rem;
   }
