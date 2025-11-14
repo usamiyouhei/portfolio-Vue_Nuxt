@@ -5,6 +5,7 @@
   --font-jp-serif: "Yu Mincho", "游明朝", "Noto Serif JP", serif;
   --font-jp-sans: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+  --fadeAnimation: fade 0.5s forwards;
 }
 
 html {
@@ -33,20 +34,25 @@ a {
   position: relative;
   /* font-family:"Yu Gothic" ; */
 }
-h2 {
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-en-display);
+  font-weight: 400;
+}
+/* h2 {
   font-family: "Italianno";
   font-size: 1.5rem;
   margin: 0;
-}
+} */
 /* span {
   display: block;
 } */
 p {
   font-weight: 500;
 }
-:root {
-  --fadeAnimation: fade 0.5s forwards;
-}
+
 .inner {
   /* width: 100%; */
   max-width: 1200px;

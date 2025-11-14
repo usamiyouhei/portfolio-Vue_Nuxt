@@ -50,14 +50,10 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   left: 0;
   right: 0;
   width: 100%;
-  height: 64px;
+  height: 70px;
   background-color: #fff;
   opacity: 0.8;
   overflow: visible;
-
-  // padding-left: max(16px, env(safe-area-inset-left));
-  // padding-right: max(16px, env(safe-area-inset-right));
-  // max-width: 1200px;
   margin-inline: auto;
 }
 @media (min-width: 768) {

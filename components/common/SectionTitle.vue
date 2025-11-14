@@ -54,20 +54,19 @@ useIntersectionObserver(root, ([{ isIntersecting }]) => {
 }
 .section-title__main {
   position: relative;
-  font-size: 4rem;
-  font-family: "Italianno";
-  letter-spacing: 0.15rem;
-  font-weight: 300;
+  font-size: clamp(32px, 4vw, 40px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .section-title__main::after {
   content: "";
   position: absolute;
-  bottom: 4px;
+  bottom: 2px;
   right: 0;
-  border: solid 2px #bf901a;
+  border: solid 1px #bf901a;
   width: 50px;
-  height: 4px;
+  // height: 3px;
   border-radius: 5px;
   /* width: 10px; */
 }
