@@ -1,18 +1,18 @@
 <template>
-      <NuxtLink :to="`/news/${props.item.slug}`" class="news-item">
-        <div class="news-item__thumb">
-          <img :src="props.item.image" :alt="props.item.title" loading="lazy">
-        </div>
-        <div class="news-item__body">
-          <time class="news-item__date">{{ props.item.date }}</time>
-          <h3 class="news-item__title">
-            {{ props.item.title }}
-          </h3>
-          <p v-if="props.item.excerpt" class="news-item__excerpt">
-            {{ props.item.excerpt }}
-          </p>
-        </div>
-      </NuxtLink>
+  <NuxtLink :to="`/news/${props.item.slug}`" class="news-item">
+    <div class="news-item__thumb">
+      <img :src="props.item.image" :alt="props.item.title" loading="lazy" />
+    </div>
+    <div class="news-item__body">
+      <time class="news-item__date">{{ props.item.date }}</time>
+      <h3 class="news-item__title">
+        {{ props.item.title }}
+      </h3>
+      <p v-if="props.item.excerpt" class="news-item__excerpt">
+        {{ props.item.excerpt }}
+      </p>
+    </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -21,8 +21,8 @@ import type { News } from "@/types/news";
  * 
  ===================================================================================================================**/
 const props = defineProps<{
-  item: News
-}>()
+  item: News;
+}>();
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -36,9 +36,11 @@ const props = defineProps<{
   gap: 10px;
   padding: 12px;
   border-radius: 10px;
-  background: rgba(255,255,255,.3);
-  transition: transform .2s ease;
-  &:hover{ transform: translateY(-3px); }
+  background: rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: translateY(-3px);
+  }
 }
 
 .news-item__thumb {
@@ -53,7 +55,7 @@ const props = defineProps<{
     object-fit: cover;
     transition: transform 0.4s ease;
   }
-   &:hover img {
+  &:hover img {
     transform: scale(1.08);
   }
 }
@@ -69,6 +71,7 @@ const props = defineProps<{
 }
 
 .news-item__title {
+  font-family: "Noto Sans JP", "Yu Gothic Medium", sans-serif;
   font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
@@ -82,19 +85,19 @@ const props = defineProps<{
   color: #444;
   line-height: 1.7;
   display: -webkit-box;
-  -webkit-line-clamp: 2;      /* ← 2行で省略 */
+  -webkit-line-clamp: 2; /* ← 2行で省略 */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-@media (min-width:426px) and (max-width: 767px){
-  .news-item{
+@media (min-width: 426px) and (max-width: 767px) {
+  .news-item {
     flex-direction: row;
-    align-items:center;
+    align-items: center;
     gap: 16px;
     padding: 16px;
   }
-  .news-item__thumb{
+  .news-item__thumb {
     flex: 0 0 40%;
     aspect-ratio: 4 / 3;
     max-width: 280px;
@@ -163,10 +166,10 @@ const props = defineProps<{
     border-radius: 12px;
   }
   .news-item__body {
-  width: 100%;
-  text-align: center;
-  padding: 10px 2px 0;
-}
+    width: 100%;
+    text-align: center;
+    padding: 10px 2px 0;
+  }
   .news-item__title {
     font-size: 16px;
   }
@@ -190,5 +193,4 @@ const props = defineProps<{
     border-radius: 12px;
   }
 }
-
 </style>

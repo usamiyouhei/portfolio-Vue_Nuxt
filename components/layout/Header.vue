@@ -74,6 +74,8 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   margin-right: auto;
 }
 .header_logo {
+  height: 100%;
+  width: auto;
   flex: 0 0 auto;
   width: clamp(140px, 22vw, 220px); /* 最小140px、画面に応じて伸縮、最大220px */
   line-height: 0;
@@ -82,9 +84,8 @@ import HamburgerButton from "../common/HamburgerButton.vue";
 
 .header_logo img {
   display: block;
-  width: 100%;
-  height: auto;
-  max-height: calc(100% - 12px);
+  width: auto;
+  height: 100%;
   object-fit: contain;
 }
 
