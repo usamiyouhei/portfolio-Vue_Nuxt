@@ -145,8 +145,8 @@ const selectedCategory = ref<Category>("all");
 const categories: Category[] = ["all", "web", "creator"];
 const catLabels: Record<Category, string> = {
   all: "All",
-  web: "WEB",
-  creator: "クリエイター",
+  web: "Web",
+  creator: "Creator",
 };
 
 //------------------------------------------------------------------------------------------------------------
@@ -175,17 +175,36 @@ const catLabels: Record<Category, string> = {
   margin: 1rem 0 1rem;
 }
 .tab {
-  padding: 0.5rem 1rem;
-  border-radius: 75rem;
-  border: 1px solid #ddd;
-  background: #f7f7f7;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-family: "Noto Sans JP", "Yu Gothic Medium", sans-serif;
+  letter-spacing: 0.02em;
+
+  border: 1px solid #d8a8c8; // 淡いピンク
+  border-radius: 999px; // ピル型
+  background: rgba(255, 255, 255, 0.6); // 半透明白
+  backdrop-filter: blur(8px); // ぼかしで透明感UP
+
+  color: #555;
+  transition: all 0.25s ease;
   cursor: pointer;
-  font-weight: bold;
+  // padding: 0.5rem 1rem;
+  // border-radius: 75rem;
+  // border: 1px solid #ddd;
+  // background: #f7f7f7;
+  // cursor: pointer;
+  // font-weight: bold;
+  &:hover {
+    background: rgba(255, 240, 245, 0.9);
+    border-color: #d396ba;
+  }
 }
 .tab.active {
-  background: #f8a2f8;
-  color: #ffffff;
-  border-color: #ddd;
+  background: linear-gradient(135deg, #f4c9d9, #edb2cc);
+  border-color: #d48ab2;
+  color: #4a2f42;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(190, 120, 160, 0.25);
 }
 
 /* スワイパーの土台 */
@@ -237,22 +256,31 @@ const catLabels: Record<Category, string> = {
 .nav-wrap {
   position: relative;
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
+
 .nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100; /* スライドより前面に */
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #f8f8f8;
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-weight: 700;
-  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
 }
 .nav-button:hover {
   background: #fff;
@@ -268,10 +296,18 @@ const catLabels: Record<Category, string> = {
 }
 
 .svc-prev {
-  left: -16px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  left: 8px;
 }
 .svc-next {
-  right: -16px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  right: 8px;
 }
 
 // @media (min-width: 426px) {
@@ -281,10 +317,10 @@ const catLabels: Record<Category, string> = {
 
 @media (min-width: 768px) {
   .svc-prev {
-    left: 80px;
+    left: 40px;
   }
   .svc-next {
-    right: 80px;
+    right: 40px;
   }
 }
 /* グリッド（PC用） */
