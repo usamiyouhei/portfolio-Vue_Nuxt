@@ -1,68 +1,116 @@
 <template>
-  <div 
-    class="hamburger-button"
-    :class="{ active: isOpen }"
-    @click="toggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <div class="hamburger-button" :class="{ active: isOpen }" @click="toggleMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-      <div 
-        ref="menuRef"
-        class="slide-menu"
-        :class="{ open: isOpen }"
+  <div ref="menuRef" class="slide-menu" :class="{ open: isOpen }">
+    <ul class="slide-menu__items">
+      <li class="slide-menu__item">
+        <NuxtLink href="/#about" class="slide-menu__link" @click="closeMenu"
+          >About</NuxtLink
         >
-        <ul class="slide-menu__items">
-          <li class="slide-menu__item">
-            <NuxtLink href="/#about" class="slide-menu__link" @click="closeMenu">About</NuxtLink>
-          </li>
-          <li class="slide-menu__item">
-            <NuxtLink href="/#service" class="slide-menu__link" @click="closeMenu">Service</NuxtLink>
-          </li>
-          <li class="slide-menu__item">
-            <NuxtLink href="/#news" class="slide-menu__link" @click="closeMenu">News</NuxtLink>
-          </li>
-          <li class="slide-menu__item">
-            <NuxtLink href="/#works" class="slide-menu__link" @click="closeMenu">Works</NuxtLink>
-          </li>
-          <li class="slide-menu__item">
-            <NuxtLink href="/#contact" class="slide-menu__link slide-menu__link--contact" @click="closeMenu"
-              ><span>Contact</span>
-              </NuxtLink>
-          </li>
-        </ul>
-        <div class="slide-menu__sns" aria-label="Social links">
-          <a href="https://twitter.com/your-id" target="_blank" rel="noopener" aria-label="X">
-            <img src="/brands/x-color.svg" alt="X" width="28" height="28" />
-          </a>
-          <a href="https://instagram.com/your-id" target="_blank" rel="noopener" aria-label="Instagram">
-            <img src="/brands/instagram-color.svg" alt="Instagram" width="28" height="28" />
-          </a>
-          <a href="https://github.com/usamiyouhei" target="_blank" rel="noopener" aria-label="GitHub">
-            <img src="/brands/github-color.svg" alt="GitHub" width="28" height="28" />
-          </a>
-          <a href="https://youtube.com/@your-id" target="_blank" rel="noopener" aria-label="YouTube">
-            <img src="/brands/youtube-color.svg" alt="YouTube" width="28" height="28" />
-          </a>
-          <a href="https://facebook.com/your-id" target="_blank" rel="noopener" aria-label="Facebook">
-            <img src="/brands/facebook-color.svg" alt="Facebook" width="28" height="28" />
-          </a>
-        </div>
-      </div>
+      </li>
+      <li class="slide-menu__item">
+        <NuxtLink href="/#service" class="slide-menu__link" @click="closeMenu"
+          >Service</NuxtLink
+        >
+      </li>
+      <li class="slide-menu__item">
+        <NuxtLink href="/#news" class="slide-menu__link" @click="closeMenu"
+          >News</NuxtLink
+        >
+      </li>
+      <li class="slide-menu__item">
+        <NuxtLink href="/#works" class="slide-menu__link" @click="closeMenu"
+          >Works</NuxtLink
+        >
+      </li>
+      <li class="slide-menu__item">
+        <NuxtLink
+          href="/#contact"
+          class="slide-menu__link slide-menu__link--contact"
+          @click="closeMenu"
+          ><span>Contact</span>
+        </NuxtLink>
+      </li>
+    </ul>
+    <div class="slide-menu__sns" aria-label="Social links">
+      <a
+        href="https://twitter.com/your-id"
+        target="_blank"
+        rel="noopener"
+        aria-label="X"
+      >
+        <img src="/brands/x-color.svg" alt="X" width="28" height="28" />
+      </a>
+      <a
+        href="https://instagram.com/your-id"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+        <img
+          src="/brands/instagram-color.svg"
+          alt="Instagram"
+          width="28"
+          height="28"
+        />
+      </a>
+      <a
+        href="https://github.com/usamiyouhei"
+        target="_blank"
+        rel="noopener"
+        aria-label="GitHub"
+      >
+        <img
+          src="/brands/github-color.svg"
+          alt="GitHub"
+          width="28"
+          height="28"
+        />
+      </a>
+      <a
+        href="https://youtube.com/@your-id"
+        target="_blank"
+        rel="noopener"
+        aria-label="YouTube"
+      >
+        <img
+          src="/brands/youtube-color.svg"
+          alt="YouTube"
+          width="28"
+          height="28"
+        />
+      </a>
+      <a
+        href="https://facebook.com/your-id"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <img
+          src="/brands/facebook-color.svg"
+          alt="Facebook"
+          width="28"
+          height="28"
+        />
+      </a>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue"; 
-
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const isOpen = ref(false);
-const menuRef = ref<HTMLElement | null>(null)
+const menuRef = ref<HTMLElement | null>(null);
 function toggleMenu() {
-  isOpen.value = !isOpen.value
+  isOpen.value = !isOpen.value;
 }
 function closeMenu() {
-  isOpen.value = false
+  isOpen.value = false;
 }
 
 // function onMenuClick(e: MouseEvent) {
@@ -72,29 +120,33 @@ function closeMenu() {
 // }
 
 function handleClickOutside(e: MouseEvent) {
-  if(isOpen.value) {
+  if (isOpen.value) {
     const menu = menuRef.value;
-    const btn = document.querySelector('.hamburger-button')
-    if(menu && !menu.contains(e.target as Node) && !btn?.contains(e.target as Node)){
-      closeMenu()
+    const btn = document.querySelector(".hamburger-button");
+    if (
+      menu &&
+      !menu.contains(e.target as Node) &&
+      !btn?.contains(e.target as Node)
+    ) {
+      closeMenu();
     }
   }
 }
 
 onMounted(() => {
-  document.addEventListener("click", handleClickOutside)
-})
+  document.addEventListener("click", handleClickOutside);
+});
 onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside)
-})
+  document.removeEventListener("click", handleClickOutside);
+});
 
 watch(isOpen, (open) => {
-  if(open) {
-    document.body.style.overflow = 'hidden'
+  if (open) {
+    document.body.style.overflow = "hidden";
   } else {
-    document.body.style.overflow = ''
+    document.body.style.overflow = "";
   }
-})
+});
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -188,8 +240,8 @@ watch(isOpen, (open) => {
 }
 
 .slide-menu__link {
-  font-family: "Italianno";
-  font-size: 35px;
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
   margin: 50px 0;
   letter-spacing: 0.1rem;
 }
@@ -200,7 +252,7 @@ watch(isOpen, (open) => {
 }
 
 .slide-menu__link:hover {
-    color: #aa3769;
+  color: #aa3769;
 }
 
 .slide-menu__link:hover::after {
@@ -238,7 +290,7 @@ watch(isOpen, (open) => {
   display: grid;
   justify-content: center;
   gap: 18px;
-  border-top: 1px solid rgba(0,0,0,.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .slide-menu__sns a {
@@ -248,14 +300,15 @@ watch(isOpen, (open) => {
   width: 40px;
   height: 40px;
   border-radius: 9999px;
-  transition: transform .25s ease, filter .25s ease, background-color .25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease,
+    background-color 0.25s ease;
 }
 
 .slide-menu__sns a:hover,
 .slide-menu__sns a:focus-visible {
-  transform: scale(1.12);          /* 少し拡大 */
-  filter: brightness(1.06);         /* ほんのり明るく */
-  background-color: rgba(0,0,0,.04);/* うっすら下地 */
+  transform: scale(1.12); /* 少し拡大 */
+  filter: brightness(1.06); /* ほんのり明るく */
+  background-color: rgba(0, 0, 0, 0.04); /* うっすら下地 */
   outline: none;
 }
 

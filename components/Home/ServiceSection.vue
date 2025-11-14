@@ -158,7 +158,7 @@ const catLabels: Record<Category, string> = {
 .service {
   background-image: url(/img/background-img/news-background.jpg);
   background-size: cover;
-  padding: 30px 0;
+  padding: 30px 0 10px;
   overflow-x: clip;
   width: 100%;
 }
@@ -188,12 +188,6 @@ const catLabels: Record<Category, string> = {
   color: #555;
   transition: all 0.25s ease;
   cursor: pointer;
-  // padding: 0.5rem 1rem;
-  // border-radius: 75rem;
-  // border: 1px solid #ddd;
-  // background: #f7f7f7;
-  // cursor: pointer;
-  // font-weight: bold;
   &:hover {
     background: rgba(255, 240, 245, 0.9);
     border-color: #d396ba;
@@ -210,7 +204,6 @@ const catLabels: Record<Category, string> = {
 /* スワイパーの土台 */
 .service-swiper {
   width: 100%;
-  // padding: 16px 24px 36px;
   // スライドを親の高さに揃える
   box-sizing: border-box;
   max-width: 100%;
@@ -232,7 +225,7 @@ const catLabels: Record<Category, string> = {
   /* pagination の位置を下＆余白 */
   :deep(.swiper-pagination) {
     position: static;
-    margin-top: 2px;
+    padding-top: 30px;
   }
 
   /* ドットの見た目 */
@@ -260,6 +253,8 @@ const catLabels: Record<Category, string> = {
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
+  max-width: 480px;
+  margin: 0 auto 20px;
 }
 
 .nav-button {
@@ -300,14 +295,14 @@ const catLabels: Record<Category, string> = {
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  left: 8px;
+  left: -60px;
 }
 .svc-next {
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  right: 8px;
+  right: -60px;
 }
 
 // @media (min-width: 426px) {
@@ -317,10 +312,10 @@ const catLabels: Record<Category, string> = {
 
 @media (min-width: 768px) {
   .svc-prev {
-    left: 40px;
+    left: -60px;
   }
   .svc-next {
-    right: 40px;
+    right: -60px;
   }
 }
 /* グリッド（PC用） */
@@ -346,6 +341,56 @@ const catLabels: Record<Category, string> = {
 }
 .only-desktop {
   display: none;
+}
+
+/* 0〜320px スマホ（最もしぼむ） */
+@media (max-width: 320px) {
+  .svc-prev {
+    left: -4px !important;
+  }
+  .svc-next {
+    right: -4px !important;
+  }
+}
+
+/* 321〜450px（小さめスマホ・大きめスマホ） */
+@media (min-width: 321px) and (max-width: 450px) {
+  .svc-prev {
+    left: -10px !important;
+  }
+  .svc-next {
+    right: -10px !important;
+  }
+}
+
+/* 451〜650px（ここでカードがちゃんと見える） */
+@media (min-width: 451px) and (max-width: 650px) {
+  .svc-prev {
+    left: -16px !important;
+  }
+  .svc-next {
+    right: -16px !important;
+  }
+}
+
+/* 651〜1023px（タブレット） */
+@media (min-width: 651px) and (max-width: 1023px) {
+  .svc-prev {
+    left: -60px !important;
+  }
+  .svc-next {
+    right: -60px !important;
+  }
+}
+
+/* PC（1024〜） */
+@media (min-width: 1024px) {
+  .svc-prev {
+    left: -70px !important;
+  }
+  .svc-next {
+    right: -70px !important;
+  }
 }
 
 @media (min-width: 1024px) {
