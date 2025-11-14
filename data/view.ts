@@ -7,7 +7,7 @@ export const patissierWorks = [
     title: "sakura dessert",
     cover: "/img/dessert/sakura-dessert.jpg",
     category: "dessert",
-    images: ["/img/sakura-dessert.jpg"],
+    images: ["/img/dessert/sakura-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
       ingredients: [
@@ -33,7 +33,7 @@ export const patissierWorks = [
     title: "chocolate dessert",
     cover: "/img/dessert/chocolate-dessert.jpg",
     category: "dessert",
-    images: ["/img/chocolate-dessert.jpg"],
+    images: ["/img/dessert/chocolate-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
       ingredients: [
@@ -59,7 +59,7 @@ export const patissierWorks = [
     title: "orange dessert",
     cover: "/img/dessert/orange-dessert.jpg",
     category: "dessert",
-    images: ["/img/orange-dessert.jpg"],
+    images: ["/img/dessert/orange-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
       ingredients: [
@@ -85,7 +85,7 @@ export const patissierWorks = [
     title: "muscut dessert",
     cover: "/img/dessert/muscut_dessert.jpg",
     category: "dessert",
-    images: ["/img/muscut-dessert.jpg"],
+    images: ["/img/dessert/muscut-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
       ingredients: [
