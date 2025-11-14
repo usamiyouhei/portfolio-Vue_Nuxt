@@ -57,7 +57,7 @@ a {
 }
 
 .about {
-  margin: 80px 0 0;
+  margin: 60px 0 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -71,7 +71,7 @@ a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 16px;
+  margin: 16px 0;
   width: 100%;
   gap: 30px;
   // background-image: url(/public/img/about/aboutback.png);
