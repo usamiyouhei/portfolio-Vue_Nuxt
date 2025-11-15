@@ -27,7 +27,7 @@
       </div>
     </div>
   </section>
-  <Button buttonText="View More" to="/about" />
+  <Button buttonText="View More" lang="en" to="/about" />
 </template>
 
 <script setup lang="ts">
