@@ -14,7 +14,7 @@
       </p>
     </header>
 
-    <section class="aboutpage__section">
+    <section class="about-page__section">
       <SectionTitle sectionTitle="Story" sectionSubTitle="ストーリー" />
       <AboutStory :story="story" />
     </section>
@@ -143,13 +143,51 @@ const { crumbs } = useBreadcrumb("about");
 
 <style lang="scss" scoped>
 .about-page {
-  margin-top: 50px;
-  padding: 60px 100px;
-}
+  margin-top: 80px;
+  padding: 0;
 
-.inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px;
+  .about-page__lead {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.9;
+    margin-top: 20px;
+    opacity: 0.9;
+  }
+
+  .about-page__section {
+    padding: 80px 0;
+  }
+
+  .about-page__section:nth-of-type(even) {
+    background: #fafafa;
+  }
+
+  .inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .about-story {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    img {
+      border-radius: 12px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 1.4em;
+    }
+  }
 }
 </style>
