@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
 
+/* * {
+  font-family: "Noto Sans JP", sans-serif;
+}
+html, body {
+  font-family: "Noto Sans JP", sans-serif;
+} */
+/* A～Z / a～z / 英語は Playfair Display を優先 */
+:lang(en), 
+.en-text,
+html:lang(en) * {
+  font-family: "Playfair Display", serif !important;
+}
 :root {
   --font-en-display: "Playfair Display", serif;
   --font-jp-serif: "Yu Mincho", "游明朝", "Noto Serif JP", serif;

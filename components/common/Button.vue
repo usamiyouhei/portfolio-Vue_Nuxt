@@ -1,6 +1,11 @@
 <template>
   <div class="btn-wrap">
-    <NuxtLink v-if="props.to" class="read-more__button" :to="props.to">
+    <NuxtLink
+      v-if="props.to"
+      class="read-more__button"
+      :to="props.to"
+      :class="props.lang"
+    >
       <span>{{ props.buttonText }}</span>
     </NuxtLink>
 
@@ -8,6 +13,7 @@
       v-else-if="props.href"
       class="read-more__button"
       :href="props.href"
+      :class="props.lang"
       target="_blank"
       rel="noopener"
     >
@@ -18,6 +24,7 @@
       v-else
       type="button"
       class="read-more__button"
+      :class="props.lang"
       @click="props.onClick"
     >
       <span>
@@ -32,12 +39,14 @@ type ButtonProps =
   | {
       buttonText: string;
       to: string;
+      lang?: "en" | "ja";
       href?: undefined;
       onClick?: undefined;
     }
   | {
       buttonText: string;
       href: string;
+      lang?: "en" | "ja";
       to?: undefined;
       onClick?: undefined;
     }
@@ -45,6 +54,7 @@ type ButtonProps =
       buttonText: string;
       onClick: () => void;
       href?: string;
+      lang?: "en" | "ja";
       to?: string;
     };
 
@@ -90,13 +100,13 @@ const props = defineProps<ButtonProps>();
   font-family: "Playfair Display", serif;
   font-size: 20px;
   -webkit-transition: all 0.3s;
-
   transition: all 0.3s;
-
   border-radius: 0;
 }
 
 .read-more__button span {
+  // font-family: "Noto Sans JP", sans-serif;
+  // font-size: 18px;
   position: relative;
   display: block;
   padding: 1.25rem 3rem;
@@ -108,6 +118,17 @@ const props = defineProps<ButtonProps>();
     rgb(255, 255, 255) 30%,
     rgb(253, 226, 179) 70%
   );
+}
+.read-more__button.en span {
+  font-family: "Playfair Display", serif !important;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+.read-more__button.ja span {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-size: 18px;
+  letter-spacing: 0.02em;
 }
 
 .read-more__button span ::after {

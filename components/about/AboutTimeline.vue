@@ -19,9 +19,9 @@ export type TimelineItem = {
   period: string;
   title: string;
   detail: string;
-}
+};
 
-const props = defineProps<{ items: TimelineItem[]}>()
+const props = defineProps<{ items: TimelineItem[] }>();
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -32,11 +32,11 @@ const props = defineProps<{ items: TimelineItem[]}>()
   position: relative;
   padding-left: 20px;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0 auto 0 10px;
     width: 2px;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 0;
   }
 }
@@ -54,7 +54,7 @@ const props = defineProps<{ items: TimelineItem[]}>()
   height: 12px;
   border-radius: 50%;
   background: #c7a049;
-  box-shadow: 0 0 0 4px rgba(199,160,73,.18);
+  box-shadow: 0 0 0 4px rgba(199, 160, 73, 0.18);
 }
 
 .timeline__period {
@@ -62,12 +62,14 @@ const props = defineProps<{ items: TimelineItem[]}>()
   opacity: 0.7;
 }
 .timeline__title {
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 18px;
   margin-top: 2px;
 }
 .timeline__detail {
+  font-family: "Noto Sans JP", sans-serif;
   margin-top: 6px;
-  opacity: .75;
+  opacity: 0.75;
   line-height: 1.8;
 }
 </style>
