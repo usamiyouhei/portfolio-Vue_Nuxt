@@ -229,7 +229,7 @@
   }
 
   .footer__nav {
-    font-size: 36px;
+    font-size: 22px;
     text-align: right;
     flex: 1;
   }
