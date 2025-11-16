@@ -2,7 +2,7 @@
   <main class="about-page">
     <Breadcrumb :crumbs="crumbs" />
 
-    <header class="about_page--hero inner">
+    <!-- <header class="about_page--hero">
       <SectionTitle
         sectionTitle="About"
         sectionSubTitle="経歴・スキル"
@@ -12,9 +12,9 @@
         パティシエ ×
         デジタルクリエイターとしての歩みとスキル、そしてストーリー。
       </p>
-    </header>
+    </header> -->
 
-    <section class="about-page__section">
+    <section class="about-page__section inner">
       <SectionTitle sectionTitle="Story" sectionSubTitle="ストーリー" />
       <AboutStory :story="story" />
     </section>
