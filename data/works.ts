@@ -80,7 +80,7 @@ export const works: Work[] = [
   {
     id: 7,
     title: "design 1",
-    img: "/img/figma-fv.jpg",
+    img: "/img/design/figma-fv.jpg",
     category: "design",
     slug: "hobby",
     date: "2025-07-10",
@@ -89,7 +89,7 @@ export const works: Work[] = [
   {
     id: 8,
     title: "design 2",
-    img: "/img/figma-img2.jpg",
+    img: "/img/design/figma-img2.jpg",
     category: "design",
     slug: "hobby",
     date: "2025-07-10",

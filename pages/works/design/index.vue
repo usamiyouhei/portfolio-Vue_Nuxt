@@ -1,5 +1,6 @@
 <template>
-  <section class="programming">
+  <section class="design">
+    <Breadcrumb :crumbs="crumbs" />
     <header class="head">
       <h1 class="title">Design Works</h1>
       <nav class="tabs">
@@ -28,6 +29,7 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import WorkCard from "@/components/Home/WorkCard.vue";
 import { designWorks } from "~/data/view";
+import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
 /**===================================================================================================================
  * 
@@ -61,13 +63,15 @@ const list = computed(() =>
 function setTab(t: DesignTab) {
   router.replace({ query: { ...route.query, tab: t } });
 }
+const { crumbs } = useBreadcrumb("works", "design");
+
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
 </script>
 
 <style lang="scss" scoped>
-.programming {
+.design {
   max-width: 1200px;
   margin-inline: auto;
   padding: 24px;
