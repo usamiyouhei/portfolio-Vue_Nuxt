@@ -123,7 +123,7 @@ const skills: Skill[] = [
 ];
 
 const story: Story = {
-  photo: "/img/about/about_my_photo.jpg", // /public/img なら /img で参照可能
+  photo: "/img/about/about_make.jpeg",
   caption: "“一皿に魂を込めて” の原点",
   paragraphs: [
     "幼い頃からモノを作るのが好きで工業高校に入学",

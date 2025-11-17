@@ -5,6 +5,8 @@ export type Cat =
   | "design"
   | "hobby";
 export type DevType = "site" | "app";
+export type DesignTab = "figma" | "procreate" | "canva";
+
 export interface Work {
   id: number | string;
   title: string;
@@ -23,6 +25,7 @@ export interface Work {
   tools?: string[];
   // programming
   type?: DevType;
+  designType?: DesignTab;
   problem?: string;
   solution?: string[];
   stack?: string[];
