@@ -216,8 +216,9 @@ const handleSubmit = async () => {
 }
 
 .form__label {
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 14px;
-  color: var(--c-text);
+  // color: var(--c-text);
   letter-spacing: 0.2em;
   display: inline-flex;
   align-items: center;
@@ -225,6 +226,7 @@ const handleSubmit = async () => {
 }
 
 .req {
+  font-family: "Noto Sans JP", sans-serif;
   display: inline-block;
   font-size: 11px;
   line-height: 1;
