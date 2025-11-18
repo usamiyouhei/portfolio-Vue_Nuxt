@@ -1,7 +1,6 @@
 <template>
   <section class="fv">
     <div class="fv__bg" :style="bgStyle" />
-    <Breadcrumb :crumbs="crumbs" />
 
     <div class="fv__content">
       <h1 id="page-title" class="page-title">{{ service.title }}</h1>
@@ -18,6 +17,7 @@
         :reverse="true"
         :height="200"
       />
+      <Breadcrumb :crumbs="crumbs" />
       <li v-for="(b, i) in service.blocks" :key="i" class="service-block">
         <header class="block-head">
           <h2 class="block-title">{{ b.title }}</h2>
@@ -28,9 +28,22 @@
           :table="service.priceTable"
         />
       </li>
+
+      <li class="service-block">
+        <p class="consult" v-html="service.consultText" />
+      </li>
     </ul>
   </section>
-  <NuxtLink to="/#contact" class="cta">お問い合わせ</NuxtLink>
+
+  <div class="cta">
+    <Button
+      buttonText="お問い合わせ"
+      lang="ja"
+      :onClick="() => (showContact = true)"
+    />
+  </div>
+
+  <ContactModal v-if="showContact" @close="showContact = false" />
   <!-- <main class="creator-detail">
     <h1>{{ service.title }}</h1>
     <img class="creator-img" :src="service.img" :alt="service.title" />
@@ -45,6 +58,7 @@ import type { Service } from "~/data/services";
 import { ref, computed } from "vue";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
+import Button from "../common/Button.vue";
 
 const props = defineProps<{ service: Service }>();
 /**===================================================================================================================
@@ -55,6 +69,8 @@ const bgStyle = computed(() => ({
     ? `url(${props.service.heroImage})`
     : "none",
 }));
+
+const showContact = ref(false);
 
 const imageList = [
   "/img/sweets/buffe.jpg",
@@ -68,11 +84,9 @@ const imageList = [
   "/img/sweets/muscut_dessert.jpg",
 ];
 
-const { crumbs } = useBreadcrumb(
-  "service",
-  { label: "Creator", to: "/service/creator" },
-  { label: props.service.subTitle ?? "" }
-);
+const { crumbs } = useBreadcrumb("service", {
+  label: props.service.title ?? "",
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -161,6 +175,7 @@ const { crumbs } = useBreadcrumb(
 }
 
 .block-title {
+  font-family: "Noto Sans JP", sans-serif;
   position: relative;
   font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 600;
