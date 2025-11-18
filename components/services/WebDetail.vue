@@ -2,12 +2,12 @@
   <main>
     <section class="fv">
       <div class="fv__bg" :style="bgStyle" />
-      <Breadcrumb :crumbs="crumbs" />
       <div class="fv__content">
         <h1 id="page-title" class="page-title">{{ service.title }}</h1>
         <p class="page-subtitle fade-in-up-delay">{{ service.subTitle }}</p>
       </div>
     </section>
+    <Breadcrumb :crumbs="crumbs" />
 
     <section class="inner">
       <ul class="service-lists">
@@ -37,7 +37,11 @@
     </section>
 
     <div class="cta">
-      <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)" />
+      <Button
+        buttonText="お問い合わせ"
+        lang="ja"
+        :onClick="() => (showContact = true)"
+      />
     </div>
 
     <ContactModal v-if="showContact" @close="showContact = false" />
@@ -89,7 +93,9 @@ const bgStyle = computed(() => ({
     : "none",
 }));
 
-const { crumbs } = useBreadcrumb("service", props.service.slug);
+const { crumbs } = useBreadcrumb("service", {
+  label: props.service.title ?? "",
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -122,7 +128,7 @@ const { crumbs } = useBreadcrumb("service", props.service.slug);
   }
 }
 .page-title {
-  font-family: "Playfair Display", "Italianno", cursive;
+  font-family: "Playfair Display", serif !important;
   font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
   font-weight: 400;
@@ -175,6 +181,7 @@ const { crumbs } = useBreadcrumb("service", props.service.slug);
 }
 
 .block-title {
+  font-family: "Noto Sans JP", sans-serif;
   position: relative;
   font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 600;

@@ -93,7 +93,7 @@ const tabs: { key: VisualProductionTab; label: string }[] = [
 const list = computed(() =>
   patissierWorks.filter((w) => w.category === tab.value)
 );
-const { crumbs } = useBreadcrumb("works", "Visual Production");
+const { crumbs } = useBreadcrumb("works", { label: "Visual Production" });
 
 // モーダル深リンク：?id=xxx
 const modalId = computed(() => route.query.id as string | undefined);

@@ -68,7 +68,11 @@ const imageList = [
   "/img/sweets/muscut_dessert.jpg",
 ];
 
-const { crumbs } = useBreadcrumb("service", props.service.slug);
+const { crumbs } = useBreadcrumb(
+  "service",
+  { label: "Creator", to: "/service/creator" },
+  { label: props.service.subTitle ?? "" }
+);
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -102,7 +106,7 @@ const { crumbs } = useBreadcrumb("service", props.service.slug);
 }
 
 .page-title {
-  font-family: "Playfair Display", "Italianno", cursive;
+  font-family: "Playfair Display", serif !important;
   font-size: clamp(52px, 6vw, 92px);
   letter-spacing: 0.04em;
   font-weight: 400;

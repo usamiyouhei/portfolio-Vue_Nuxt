@@ -63,7 +63,7 @@ const list = computed(() =>
 function setTab(t: DesignTab) {
   router.replace({ query: { ...route.query, tab: t } });
 }
-const { crumbs } = useBreadcrumb("works", "design");
+const { crumbs } = useBreadcrumb("works", { label: "design" });
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
