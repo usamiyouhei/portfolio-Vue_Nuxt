@@ -8,7 +8,7 @@
       <img :src="itemSafe.image" :alt="itemSafe.title" />
     </header>
     <div class="content" v-if="itemSafe.body" v-html="itemSafe.body" />
-    <p class="back"><NuxtLink to="/news">← News一覧へ</NuxtLink></p>
+    <Button buttonText="← News一覧へ" class="back" lang="ja" to="/news" />
   </article>
 </template>
 
@@ -19,6 +19,8 @@ import { useNews } from "@/composables/useNews";
 import type { News } from "@/types/news";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
+import Button from "~/components/common/Button.vue";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -34,7 +36,11 @@ const itemSafe = computed<News>(() => {
   return found;
 });
 
-const { crumbs } = useBreadcrumb("news", { label: itemSafe.value.title });
+const { crumbs } = useBreadcrumb(
+  "news",
+  { label: "News 一覧", to: "/news" },
+  { label: itemSafe.value.title }
+);
 // if (!item) {
 //   throw createError({ statusCode: 404, statusMessage: 'News not found' })
 // }
@@ -74,6 +80,7 @@ useHead({
     margin-bottom: 9px;
   }
   .title {
+    font-family: "Noto Sans JP", sans-serif;
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 20px;
