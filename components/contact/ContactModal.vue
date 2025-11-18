@@ -2,7 +2,7 @@
   <div class="overlay" @click.self="$emit('close')">
     <div class="modal">
       <h2 class="modal-title">お問い合わせ</h2>
-      <ContactForm mode="modal" formClass="form--modal"/>
+      <ContactForm mode="modal" formClass="form--modal" />
       <button class="close" @click="$emit('close')">×</button>
     </div>
   </div>
@@ -12,7 +12,7 @@
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-defineEmits(["close"])
+defineEmits(["close"]);
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -23,7 +23,7 @@ defineEmits(["close"])
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,6 +41,11 @@ defineEmits(["close"])
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
+}
+
+.modal-title {
+  font-family: "Noto Sans JP", sans-serif;
+  text-align: center;
 }
 
 .form--modal {

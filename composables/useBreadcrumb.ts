@@ -7,7 +7,7 @@ type Crumb = {
 
 export const useBreadcrumb = (page: string, ...extra: Array<Crumb>) => {
   const map: Record<string, Crumb[]> = {
-    news: [{ label: "News", to: "/news" }],
+    news: [{ label: "News", to: "/#news" }],
     works: [{ label: "Works", to: "/#works" }],
     service: [{ label: "Service", to: "/#service" }],
     about: [{ label: "About", to: "/#about" }],
