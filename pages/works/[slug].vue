@@ -39,7 +39,7 @@ if (!work) {
   throw createError({ statusCode: 404, statusMessage: "Work not found" });
 }
 
-const { crumbs } = useBreadcrumb("works", work.title);
+const { crumbs } = useBreadcrumb("works", { label: work.title });
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド

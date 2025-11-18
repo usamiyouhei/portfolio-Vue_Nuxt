@@ -40,9 +40,12 @@ import type { Skill } from "~/components/about/AboutSkills.vue";
 import type { Story } from "~/components/about/AboutStory.vue";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
+import type { Service } from "~/data/services";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
+const props = defineProps<{ service: Service }>();
+
 const timeline: TimelineItem[] = [
   {
     period: "2003",
@@ -135,7 +138,7 @@ const story: Story = {
   ],
 };
 
-const { crumbs } = useBreadcrumb("about");
+const { crumbs } = useBreadcrumb("about", { label: "Story" });
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
