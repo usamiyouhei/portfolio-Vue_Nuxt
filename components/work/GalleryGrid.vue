@@ -13,7 +13,11 @@
     </button>
   </div>
 
-  <Button buttonText="お問い合わせ" :onClick="() => (showContact = true)" />
+  <Button
+    buttonText="お問い合わせ"
+    lang="ja"
+    :onClick="() => (showContact = true)"
+  />
   <ContactModal v-if="showContact" @close="showContact = false" />
 </template>
 
@@ -87,6 +91,7 @@ const showContact = ref(false);
   display: block;
 }
 .title {
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 14px;
   padding: 10px;
   line-height: 1.3;

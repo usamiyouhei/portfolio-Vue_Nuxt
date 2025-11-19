@@ -1,8 +1,8 @@
 <template>
-  <section class="patissier">
+  <section class="hobby">
     <header class="head">
       <h1 class="title">Hobby Gallery</h1>
-      <nav class="tabs" role="tablist" aria-label="Patissier Tabs">
+      <nav class="tabs" role="tablist" aria-label="Hobby Tabs">
         <button
           v-for="t in tabs"
           :key="t.key"
@@ -29,29 +29,27 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { patissierWorks } from "~/data/view";
+import { hobbyWorks } from "~/data/view";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type PatissierTab = "ingredients" | "food" | "economy";
+type HobbyTab = "ingredients" | "food" | "economy";
 
 const route = useRoute();
 const router = useRouter();
 
-const tab = computed<PatissierTab>(() =>
+const tab = computed<HobbyTab>(() =>
   ["ingredients", "food", "economy"].includes(String(route.query.tab))
-    ? (route.query.tab as PatissierTab)
+    ? (route.query.tab as HobbyTab)
     : "ingredients"
 );
 
-const tabs: { key: PatissierTab; label: string }[] = [
+const tabs: { key: HobbyTab; label: string }[] = [
   { key: "ingredients", label: "食材" },
   { key: "food", label: "食事" },
   { key: "economy", label: "経済" },
 ];
-const list = computed(() =>
-  patissierWorks.filter((w) => w.category === tab.value)
-);
+const list = computed(() => hobbyWorks.filter((w) => w.category === tab.value));
 
 // モーダル深リンク：?id=xxx
 const modalId = computed(() => route.query.id as string | undefined);
@@ -61,7 +59,7 @@ const active = computed(() =>
     : null
 );
 
-function setTab(t: PatissierTab) {
+function setTab(t: HobbyTab) {
   router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 
@@ -80,7 +78,7 @@ function closeModal() {
 </script>
 
 <style lang="scss" scoped>
-.patissier {
+.hobby {
   margin-top: 60px;
   max-width: 1200px;
   margin-inline: auto;
