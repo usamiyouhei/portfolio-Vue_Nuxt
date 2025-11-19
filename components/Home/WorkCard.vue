@@ -26,7 +26,12 @@
             shortDate
           }}</time>
 
-          <h3 class="work-card__title">{{ work?.title }}</h3>
+          <h3
+            class="work-card__title"
+            :class="isJapanese(work?.title) ? 'jp-font' : 'en-font'"
+          >
+            {{ work?.title }}
+          </h3>
           <p v-if="work?.subTitle" class="work-card__subTitle">
             {{ work?.subTitle }}
           </p>
@@ -52,7 +57,13 @@
       </div>
       <div class="card-gallery__body">
         <h3 class="card-gallery__title">{{ title }}</h3>
-        <p v-if="subTitle" class="card-gallery__sub">{{ subTitle }}</p>
+        <p
+          v-if="subTitle"
+          class="card-gallery__sub"
+          :class="isJapanese(work?.subTitle) ? 'jp-font' : 'en-font'"
+        >
+          {{ subTitle }}
+        </p>
         <div class="card-gallery__meta">
           <span class="card-gallery__badge">{{ categoryLabel }}</span>
           <time
@@ -199,6 +210,11 @@ const aspectClass = computed(() => ({
   "is-3x2": props.aspect === "3x2",
   "is-1x1": props.aspect === "1x1",
 }));
+
+const isJapanese = (str?: string): boolean => {
+  if (!str) return false;
+  return /[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(str);
+};
 
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
@@ -464,206 +480,13 @@ const aspectClass = computed(() => ({
   aspect-ratio: 1/1;
 }
 
-// .works-item {
-//   width: 31%;
-//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-//   border-radius: 6px;
-//   background-color: #fff;
-//   cursor: pointer;
-//   text-align: center;
-//   transition: transform 0.8s;
-// }
-// .works-item a {
-//   display: block;
-//   overflow: hidden;
-//   position: relative;
-//   padding: 20px;
-// }
+.jp-font {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+}
 
-// .works-item img {
-//   filter: saturate(20%);
-//   filter: sepia(80%);
-//   transition: filter 0.5s, transform 0.5s;
-//   vertical-align: top;
-//   height: 30vh;
-// }
-// .works-item div {
-//   overflow: hidden;
-// }
-// .works-item:hover img {
-//   position: relative;
-
-//   transform: scale(1.1);
-//   filter: saturate(100%);
-// }
-// /* 0.5秒間かけてフェードイン */
-// .fadeInAnime500ms {
-//   animation-name: fadeIn500ms;
-// }
-// .fadeIn500ms {
-//   animation-delay: 500ms;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn500ms {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// .fadeInAnime1s {
-//   animation-name: fadeIn1s;
-// }
-// .fadeIn1s {
-//   animation-delay: 1s;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn1s {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// .fadeInAnime1500ms {
-//   animation-name: fadeIn1500ms;
-// }
-// .fadeIn1500ms {
-//   animation-delay: 1500ms;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn1500ms {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-
-// /* 2秒間かけてフェードイン */
-// .fadeInAnime2s {
-//   animation-name: fadeIn2s;
-// }
-// .fadeIn2s {
-//   animation-delay: 2s;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn2s {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// /* 2秒間かけてフェードイン */
-// .fadeInAnime2500ms {
-//   animation-name: fadeIn2500ms;
-// }
-// .fadeIn2500ms {
-//   animation-delay: 2500ms;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn2500ms {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// /* 2秒間かけてフェードイン */
-// .fadeInAnime3s {
-//   animation-name: fadeIn3s;
-// }
-// .fadeIn3s {
-//   animation-delay: 3s;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn3s {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// /* 3.5秒間かけてフェードイン */
-// .fadeInAnime3500ms {
-//   animation-name: fadeIn3500ms;
-// }
-// .fadeIn3500ms {
-//   animation-delay: 3500ms;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn3500ms {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// /* 4秒間かけてフェードイン */
-// .fadeInAnime4s {
-//   animation-name: fadeIn4s;
-// }
-// .fadeIn4s {
-//   animation-delay: 4s;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn4s {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
-// /* 4.5秒間かけてフェードイン */
-// .fadeInAnime4500ms {
-//   animation-name: fadeIn4500ms;
-// }
-// .fadeIn4500ms {
-//   animation-delay: 4500ms;
-//   animation-duration: 1.5s;
-//   animation-fill-mode: forwards;
-//   transform: translateY(50px);
-//   opacity: 0;
-// }
-// @keyframes fadeIn4500ms {
-//   0% {
-//   }
-//   100% {
-//     transform: translateY(0);
-//     opacity: 1;
-//   }
-// }
+.en-font {
+  font-family: "Playfair Display", serif; // お好みで
+  letter-spacing: 0.5px;
+}
 </style>

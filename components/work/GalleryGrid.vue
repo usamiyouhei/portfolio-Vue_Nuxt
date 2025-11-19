@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <button
+    <NuxtLink
       v-for="w in items"
       :key="w.id"
       class="card"
@@ -9,8 +9,11 @@
       <div class="thumb">
         <img :src="w.cover || '/img/noImg.png'" :alt="w.title" loading="lazy" />
       </div>
-      <h3 class="title">{{ w.title }}</h3>
-    </button>
+      <h3 class="title" :class="isJapanese(w.title) ? 'jp-font' : 'en-font'">
+        {{ w.title }}
+      </h3>
+      <span class="badge">{{ w.category }}</span>
+    </NuxtLink>
   </div>
 
   <Button
@@ -28,16 +31,19 @@ import Button from "../common/Button.vue";
  ===================================================================================================================**/
 type Item = {
   id: string;
-  slug: string;
+  slug?: string;
   title: string;
   cover?: string;
+  category?: string;
 };
 
 const props = defineProps<{ items: Item[] }>();
 const emit = defineEmits<{ open: [id: string] }>();
 
 const showContact = ref(false);
-
+const isJapanese = (str: string): boolean => {
+  return /[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(str);
+};
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -75,9 +81,11 @@ const showContact = ref(false);
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    filter: brightness(1.05);
+    // transform: translateY(-6px) scale(1.02);
+    // box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    // filter: brightness(1.05);
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   }
 }
 .thumb {
@@ -89,14 +97,25 @@ const showContact = ref(false);
   height: 100%;
   object-fit: cover;
   display: block;
+  object-position: center;
 }
 .title {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   padding: 10px;
   line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.jp-font {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 500;
+}
+
+.en-font {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.5px;
 }
 </style>
