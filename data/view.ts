@@ -552,4 +552,4 @@ export const hobbyWorks = [
     ],
     tools: ["銀彩小鉢", "耐熱ゴムベラ"],
   },
-];
+] satisfies Work[];
