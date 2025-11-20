@@ -12,7 +12,7 @@
       <h3 class="title" :class="isJapanese(w.title) ? 'jp-font' : 'en-font'">
         {{ w.title }}
       </h3>
-      <span class="badge">{{ w.category }}</span>
+      <span class="badge">{{ categoryLabel(w.category) }}</span>
     </NuxtLink>
   </div>
 
@@ -25,7 +25,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Cat } from "~/types/works";
 import Button from "../common/Button.vue";
+import { useCategoryLabel } from "@/composables/useCategoryLabels";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -34,8 +36,12 @@ type Item = {
   slug?: string;
   title: string;
   cover?: string;
-  category?: string;
+  category?: Cat;
 };
+
+const { getCategoryLabel } = useCategoryLabel();
+
+const categoryLabel = (cat?: Item["category"]) => getCategoryLabel(cat);
 
 const props = defineProps<{ items: Item[] }>();
 const emit = defineEmits<{ open: [id: string] }>();
