@@ -82,6 +82,7 @@
 import { NuxtLink } from "#components";
 import type { Work } from "@/types/works";
 import { computed } from "vue";
+import { useCategoryLabel } from "@/composables/useCategoryLabels";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -124,6 +125,13 @@ const emits = defineEmits<{
   (e: "prev"): void;
   (e: "next"): void;
 }>();
+
+const { getCategoryLabel } = useCategoryLabel(props.catLabels);
+
+const categoryLabel = computed(() => {
+  const cat = isEmpty.value ? props.category : props.work?.category;
+  return getCategoryLabel(cat);
+});
 
 //------------------------------------------------------------------------------------------------------------
 // 引数
@@ -168,20 +176,20 @@ const to = computed(() =>
 const target = computed(() =>
   !isEmpty.value && isExternal.value ? "_blank" : undefined
 );
-const categoryLabel = computed(() => {
-  const base = {
-    patissier: "Patissier",
-    programming: "Programming",
-    design: "Design",
-    hobby: "Hobby",
-  } as const;
+// const categoryLabel = computed(() => {
+//   const base = {
+//     patissier: "Patissier",
+//     programming: "Programming",
+//     design: "Design",
+//     hobby: "Hobby",
+//   } as const;
 
-  const map = { ...base, ...props.catLabels };
-  const cat: Cat | undefined = isEmpty.value
-    ? props.category
-    : props.work?.category;
-  return cat ? map[cat] : "";
-});
+//   const map = { ...base, ...props.catLabels };
+//   const cat: Cat | undefined = isEmpty.value
+//     ? props.category
+//     : props.work?.category;
+//   return cat ? map[cat] : "";
+// });
 
 const ariaLabel = computed(() =>
   isExternal.value ? `${props.work?.title}（外部リンク）` : props.work?.title
