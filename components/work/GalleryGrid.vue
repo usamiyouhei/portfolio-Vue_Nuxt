@@ -25,19 +25,20 @@
 </template>
 
 <script setup lang="ts">
-import type { Cat } from "~/types/works";
+import type { Category, Work } from "~/types/works";
 import Button from "../common/Button.vue";
 import { useCategoryLabel } from "@/composables/useCategoryLabels";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type Item = {
-  id: string;
-  slug?: string;
-  title: string;
-  cover?: string;
-  category?: Cat;
-};
+// type Item = {
+//   id: string;
+//   slug?: string;
+//   title: string;
+//   cover?: string;
+//   category?: Category;
+// };
+type Item = Work;
 
 const { getCategoryLabel } = useCategoryLabel();
 
