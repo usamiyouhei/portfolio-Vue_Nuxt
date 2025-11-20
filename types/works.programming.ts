@@ -4,7 +4,6 @@ export type ProgrammingTag = "site" | "app";
 
 export interface ProgrammingWork extends Work {
   type?: ProgrammingTag;
-  // designType?: DesignTab;
   problem?: string;
   solution?: string[];
   stack?: string[];
