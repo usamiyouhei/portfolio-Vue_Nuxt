@@ -16,6 +16,7 @@ export interface Work {
   title: string;
   img?: string;
   slug?: string;
+  cover?: string;
   category: Category;
   subTitle?: string;
   date?: string | Date;

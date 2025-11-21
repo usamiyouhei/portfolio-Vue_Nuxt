@@ -1,164 +1,5 @@
 import type { Work } from "~/types";
 
-export const patissierWorks = [
-  {
-    id: "w1",
-    slug: "sakura",
-    title: "sakura dessert",
-    cover: "/img/dessert/sakura-dessert.jpg",
-    category: "dessert",
-    images: ["/img/dessert/sakura-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w2",
-    slug: "yuzu-panna",
-    title: "chocolate dessert",
-    cover: "/img/dessert/chocolate-dessert.jpg",
-    category: "dessert",
-    images: ["/img/dessert/chocolate-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w3",
-    slug: "yuzu-panna",
-    title: "orange dessert",
-    cover: "/img/dessert/orange-dessert.jpg",
-    category: "dessert",
-    images: ["/img/dessert/orange-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w4",
-    slug: "yuzu-panna",
-    title: "muscut dessert",
-    cover: "/img/dessert/muscut_dessert.jpg",
-    category: "dessert",
-    images: ["/img/dessert/muscut-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w20",
-    slug: "yuzu-panna",
-    title: "柚子パンナコッタ",
-    cover: "/img/Dg-img2.jpg",
-    category: "sweets",
-    images: ["/img/Dg-img1.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w30",
-    slug: "yuzu-panna",
-    title: "柚子パンナコッタ",
-    cover: "/img/Dg-img3.jpg",
-    category: "cake",
-    images: ["/img/Dg-img1.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-];
-
 export const visualWorks = [
   {
     id: "w10",
@@ -168,17 +9,6 @@ export const visualWorks = [
     category: "flowers",
     images: ["/img/dessert/sakura-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -194,17 +24,6 @@ export const visualWorks = [
     category: "dessert",
     images: ["/img/dessert/chocolate-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -220,17 +39,6 @@ export const visualWorks = [
     category: "dessert",
     images: ["/img/dessert/orange-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -246,17 +54,6 @@ export const visualWorks = [
     category: "dessert",
     images: ["/img/dessert/muscut-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -272,17 +69,6 @@ export const visualWorks = [
     category: "sweets",
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -298,17 +84,6 @@ export const visualWorks = [
     category: "cake",
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -318,7 +93,7 @@ export const visualWorks = [
   },
 ];
 
-export const programmingWorks: Work[] = [
+export const programmingWorks = [
   {
     id: "p1",
     slug: "todo-next",
@@ -356,7 +131,7 @@ export const programmingWorks: Work[] = [
     lessons: ["型で負債を減らす", "DBスキーマを先に固める"],
   },
 ];
-export const designWorks: Work[] = [
+export const designWorks = [
   {
     id: "p1",
     slug: "figma-design1",
@@ -394,162 +169,3 @@ export const designWorks: Work[] = [
     lessons: ["型で負債を減らす", "DBスキーマを先に固める"],
   },
 ];
-
-export const hobbyWorks = [
-  {
-    id: "w1",
-    slug: "sakura",
-    title: "sakura dessert",
-    cover: "/img/dessert/sakura-dessert.jpg",
-    category: "ingredients",
-    images: ["/img/dessert/sakura-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w2",
-    slug: "yuzu-panna",
-    title: "chocolate dessert",
-    cover: "/img/dessert/chocolate-dessert.jpg",
-    category: "ingredients",
-    images: ["/img/dessert/chocolate-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w3",
-    slug: "yuzu-panna",
-    title: "orange dessert",
-    cover: "/img/dessert/orange-dessert.jpg",
-    category: "food",
-    images: ["/img/dessert/orange-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w4",
-    slug: "yuzu-panna",
-    title: "muscut dessert",
-    cover: "/img/dessert/muscut_dessert.jpg",
-    category: "economy",
-    images: ["/img/dessert/muscut-dessert.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w20",
-    slug: "yuzu-panna",
-    title: "柚子パンナコッタ",
-    cover: "/img/Dg-img2.jpg",
-    category: "economy",
-    images: ["/img/Dg-img1.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-  {
-    id: "w30",
-    slug: "yuzu-panna",
-    title: "柚子パンナコッタ",
-    cover: "/img/Dg-img3.jpg",
-    category: "economy",
-    images: ["/img/Dg-img1.jpg"],
-    description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
-    platingNotes: [
-      "器はマットな白",
-      "トップに柚子皮の微粉",
-      "苦味バランス重視",
-    ],
-    tools: ["銀彩小鉢", "耐熱ゴムベラ"],
-  },
-] satisfies Work[];
