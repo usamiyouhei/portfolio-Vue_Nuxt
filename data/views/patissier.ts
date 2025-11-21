@@ -33,7 +33,8 @@ export const patissierWorks: PatissierWork[] = [
     slug: "yuzu-panna",
     title: "chocolate dessert",
     cover: "/img/dessert/chocolate-dessert.jpg",
-    category: "dessert",
+    category: "patissier",
+    tags: ["dessert"],
     images: ["/img/dessert/chocolate-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
@@ -59,7 +60,8 @@ export const patissierWorks: PatissierWork[] = [
     slug: "yuzu-panna",
     title: "orange dessert",
     cover: "/img/dessert/orange-dessert.jpg",
-    category: "dessert",
+    category: "patissier",
+    tags: ["dessert"],
     images: ["/img/dessert/orange-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
@@ -85,7 +87,8 @@ export const patissierWorks: PatissierWork[] = [
     slug: "yuzu-panna",
     title: "muscut dessert",
     cover: "/img/dessert/muscut_dessert.jpg",
-    category: "dessert",
+    category: "patissier",
+    tags: ["dessert"],
     images: ["/img/dessert/muscut-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
@@ -111,7 +114,8 @@ export const patissierWorks: PatissierWork[] = [
     slug: "yuzu-panna",
     title: "柚子パンナコッタ",
     cover: "/img/Dg-img2.jpg",
-    category: "sweets",
+    category: "patissier",
+    tags: ["dessert"],
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
@@ -137,7 +141,8 @@ export const patissierWorks: PatissierWork[] = [
     slug: "yuzu-panna",
     title: "柚子パンナコッタ",
     cover: "/img/Dg-img3.jpg",
-    category: "cake",
+    category: "patissier",
+    tags: ["cake"],
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     recipe: {
