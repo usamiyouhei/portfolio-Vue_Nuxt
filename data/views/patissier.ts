@@ -1,6 +1,6 @@
-import type { PatissierWork } from "~/types";
+import type { PatissierDetail } from "~/types/details/patissier";
 
-export const patissierWorks: PatissierWork[] = [
+export const patissierDetail: PatissierDetail = [
   {
     id: "w1",
     slug: "sakura",
