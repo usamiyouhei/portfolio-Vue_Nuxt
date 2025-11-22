@@ -6,7 +6,8 @@ export const visualWorks = [
     slug: "flowers",
     title: "sakura dessert",
     cover: "/img/dessert/sakura-dessert.jpg",
-    category: "flowers",
+    category: "visual",
+    tags: "",
     images: ["/img/dessert/sakura-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     platingNotes: [
