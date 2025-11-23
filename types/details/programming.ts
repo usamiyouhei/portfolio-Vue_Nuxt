@@ -7,5 +7,7 @@ export interface ProgrammingDetail extends Work {
   stack: string[];
   problem: string;
   solution: string[];
+  features: string[];
   links: { demo: string; repo: string };
+  lessons: string[];
 }

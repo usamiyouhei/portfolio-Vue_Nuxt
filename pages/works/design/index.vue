@@ -28,7 +28,7 @@
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import WorkCard from "@/components/Home/WorkCard.vue";
-import { designWorks } from "~/data/view";
+import { designDetail } from "~/data/views/design";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
 /**===================================================================================================================
@@ -58,7 +58,7 @@ const tab = computed<DesignTab>(() =>
 const tabs = TABS;
 
 const list = computed(() =>
-  designWorks.filter((w) => w.designType === tab.value)
+  designDetail.filter((w) => w.designDetail === tab.value)
 );
 function setTab(t: DesignTab) {
   router.replace({ query: { ...route.query, tab: t } });
