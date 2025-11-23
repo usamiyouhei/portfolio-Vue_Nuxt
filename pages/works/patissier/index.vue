@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { patissierWorks } from "~/data/view";
+import { patissierDetail } from "~/data/views/patissier";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 /**===================================================================================================================
@@ -85,7 +85,7 @@ const tabs: { key: PatissierTab; label: string }[] = [
   { key: "cake", label: "ケーキ" },
 ];
 const list = computed(() =>
-  patissierWorks.filter((w) => w.category === tab.value)
+  patissierDetail.filter((w) => w.patissierTag === tab.value)
 );
 const { crumbs } = useBreadcrumb("works", { label: "Patissier" });
 

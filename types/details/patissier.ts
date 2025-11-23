@@ -3,6 +3,7 @@ import type { Work } from "../works";
 export type PatissierTag = "dessert" | "sweets" | "cake";
 
 export interface PatissierDetail extends Work {
+  slug: string;
   patissierTag: PatissierTag;
   images: string[];
   recipe?: {

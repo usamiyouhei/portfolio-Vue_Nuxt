@@ -27,7 +27,7 @@
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import WorkCard from "@/components/Home/WorkCard.vue";
-import { programmingWorks } from "~/data/view";
+import { programmingDetail } from "~/data/views/programming";
 
 /**===================================================================================================================
  * 
@@ -51,7 +51,7 @@ const tab = computed<DevTab>(() =>
 const tabs = TABS;
 
 const list = computed(() =>
-  programmingWorks.filter((w) => w.type === tab.value)
+  programmingDetail.filter((w) => w.devType === tab.value)
 );
 function setTab(t: DevTab) {
   router.replace({ query: { ...route.query, tab: t } });
