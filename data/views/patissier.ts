@@ -1,26 +1,15 @@
 import type { PatissierDetail } from "~/types/details/patissier";
 
-export const patissierDetail: PatissierDetail = [
+export const patissierDetail: PatissierDetail[] = [
   {
     id: "w1",
     slug: "sakura",
     title: "sakura dessert",
     cover: "/img/dessert/sakura-dessert.jpg",
     category: "patissier",
-    tags: ["dessert"],
+    patissierTag: "dessert",
     images: ["/img/dessert/sakura-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -34,20 +23,9 @@ export const patissierDetail: PatissierDetail = [
     title: "chocolate dessert",
     cover: "/img/dessert/chocolate-dessert.jpg",
     category: "patissier",
-    tags: ["dessert"],
+    patissierTag: "dessert",
     images: ["/img/dessert/chocolate-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -61,20 +39,10 @@ export const patissierDetail: PatissierDetail = [
     title: "orange dessert",
     cover: "/img/dessert/orange-dessert.jpg",
     category: "patissier",
+    patissierTag: "dessert",
     tags: ["dessert"],
     images: ["/img/dessert/orange-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -88,20 +56,10 @@ export const patissierDetail: PatissierDetail = [
     title: "muscut dessert",
     cover: "/img/dessert/muscut_dessert.jpg",
     category: "patissier",
+    patissierTag: "dessert",
     tags: ["dessert"],
     images: ["/img/dessert/muscut-dessert.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -115,20 +73,10 @@ export const patissierDetail: PatissierDetail = [
     title: "柚子パンナコッタ",
     cover: "/img/Dg-img2.jpg",
     category: "patissier",
+    patissierTag: "dessert",
     tags: ["dessert"],
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",
@@ -142,20 +90,10 @@ export const patissierDetail: PatissierDetail = [
     title: "柚子パンナコッタ",
     cover: "/img/Dg-img3.jpg",
     category: "patissier",
+    patissierTag: "cake",
     tags: ["cake"],
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
-    recipe: {
-      ingredients: [
-        "生クリーム 300",
-        "牛乳 200",
-        "砂糖 60",
-        "ゼラチン 8",
-        "柚子皮",
-        "柚子果汁",
-      ],
-      steps: ["加熱", "氷水で冷やす", "型に流す"],
-    },
     platingNotes: [
       "器はマットな白",
       "トップに柚子皮の微粉",

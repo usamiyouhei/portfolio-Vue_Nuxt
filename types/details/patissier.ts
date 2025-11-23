@@ -5,7 +5,7 @@ export type PatissierTag = "dessert" | "sweets" | "cake";
 export interface PatissierDetail extends Work {
   patissierTag: PatissierTag;
   images: string[];
-  recipe: {
+  recipe?: {
     ingredients: string[];
     steps: string[];
   };
