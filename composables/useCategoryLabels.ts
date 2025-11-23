@@ -1,6 +1,6 @@
-import type { Work } from "~/types/works";
+import { categories } from "~/types/works";
 
-type Category = Work["category"];
+type Category = (typeof categories)[number];
 
 const defaultMap: Record<Category, string> = {
   patissier: "Patissier",
