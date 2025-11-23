@@ -58,7 +58,7 @@ const tab = computed<DesignTab>(() =>
 const tabs = TABS;
 
 const list = computed(() =>
-  designDetail.filter((w) => w.designDetail === tab.value)
+  designDetail.filter((w) => w.designTag === tab.value)
 );
 function setTab(t: DesignTab) {
   router.replace({ query: { ...route.query, tab: t } });

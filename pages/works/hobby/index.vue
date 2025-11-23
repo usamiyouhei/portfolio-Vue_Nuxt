@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { hobbyWorks } from "~/data/view";
+import { hobbyDetail } from "~/data/views/hobby";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -49,7 +49,9 @@ const tabs: { key: HobbyTab; label: string }[] = [
   { key: "food", label: "食事" },
   { key: "economy", label: "経済" },
 ];
-const list = computed(() => hobbyWorks.filter((w) => w.category === tab.value));
+const list = computed(() =>
+  hobbyDetail.filter((w) => w.hobbyTag === tab.value)
+);
 
 // モーダル深リンク：?id=xxx
 const modalId = computed(() => route.query.id as string | undefined);

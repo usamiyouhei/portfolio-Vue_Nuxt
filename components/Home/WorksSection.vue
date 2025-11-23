@@ -121,19 +121,19 @@ import SectionTitle from "../common/SectionTitle.vue";
 import WorkCard from "../Home/WorkCard.vue";
 import Button from "../common/Button.vue";
 import type { Work } from "../../types/works";
-import { works } from "../../data/works";
+// import { works } from "../../data/works";
 
 type Cat = Work["category"];
 const categories: Cat[] = [
   "patissier",
-  "VisualProduction",
+  "visualProduction",
   "programming",
   "design",
   "hobby",
 ];
 const catLabels: Record<Cat, string> = {
   patissier: "Pâtissier Works",
-  VisualProduction: "Visual Works",
+  visualProduction: "Visual Works",
   programming: "Web Development",
   design: "Design Works",
   hobby: "Side Projects",
@@ -143,7 +143,7 @@ const noImageSrc = "/img/noImg.png";
 
 const CAT_ROUTE: Record<Cat, string> = {
   patissier: "/works/patissier",
-  VisualProduction: "/works/VisualProduction",
+  visualProduction: "/works/VisualProduction",
   programming: "/works/programming",
   design: "/works/design",
   hobby: "/works/hobby",
@@ -154,7 +154,7 @@ const catRoute = (c: Cat) => CAT_ROUTE[c];
 const worksByCat = computed<Record<Cat, Work[]>>(() => {
   const map: Record<Cat, Work[]> = {
     patissier: [],
-    VisualProduction: [],
+    visualProduction: [],
     programming: [],
     design: [],
     hobby: [],

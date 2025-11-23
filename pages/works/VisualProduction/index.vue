@@ -1,4 +1,3 @@
-//
 <template>
   <section class="movie-editing">
     <Breadcrumb :crumbs="crumbs" />
@@ -65,7 +64,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { patissierWorks } from "~/data/view";
+import { visualDetail } from "~/data/views/visual";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 /**===================================================================================================================
@@ -91,7 +90,7 @@ const tabs: { key: VisualProductionTab; label: string }[] = [
   { key: "youtube", label: "YouTube動画" },
 ];
 const list = computed(() =>
-  patissierWorks.filter((w) => w.category === tab.value)
+  visualDetail.filter((w) => w.visualTag === tab.value)
 );
 const { crumbs } = useBreadcrumb("works", { label: "Visual Production" });
 

@@ -14,11 +14,11 @@ export interface Work {
   img?: string;
   slug?: string;
   cover?: string;
-  category?: Category;
+  category: Category;
   subTitle?: string;
   date?: string | Date;
   tags?: string[];
   externalUrl?: string;
   images?: string[];
-  description?: string | Date;
+  description?: string;
 }
