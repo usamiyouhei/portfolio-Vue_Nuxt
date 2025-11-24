@@ -28,6 +28,14 @@
       <SectionTitle sectionTitle="Skills" sectionSubTitle="スキル" />
       <AboutSkills :skills="skills" />
     </section>
+
+    <div class="cta">
+      <Button
+        buttonText="お問い合わせ"
+        lang="ja"
+        :onClick="() => (showContact = true)"
+      />
+    </div>
   </main>
   <LoopText />
 </template>
@@ -41,6 +49,7 @@ import type { Story } from "~/components/about/AboutStory.vue";
 import { useBreadcrumb } from "@/composables/useBreadcrumb";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 import type { Service } from "~/data/services";
+import Button from "~/components/common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -139,6 +148,8 @@ const story: Story = {
 };
 
 const { crumbs } = useBreadcrumb("about", { label: "Story" });
+
+const showContact = ref(false);
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

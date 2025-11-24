@@ -112,7 +112,8 @@
         <Button
           buttonText="確認する"
           lang="ja"
-          :onClick="() => (showContact = true)"
+          type="submit"
+          :onClick="openConfirm"
         />
       </div>
 

@@ -67,7 +67,7 @@
 
         <!-- Mobile: カテゴリごとに縦並び + 全幅Swiper -->
         <template v-else>
-          <div v-for="c in categories" :key="c" class="works-category">
+          <div v-for="c in categories as Cat[]" :key="c" class="works-category">
             <h3 class="works__cat">{{ catLabels[c] }}</h3>
 
             <!-- 0枚時 -->
@@ -121,16 +121,17 @@ import SectionTitle from "../common/SectionTitle.vue";
 import WorkCard from "../Home/WorkCard.vue";
 import Button from "../common/Button.vue";
 import type { Work } from "../../types/works";
-// import { works } from "../../data/works";
+import { works } from "../../data/works";
 
-type Cat = Work["category"];
+export type Cat = Work["category"];
 const categories: Cat[] = [
   "patissier",
   "visualProduction",
   "programming",
   "design",
   "hobby",
-];
+] as const;
+
 const catLabels: Record<Cat, string> = {
   patissier: "Pâtissier Works",
   visualProduction: "Visual Works",
@@ -152,15 +153,10 @@ const CAT_ROUTE: Record<Cat, string> = {
 const catRoute = (c: Cat) => CAT_ROUTE[c];
 
 const worksByCat = computed<Record<Cat, Work[]>>(() => {
-  const map: Record<Cat, Work[]> = {
-    patissier: [],
-    visualProduction: [],
-    programming: [],
-    design: [],
-    hobby: [],
-  };
-  for (const w of works) map[w.category].push(w);
-  return map;
+  return categories.reduce((acc, c) => {
+    acc[c] = works.filter((w) => w.category === c);
+    return acc;
+  }, {} as Record<Cat, Work[]>);
 });
 
 const byCat = (c: Cat) => worksByCat.value[c];
