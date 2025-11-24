@@ -37,6 +37,8 @@
       />
     </div>
   </main>
+  <ContactModal v-if="showContact" @close="showContact = false" />
+
   <LoopText />
 </template>
 
