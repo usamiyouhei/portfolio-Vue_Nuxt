@@ -1,16 +1,32 @@
 <template>
-  <div class="overlay">
-    <div class="modal">
-      <h3>以下の内容で送信しますか？</h3>
-      <ul class="confirm-list">
-        <li><strong>Name:</strong>{{ form.name }}</li>
-        <li><strong>Email:</strong>{{ form.email }}</li>
-        <li><strong>Topic:</strong>{{ form.topic }}</li>
-        <li><strong>Message:</strong>{{ form.message }}</li>
+  <div class="confirm-overlay">
+    <div class="confirm-modal">
+      <h2 class="confirm-title">以下の内容で送信しますか？</h2>
+      <ul class="confirm-content">
+        <div class="confirm-item">
+          <span class="confirm-label">Name:</span>
+          <p>{{ form.name }}</p>
+        </div>
+        <div class="confirm-item">
+          <span class="confirm-label">Email:</span>
+          <p>{{ form.email }}</p>
+        </div>
+        <div class="confirm-item">
+          <span class="confirm-label">Topic:</span>
+          <p>{{ form.topic }}</p>
+        </div>
+        <div class="confirm-item">
+          <span class="confirm-label">Message:</span>
+          <p>{{ form.message }}</p>
+        </div>
       </ul>
-      <div class="action">
-        <button @click="$emit('close')">修正する</button>
-        <button @click="$emit('confirm')">確認する</button>
+      <div class="confirm-actions">
+        <button class="btn btn--secondary" @click="$emit('close')">
+          修正する
+        </button>
+        <button class="btn btn--primary" @click="$emit('confirm')">
+          送信する
+        </button>
       </div>
     </div>
   </div>
@@ -26,12 +42,10 @@ defineProps<{
     email: string;
     topic: string;
     message: string;
-  }}>()
+  };
+}>();
 
-defineEmits(['close' , 'confirm'])
-
-
- 
+defineEmits(["close", "confirm"]);
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -39,26 +53,93 @@ defineEmits(['close' , 'confirm'])
 </script>
 
 <style lang="scss" scoped>
-.overlay {
+.confirm-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
 }
 
-.modal {
-  max-width: 400px;
-  width: 90%;
-  padding: 2rem;
-  border-radius: 1rem;
-  background: #fff;
+.confirm-modal {
+  width: min(90%, 500px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 2rem 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.25s ease-out;
 }
 
-.actions {
+.confirm-title {
+  font-family: "Playfair Display", serif !important;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #c9a227;
+}
+
+.confirm-content {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.confirm-item {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.confirm-label {
+  font-size: 13px;
+  color: #c9a227;
+  font-weight: 600;
+}
+
+.confirm-actions {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn--secondary {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+.btn--secondary:hover {
+  background: #e8e8e8;
+}
+
+.btn--primary {
+  background: #c9a227;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #b88f1e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>
