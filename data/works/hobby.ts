@@ -28,4 +28,4 @@ export const hobbyWorks = [
     date: "2025-07-10",
     tags: ["wine"],
   },
-];
+] satisfies Work[];

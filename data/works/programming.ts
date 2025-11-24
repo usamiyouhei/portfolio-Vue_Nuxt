@@ -37,4 +37,4 @@ export const programmingWorks = [
     date: "2025-07-10",
     tags: ["Asisai"],
   },
-];
+] satisfies Work[];

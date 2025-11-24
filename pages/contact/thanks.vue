@@ -1,14 +1,13 @@
 <template>
   <section class="thanks--page">
     <h1>送信が完了しました 🎉</h1>
-    <p>お問い合わせありがとうございます。<br>確認次第ご連絡いたします。</p>
-    <NuxtLink to="/" class="btn">トップへ戻る</NuxtLink>
-    <Button buttonText="トップへ戻る" to="/"/>
+    <p>お問い合わせありがとうございます。<br />確認次第ご連絡いたします。</p>
+    <Button buttonText="トップへ戻る" lang="ja" to="/" />
   </section>
 </template>
 
 <script setup lang="ts">
-import Button from '~/components/common/Button.vue';
+import Button from "~/components/common/Button.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -19,12 +18,12 @@ import Button from '~/components/common/Button.vue';
 </script>
 
 <style lang="scss" scoped>
-.thanks {
+.thanks--page {
+  margin-top: 80px;
   align-items: center;
   padding: 6rem 2rem;
 }
 .btn {
   display: inline-block;
-
 }
 </style>
