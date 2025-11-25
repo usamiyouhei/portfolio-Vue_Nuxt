@@ -61,6 +61,26 @@ defineEmits(["close", "confirm"]);
   align-items: center;
   justify-content: center;
   z-index: 999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); // iPhone用
+  animation: overlayFade 0.3s ease-out forwards;
+  opacity: 0;
+}
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .modal {
+    width: 92%;
+    padding: 1.6rem 1.4rem;
+    border-radius: 18px;
+  }
 }
 
 .confirm-modal {
@@ -70,13 +90,31 @@ defineEmits(["close", "confirm"]);
   padding: 2rem 1.8rem;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.25s ease-out;
+  // animation: fadeIn 0.25s ease-out;
+  animation: modalSlideUp 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  transform-origin: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes modalSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .confirm-title {
-  font-family: "Playfair Display", serif !important;
+  font-family: "Noto Sans JP", sans-serif !important;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 1.4rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #c9a227;
@@ -98,6 +136,11 @@ defineEmits(["close", "confirm"]);
   font-size: 13px;
   color: #c9a227;
   font-weight: 600;
+}
+
+.modal__label,
+.modal__item p {
+  font-family: "Noto Sans JP", sans-serif !important;
 }
 
 .confirm-actions {

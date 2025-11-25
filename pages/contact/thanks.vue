@@ -1,7 +1,9 @@
 <template>
-  <section class="thanks--page">
-    <h1>送信が完了しました 🎉</h1>
-    <p>お問い合わせありがとうございます。<br />確認次第ご連絡いたします。</p>
+  <section class="thanks">
+    <div class="thanks-card">
+      <h1>送信が完了しました 🎉</h1>
+      <p>お問い合わせありがとうございます。<br />確認次第ご連絡いたします。</p>
+    </div>
     <Button buttonText="トップへ戻る" lang="ja" to="/" />
   </section>
 </template>
