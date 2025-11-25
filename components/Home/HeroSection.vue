@@ -1,33 +1,35 @@
 <template>
-    <section class="kv wrapper">
-        <div class="kv__content">
-          <div class="main-img"></div>
-          <div class="main-img"></div>
-          <div class="main-img"></div>
-          <div class="main-img"></div>
-          <div class="main-img"></div>
-          <div class="kv__title-img">
-            <img class="logo-img fade-in fade-in-up" 
-              src="/img/Creating_the_Only_One.svg" 
-              alt="" />
-          </div>
-        </div>
-        <span class="kv__scroll">scroll</span>
-    </section>
+  <section class="kv wrapper">
+    <div class="kv__content">
+      <div class="main-img"></div>
+      <div class="main-img"></div>
+      <div class="main-img"></div>
+      <div class="main-img"></div>
+      <div class="main-img"></div>
+      <div class="kv__title-img">
+        <img
+          class="logo-img fade-in fade-in-up"
+          src="/img/Creating_the_Only_One.svg"
+          alt=""
+        />
+      </div>
+    </div>
+    <span class="kv__scroll">scroll</span>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 onMounted(() => {
   setTimeout(() => {
-    document.querySelectorAll('.fade-in').forEach((el) => {
-      el.classList.add('scroll-in')
-    })
+    document.querySelectorAll(".fade-in").forEach((el) => {
+      el.classList.add("scroll-in");
+    });
   }, 300);
-})
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
@@ -35,7 +37,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .kv {
-  margin:60px 0 0 auto;
+  margin: 60px 0 0 auto;
   padding: 20px 0 40px 0;
   height: calc(100vh - 200px);
   text-align: center;
@@ -54,10 +56,10 @@ onMounted(() => {
   position: relative;
   width: 100%;
   // height: 70vh;
-  height: clamp(360px, 70vh, 680px);  /* 端末に応じて伸縮 */
+  height: clamp(360px, 70vh, 680px); /* 端末に応じて伸縮 */
   overflow: hidden;
-  aspect-ratio: 16 / 9; 
-  border-radius:40px 0 0 40px;
+  aspect-ratio: 16 / 9;
+  border-radius: 40px 0 0 40px;
   margin-left: 5%;
 }
 
@@ -116,7 +118,6 @@ onMounted(() => {
   max-width: 90%;
   height: auto;
 }
-
 
 .fade-in {
   opacity: 0;
@@ -197,6 +198,16 @@ onMounted(() => {
     background-position: center 40%;
     /* coverのまま被写体位置だけ微調整 */
     /* 必要なら scale(1.04) 程度を keyframes に限定してもOK */
+  }
+}
+
+@media (max-width: 768px) {
+  .kv__title-img {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.9) 95%
+    );
   }
 }
 </style>
