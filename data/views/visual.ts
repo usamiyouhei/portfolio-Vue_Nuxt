@@ -4,8 +4,8 @@ export const visualDetail: VisualDetail[] = [
   {
     id: "w10",
     slug: "flowers",
-    title: "sakura dessert",
-    cover: "/img/dessert/sakura-dessert.jpg",
+    title: "flowers",
+    cover: "/img/visual/flower.jpg",
     category: "visualProduction",
     visualTag: "flowers",
     images: ["/img/dessert/sakura-dessert.jpg"],

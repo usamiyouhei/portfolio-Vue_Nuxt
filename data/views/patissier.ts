@@ -71,10 +71,10 @@ export const patissierDetail: PatissierDetail[] = [
     id: "w20",
     slug: "yuzu-panna",
     title: "柚子パンナコッタ",
-    cover: "/img/Dg-img2.jpg",
+    cover: "/img/recipe.jpg",
     category: "patissier",
-    patissierTag: "dessert",
-    tags: ["dessert"],
+    patissierTag: "cake",
+    tags: ["cake"],
     images: ["/img/Dg-img1.jpg"],
     description: "和柑橘の香りを主役にした口溶けの良いパンナコッタ。",
     platingNotes: [

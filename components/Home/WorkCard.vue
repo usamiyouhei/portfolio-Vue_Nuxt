@@ -56,7 +56,12 @@
         <img :src="imgSrc" :alt="title" loading="lazy" decoding="async" />
       </div>
       <div class="card-gallery__body">
-        <h3 class="card-gallery__title">{{ title }}</h3>
+        <h3
+          class="card-gallery__title"
+          :class="isJapanese(work?.title) ? 'jp-font' : 'en-font'"
+        >
+          {{ title }}
+        </h3>
         <p
           v-if="subTitle"
           class="card-gallery__sub"
@@ -65,13 +70,26 @@
           {{ subTitle }}
         </p>
         <div class="card-gallery__meta">
-          <span class="card-gallery__badge">{{ categoryLabel }}</span>
+          <!-- <span class="card-gallery__badge">{{ categoryLabel }}</span>
           <time
             v-if="!isEmpty && work?.date"
             :datetime="isoDate"
             class="card-gallery__date"
             >{{ shortDate }}</time
+          > -->
+          <template v-if="work?.tags?.length">
+            <span v-for="t in work.tags" :key="t" class="card-gallery__badge">
+              {{ t }}
+            </span>
+          </template>
+
+          <time
+            v-if="!isEmpty && work?.date"
+            :datetime="isoDate"
+            class="card-gallery__date"
           >
+            {{ shortDate }}
+          </time>
         </div>
       </div>
     </template>
@@ -307,7 +325,6 @@ const isJapanese = (str?: string): boolean => {
     align-items: center;
   }
   &__badge {
-    font-family: "Noto Sans JP", sans-serif !important;
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -335,6 +352,7 @@ const isJapanese = (str?: string): boolean => {
     color: #fff;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
@@ -348,6 +366,7 @@ const isJapanese = (str?: string): boolean => {
     color: rgba(255, 255, 255, 0.9);
     display: -webkit-box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -362,6 +381,7 @@ const isJapanese = (str?: string): boolean => {
     color: var(--c-sub);
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -492,7 +512,7 @@ const isJapanese = (str?: string): boolean => {
 
 .jp-font {
   font-family: "Noto Sans JP", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .en-font {
