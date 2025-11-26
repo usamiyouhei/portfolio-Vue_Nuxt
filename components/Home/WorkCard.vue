@@ -307,6 +307,7 @@ const isJapanese = (str?: string): boolean => {
     align-items: center;
   }
   &__badge {
+    font-family: "Noto Sans JP", sans-serif !important;
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -446,6 +447,7 @@ const isJapanese = (str?: string): boolean => {
     align-items: center;
   }
   &__badge {
+    font-family: "Noto Sans JP", sans-serif !important;
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;

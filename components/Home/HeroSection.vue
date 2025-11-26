@@ -104,8 +104,8 @@ onMounted(() => {
   /* background: radial-gradient( rgba(85, 85, 85, .5), rgb(238, 238, 238)); */
   background: linear-gradient(
     to right,
-    rgba(230, 140, 85, 0) 30%,
-    rgb(255, 255, 255, 0.9) 70%
+    rgba(230, 140, 85, 0) 25%,
+    rgb(255, 255, 255, 0.85) 90%
   );
   /* background: linear-gradient(to right, white, gray); */
 }
@@ -201,13 +201,36 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .kv__title-img {
     background: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0) 20%,
       rgba(255, 255, 255, 0.9) 95%
     );
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
+
+  .logo-img {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: clamp(20px, 6vh, 60px);
+    width: clamp(240px, 60vw, 420px);
+  }
+
+  .kv__content {
+    aspect-ratio: auto;
+    // height: clamp(300px, 60vh, 500px);
+    border-radius: 20px;
+    margin-left: 0;
   }
 }
 </style>
