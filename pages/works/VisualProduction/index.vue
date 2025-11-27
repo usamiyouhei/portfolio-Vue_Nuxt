@@ -39,7 +39,7 @@
 
       <nav class="tabs" role="tablist" aria-label="VisualProduction Tabs">
         <button
-          v-for="t in tabs"
+          v-for="t in modeTabs"
           :key="t.key"
           :class="['tab', { active: tab === t.key }]"
           role="tab.key"
@@ -70,28 +70,44 @@ import Breadcrumb from "~/components/common/Breadcrumb.vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type VisualProductionTab = "flowers" | "houseplants" | "landscape" | "youtube";
+type Mode = "photo" | "movie";
+type PhotoTab = "flowers" | "houseplants" | "landscape" | "youtube";
 
 const route = useRoute();
 const router = useRouter();
 
-const tab = computed<VisualProductionTab>(() =>
+const mode = computed<Mode>(() =>
+  ["photo", "movie"].includes(String(route.query.mode))
+    ? (route.query.mode as Mode)
+    : "photo"
+);
+
+const photoTab = computed<PhotoTab>(() =>
   ["flowers", "houseplants", "landscape", "youtube"].includes(
     String(route.query.tab)
   )
-    ? (route.query.tab as VisualProductionTab)
+    ? (route.query.tab as PhotoTab)
     : "flowers"
 );
 
-const tabs: { key: VisualProductionTab; label: string }[] = [
+const modeTabs: { key: Mode; label: string }[] = [
+  { key: "photo", label: "写真" },
+  { key: "movie", label: "動画" },
+] as const;
+
+const photoTabs: { key: PhotoTab; label: string }[] = [
   { key: "flowers", label: "生花" },
   { key: "houseplants", label: "観葉植物" },
   { key: "landscape", label: "風景" },
-  { key: "youtube", label: "YouTube動画" },
+  // { key: "youtube", label: "YouTube動画" },
 ];
-const list = computed(() =>
-  visualDetail.filter((w) => w.visualTag === tab.value)
-);
+
+const list = computed(() => {
+  if (mode.value === "movie") {
+    visualDetail.filter((w) => w.visualTag === "movie");
+  }
+  return visualDetail.filter((w) => w.photoTag === photoTab.value);
+});
 const { crumbs } = useBreadcrumb("works", { label: "Visual Production" });
 
 // モーダル深リンク：?id=xxx
@@ -102,7 +118,7 @@ const active = computed(() =>
     : null
 );
 
-function setTab(t: VisualProductionTab) {
+function setTab(t: PhotoTab) {
   router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 
