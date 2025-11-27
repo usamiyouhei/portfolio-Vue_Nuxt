@@ -112,7 +112,7 @@ const photoTabs: { key: PhotoTab; label: string }[] = [
 
 const list = computed(() => {
   if (mode.value === "movie") {
-    visualDetail.filter((w) => w.visualTag === "movie");
+    return visualDetail.filter((w) => w.visualTag === "movie");
   }
   return visualDetail.filter((w) => w.photoTag === photoTab.value);
 });
