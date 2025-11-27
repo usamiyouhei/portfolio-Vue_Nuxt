@@ -41,10 +41,20 @@
         <button
           v-for="t in modeTabs"
           :key="t.key"
-          :class="['tab', { active: tab === t.key }]"
+          :class="['tab', { active: mode === t.key }]"
           role="tab.key"
-          :aria-selected="tab === t.key"
-          @click="setTab(t.key)"
+          :aria-selected="mode === t.key"
+          @click="setMode(t.key)"
+        >
+          {{ t.label }}
+        </button>
+      </nav>
+      <nav v-if="mode === 'photo'" class="tabs mt-2" role="tablist">
+        <button
+          v-for="t in photoTabs"
+          :key="t.key"
+          :class="['tab', { active: photoTab === t.key }]"
+          @click="setPhotoTab(t.key)"
         >
           {{ t.label }}
         </button>
@@ -83,9 +93,7 @@ const mode = computed<Mode>(() =>
 );
 
 const photoTab = computed<PhotoTab>(() =>
-  ["flowers", "houseplants", "landscape", "youtube"].includes(
-    String(route.query.tab)
-  )
+  ["flowers", "houseplants", "landscape"].includes(String(route.query.tab))
     ? (route.query.tab as PhotoTab)
     : "flowers"
 );
@@ -118,7 +126,11 @@ const active = computed(() =>
     : null
 );
 
-function setTab(t: PhotoTab) {
+function setMode(m: Mode) {
+  router.replace({ query: { mode: m, tab: undefined, id: undefined } });
+}
+
+function setPhotoTab(t: PhotoTab) {
   router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 
