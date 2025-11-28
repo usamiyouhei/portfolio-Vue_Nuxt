@@ -81,7 +81,7 @@ import Breadcrumb from "~/components/common/Breadcrumb.vue";
  * 
  ===================================================================================================================**/
 type Mode = "photo" | "movie";
-type PhotoTab = "flowers" | "houseplants" | "landscape" | "youtube";
+type PhotoCategory = "flowers" | "houseplants" | "landscape" | "youtube";
 
 const route = useRoute();
 const router = useRouter();
@@ -92,9 +92,9 @@ const mode = computed<Mode>(() =>
     : "photo"
 );
 
-const photoTab = computed<PhotoTab>(() =>
+const photoTab = computed<PhotoCategory>(() =>
   ["flowers", "houseplants", "landscape"].includes(String(route.query.tab))
-    ? (route.query.tab as PhotoTab)
+    ? (route.query.tab as PhotoCategory)
     : "flowers"
 );
 
@@ -103,7 +103,7 @@ const modeTabs: { key: Mode; label: string }[] = [
   { key: "movie", label: "動画" },
 ] as const;
 
-const photoTabs: { key: PhotoTab; label: string }[] = [
+const photoTabs: { key: PhotoCategory; label: string }[] = [
   { key: "flowers", label: "生花" },
   { key: "houseplants", label: "観葉植物" },
   { key: "landscape", label: "風景" },
@@ -114,7 +114,9 @@ const list = computed(() => {
   if (mode.value === "movie") {
     return visualDetail.filter((w) => w.visualTag === "movie");
   }
-  return visualDetail.filter((w) => w.photoTag === photoTab.value);
+  return visualDetail.filter(
+    (w) => w.visualTag === "photo" && w.photoCategory === photoTab.value
+  );
 });
 const { crumbs } = useBreadcrumb("works", { label: "Visual Production" });
 
@@ -130,7 +132,7 @@ function setMode(m: Mode) {
   router.replace({ query: { mode: m, tab: undefined, id: undefined } });
 }
 
-function setPhotoTab(t: PhotoTab) {
+function setPhotoTab(t: PhotoCategory) {
   router.replace({ query: { ...route.query, tab: t, id: undefined } });
 }
 
