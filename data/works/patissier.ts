@@ -2,7 +2,7 @@ import type { Work } from "~/types";
 
 export const patissierWorks = [
   {
-    id: "1",
+    id: "w1",
     title: "桜 メインデザート",
     img: "/img/dessert/sakura_main.jpeg",
     category: "patissier",
@@ -11,12 +11,48 @@ export const patissierWorks = [
     tags: ["dessert"],
   },
   {
-    id: "2",
+    id: "w2",
     title: "苺のデザート",
     img: "/img/dessert/main_strawberry_dessert.jpeg",
     category: "patissier",
     slug: "strawberry",
     date: "2025-09-04",
     tags: ["dessert"],
+  },
+  {
+    id: "w3",
+    title: "ホワイトコース",
+    img: "/img/dessert/white.jpg",
+    category: "patissier",
+    slug: "white course",
+    date: "2023-03-14",
+    tags: ["dessert"],
+  },
+  {
+    id: "w4",
+    title: "チョコレートテリーヌ",
+    img: "/img/sweets/chocolate_terine2.jpeg",
+    category: "patissier",
+    slug: "",
+    date: "2023-3-20",
+    tags: ["sweets"],
+  },
+  {
+    id: "w5",
+    title: "マロンテリーヌ",
+    img: "/img/sweets/malon_terrine.jpeg",
+    category: "patissier",
+    slug: "",
+    date: "2023-10-10",
+    tags: ["sweets"],
+  },
+  {
+    id: "w6",
+    title: "パリブレスト",
+    img: "/img/mv2.jpg",
+    category: "patissier",
+    slug: "",
+    date: "2021-4-20",
+    tags: ["cake"],
   },
 ] satisfies Work[];
