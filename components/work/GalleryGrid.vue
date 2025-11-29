@@ -12,7 +12,7 @@
       <h3 class="title" :class="isJapanese(w.title) ? 'jp-font' : 'en-font'">
         {{ w.title }}
       </h3>
-      <span class="badge">{{ categoryLabel(w.category) }}</span>
+      <!-- <span class="badge">{{ categoryLabel(w.category) }}</span> -->
     </NuxtLink>
   </div>
 
@@ -124,5 +124,16 @@ const isJapanese = (str: string): boolean => {
 .en-font {
   font-family: "Playfair Display", serif;
   letter-spacing: 0.5px;
+}
+
+.badge {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  color: #374151;
+  background: #f9fafb;
 }
 </style>
