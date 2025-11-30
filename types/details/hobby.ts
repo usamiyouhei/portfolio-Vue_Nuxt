@@ -1,6 +1,6 @@
 import type { Work } from "../works";
 
-type HobbyTag = "ingredients" | "food" | "economy";
+type HobbyTag = "dish" | "wine" | "ingredients" | "food" | "economy";
 
 export interface HobbyDetail extends Work {
   slug: string;
