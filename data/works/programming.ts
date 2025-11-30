@@ -7,8 +7,8 @@ export const programmingWorks = [
     img: "/img/web-site/pon-design-fv.jpg",
     category: "programming",
     slug: "logo-design",
-    date: "2025-08-30",
-    tags: ["Logo"],
+    date: "2023-11-30",
+    tags: ["website"],
   },
   {
     id: "4",
@@ -17,7 +17,7 @@ export const programmingWorks = [
     category: "programming",
     slug: "hobby",
     date: "2025-07-10",
-    tags: ["Asisai"],
+    tags: ["website"],
   },
   {
     id: "5",
