@@ -8,7 +8,13 @@
 
       <div class="body">
         <div class="media">
-          <img v-for="(src, i) in imgs" :src="src" :key="i" :alt="`${work.title} ${i + 1}`" loading="lazy">
+          <img
+            v-for="(src, i) in imgs"
+            :src="src"
+            :key="i"
+            :alt="`${work.title} ${i + 1}`"
+            loading="lazy"
+          />
         </div>
 
         <section v-if="work.description" class="story">
@@ -52,17 +58,17 @@
         </section> -->
       </div>
 
-      <footer class="footer">
+      <!-- <footer class="footer">
         <button class="button ghost" @click="nav(-1)">← Prev</button>
         <button class="button ghost" @click="nav(1)">Next →</button>
-      </footer>
+      </footer> -->
     </article>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onKeyDown } from '@vueuse/core';
-import { onMounted, onBeforeUnmount, computed } from 'vue';
+import { onKeyDown } from "@vueuse/core";
+import { onMounted, onBeforeUnmount, computed } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -73,34 +79,36 @@ type Work = {
   description?: string;
   images?: string[];
   cover?: string;
-  recipe?: {ingredients: string[], steps: string[]};
+  recipe?: { ingredients: string[]; steps: string[] };
   platingNotes?: string[];
-  tools?: string[]
-}
+  tools?: string[];
+};
 
-const props = defineProps<{ work: Work, siblings: Work[]}>()
-const emit = defineEmits<{ close:[] }>()
+const props = defineProps<{ work: Work; siblings: Work[] }>();
+const emit = defineEmits<{ close: [] }>();
 
-const imgs = computed(
-  () => props.work.images?.length
-  ? props.work.images
-  : [props.work.cover].filter(Boolean) as string[]
-)
+const imgs = computed(() =>
+  props.work.images?.length
+    ? props.work.images
+    : ([props.work.cover].filter(Boolean) as string[])
+);
 
 function onKey(e: KeyboardEvent) {
-  if(e.key === 'Escape') emit('close')
-  if(e.key === 'ArrowLeft') nav(-1)
-  if(e.key === 'ArrowRight') nav(1)
+  if (e.key === "Escape") emit("close");
+  if (e.key === "ArrowLeft") nav(-1);
+  if (e.key === "ArrowRight") nav(1);
 }
-onMounted(() => window.addEventListener('keydown', onKey))
-onBeforeUnmount(() => window.removeEventListener('keydown',onKey))
+onMounted(() => window.addEventListener("keydown", onKey));
+onBeforeUnmount(() => window.removeEventListener("keydown", onKey));
 
 function nav(delta: number) {
-  const list = props.siblings
-  const idx = list.findIndex( w => w.id === props.work.id)
-  if(idx < 0) return
-  const next = list[(idx + delta + list.length) % list.length]
-  const url = new URL(location.href); url.searchParams.set('id', next.id); history.replaceState({},'',url)
+  const list = props.siblings;
+  const idx = list.findIndex((w) => w.id === props.work.id);
+  if (idx < 0) return;
+  const next = list[(idx + delta + list.length) % list.length];
+  const url = new URL(location.href);
+  url.searchParams.set("id", next.id);
+  history.replaceState({}, "", url);
 }
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -111,7 +119,7 @@ function nav(delta: number) {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0, .6);
+  background: rgba(0, 0, 0, 0.6);
   display: grid;
   place-items: center;
   padding: 16px;
@@ -130,21 +138,27 @@ function nav(delta: number) {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom:1px solid #eee ;
+  border-bottom: 1px solid #eee;
 }
 .title {
   font-weight: 800;
   line-height: 1.2;
-  font-size: clamp(36px, 2vw,48px);
-  letter-spacing: .2;
+  font-size: clamp(36px, 2vw, 48px);
+  letter-spacing: 0.2;
 }
 .x {
   font-size: 22px;
@@ -167,8 +181,7 @@ function nav(delta: number) {
   display: block;
   border-radius: 10px;
   object-fit: contain;
-  box-shadow: 0 6px 20px rgba(0,0,0,.15);
-
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 @media (min-width: 768px) {
   .grid {
