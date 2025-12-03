@@ -5,31 +5,36 @@
     <span></span>
   </div>
 
-  <div ref="menuRef" class="slide-menu" :class="{ open: isOpen }">
+  <div
+    ref="menuRef"
+    class="slide-menu"
+    :class="{ open: isOpen }"
+    :style="{ pointerEvents: isOpen ? 'auto' : 'none' }"
+  >
     <ul class="slide-menu__items">
       <li class="slide-menu__item">
-        <NuxtLink href="/#about" class="slide-menu__link" @click="closeMenu"
+        <NuxtLink to="/#about" class="slide-menu__link" @click="closeMenu"
           >About</NuxtLink
         >
       </li>
       <li class="slide-menu__item">
-        <NuxtLink href="/#service" class="slide-menu__link" @click="closeMenu"
+        <NuxtLink to="/#service" class="slide-menu__link" @click="closeMenu"
           >Service</NuxtLink
         >
       </li>
       <li class="slide-menu__item">
-        <NuxtLink href="/#news" class="slide-menu__link" @click="closeMenu"
+        <NuxtLink to="/#news" class="slide-menu__link" @click="closeMenu"
           >News</NuxtLink
         >
       </li>
       <li class="slide-menu__item">
-        <NuxtLink href="/#works" class="slide-menu__link" @click="closeMenu"
+        <NuxtLink to="/#works" class="slide-menu__link" @click="closeMenu"
           >Works</NuxtLink
         >
       </li>
       <li class="slide-menu__item">
         <NuxtLink
-          href="/#contact"
+          to="/#contact"
           class="slide-menu__link slide-menu__link--contact"
           @click="closeMenu"
           ><span>Contact</span>
@@ -175,10 +180,12 @@ watch(isOpen, (open) => {
   padding: 40px 20px;
   overflow-y: auto;
   font-family: "Italianno";
+  pointer-events: none;
 }
 
 /* isOpen が true のとき表示 */
 .slide-menu.open {
+  pointer-events: auto;
   right: 0;
 }
 .hamburger-button {
