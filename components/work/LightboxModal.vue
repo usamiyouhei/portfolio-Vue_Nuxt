@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay">
+  <div class="overlay" @click="onOverClick">
     <article class="modal">
       <header class="head">
         <h2 class="title">{{ work.title }}</h2>
@@ -110,6 +110,13 @@ function nav(delta: number) {
   url.searchParams.set("id", next.id);
   history.replaceState({}, "", url);
 }
+
+function onOverClick(e: MouseEvent) {
+  if (e.target === e.currentTarget) {
+    emit("close");
+  }
+}
+
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
