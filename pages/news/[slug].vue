@@ -22,39 +22,46 @@ import Breadcrumb from "~/components/common/Breadcrumb.vue";
 import Button from "~/components/common/Button.vue";
 
 /**===================================================================================================================
- * 
+ *
  ===================================================================================================================**/
 const route = useRoute();
-const { all } = useNews();
+const slug = route.params.slug as string;
+// const { all } = useNews();
+
+const { sorted } = useNews();
+
+const found = sorted.find((n) => n.slug === slug);
 
 // const item = computed(() => all.value.find(n => n.slug === route.params.slug))
-const itemSafe = computed<News>(() => {
-  const found = all.value.find((n) => n.slug === route.params.slug);
-  if (!found) {
-    throw createError({ statusCode: 404, statusMessage: "News not found" });
-  }
-  return found;
-});
+// const itemSafe = computed<News>(() => {
+//   const found = all.value.find((n) => n.slug === route.params.slug);
+//   if (!found) {
+//     throw createError({ statusCode: 404, statusMessage: "News not found" });
+//   }
+//   return found;
+// });
+if (!found) {
+  throw createError({ statusCode: 404, statusMessage: "News not found" });
+}
+
+const itemSafe = found;
 
 const { crumbs } = useBreadcrumb(
   "news",
   { label: "News 一覧", to: "/news" },
-  { label: itemSafe.value.title }
+  { label: itemSafe.title }
 );
-// if (!item) {
-//   throw createError({ statusCode: 404, statusMessage: 'News not found' })
-// }
 
 useHead({
-  title: computed(() => `${itemSafe.value.title} | News`),
+  title: computed(() => `${itemSafe.title} | News`),
   meta: [
     {
       name: "description",
-      content: computed(() => itemSafe.value.excerpt || itemSafe.value.title),
+      content: computed(() => itemSafe.excerpt || itemSafe.title),
     },
     { property: "og:type", content: "article" },
-    { property: "og:title", content: computed(() => itemSafe.value.title) },
-    { property: "og:image", content: computed(() => itemSafe.value.image) },
+    { property: "og:title", content: computed(() => itemSafe.title) },
+    { property: "og:image", content: computed(() => itemSafe.image) },
   ],
 });
 

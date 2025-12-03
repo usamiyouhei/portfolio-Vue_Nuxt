@@ -2,6 +2,14 @@ import type { News } from "~/types/news";
 
 export const allNews: News[] = [
   {
+    id: "n2",
+    title: "記事タイトル13",
+    date: "2025-12-1",
+    image: "/img/news-img1.jpg",
+    slug: "article-13",
+    excerpt: "",
+  },
+  {
     id: "n1",
     title: "New Portfolio",
     date: "2025-12-2",
@@ -9,14 +17,6 @@ export const allNews: News[] = [
     slug: "article-1",
     excerpt: "新しいデザインでポートフォリオ完成しました",
     body: "Vue と Nuxt を使って、新しいポートフォリオを制作しました。まだ完成ではなく、デザインの細かなニュアンスや動きの調整、そしてこれまで手がけてきた実績の追加など、これから少しずつ育てていく作品です。自分らしさを表現できる場所として、継続的に手を加えながら仕上げていくつもりですので、成長の過程も含めて楽しんでいただけたら嬉しいです。",
-  },
-  {
-    id: "n2",
-    title: "記事タイトル13",
-    date: "2025-12-1",
-    image: "/img/news-img1.jpg",
-    slug: "article-13",
-    excerpt: "",
   },
   {
     id: "n3",

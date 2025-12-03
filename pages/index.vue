@@ -1,39 +1,41 @@
 <template>
- <HomeHeroSection/>
- <HomeAboutSection/>
- <CommonLoopText/>
- <HomeServiceSection/>
- 
- <HomeNewsSection :items="latest3"/>
- <HomeWorksSection/>
- <HomeContactSection/>
+  <HomeHeroSection />
+  <HomeAboutSection />
+  <CommonLoopText />
+  <HomeServiceSection />
+
+  <HomeNewsSection :items="latest3" />
+  <HomeWorksSection />
+  <HomeContactSection />
 </template>
 
 <script setup lang="ts">
 import type { News } from "@/types/news";
-
+import { useNews } from "~/composables/useNews";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
 definePageMeta({
-  alias: ['/usami/top']
-})
+  alias: ["/usami/top"],
+});
 
- //------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 // 引数
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-  const { all } = useNews()
+const { sorted, latest } = useNews();
 
-  const byDateDesc = (a: News, b: News) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-    const latest3 = computed(() =>
-    [...all.value]     .filter(n => n.slug && n.title && n.date)
-    .sort(byDateDesc)
-    .slice(0, 3)
-)
+const latest3 = latest(3);
+
+//   const byDateDesc = (a: News, b: News) =>
+//     new Date(b.date).getTime() - new Date(a.date).getTime()
+//     const latest3 = computed(() =>
+//     [...all.value]     .filter(n => n.slug && n.title && n.date)
+//     .sort(byDateDesc)
+//     .slice(0, 3)
+// )
 //   const { data } = await useAsyncData<News[]>('news', () => $fetch('/api/news'))
 // const latest3 = computed(() =>
 //   (data.value ?? []).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3)
@@ -94,7 +96,8 @@ function onChange(value: any) {
 </script>
 
 <style lang="scss" scoped>
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
 }
