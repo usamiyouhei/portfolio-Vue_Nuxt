@@ -7,12 +7,13 @@ import type { News } from "~/types/news";
 //   new Date(b.date).getTime() - new Date(a.date).getTime();
 
 export const useNews = () => {
+  const all = computed(() => allNews);
   const sorted = [...allNews].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   const latest = (n = 3) => sorted.slice(0, n);
-  return { sorted, latest };
+  return { all, sorted, latest };
   // // ここが undefined にならないよう、必ず配列で初期化
   // const all = ref<News[]>(Array.isArray(seed) ? [...seed] : []);
   // return { all };
