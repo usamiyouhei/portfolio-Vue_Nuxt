@@ -14,7 +14,7 @@ export const allNews: News[] = [
     id: "n2",
     title: "Action Camera",
     date: "2025-11-23",
-    image: "/img/news/",
+    image: "/img/news/action6_2.jpeg",
     slug: "article-13",
     excerpt: "DJI osmo Action6を使って様々な撮影をしていきます",
     body: "新たに DJI Osmo Action 6 を導入しました。今後はデザート制作や旅の記録、街のスナップなど、多様なシーンを撮影し、映像として残していきます。クリエイティブな表現の幅を広げながら、ポートフォリオ内でも随時作品を更新していく予定です。",
@@ -23,7 +23,7 @@ export const allNews: News[] = [
     id: "n3",
     title: "中東のお皿",
     date: "2025-11-20",
-    image: "/img/news/",
+    image: "/img/news/dish.jpeg",
     slug: "article-12",
     excerpt: "",
     body: "",
@@ -68,10 +68,11 @@ export const allNews: News[] = [
   {
     id: "n8",
     title: "Dessert Une Assiette 閉店",
-    date: "2025-10-20",
-    image: "/img/news/",
+    date: "2024-7-31",
+    image: "/img/news/my-shop.jpeg",
     slug: "article-7",
-    excerpt: "新しいデザインでポートフォリオを制作中です。",
+    excerpt:
+      "自店 Dessert Une Assiette 閉店しました。5年間ありがとうございました。",
     body: "",
   },
   {
