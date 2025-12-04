@@ -45,12 +45,12 @@ import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
 const route = useRoute();
 const router = useRouter();
-const { all } = useNews();
-const allNews = all;
+const { sorted } = useNews();
+// const allNews = all;
 const perPage = 10;
 
 const validItems = computed(() =>
-  all.value.filter(
+  sorted.filter(
     (n) =>
       typeof n.slug === "string" &&
       n.slug.trim() &&
