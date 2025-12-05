@@ -202,6 +202,7 @@ function onOverClick(e: MouseEvent) {
   color: #333;
   display: -webkit-box;
   -webkit-line-clamp: 3; /* 3行で省略 */
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

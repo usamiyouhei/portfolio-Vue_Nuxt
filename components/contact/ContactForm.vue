@@ -116,13 +116,14 @@
           :onClick="openConfirm"
         />
       </div>
-
-      <ContactConfirmModal
-        v-if="showConfirm"
-        :form="form"
-        @close="showConfirm = false"
-        @confirm="handleSubmit"
-      />
+      <div class="overlay" @click.self="closeConfirm">
+        <ContactConfirmModal
+          v-if="showConfirm"
+          :form="form"
+          @close="showConfirm = false"
+          @confirm="handleSubmit"
+        />
+      </div>
     </form>
   </div>
 </template>

@@ -25,8 +25,8 @@ export const allNews: News[] = [
     date: "2025-11-20",
     image: "/img/news/dish.jpeg",
     slug: "article-12",
-    excerpt: "",
-    body: "",
+    excerpt: "中東のお皿",
+    body: "中東文化が持つ独特の美しさに惹かれ、新しい器をコレクションに加えました。深みのある色彩や幾何学模様が特徴で、ひとつひとつに手仕事の温もりが宿っています。デザートの表情を変える “舞台” として、これからの作品撮影やメニュー開発に活用していきます。",
   },
   {
     id: "n4",
@@ -35,7 +35,7 @@ export const allNews: News[] = [
     image: "/img/news/xmas.jpeg",
     slug: "article-11",
     excerpt: "今年のクリスマスは海外で過ごします",
-    body: "",
+    body: "今年のクリスマスは海外で過ごしています。見慣れない景色や文化に触れるたび、新しいアイデアや表現のヒントが生まれるように感じます。この特別な季節ならではの空気感を、今後の写真・映像制作やデザートづくりにも反映させていく予定です。",
   },
   {
     id: "n5",
@@ -43,9 +43,8 @@ export const allNews: News[] = [
     date: "2025-04-20",
     slug: "article-10",
     image: "/img/news/scenery1.jpeg",
-    excerpt:
-      "記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０記事１０",
-    body: "",
+    excerpt: "しばらくの間、海外勤務します。",
+    body: "このたび、しばらくの間海外で勤務することになりました。新しい文化や価値観に触れる中で、自身の表現や制作活動にも良い変化が生まれることを期待しています。海外での経験を日々吸収しながら、これからも作品づくりに反映していきます。",
   },
   {
     id: "n6",
@@ -104,12 +103,12 @@ export const allNews: News[] = [
   },
   {
     id: "n12",
-    title: "New Portfolio new",
-    date: "2025-10-2",
-    image: "/img/news/news-img2_new_portfolio.jpg",
-    slug: "2025-10-23_new_portfolio",
-    excerpt: "新しいデザインでポートフォリオを制作中です",
-    body: "新しいポートフォリオです。Vue,Nuxtで作成しました",
+    title: "世界一",
+    date: "2025-05-23",
+    image: "/img/news/bluju_halifa.jpeg",
+    slug: "bluju_halifa",
+    excerpt: "世界一のビルに登りました",
+    body: "世界一のビルに登りました。地上からは想像できないほどの景色が広がり、日常とはまったく違うスケールを体感しました。この圧倒的な眺望から得た感動を、今後の制作や表現にも活かしていきたいと思います。",
   },
   {
     id: "n13",
