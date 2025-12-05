@@ -110,15 +110,31 @@ const { crumbs } = useBreadcrumb("news", { label: "News 一覧" });
 <style lang="scss" scoped>
 .newsMorePage {
   margin-top: 80px;
+  padding: 0 16px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    padding: 0 24px; // ← タブレット以上は余白増やす
+  }
 }
 .grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 24px;
 }
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .card {
@@ -126,7 +142,14 @@ const { crumbs } = useBreadcrumb("news", { label: "News 一覧" });
   background: #fff;
   border-radius: 14px;
   padding: 10px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    background: #f9fafb;
+  }
 }
 .thumb {
   width: 100%;
@@ -139,6 +162,11 @@ const { crumbs } = useBreadcrumb("news", { label: "News 一覧" });
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover & img {
+    transform: scale(1.03);
   }
 }
 .date {
@@ -149,8 +177,16 @@ const { crumbs } = useBreadcrumb("news", { label: "News 一覧" });
 }
 .title {
   font-family: "Noto Sans JP", "Yu Gothic Medium", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.35;
+  @media (min-width: 640px) {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
 }
 </style>
