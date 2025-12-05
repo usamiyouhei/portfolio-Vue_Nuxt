@@ -81,6 +81,7 @@ const props = defineProps<{
   overflow: hidden;
 }
 .news-item__excerpt {
+  font-family: "Noto Sans JP", "Yu Gothic Medium", sans-serif;
   font-size: 13px;
   color: #444;
   line-height: 1.7;
