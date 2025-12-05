@@ -77,6 +77,7 @@ const props = defineProps<{
   font-weight: 700;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -87,6 +88,7 @@ const props = defineProps<{
   line-height: 1.7;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* ← 2行で省略 */
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -177,6 +179,7 @@ const props = defineProps<{
   .news_item__excerpt {
     font-size: 16px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 }
 
