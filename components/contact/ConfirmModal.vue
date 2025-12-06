@@ -4,19 +4,19 @@
       <h2 class="confirm-title">以下の内容で送信しますか？</h2>
       <ul class="confirm-content">
         <div class="confirm-item">
-          <span class="confirm-label">Name:</span>
+          <span class="confirm-label">お名前:</span>
           <p>{{ form.name }}</p>
         </div>
         <div class="confirm-item">
-          <span class="confirm-label">Email:</span>
+          <span class="confirm-label">メールアドレス:</span>
           <p>{{ form.email }}</p>
         </div>
         <div class="confirm-item">
-          <span class="confirm-label">Topic:</span>
+          <span class="confirm-label">お問い合せ内容:</span>
           <p>{{ form.topic }}</p>
         </div>
         <div class="confirm-item">
-          <span class="confirm-label">Message:</span>
+          <span class="confirm-label">内容:</span>
           <p>{{ form.message }}</p>
         </div>
       </ul>

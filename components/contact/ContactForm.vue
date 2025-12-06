@@ -65,13 +65,13 @@
           :aria-describedby="errors.topic ? 'err_topic' : undefined"
         >
           <option value="-----">------------</option>
-          <option value="webcontents">Web制作</option>
-          <option value="appcreate">アプリ開発</option>
-          <option value="webdesign">Figmaデザイン</option>
-          <option value="consaltant">飲食業コンサル</option>
-          <option value="cake">お菓子について</option>
-          <option value="photo">写真撮影</option>
-          <option value="other">その他</option>
+          <option value="Web制作">Web制作</option>
+          <option value="アプリ開発">アプリ開発</option>
+          <option value="Figmaデザイン">Figmaデザイン</option>
+          <option value="飲食業コンサル">飲食業コンサル</option>
+          <option value="お菓子について">お菓子について</option>
+          <option value="写真撮影">写真撮影</option>
+          <option value="その他">その他</option>
         </select>
         <p v-if="errors.topic" class="form__error" id="err_topic" role="alert">
           {{ errors.topic }}

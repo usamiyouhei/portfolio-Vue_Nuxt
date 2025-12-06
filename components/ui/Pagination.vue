@@ -150,12 +150,16 @@ const pageItems = computed<PageItem[]>(() =>
     transform: translateY(-1px);
   }
   .num.active {
-    // background: linear-gradient(to bottom, #ffffff 0%, #f3e5c9 100%);
-    // color: #111;
-    background: linear-gradient(135deg, #f4c9d9, #edb2cc);
+    background: linear-gradient(135deg, #f7d4e2 0%, #e9aac8 100%);
     border-color: #d48ab2;
-    // border-color: rgba(0, 0, 0, 0.25);
+    color: #111;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+  .num.active:hover {
+    background: linear-gradient(135deg, #f7d4e2 0%, #e9aac8 100%);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: none;
   }
   button:disabled {
     opacity: 0.45;
