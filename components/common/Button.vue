@@ -92,33 +92,57 @@ const props = defineProps<ButtonProps>();
   color: #8d8d8d;
   border-radius: 0.5rem;
 }
-
 .read-more__button {
   all: unset;
   margin-bottom: 12px;
   padding: 0;
   font-family: "Playfair Display", serif;
   font-size: 20px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-radius: 0;
+  border-radius: 0.5rem; /* ← 追加！ */
+  display: inline-block;
+}
+.read-more__button span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1.2rem 3rem;
+  font-size: 18px;
+  color: #333;
+
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+
+  background: linear-gradient(to bottom, #ffffff 0%, #f3e5c9 100%);
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
 }
 
-.read-more__button span {
-  // font-family: "Noto Sans JP", sans-serif;
-  // font-size: 18px;
-  position: relative;
-  display: block;
-  padding: 1.25rem 3rem;
-  color: #333;
-  border: 1px solid #898989;
-  border-radius: 0.5rem;
-  background: linear-gradient(
-    to bottom,
-    rgb(255, 255, 255) 30%,
-    rgb(253, 226, 179) 70%
-  );
+.read-more__button span:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #f7edd6 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
+
+.read-more__button span::after {
+  content: "";
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #666;
+  border-right: 1px solid #666;
+  transition: transform 0.25s ease, right 0.25s ease;
+}
+
+.read-more__button:hover span::after {
+  right: 1rem; /* → 少し右に動く */
+  transform: translateY(-50%) rotate(45deg) translateX(0px);
+}
+
 .read-more__button.en span {
   font-family: "Playfair Display", serif !important;
   font-size: 20px;
@@ -129,57 +153,6 @@ const props = defineProps<ButtonProps>();
   font-family: "Noto Sans JP", sans-serif !important;
   font-size: 18px;
   letter-spacing: 0.02em;
-}
-
-.read-more__button span ::after {
-  content: "";
-  position: relative;
-  width: 10px; /* ボックスの横幅を指定する */
-  height: 10px; /* ボックスの高さを指定する */
-  border-top: 1px solid #666666; /* 境界線の上部を実線に指定する*/
-  border-right: 1px solid #666666; /* 境界線の上部を実線に指定する*/
-  transform: rotate(45deg); /* ボックスを回転させる（右向き矢印） */
-  top: 11px;
-  animation: slideBlink 1s linear infinite;
-}
-@keyframes slideBlink {
-  /* アニメーションの内容 */
-  from {
-    /* アニメーション開始時のスタイル */
-    opacity: 0;
-    left: 8px;
-  }
-  to {
-    /* アニメーション終了時のスタイル */
-    opacity: 1;
-    left: 25px;
-  }
-}
-
-.read-more__button span:hover {
-  background: linear-gradient(
-    to top,
-    rgb(255, 255, 255) 30%,
-    rgb(255, 244, 225) 70%
-  );
-}
-
-.read-more__button:hover {
-  -webkit-transform: translate(0, 5px);
-  transform: translate(0, 5px);
-}
-
-.read-more__button:hover:before {
-  bottom: -5px;
-}
-
-.read-more__button:active {
-  -webkit-transform: translate(0, 7px);
-  transform: translate(0, 7px);
-}
-
-.read-more__button:active:before {
-  bottom: -1px;
 }
 
 @media (max-width: 768px) {

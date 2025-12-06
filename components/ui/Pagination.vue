@@ -107,55 +107,6 @@ const pageItems = computed<PageItem[]>(() =>
 //------------------------------------------------------------------------------------------------------------
 // 定数・変数（state）
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-// ライフサイクル
-//------------------------------------------------------------------------------------------------------------
-/*
-onBeforeMount(() => {
-  //記憶した位置、サイズでの復帰を可能にする
-})
-
-onMounted(() => {
-  //window.addEventListener('resize', onGetPosition)
-})
-
-onBeforeUnmount(() => {
-  //window.removeEventListener('resize', onGetPosition)
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-//watch
-//------------------------------------------------------------------------------------------------------------
-/*
-watch(
-  () => props.value,
-  (value) => {
-    input.value = value
-  }
-)
-//------------------------------------------------------------------------------------------------------------
-//computed
-//------------------------------------------------------------------------------------------------------------
-/*
-const counter: Ref<number> = useState('counter', () => 500)
-
-// computedによりcounter変数の監視が行われる
-const doubleCount = computed(() => {
-  return counter.value * 2
-})
-*/
-//------------------------------------------------------------------------------------------------------------
-// エミット
-//------------------------------------------------------------------------------------------------------------
-/*
-const emits = defineEmits<{ (e: 'update:value', item: any): void }>()
-const input = ref(props.value)
-
-function onChange(value: any) {
-  input.value = value
-  emits('update:value', value)
-}
-*/
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
@@ -171,18 +122,40 @@ function onChange(value: any) {
   margin: 24px 0 24px;
   .nav,
   .num {
-    min-width: 36px;
-    height: 36px;
-    padding: 0 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+
+    background: linear-gradient(to bottom, #ffffff 0%, #f3e5c9 100%);
+
+    font-size: 16px;
+    color: #333;
+    font-family: "Noto Sans JP", sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+  }
+  .nav:hover:not(:disabled),
+  .num:hover:not(:disabled) {
+    background: linear-gradient(to bottom, #ffffff 0%, #f7edd6 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
   }
   .num.active {
-    background: #111;
-    color: #fff;
-    border-color: #111;
+    // background: linear-gradient(to bottom, #ffffff 0%, #f3e5c9 100%);
+    // color: #111;
+    background: linear-gradient(135deg, #f4c9d9, #edb2cc);
+    border-color: #d48ab2;
+    // border-color: rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
   }
   button:disabled {
     opacity: 0.45;
