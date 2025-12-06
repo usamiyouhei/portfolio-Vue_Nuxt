@@ -121,7 +121,12 @@ const skills: Skill[] = [
   {
     name: "Pâtisserie",
     level: 5,
-    tags: ["和三盆", "抹茶", "ナパージュ / ミラー"],
+    tags: ["dessert", "sweets", "cake", "chocolate"],
+  },
+  {
+    name: "Photo",
+    level: 3,
+    tags: ["scenery", "food", "ingredient"],
   },
   { name: "Nuxt / Vue", level: 4, tags: ["Composition API", "Swiper", "SCSS"] },
   {
@@ -131,7 +136,7 @@ const skills: Skill[] = [
   },
   {
     name: "UI/UX デザイン",
-    level: 4,
+    level: 3,
     tags: ["BEM", "アクセシビリティ", "モーション"],
   },
 ];
