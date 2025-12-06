@@ -52,7 +52,7 @@ type ButtonProps =
     }
   | {
       buttonText: string;
-      onClick: () => void;
+      onClick?: () => void;
       href?: string;
       lang?: "en" | "ja";
       to?: string;

@@ -116,7 +116,10 @@
           :onClick="openConfirm"
         />
       </div>
-      <div class="overlay" @click.self="closeConfirm">
+    </form>
+
+    <Teleport to="body">
+      <div v-if="showConfirm" class="overlay" @click.self="closeConfirm">
         <ContactConfirmModal
           v-if="showConfirm"
           :form="form"
@@ -124,7 +127,7 @@
           @confirm="handleSubmit"
         />
       </div>
-    </form>
+    </Teleport>
   </div>
 </template>
 
@@ -171,6 +174,9 @@ const validate = () => {
 
 const openConfirm = () => {
   if (validate()) showConfirm.value = true;
+};
+const closeConfirm = () => {
+  showConfirm.value = false;
 };
 
 const handleSubmit = async () => {
