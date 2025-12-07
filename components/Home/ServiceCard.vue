@@ -130,6 +130,9 @@ const { stop } = useIntersectionObserver(
     min-height: auto !important;
     padding: 16px 16px 10px;
   }
+  .svc-card__title {
+    font-size: 16px;
+  }
   .svc-card__img {
     max-height: 160px;
     margin-bottom: 10px;

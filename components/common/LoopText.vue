@@ -116,4 +116,15 @@ function onChange(value: any) {
     animation: none;
   }
 }
+@media screen and (max-width: 768px) {
+  .ticker__chunk {
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .ticker__chunk {
+    font-size: 80px;
+  }
+}
 </style>

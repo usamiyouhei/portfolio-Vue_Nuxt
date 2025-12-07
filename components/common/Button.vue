@@ -97,7 +97,7 @@ const props = defineProps<ButtonProps>();
   margin-bottom: 12px;
   padding: 0;
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  font-size: 13px;
   transition: all 0.3s;
   border-radius: 0.5rem; /* ← 追加！ */
   display: inline-block;
@@ -128,7 +128,7 @@ const props = defineProps<ButtonProps>();
 .read-more__button span::after {
   content: "";
   position: absolute;
-  right: 1.6rem;
+  right: 1.5rem;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   width: 9px;
@@ -144,22 +144,23 @@ const props = defineProps<ButtonProps>();
 }
 
 .read-more__button.en span {
-  font-family: "Playfair Display", serif !important;
-  font-size: 20px;
+  font-family: "Playfair Display", serif;
+  // font-size: 20px;
   letter-spacing: 0.05em;
 }
 
 .read-more__button.ja span {
-  font-family: "Noto Sans JP", sans-serif !important;
-  font-size: 18px;
+  font-family: "Noto Sans JP", sans-serif;
+  // font-size: 18px;
   letter-spacing: 0.02em;
 }
 
 @media (max-width: 768px) {
-  .read-more__button span {
-    font-size: 16px;
-    padding: 0.9rem 2.4rem;
-  }
+  // .read-more__button.ja span {
+  //   font-size: 15px;
+  //   padding: 0.8rem 2rem;
+  //   letter-spacing: 0.04em;
+  // }
 }
 @media (max-width: 480px) {
   .read-more__button span {
