@@ -95,9 +95,9 @@ const props = defineProps<ButtonProps>();
 .read-more__button {
   all: unset;
   margin-bottom: 12px;
-  padding: 0;
+  padding: 10px;
   font-family: "Playfair Display", serif;
-  font-size: 13px;
+  font-size: 16px;
   transition: all 0.3s;
   border-radius: 0.5rem; /* ← 追加！ */
   display: inline-block;
@@ -165,14 +165,20 @@ const props = defineProps<ButtonProps>();
 @media (max-width: 480px) {
   .read-more__button span {
     font-size: 14px;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 2.4rem;
   }
 }
 
 @media (max-width: 360px) {
   .read-more__button span {
     font-size: 13px;
-    padding: 0.7rem 1.6rem;
+    padding: 0.7rem 1.7rem; /* 横の余白を少なめに */
+  }
+
+  .read-more__button span::after {
+    right: 0.8rem; /* 矢印の位置も左へ寄せる */
+    width: 7px;
+    height: 7px; /* アイコンも少し小さく */
   }
 }
 </style>
