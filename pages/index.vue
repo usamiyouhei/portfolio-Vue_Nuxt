@@ -100,5 +100,6 @@ html,
 body {
   overflow-x: hidden;
   width: 100%;
+  min-height: 100svh;
 }
 </style>

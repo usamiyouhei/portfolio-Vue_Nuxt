@@ -57,7 +57,7 @@ a {
 }
 
 .about {
-  margin: 60px 0 0;
+  margin: 30px 0 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -100,6 +100,7 @@ a {
   font-size: 16px;
   // margin: 20px 0px 20px 50px;
   text-align: left;
+  padding: 0 24px;
 }
 
 @media screen and (min-width: 768px) {
@@ -124,11 +125,11 @@ a {
     font-size: 17px;
   }
 }
-@media (max-width: 425px) {
-  .about__text {
-    padding: 0 18px;
-  }
-}
+// @media screen and (max-width: 425px) {
+//   .about {
+//     padding-top: 150px;
+//   }
+// }
 @media screen and (min-width: 1024px) {
   .about__wrap {
     max-width: 1000px;

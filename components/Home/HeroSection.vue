@@ -38,14 +38,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 .kv {
   margin: 60px 0 0 auto;
-  padding: 20px 0 40px 0;
-  height: calc(100vh - 200px);
+  padding: 20px 0 0px 0;
+  height: auto;
   text-align: center;
   display: flex;
   flex-direction: row-reverse;
   background-color: #fdfbfb;
   position: relative;
   z-index: 10;
+  min-height: auto;
 }
 // .kv__inner {
 //   width: 100%;
