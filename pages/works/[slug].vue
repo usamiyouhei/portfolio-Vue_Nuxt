@@ -2,26 +2,43 @@
   <article class="work-detail">
     <Breadcrumb :crumbs="crumbs" />
 
-    <header class="work-detail__head">
-      <h1 class="work-detail__title">{{ work.title }}</h1>
-    </header>
+    <div class="work-detail__inner">
+      <header class="work-detail__head">
+        <h1 class="work-detail__title">{{ work.title }}</h1>
+      </header>
 
-    <figure v-if="work.img || work.cover" class="work-detail__hero">
-      <img :src="work.img || work.cover" :alt="work.title" loading="lazy" />
-    </figure>
-    <div class="work-detail__content">
-      <section class="work-detail__sectioin">
-        <SectionTitle sectionTitle="OverView" sectionSubTitle="" />
-        <p class="work-detail__text">{{ work.description }}</p>
-      </section>
+      <figure v-if="work.img || work.cover" class="work-detail__hero">
+        <img :src="work.img || work.cover" :alt="work.title" loading="lazy" />
+      </figure>
+      <div class="work-detail__content">
+        <section class="work-detail__sectioin">
+          <h2 class="work-detail__section-title">Overview</h2>
+          <p class="work-detail__text">{{ work.description }}</p>
+        </section>
 
-      <section v-if="work.problem" class="work-detail__section">
-        <h2 class="work-detail__section-title">Problem / Goal</h2>
+        <section v-if="work.problem" class="work-detail__section">
+          <h2 class="work-detail__section-title">Problem / Goal</h2>
 
-        <p class="work-detail__text">{{ work.problem }}</p>
-      </section>
+          <p class="work-detail__text">{{ work.problem }}</p>
+        </section>
+      </div>
     </div>
   </article>
+
+  <footer class="work-detail__footer">
+    <div class="btn-back">
+      <Button buttonText="← Works一覧へ" lang="ja" to="/#works" />
+    </div>
+    <div class="cta">
+      <Button
+        buttonText="お問い合わせ"
+        lang="ja"
+        :onClick="() => (showContact = true)"
+      />
+    </div>
+
+    <ContactModal v-if="showContact" @close="showContact = false" />
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -30,6 +47,7 @@ import { designDetail } from "~/data/views/design";
 import { useRoute } from "vue-router";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 import { useBreadcrumb } from "#imports";
+import Button from "~/components/common/Button.vue";
 import SectionTitle from "~/components/common/SectionTitle.vue";
 /**===================================================================================================================
  * 
@@ -44,6 +62,8 @@ if (!work) {
   throw createError({ statusCode: 404, statusMessage: "Work not found" });
 }
 
+const showContact = ref(false);
+
 const { crumbs } = useBreadcrumb("works", { label: work.title });
 
 //------------------------------------------------------------------------------------------------------------
@@ -53,60 +73,72 @@ const { crumbs } = useBreadcrumb("works", { label: work.title });
 
 <style lang="scss" scoped>
 .work-detail {
-  max-width: 960px;
-  margin: 96px auto 80px;
-  padding: 24px 20px 32px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.55);
+  max-width: 1080px;
+  margin: 72px auto 64px;
+  padding: 0 16px; // 画面端にくっつかないように
 
-  @media (min-width: 768px) {
-    padding: 32px 36px 40px;
+  @media (min-width: 640px) {
+    margin-top: 80px;
+    padding: 0 24px;
   }
 
   @media (min-width: 1024px) {
-    margin-top: 112px;
-    padding: 40px 48px 48px;
+    margin-top: 96px;
+    padding: 0 32px;
   }
 }
+.work-detail__inner {
+  border-radius: 20px;
+  padding: 20px 16px 28px;
+  // background: rgba(15, 23, 42, 0.65); // ダーク系ならこのまま
+  background: rgba(255, 255, 255, 0.9); // ライトにするならこっち
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18); // 影かなり控えめ
+  backdrop-filter: blur(14px);
 
+  @media (min-width: 640px) {
+    padding: 24px 24px 32px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 32px 36px 40px;
+    border-radius: 24px;
+  }
+}
 .work-detail__head {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 
-  @media (min-width: 768px) {
-    margin-bottom: 28px;
+  @media (min-width: 640px) {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 24px;
   }
 }
 
 .work-detail__title {
   font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: 0.03em;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
 
-  @media (min-width: 768px) {
-    font-size: 26px;
+  @media (min-width: 640px) {
+    font-size: 22px;
   }
 
   @media (min-width: 1024px) {
-    font-size: 30px;
+    font-size: 26px;
   }
 }
 
 .work-detail__hero {
-  margin: 0 0 24px;
-  border-radius: 18px;
+  margin: 0 0 20px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.4);
-  background: radial-gradient(
-    circle at top,
-    rgba(148, 163, 184, 0.3),
-    transparent
-  );
 
   img {
     display: block;
@@ -115,24 +147,28 @@ const { crumbs } = useBreadcrumb("works", { label: work.title });
     object-fit: cover;
   }
 
-  @media (min-width: 768px) {
-    margin-bottom: 28px;
+  @media (min-width: 640px) {
+    margin-bottom: 24px;
   }
 }
 
 .work-detail__content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
+    gap: 24px;
+  }
+
+  @media (min-width: 1024px) {
     gap: 28px;
   }
 }
 
 .work-detail__section {
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
 
   &:last-child {
     border-bottom: none;
@@ -141,11 +177,11 @@ const { crumbs } = useBreadcrumb("works", { label: work.title });
 }
 
 .work-detail__section-title {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   opacity: 0.9;
 }
 
@@ -156,6 +192,20 @@ const { crumbs } = useBreadcrumb("works", { label: work.title });
 
   @media (min-width: 768px) {
     font-size: 15px;
+    line-height: 2;
+  }
+}
+
+.work-detail__footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
   }
 }
 </style>
