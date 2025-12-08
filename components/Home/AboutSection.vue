@@ -131,9 +131,12 @@ a {
 //   }
 // }
 @media screen and (min-width: 1024px) {
+  .about {
+    margin-top: 60px;
+  }
   .about__wrap {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 24px auto;
     gap: 60px;
   }
   .about__text {

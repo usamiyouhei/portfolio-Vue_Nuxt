@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="rootTag"
+    :is="safeTag"
     :href="href"
     :to="to"
     :target="target"
@@ -42,7 +42,7 @@
         <p v-if="work?.description" class="work-card__desc">
           {{ work?.description }}
         </p>
-        <ul v-if="work?.tags?.length" class="work-card__tags">
+        <ul v-if="(work?.tags || []).length" class="work-card__tags">
           <li v-for="t in work?.tags" :key="t" class="work-card__tag">
             {{ t }}
           </li>
@@ -56,17 +56,10 @@
         <img :src="imgSrc" :alt="title" loading="lazy" decoding="async" />
       </div>
       <div class="card-gallery__body">
-        <h3
-          class="card-gallery__title"
-          :class="isJapanese(work?.title) ? 'jp-font' : 'en-font'"
-        >
+        <h3 class="card-gallery__title" :class="titleClass">
           {{ title }}
         </h3>
-        <p
-          v-if="subTitle"
-          class="card-gallery__sub"
-          :class="isJapanese(work?.subTitle) ? 'jp-font' : 'en-font'"
-        >
+        <p v-if="subTitle" class="card-gallery__sub" :class="subTitleClass">
           {{ subTitle }}
         </p>
         <div class="card-gallery__meta">
@@ -100,6 +93,7 @@
 import { NuxtLink } from "#components";
 import type { Work } from "@/types/works";
 import { computed } from "vue";
+import { ref, onMounted } from "vue";
 import { useCategoryLabel } from "@/composables/useCategoryLabels";
 /**===================================================================================================================
  * 
@@ -173,12 +167,27 @@ const subTitle = computed(() =>
     ? props.placeholderData?.subTitle || "現在準備中"
     : props.work?.subTitle || ""
 );
+
+const titleClass = computed(() =>
+  isJapanese(title.value) ? "jp-font" : "en-font"
+);
+
+const subTitleClass = computed(() =>
+  isJapanese(subTitle.value) ? "jp-font" : "en-font"
+);
+
+// onMounted(() => {
+//   titleClass.value = isJapanese(props.work?.title) ? "jp-font" : "en-font";
+//   subTitleClass.value = isJapanese(props.work?.subTitle)
+//     ? "jp-font"
+//     : "en-font";
+// });
 const isExternal = computed(() => !!props.work?.externalUrl);
 const permalink = computed(() =>
   props.work ? `/works/${props.work.slug ?? props.work.id}` : "#"
 );
 
-const rootTag = computed(() => {
+const safeTag = computed<string | Component>(() => {
   if (isEmpty.value) return "div";
   return isExternal.value ? "a" : NuxtLink;
 });
@@ -194,20 +203,6 @@ const to = computed(() =>
 const target = computed(() =>
   !isEmpty.value && isExternal.value ? "_blank" : undefined
 );
-// const categoryLabel = computed(() => {
-//   const base = {
-//     patissier: "Patissier",
-//     programming: "Programming",
-//     design: "Design",
-//     hobby: "Hobby",
-//   } as const;
-
-//   const map = { ...base, ...props.catLabels };
-//   const cat: Cat | undefined = isEmpty.value
-//     ? props.category
-//     : props.work?.category;
-//   return cat ? map[cat] : "";
-// });
 
 const ariaLabel = computed(() =>
   isExternal.value ? `${props.work?.title}（外部リンク）` : props.work?.title
@@ -217,17 +212,18 @@ const ariaLabel = computed(() =>
 const isoDate = computed(() => {
   if (!props.work?.date) return undefined;
   const d =
-    typeof props.work?.date === "string"
-      ? new Date(props.work?.date)
-      : props.work?.date;
+    typeof props.work.date === "string"
+      ? new Date(props.work.date)
+      : props.work.date;
   return d.toISOString();
 });
+
 const shortDate = computed(() => {
   if (!props.work?.date) return "";
   const d =
-    typeof props.work?.date === "string"
-      ? new Date(props.work?.date)
-      : props.work?.date;
+    typeof props.work.date === "string"
+      ? new Date(props.work.date)
+      : props.work.date;
   return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
 });
 
