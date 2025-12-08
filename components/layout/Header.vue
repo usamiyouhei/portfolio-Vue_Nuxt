@@ -77,7 +77,7 @@ import HamburgerButton from "../common/HamburgerButton.vue";
   height: 100%;
   width: auto;
   flex: 0 0 auto;
-  width: clamp(140px, 22vw, 220px); /* 最小140px、画面に応じて伸縮、最大220px */
+  width: clamp(140px, 22vw, 180px); /* 最小140px、画面に応じて伸縮、最大220px */
   line-height: 0;
   margin-right: clamp(4px, 5vw, 64px);
 }
