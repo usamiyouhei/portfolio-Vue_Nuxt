@@ -35,15 +35,21 @@
     </ul>
   </section>
 
-  <div class="cta">
-    <Button
-      buttonText="お問い合わせ"
-      lang="ja"
-      :onClick="() => (showContact = true)"
-    />
+  <div class="creator-detail__footer">
+    <div class="btn-back">
+      <Button buttonText="← メインページへ" lang="ja" to="/#service" />
+    </div>
+
+    <div class="cta">
+      <Button
+        buttonText="お問い合わせ"
+        lang="ja"
+        :onClick="() => (showContact = true)"
+      />
+    </div>
+    <ContactModal v-if="showContact" @close="showContact = false" />
   </div>
 
-  <ContactModal v-if="showContact" @close="showContact = false" />
   <!-- <main class="creator-detail">
     <h1>{{ service.title }}</h1>
     <img class="creator-img" :src="service.img" :alt="service.title" />
@@ -228,10 +234,17 @@ const { crumbs } = useBreadcrumb("service", {
   padding: 10px; /* ← WebDetail と合わせる */
 }
 
-.cta {
-  display: grid;
-  place-items: center;
-  padding: 24px 0 56px;
+.creator-detail__footer {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
 }
 
 .fade-in-up {

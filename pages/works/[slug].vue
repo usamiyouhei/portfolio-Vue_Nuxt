@@ -27,7 +27,7 @@
 
   <footer class="work-detail__footer">
     <div class="btn-back">
-      <Button buttonText="← Works一覧へ" lang="ja" to="/#works" />
+      <Button buttonText="← Works一覧へ" lang="ja" :to="backToListPath" />
     </div>
     <div class="cta">
       <Button
@@ -66,6 +66,7 @@ const showContact = ref(false);
 
 const { crumbs } = useBreadcrumb("works", { label: work.title });
 
+const backToListPath = `/works/${work.category}`;
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

@@ -20,55 +20,14 @@
         <section v-if="work.description" class="story">
           {{ work.description }}
         </section>
-
-        <!-- <section v-if="work.platingNotes?.length" class="section">
-          <h3>Plating & Concept</h3>
-          <ul>
-            <li v-for="(t, i) in work.platingNotes">
-              {{ t }}
-            </li>
-          </ul>
-        </section>
-
-        <section v-if="work.recipe" class="grid">
-          <div>
-            <h3>Ingradients</h3>
-              <ul>
-                <li v-for="(ing, i) in work.recipe!.ingredients" :key="i">
-                  {{ ing }}
-                </li>
-              </ul>
-          </div>
-
-          <div>
-            <h3>Steps</h3>
-            <ol>
-              <li v-for="(step, i) in work.recipe!.steps" :key="i" >
-                {{ step }}
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        <section v-if="work.tools?.length" class="section">
-          <h3>Tools</h3>
-          <ul class="chips">
-            <li v-for="(t, i) in work.tools" :key="i">{{ t }}</li>
-          </ul>
-        </section> -->
       </div>
-
-      <!-- <footer class="footer">
-        <button class="button ghost" @click="nav(-1)">← Prev</button>
-        <button class="button ghost" @click="nav(1)">Next →</button>
-      </footer> -->
     </article>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onKeyDown } from "@vueuse/core";
-import { onMounted, onBeforeUnmount, computed } from "vue";
+import { onMounted, onBeforeUnmount, computed, ref } from "vue";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
@@ -93,13 +52,40 @@ const imgs = computed(() =>
     : ([props.work.cover].filter(Boolean) as string[])
 );
 
+const originalBodyOverflow = ref<string | null>(null);
+const originalHtmlOverflow = ref<string | null>(null);
+
 function onKey(e: KeyboardEvent) {
   if (e.key === "Escape") emit("close");
   if (e.key === "ArrowLeft") nav(-1);
   if (e.key === "ArrowRight") nav(1);
 }
-onMounted(() => window.addEventListener("keydown", onKey));
-onBeforeUnmount(() => window.removeEventListener("keydown", onKey));
+
+onMounted(() => {
+  if (typeof window === "undefined") return;
+
+  const body = document.body;
+  const html = document.documentElement;
+
+  originalBodyOverflow.value = body.style.overflow;
+  originalHtmlOverflow.value = html.style.overflow;
+
+  body.style.overflow = "hidden";
+  html.style.overflow = "hidden";
+
+  window.addEventListener("keydown", onKey);
+});
+onBeforeUnmount(() => {
+  if (typeof window === "undefined") return;
+
+  const body = document.body;
+  const html = document.documentElement;
+
+  body.style.overflow = originalBodyOverflow.value || "";
+  html.style.overflow = originalHtmlOverflow.value || "";
+
+  window.removeEventListener("keydown", onKey);
+});
 
 function nav(delta: number) {
   const list = props.siblings;
@@ -116,6 +102,18 @@ function onOverClick(e: MouseEvent) {
     emit("close");
   }
 }
+
+import { useScrollLock } from "@vueuse/core";
+
+const isLocked = process.client ? useScrollLock(document.body) : null;
+
+onMounted(() => {
+  if (isLocked) isLocked.value = true;
+});
+
+onBeforeUnmount(() => {
+  if (isLocked) isLocked.value = false;
+});
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド
