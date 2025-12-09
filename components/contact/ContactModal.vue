@@ -1,19 +1,44 @@
 <template>
-  <div class="overlay" @click.self="$emit('close')">
+  <div class="overlay" @click.self="close">
     <div class="modal">
       <h2 class="modal-title">お問い合わせ</h2>
       <ContactForm mode="modal" formClass="form--modal" />
-      <button class="close" @click="$emit('close')">×</button>
+      <button class="close" @click="close">×</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, onBeforeUnmount, ref } from "vue";
+import ContactForm from "./ContactForm.vue";
+
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-defineEmits(["close"]);
 
+const emit = defineEmits(["close"]);
+
+const scrollTarget = ref<HTMLElement | null>(null);
+const originalOverflow = ref("");
+
+function close() {
+  emit("close");
+}
+
+onMounted(() => {
+  const el =
+    (document.scrollingElement as HTMLElement) || document.documentElement;
+
+  scrollTarget.value = el;
+  originalOverflow.value = el.style.overflow;
+  el.style.overflow = "hidden"; // ← ここでロック
+});
+
+onBeforeUnmount(() => {
+  if (scrollTarget.value) {
+    scrollTarget.value.style.overflow = originalOverflow.value || "";
+  }
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
