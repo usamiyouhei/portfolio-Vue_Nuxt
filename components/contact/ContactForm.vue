@@ -112,14 +112,18 @@
         <Button
           buttonText="確認する"
           lang="ja"
-          type="submit"
+          type="button"
           :onClick="openConfirm"
         />
       </div>
     </form>
 
     <Teleport to="body">
-      <div v-if="showConfirm" class="overlay" @click.self="closeConfirm">
+      <div
+        v-if="showConfirm"
+        class="confirm-overlay"
+        @click.self="closeConfirm"
+      >
         <ContactConfirmModal
           v-if="showConfirm"
           :form="form"
@@ -273,6 +277,16 @@ const handleSubmit = async () => {
   color: #d33;
   font-size: 12px;
   margin-top: 6px;
+}
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200; // ContactModal の 100 より大きく
 }
 
 @media (min-width: 767px) {
