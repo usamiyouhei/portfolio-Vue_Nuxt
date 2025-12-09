@@ -36,15 +36,21 @@
       </ul>
     </section>
 
-    <div class="cta">
-      <Button
-        buttonText="お問い合わせ"
-        lang="ja"
-        :onClick="() => (showContact = true)"
-      />
+    <div class="web-detail__footer">
+      <div class="btn-back">
+        <Button buttonText="← メインページへ" lang="ja" to="/#service" />
+      </div>
+
+      <div class="cta">
+        <Button
+          buttonText="お問い合わせ"
+          lang="ja"
+          :onClick="() => (showContact = true)"
+        />
+      </div>
+      <ContactModal v-if="showContact" @close="showContact = false" />
     </div>
 
-    <ContactModal v-if="showContact" @close="showContact = false" />
     <!-- <h1>{{ service.title }}</h1>
     <img :src="service.img" :alt="service.title">
     <div v-html="service.description" class="lead"/>
@@ -236,30 +242,43 @@ const { crumbs } = useBreadcrumb("service", {
 .consult {
   padding: 10px;
 }
-.cta {
-  display: grid;
-  place-items: center;
-  padding: 24px 0 56px;
-}
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 280px;
-  height: 40px;
-  padding: 0 20px;
-  background: #111;
-  color: #fff;
-  border-radius: 999px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
+// .cta {
+//   display: grid;
+//   place-items: center;
+//   padding: 24px 0 56px;
+// }
 
-.cta-btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+.web-detail__footer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+  }
 }
+// .cta-btn {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   min-width: 280px;
+//   height: 40px;
+//   padding: 0 20px;
+//   background: #111;
+//   color: #fff;
+//   border-radius: 999px;
+//   font-weight: 800;
+//   letter-spacing: 0.03em;
+//   transition: transform 0.2s ease, opacity 0.2s ease;
+// }
+
+// .cta-btn:hover {
+//   transform: translateY(-1px);
+//   opacity: 0.95;
+// }
 
 @media (max-width: 768px) {
   .fv {
