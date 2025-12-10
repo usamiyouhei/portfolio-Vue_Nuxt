@@ -90,14 +90,9 @@ defineEmits(["close", "confirm"]);
   padding: 2rem 1.8rem;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  // animation: fadeIn 0.25s ease-out;
-  animation: modalSlideUp 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  transform-origin: center;
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  will-change: transform, opacity;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+
+  /* 初期 opacity を削除してアニメの中で制御する */
+  animation: modalSlideUp 0.35s ease-out;
 }
 
 @keyframes modalSlideUp {

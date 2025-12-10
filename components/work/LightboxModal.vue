@@ -103,17 +103,17 @@ function onOverClick(e: MouseEvent) {
   }
 }
 
-import { useScrollLock } from "@vueuse/core";
+// import { useScrollLock } from "@vueuse/core";
 
-const isLocked = process.client ? useScrollLock(document.body) : null;
+// const isLocked = process.client ? useScrollLock(document.body) : null;
 
-onMounted(() => {
-  if (isLocked) isLocked.value = true;
-});
+// onMounted(() => {
+//   if (isLocked) isLocked.value = true;
+// });
 
-onBeforeUnmount(() => {
-  if (isLocked) isLocked.value = false;
-});
+// onBeforeUnmount(() => {
+//   if (isLocked) isLocked.value = false;
+// });
 
 //------------------------------------------------------------------------------------------------------------
 // メソッド

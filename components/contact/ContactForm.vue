@@ -280,13 +280,14 @@ const handleSubmit = async () => {
 }
 
 .confirm-overlay {
-  position: fixed;
+  position: fixed !important;
+  z-index: 99999 !important;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200; // ContactModal の 100 より大きく
+}
+
+.confirm-modal {
+  position: relative;
+  z-index: 100000 !important;
 }
 
 @media (min-width: 767px) {
