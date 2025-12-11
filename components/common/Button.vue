@@ -4,7 +4,7 @@
       v-if="props.to"
       class="read-more__button"
       :to="props.to"
-      :class="props.lang"
+      :class="[props.lang, props.direction]"
     >
       <span>{{ props.buttonText }}</span>
     </NuxtLink>
@@ -35,16 +35,20 @@
 </template>
 
 <script setup lang="ts">
+type Direction = "left" | "right" | "none";
+
 type ButtonProps =
   | {
-      buttonText: string;
+      buttonText?: string;
       to: string;
+      direction?: Direction;
       lang?: "en" | "ja";
       href?: undefined;
       onClick?: undefined;
     }
   | {
-      buttonText: string;
+      buttonText?: string;
+      direction?: Direction;
       href: string;
       lang?: "en" | "ja";
       to?: undefined;
@@ -52,6 +56,7 @@ type ButtonProps =
     }
   | {
       buttonText: string;
+      direction?: Direction;
       onClick?: () => void;
       href?: string;
       lang?: "en" | "ja";
@@ -136,6 +141,16 @@ const props = defineProps<ButtonProps>();
   border-top: 1px solid #666;
   border-right: 1px solid #666;
   transition: transform 0.25s ease, right 0.25s ease;
+}
+
+.read-more__button.none span::after {
+  display: none !important;
+}
+
+.read-more__button.left span::after {
+  right: auto;
+  left: 1.5rem;
+  transform: translateY(-50%) rotate(-135deg);
 }
 
 .read-more__button:hover span::after {
