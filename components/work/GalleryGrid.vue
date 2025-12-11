@@ -17,6 +17,13 @@
   </div>
 
   <Button
+    buttonText="← メインページへ"
+    lang="ja"
+    to="/#works"
+    direction="none"
+  />
+
+  <Button
     buttonText="お問い合わせ"
     lang="ja"
     :onClick="() => (showContact = true)"

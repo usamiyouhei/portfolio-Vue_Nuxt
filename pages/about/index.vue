@@ -29,6 +29,10 @@
       <AboutSkills :skills="skills" />
     </section>
 
+    <div class="btn-back">
+      <Button buttonText="← メインページへ" lang="ja" to="/#service" />
+    </div>
+
     <div class="cta">
       <Button
         buttonText="お問い合わせ"

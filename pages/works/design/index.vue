@@ -21,6 +21,12 @@
     <div class="grid">
       <WorkCard v-for="w in list" :key="w.id" :work="w" />
     </div>
+    <Button
+      buttonText="← メインページへ"
+      lang="ja"
+      to="/#works"
+      direction="none"
+    />
   </section>
 </template>
 
@@ -30,6 +36,7 @@ import { useRoute, useRouter } from "vue-router";
 import WorkCard from "@/components/Home/WorkCard.vue";
 import { designDetail } from "~/data/views/design";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
+import Button from "~/components/common/Button.vue";
 
 /**===================================================================================================================
  * 
