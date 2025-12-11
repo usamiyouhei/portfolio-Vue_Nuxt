@@ -2,7 +2,9 @@
   <div class="overlay" @click="onOverClick">
     <article class="modal">
       <header class="head">
-        <h2 class="title">{{ work.title }}</h2>
+        <h2 class="title" :class="{ ja: isJapanese, en: !isJapanese }">
+          {{ work.title }}
+        </h2>
         <button class="x" @click="emit('close')">×</button>
       </header>
 
@@ -103,6 +105,9 @@ function onOverClick(e: MouseEvent) {
   }
 }
 
+const isJapanese = computed(() =>
+  /[\u3040-\u30FF\u4E00-\u9FFF]/.test(props.work.title)
+);
 // import { useScrollLock } from "@vueuse/core";
 
 // const isLocked = process.client ? useScrollLock(document.body) : null;
@@ -164,6 +169,18 @@ function onOverClick(e: MouseEvent) {
   line-height: 1.2;
   font-size: clamp(36px, 2vw, 48px);
   letter-spacing: 0.2;
+}
+
+.title.ja {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+
+.title.en {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  letter-spacing: 0.03em;
 }
 .x {
   font-size: 22px;

@@ -32,6 +32,15 @@
         :href="`/news?page=${page + 1}`"
       />
     </Head>
+
+    <div class="btn-back">
+      <Button
+        buttonText="← メインページへ"
+        lang="ja"
+        to="/#news"
+        direction="none"
+      />
+    </div>
   </section>
 </template>
 
@@ -42,6 +51,7 @@ import { useNews } from "@/composables/useNews";
 import Pagination from "@/components/ui/Pagination.vue";
 import NewsSection from "@/components/Home/NewsSection.vue";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
+import Button from "~/components/common/Button.vue";
 
 const route = useRoute();
 const router = useRouter();

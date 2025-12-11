@@ -20,6 +20,13 @@
     <div class="grid">
       <WorkCard v-for="w in list" :key="w.id" :work="w" />
     </div>
+
+    <Button
+      buttonText="← メインページへ"
+      lang="ja"
+      to="/#works"
+      direction="none"
+    />
   </section>
 </template>
 
@@ -28,6 +35,7 @@ import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import WorkCard from "@/components/Home/WorkCard.vue";
 import { programmingDetail } from "~/data/views/programming";
+import Button from "~/components/common/Button.vue";
 
 /**===================================================================================================================
  * 
