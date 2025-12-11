@@ -8,7 +8,31 @@
       <img :src="itemSafe.image" :alt="itemSafe.title" />
     </header>
     <div class="content" v-if="itemSafe.body" v-html="itemSafe.body" />
-    <Button buttonText="← News一覧へ" class="back" lang="ja" to="/news" />
+
+    <div class="nav-links">
+      <Button
+        v-if="prevItem"
+        :buttonText="`← Back`"
+        :to="`/news/${prevItem.slug}`"
+        direction="none"
+        class="prev"
+      />
+
+      <Button
+        v-if="nextItem"
+        :buttonText="`Next →`"
+        :to="`/news/${nextItem.slug}`"
+        lang="ja"
+        direction="none"
+      />
+    </div>
+    <Button
+      buttonText="← News一覧へ"
+      class="back"
+      lang="ja"
+      to="/news"
+      direction="none"
+    />
   </article>
 </template>
 
@@ -31,6 +55,11 @@ const slug = route.params.slug as string;
 const { sorted } = useNews();
 
 const found = sorted.find((n) => n.slug === slug);
+
+const index = sorted.findIndex((n) => n.slug === slug);
+
+const prevItem = sorted[index + 1] || null;
+const nextItem = sorted[index - 1] || null;
 
 // const item = computed(() => all.value.find(n => n.slug === route.params.slug))
 // const itemSafe = computed<News>(() => {
@@ -133,8 +162,12 @@ useHead({
 }
 
 .back {
-  margin-top: 40px;
   text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
 }
 /* 〜320px（ごく小さいスマホ） */
 @media (max-width: 320px) {
