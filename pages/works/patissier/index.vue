@@ -56,6 +56,7 @@
       :work="active"
       :siblings="list"
       @close="closeModal"
+      @change="onChange"
     />
   </section>
 </template>
@@ -111,6 +112,20 @@ function closeModal() {
   router.replace({ query: q });
 }
 
+function onChange(work: { id: string }) {
+  router.replace({
+    query: {
+      ...route.query,
+      id: work.id,
+    },
+  });
+}
+
+watch(list, () => {
+  if (modalId.value && !active.value) {
+    closeModal();
+  }
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
