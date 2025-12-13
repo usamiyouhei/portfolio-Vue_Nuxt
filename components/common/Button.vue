@@ -6,7 +6,10 @@
       :to="props.to"
       :class="[props.lang, props.direction]"
     >
-      <span>{{ props.buttonText }}</span>
+      <span v-if="direction === 'left'">←</span>
+      <span>{{ buttonText }}</span>
+      <span v-if="direction === 'right'">→</span>
+      <!-- <span>{{ props.buttonText }}</span> -->
     </NuxtLink>
 
     <a
@@ -24,7 +27,7 @@
       v-else
       type="button"
       class="read-more__button"
-      :class="props.lang"
+      :class="[props.lang, props.direction]"
       @click="props.onClick"
     >
       <span>
@@ -63,7 +66,10 @@ type ButtonProps =
       to?: string;
     };
 
-const props = defineProps<ButtonProps>();
+// const props = defineProps<ButtonProps>();
+const props = withDefaults(defineProps<ButtonProps>(), {
+  direction: "none",
+});
 </script>
 
 <style lang="scss" scoped>
@@ -74,7 +80,7 @@ const props = defineProps<ButtonProps>();
   display: flex;
   text-align: center;
   justify-content: center;
-  margin: 12px 0;
+  // margin: 12px 0;
 }
 .btn {
   /* font-size: 1.6rem; */
@@ -99,7 +105,7 @@ const props = defineProps<ButtonProps>();
 }
 .read-more__button {
   all: unset;
-  margin-bottom: 12px;
+  // margin-bottom: 12px;
   padding: 10px;
   font-family: "Playfair Display", serif;
   font-size: 16px;

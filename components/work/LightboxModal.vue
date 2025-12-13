@@ -28,10 +28,17 @@
           v-if="prev"
           :buttonText="`← Back`"
           direction="none"
-          class="prev"
+          class="modal-nav"
+          @click="go(prev)"
         />
 
-        <Button v-if="next" :buttonText="`Next →`" lang="ja" direction="none" />
+        <Button
+          v-if="next"
+          :buttonText="nextLabel"
+          direction="none"
+          class="modal-nav"
+          @click="go(next)"
+        />
       </footer>
     </article>
   </div>
@@ -56,8 +63,10 @@ type Work = {
   tools?: string[];
 };
 
+const router = useRouter();
+
 const props = defineProps<{ work: Work; siblings: Work[] }>();
-const emit = defineEmits<{ close: [] }>();
+const emit = defineEmits<{ close: []; change: [Work] }>();
 
 const imgs = computed(() =>
   props.work.images?.length
@@ -104,6 +113,7 @@ function nav(delta: number) {
   const list = props.siblings;
   const idx = list.findIndex((w) => w.id === props.work.id);
   if (idx < 0) return;
+
   const next = list[(idx + delta + list.length) % list.length];
   const url = new URL(location.href);
   url.searchParams.set("id", next.id);
@@ -125,14 +135,28 @@ const index = computed(() =>
 );
 
 const prev = computed(() =>
-  index.value > 0 ? props.siblings[index.value - 1] : null
+  props.siblings.length
+    ? props.siblings[
+        (index.value - 1 + props.siblings.length) % props.siblings.length
+      ]
+    : null
 );
 
 const next = computed(() =>
-  index.value < props.siblings.length - 1
-    ? props.siblings[index.value + 1]
+  props.siblings.length
+    ? props.siblings[(index.value + 1) % props.siblings.length]
     : null
 );
+
+const go = (target: Work | null) => {
+  if (!target) return;
+  // router.push(`/works/${target.slug}`);
+  emit("change", target);
+};
+
+const isLast = computed(() => index.value === props.siblings.length - 1);
+
+const nextLabel = computed(() => (isLast.value ? "Back to first →" : "Next →"));
 // import { useScrollLock } from "@vueuse/core";
 
 // const isLocked = process.client ? useScrollLock(document.body) : null;
@@ -163,7 +187,7 @@ const next = computed(() =>
 .modal {
   max-width: min(92vw, 780px);
   width: 90%;
-  height: 78vh;
+  height: 80vh;
   overflow: hidden;
   background: #fff;
   border-radius: 14px;
@@ -192,7 +216,7 @@ const next = computed(() =>
 .title {
   font-weight: 800;
   line-height: 1.2;
-  font-size: clamp(36px, 2vw, 48px);
+  font-size: clamp(20px, 2vw, 48px);
   letter-spacing: 0.2;
 }
 
@@ -214,7 +238,7 @@ const next = computed(() =>
   border-radius: 14px;
 }
 .body {
-  overflow: auto;
+  overflow: hidden;
   padding: 16px;
 }
 .media {
@@ -223,12 +247,19 @@ const next = computed(() =>
   place-items: center;
 }
 .media img {
-  width: min(80%, 680px);
-  height: auto;
+  // width: min(80%, 680px);
+  width: auto;
+  max-width: 100%;
+  max-height: 42vh;
   display: block;
   border-radius: 10px;
   object-fit: contain;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-nav {
+  padding: 0.2rem 1rem;
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   .grid {
@@ -276,5 +307,10 @@ const next = computed(() =>
   background: #111;
   color: #fff;
   font-size: 14px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
 }
 </style>
