@@ -23,6 +23,16 @@
           {{ work.description }}
         </section>
       </div>
+      <footer class="nav">
+        <Button
+          v-if="prev"
+          :buttonText="`← Back`"
+          direction="none"
+          class="prev"
+        />
+
+        <Button v-if="next" :buttonText="`Next →`" lang="ja" direction="none" />
+      </footer>
     </article>
   </div>
 </template>
@@ -30,8 +40,9 @@
 <script setup lang="ts">
 import { onKeyDown } from "@vueuse/core";
 import { onMounted, onBeforeUnmount, computed, ref } from "vue";
+import Button from "~/components/common/Button.vue";
 /**===================================================================================================================
- * 
+ *
  ===================================================================================================================**/
 type Work = {
   id: string;
@@ -107,6 +118,20 @@ function onOverClick(e: MouseEvent) {
 
 const isJapanese = computed(() =>
   /[\u3040-\u30FF\u4E00-\u9FFF]/.test(props.work.title)
+);
+
+const index = computed(() =>
+  props.siblings.findIndex((w) => w.id === props.work.id)
+);
+
+const prev = computed(() =>
+  index.value > 0 ? props.siblings[index.value - 1] : null
+);
+
+const next = computed(() =>
+  index.value < props.siblings.length - 1
+    ? props.siblings[index.value + 1]
+    : null
 );
 // import { useScrollLock } from "@vueuse/core";
 
