@@ -4,7 +4,7 @@
     <header class="head">
       <h1 class="title">Visual Production Gallery</h1>
 
-      <div class="video-wrap">
+      <!-- <div class="video-wrap">
         <video
           src="@/public/videos/dessert_une_assiette.mp4"
           class="video"
@@ -14,9 +14,9 @@
           loop
           preload="metadata"
         ></video>
-      </div>
+      </div> -->
 
-      <div class="kv__video-wrap fade-in fade-in-up">
+      <!-- <div class="kv__video-wrap fade-in fade-in-up">
         <h3 class="kv__video-title">
           動画クリエイター&emsp;シライフウタ様&emsp;<br
             class="md-show pc-show"
@@ -35,7 +35,7 @@
             class="md-show"
           />動画に仕上がりました。
         </p>
-      </div>
+      </div> -->
 
       <nav class="tabs" role="tablist" aria-label="VisualProduction Tabs">
         <button
@@ -68,6 +68,7 @@
       :work="active"
       :siblings="list"
       @close="closeModal"
+      @change="onChange"
     />
   </section>
 </template>
@@ -146,6 +147,19 @@ function closeModal() {
   router.replace({ query: q });
 }
 
+function onChange(work: { id: string }) {
+  router.replace({
+    query: {
+      ...route.query,
+      id: work.id,
+    },
+  });
+}
+watch(list, () => {
+  if (modalId.value && !active.value) {
+    closeModal();
+  }
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
