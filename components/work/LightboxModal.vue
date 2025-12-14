@@ -10,13 +10,24 @@
 
       <div class="body">
         <div class="media">
-          <img
-            v-for="(src, i) in imgs"
-            :src="src"
-            :key="i"
-            :alt="`${work.title} ${i + 1}`"
-            loading="lazy"
-          />
+          <!-- 写真 -->
+          <template v-for="(src, i) in imgs" :key="i">
+            <img
+              v-if="!isVideo(src)"
+              :src="src"
+              :alt="`${work.title} ${i + 1}`"
+              loading="lazy"
+            />
+
+            <video
+              v-else
+              :src="src"
+              controls
+              playsinline
+              preload="metadata"
+              class="video"
+            />
+          </template>
         </div>
 
         <section v-if="work.description" class="story">
@@ -157,6 +168,10 @@ const go = (target: Work | null) => {
 const isLast = computed(() => index.value === props.siblings.length - 1);
 
 const nextLabel = computed(() => (isLast.value ? "Back to first →" : "Next →"));
+
+function isVideo(src: string) {
+  return /\.(mp4|webm|ogg)$/i.test(src);
+}
 // import { useScrollLock } from "@vueuse/core";
 
 // const isLocked = process.client ? useScrollLock(document.body) : null;
@@ -246,12 +261,20 @@ const nextLabel = computed(() => (isLast.value ? "Back to first →" : "Next →
   gap: 10px;
   place-items: center;
 }
-.media img {
-  // width: min(80%, 680px);
-  width: auto;
+// .media img {
+//   // width: min(80%, 680px);
+//   width: auto;
+//   max-width: 100%;
+//   max-height: 42vh;
+//   display: block;
+//   border-radius: 10px;
+//   object-fit: contain;
+//   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+// }
+.media img,
+.media video {
   max-width: 100%;
   max-height: 42vh;
-  display: block;
   border-radius: 10px;
   object-fit: contain;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
