@@ -111,7 +111,7 @@ const timeline: TimelineItem[] = [
   { period: "2024-2025", title: "株式会社RingZero", detail: "Web開発会社" },
   {
     period: "2025-",
-    title: "ドバイ勤務",
+    title: "海外勤務",
     detail: "パティシエとして海外でのオペレーション・新作開発。",
   },
   {

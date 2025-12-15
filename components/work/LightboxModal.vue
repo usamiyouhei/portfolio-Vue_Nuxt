@@ -10,6 +10,7 @@
 
       <div class="body">
         <div class="media">
+          <!-- <MediaRenderer :sources="imgs" /> -->
           <!-- 写真 -->
           <template v-for="(src, i) in imgs" :key="i">
             <img
@@ -59,6 +60,7 @@
 import { onKeyDown } from "@vueuse/core";
 import { onMounted, onBeforeUnmount, computed, ref } from "vue";
 import Button from "~/components/common/Button.vue";
+import MediaRenderer from "../common/MediaRenderer.vue";
 /**===================================================================================================================
  *
  ===================================================================================================================**/

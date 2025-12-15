@@ -341,7 +341,8 @@ export const visualDetail: VisualDetail[] = [
     category: "visualProduction",
     visualTag: "movie",
     images: ["/videos/dessert_une_assiette.mp4"],
-    description: "制作中",
+    description:
+      " Instagram、Tik Tokで人気の動画クリエイターシライフウタさんに撮影して頂きました流れるような動きでストーリー性のある動画に仕上がりました。",
   },
   // {
   //   id: "wm2",
