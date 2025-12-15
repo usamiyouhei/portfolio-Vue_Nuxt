@@ -11,19 +11,17 @@
 
     <div class="nav-links">
       <Button
+        v-if="nextItem"
+        :buttonText="`← Next`"
+        :to="`/news/${nextItem.slug}`"
+        direction="none"
+      />
+      <Button
         v-if="prevItem"
-        :buttonText="`← Back`"
+        :buttonText="`Back →`"
         :to="`/news/${prevItem.slug}`"
         direction="none"
         class="prev"
-      />
-
-      <Button
-        v-if="nextItem"
-        :buttonText="`Next →`"
-        :to="`/news/${nextItem.slug}`"
-        lang="ja"
-        direction="none"
       />
     </div>
     <Button
