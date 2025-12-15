@@ -24,19 +24,6 @@ import HamburgerButton from "../common/HamburgerButton.vue";
  * 
  ===================================================================================================================**/
 
-//  const isMobile = ref(window.innerWidth < 768)
-
-//  function updateSize() {
-//   isMobile.value = window.innerWidth < 768
-//  }
-
-//  onMounted(() => {
-//   window.addEventListener("resize", updateSize)
-//  })
-
-//  onBeforeUnmount(() => {
-//   window.removeEventListener("resize", updateSize)
-//  })
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
