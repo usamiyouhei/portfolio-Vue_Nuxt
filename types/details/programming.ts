@@ -3,6 +3,7 @@ import type { Work } from "../works";
 export type ProgrammingTag = "site" | "app";
 
 export interface ProgrammingDetail extends Work {
+  type?: string;
   devType: ProgrammingTag;
   stack: string[];
   problem: string;
