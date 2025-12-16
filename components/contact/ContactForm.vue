@@ -190,6 +190,15 @@ const handleSubmit = async () => {
 
   router.push("/contact/thanks");
 };
+
+await $fetch("/api/contact", {
+  method: "POST",
+  body: {
+    name: form.value.name,
+    email: form.value.email,
+    message: form.value.message,
+  },
+});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------
