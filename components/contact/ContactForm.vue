@@ -186,19 +186,19 @@ const closeConfirm = () => {
 const handleSubmit = async () => {
   showConfirm.value = false;
   // 送信処理（Formspree などにPOSTする想定）
-  await new Promise((r) => setTimeout(r, 1000));
+  await $fetch("/api/contact", {
+    method: "POST",
+    body: {
+      name: form.value.name,
+      email: form.value.email,
+      topic: form.value.topic,
+      message: form.value.message,
+    },
+  });
 
   router.push("/contact/thanks");
 };
 
-await $fetch("/api/contact", {
-  method: "POST",
-  body: {
-    name: form.value.name,
-    email: form.value.email,
-    message: form.value.message,
-  },
-});
 //------------------------------------------------------------------------------------------------------------
 // メソッド
 //------------------------------------------------------------------------------------------------------------

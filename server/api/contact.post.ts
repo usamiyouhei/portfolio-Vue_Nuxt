@@ -20,6 +20,7 @@ export default defineEventHandler(async (event) => {
       text: `
 Name: ${body.name}
 Email: ${body.email}
+Topic: ${body.topic}
 
 Message:
 ${body.message}
