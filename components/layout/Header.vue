@@ -3,7 +3,7 @@
     <div class="header_inner">
       <h1 class="header_logo">
         <NuxtLink to="/">
-          <img src="/img/yohei_usami_logo.svg" alt="宇佐美洋平 名前のロゴ" />
+          <img :src="logo" alt="宇佐美洋平 名前のロゴ" />
         </NuxtLink>
       </h1>
 
@@ -20,6 +20,7 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import NavButton from "../common/NavButton.vue";
 import HamburgerButton from "../common/HamburgerButton.vue";
+import logo from "@/assets/img/yohei-usami-logo.svg";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
