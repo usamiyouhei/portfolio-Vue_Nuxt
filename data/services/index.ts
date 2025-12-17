@@ -254,7 +254,7 @@ export const services: Service[] = [
       "20年以上の経験と新作開発のノウハウを活かし、1品からオリジナルレシピを制作いたします。栄養学の観点から、体に優しいメニュー提案も可能です。  ",
     category: "creator",
     slug: "recipe-development",
-    heroImage: "/img/sweets/mileCrape.jpg",
+    heroImage: "/img/cake/mileCrape.jpg",
     blocks: [
       {
         id: "summary",

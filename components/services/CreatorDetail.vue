@@ -15,7 +15,7 @@
         :images="imageList"
         :speed="20"
         :reverse="true"
-        :height="200"
+        :height="150"
       />
       <Breadcrumb :crumbs="crumbs" />
       <li v-for="(b, i) in service.blocks" :key="i" class="service-block">
@@ -82,12 +82,12 @@ const imageList = [
   "/img/sweets/buffe.jpg",
   "/img/sweets/chocolate_terine.jpg",
   "/img/sweets/chocolate6.jpg",
-  "/img/sweets/many-cake.jpg",
-  "/img/sweets/mileCrape.jpg",
+  "/img/cake/many-cake.jpg",
+  "/img/cake/mileCrape.jpg",
   "/img/sweets/sweets.jpg",
-  "/img/sweets/tart.jpg",
-  "/img/sweets/fig_dessert.jpg",
-  "/img/sweets/muscut_dessert.jpg",
+  "/img/cake/tart.jpg",
+  "/img/dessert/fig_dessert.jpg",
+  "/img/dessert/muscut_dessert.jpg",
 ];
 
 const { crumbs } = useBreadcrumb("service", {
