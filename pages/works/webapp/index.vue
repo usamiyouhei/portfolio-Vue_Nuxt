@@ -82,6 +82,7 @@ function setTab(t: DevTab) {
   border-radius: 999px;
   border: 1px solid #ddd;
   background: #fff;
+  color: #333;
 }
 .tab.active {
   border-color: #f7b;
