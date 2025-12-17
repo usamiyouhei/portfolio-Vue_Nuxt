@@ -262,6 +262,7 @@ const catLabels: Record<Category, string> = {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
+  color: #111;
 
   width: 42px;
   height: 42px;
