@@ -15,7 +15,7 @@
         :images="imageList"
         :speed="20"
         :reverse="true"
-        :height="150"
+        :height="180"
       />
       <Breadcrumb :crumbs="crumbs" />
       <li v-for="(b, i) in service.blocks" :key="i" class="service-block">
