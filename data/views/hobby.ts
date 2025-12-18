@@ -92,8 +92,8 @@ export const hobbyDetail: HobbyDetail[] = [
   //   description: "",
   // },
   {
-    id: "ha",
-    slug: "",
+    id: "ha1",
+    slug: "Château",
     title: "Château Pénau Laplagne（シャトー・ペノー・ラプラーニュ）2016",
     cover: "/img/hobby/alcohol/chateau.jpeg",
     category: "hobby",
@@ -103,17 +103,18 @@ export const hobbyDetail: HobbyDetail[] = [
       "Château Pénau Laplagne（シャトー・ペノー・ラプラーニュ）2016 ",
   },
   {
-    id: "ha",
-    slug: "",
-    title: "",
+    id: "ha2",
+    slug: "Kressmann",
+    title: "Kressmann 他",
     cover: "/img/hobby/alcohol/dessert_wine.jpeg",
     category: "hobby",
     hobbyTag: "wine",
     images: ["/img/hobby/alcohol/dessert_wine.jpeg"],
-    description: "",
+    description:
+      "Kressmann、中国貴腐ワイン、Château de Ricaud、Château Haut-Mayne",
   },
   {
-    id: "ha",
+    id: "ha3",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/dessert_wine2.jpeg",
@@ -123,7 +124,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha4",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/ice_wine.jpeg",
@@ -133,7 +134,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha5",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/mangot_2019.jpeg",
@@ -143,7 +144,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha6",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/pago_de_tharsys.jpeg",
@@ -153,7 +154,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha7",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/vintense1.jpeg",
@@ -163,7 +164,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha8",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/chiebijin.jpeg",
@@ -173,7 +174,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha9",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/dessert_sake.jpeg",
@@ -183,7 +184,7 @@ export const hobbyDetail: HobbyDetail[] = [
     description: "",
   },
   {
-    id: "ha",
+    id: "ha10",
     slug: "",
     title: "",
     cover: "/img/hobby/alcohol/dessert_sake1.jpeg",
