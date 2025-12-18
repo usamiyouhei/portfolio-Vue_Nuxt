@@ -215,11 +215,21 @@ watch(list, () => {
   flex-wrap: wrap;
 }
 .tab {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid #ddd;
   background: #fff;
   color: #333;
+}
+.tab:focus {
+  outline: none;
+}
+.tab:focus-visible {
+  outline: 2px solid rgba(255, 128, 170, 0.6);
+  outline-offset: 2px;
 }
 .tab.active {
   border-color: #f7b;
