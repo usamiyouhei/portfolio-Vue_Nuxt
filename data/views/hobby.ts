@@ -3,8 +3,8 @@ import type { HobbyDetail } from "~/types/details/hobby";
 export const hobbyDetail: HobbyDetail[] = [
   {
     id: "hd1",
-    slug: "",
-    title: "",
+    slug: "mushimegane",
+    title: "mushimegane booksさんのお皿",
     cover: "/img/hobby/dish/musimegane2.jpg",
     category: "hobby",
     hobbyTag: "dish",
@@ -14,7 +14,7 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "hd2",
     slug: "",
-    title: "",
+    title: "中園 晋作様のお皿",
     cover: "/img/hobby/dish/nakazono1.jpeg",
     category: "hobby",
     hobbyTag: "dish",
@@ -24,7 +24,7 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "hd3",
     slug: "",
-    title: "",
+    title: "瀬川辰馬様のお皿",
     cover: "/img/hobby/dish/segawa1.jpeg",
     category: "hobby",
     hobbyTag: "dish",
@@ -34,7 +34,7 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "hd4",
     slug: "",
-    title: "",
+    title: "大浦宏樹様のお皿",
     cover: "/img/hobby/dish/ooura.jpeg",
     category: "hobby",
     hobbyTag: "dish",
@@ -44,7 +44,7 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "hd5",
     slug: "",
-    title: "",
+    title: "片瀬和宏様のお皿",
     cover: "/img/hobby/dish/katase.jpeg",
     category: "hobby",
     hobbyTag: "dish",
@@ -94,12 +94,13 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "ha",
     slug: "",
-    title: "",
+    title: "Château Pénau Laplagne（シャトー・ペノー・ラプラーニュ）2016",
     cover: "/img/hobby/alcohol/chateau.jpeg",
     category: "hobby",
     hobbyTag: "wine",
     images: ["/img/hobby/alcohol/chateau.jpeg"],
-    description: "",
+    description:
+      "Château Pénau Laplagne（シャトー・ペノー・ラプラーニュ）2016 ",
   },
   {
     id: "ha",

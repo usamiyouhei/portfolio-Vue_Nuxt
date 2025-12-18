@@ -127,7 +127,7 @@ export const patissierDetail: PatissierDetail[] = [
   {
     id: "wd10",
     slug: "sakura",
-    title: "sakura dessert",
+    title: "桜デザート",
     cover: "/img/dessert/sakura-dessert.jpg",
     category: "patissier",
     patissierTag: "dessert",
@@ -139,7 +139,7 @@ export const patissierDetail: PatissierDetail[] = [
   {
     id: "wd11",
     slug: "grape-dessert",
-    title: "grape-dessert",
+    title: "巨峰のデザート２",
     cover: "/img/dessert/grape-dessert.jpg",
     category: "patissier",
     patissierTag: "dessert",
