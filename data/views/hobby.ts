@@ -116,12 +116,12 @@ export const hobbyDetail: HobbyDetail[] = [
   {
     id: "ha3",
     slug: "",
-    title: "",
+    title: "St. Stephan’s Crown – Tokaji Szamorodni 2019",
     cover: "/img/hobby/alcohol/dessert_wine2.jpeg",
     category: "hobby",
     hobbyTag: "wine",
     images: ["/img/hobby/alcohol/dessert_wine2.jpeg"],
-    description: "",
+    description: "St. Stephan’s Crown – Tokaji Szamorodni 2019、",
   },
   {
     id: "ha4",
@@ -203,6 +203,16 @@ export const hobbyDetail: HobbyDetail[] = [
   //   images: ["/img/hobby/alcohol/"],
   //   description: "",
   // },
+  {
+    id: "ha",
+    slug: "",
+    title: "",
+    cover: "/img/hobby/alcohol/",
+    category: "hobby",
+    hobbyTag: "sake",
+    images: ["/img/hobby/alcohol/"],
+    description: "",
+  },
   {
     id: "w1",
     slug: "sakura",

@@ -34,13 +34,13 @@ import { hobbyDetail } from "~/data/views/hobby";
 /**===================================================================================================================
  * 
  ===================================================================================================================**/
-type HobbyTab = "dish" | "wine" | "ingredients" | "food" | "economy";
+type HobbyTab = "dish" | "wine" | "sake" | "ingredients" | "food" | "economy";
 
 const route = useRoute();
 const router = useRouter();
 
 const tab = computed<HobbyTab>(() =>
-  ["dish", "wine", "ingredients", "food", "economy"].includes(
+  ["dish", "wine", "sake", "ingredients", "food", "economy"].includes(
     String(route.query.tab)
   )
     ? (route.query.tab as HobbyTab)
@@ -50,6 +50,7 @@ const tab = computed<HobbyTab>(() =>
 const tabs: { key: HobbyTab; label: string }[] = [
   { key: "dish", label: "器" },
   { key: "wine", label: "ワイン" },
+  { key: "sake", label: "日本酒" },
   { key: "ingredients", label: "食材" },
   { key: "food", label: "食事" },
   { key: "economy", label: "経済" },
