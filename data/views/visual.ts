@@ -341,19 +341,32 @@ export const visualDetail: VisualDetail[] = [
     category: "visualProduction",
     visualTag: "movie",
     images: ["/videos/dessert_une_assiette.mp4"],
+    media: [
+      {
+        type: "video",
+        src: "/videos/dessert_une_assiette.mp4",
+        poster: "/img/dessert/collabo-img2.jpg",
+      },
+    ],
     description:
       " Instagram、Tik Tokで人気の動画クリエイターシライフウタさんに撮影して頂きました流れるような動きでストーリー性のある動画に仕上がりました。",
   },
-  // {
-  //   id: "wm2",
-  //   slug: "",
-  //   title: "",
-  //   cover: "/img/movie/",
-  //   category: "visualProduction",
-  //   visualTag: "movie",
-  //   images: ["/img/movie/"],
-  //   description: "",
-  // },
+  {
+    id: "wm2",
+    slug: "sakura",
+    title: "桜舞うデザート",
+    cover: "/img/dessert/sakura_main.jpeg",
+    category: "visualProduction",
+    visualTag: "movie",
+    media: [
+      {
+        type: "video",
+        src: "/videos/sakura.mov",
+        poster: "/img/dessert/sakura_main.jpeg",
+      },
+    ],
+    description: "飴のパウダーを散らしました",
+  },
   // {
   //   id: "wm3",
   //   slug: "",
