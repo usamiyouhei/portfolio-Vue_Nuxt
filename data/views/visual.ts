@@ -344,16 +344,16 @@ export const visualDetail: VisualDetail[] = [
     description:
       " Instagram、Tik Tokで人気の動画クリエイターシライフウタさんに撮影して頂きました流れるような動きでストーリー性のある動画に仕上がりました。",
   },
-  {
-    id: "wm2",
-    slug: "sakura",
-    title: "桜舞うデザート",
-    cover: "/img/dessert/sakura_main.jpeg",
-    category: "visualProduction",
-    visualTag: "movie",
-    images: ["/videos/sakura.mov"],
-    description: "",
-  },
+  // {
+  //   id: "wm2",
+  //   slug: "sakura",
+  //   title: "桜舞うデザート",
+  //   cover: "/img/dessert/sakura_main.jpeg",
+  //   category: "visualProduction",
+  //   visualTag: "movie",
+  //   images: ["/videos/sakura.mov"],
+  //   description: "",
+  // },
   // {
   //   id: "wm3",
   //   slug: "",
