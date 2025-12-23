@@ -4,39 +4,6 @@
     <header class="head">
       <h1 class="title">Visual Production Gallery</h1>
 
-      <!-- <div class="video-wrap">
-        <video
-          src="@/public/videos/dessert_une_assiette.mp4"
-          class="video"
-          controls
-          playsinline
-          muted
-          loop
-          preload="metadata"
-        ></video>
-      </div> -->
-
-      <!-- <div class="kv__video-wrap fade-in fade-in-up">
-        <h3 class="kv__video-title">
-          動画クリエイター&emsp;シライフウタ様&emsp;<br
-            class="md-show pc-show"
-          />コラボ動画
-        </h3>
-        <time class="kv__video-time" datetime="2022-2-18">2022.2.18</time>
-
-        <p class="kv__video-text">
-          Instagram、Tik Tokで人気の<br class="md-show" />動画クリエイター<br
-            class="md-none"
-          />
-          シライフウタさんに<br class="md-show" />撮影して頂きました&#33;<br
-            class="sp-show"
-          />
-          流れるような動きでストーリー性のある<br
-            class="md-show"
-          />動画に仕上がりました。
-        </p>
-      </div> -->
-
       <nav class="tabs" role="tablist" aria-label="VisualProduction Tabs">
         <button
           v-for="t in modeTabs"
