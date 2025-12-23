@@ -74,18 +74,32 @@ type Work = {
   recipe?: { ingredients: string[]; steps: string[] };
   platingNotes?: string[];
   tools?: string[];
+  media?: MediaItem[];
 };
+
+export interface MediaItem {
+  type: "image" | "video";
+  src: string;
+  poster?: string;
+}
 
 const router = useRouter();
 
 const props = defineProps<{ work: Work; siblings: Work[] }>();
 const emit = defineEmits<{ close: []; change: [Work] }>();
 
-const imgs = computed(() =>
-  props.work.images?.length
-    ? props.work.images
-    : ([props.work.cover].filter(Boolean) as string[])
-);
+const imgs = computed(() => {
+  if (props.work.media && props.work.media.length) {
+    return props.work.media.map((m) => m.src);
+  }
+
+  // 既存：photo 用 images
+  if (props.work.images && props.work.images.length) {
+    return props.work.images;
+  }
+
+  return [];
+});
 
 const originalBodyOverflow = ref<string | null>(null);
 const originalHtmlOverflow = ref<string | null>(null);
