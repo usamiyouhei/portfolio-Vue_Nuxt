@@ -1,7 +1,7 @@
 <template>
   <section class="programming">
     <header class="head">
-      <h1 class="title">Web Site</h1>
+      <h1 class="title">Web Development</h1>
       <nav class="tabs">
         <button
           v-for="t in tabs"

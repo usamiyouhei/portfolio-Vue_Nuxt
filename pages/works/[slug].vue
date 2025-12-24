@@ -21,6 +21,21 @@
 
           <p class="work-detail__text">{{ work.problem }}</p>
         </section>
+
+        <section v-if="work.links" class="work-detail__links">
+          <Button
+            v-if="work.links.demo"
+            buttonText="Demoを見る"
+            :href="work.links.demo"
+            direction="none"
+          />
+          <Button
+            v-if="work.links.repo"
+            buttonText="GitHub"
+            :href="work.links.repo"
+            direction="none"
+          />
+        </section>
       </div>
     </div>
   </article>
@@ -197,6 +212,12 @@ const backToListPath = `/works/${work.category}`;
   }
 }
 
+.work-detail__links {
+  display: flex;
+  margin-top: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 .work-detail__footer {
   margin-top: 32px;
   display: flex;
