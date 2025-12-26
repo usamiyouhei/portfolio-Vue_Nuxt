@@ -546,7 +546,7 @@ export const hobbyDetail: HobbyDetail[] = [
     id: "we",
     slug: "",
     title: "",
-    cover: "/img/Dg-img3.jpg",
+    cover: "/img/noImg.png",
     category: "hobby",
     hobbyTag: "economy",
     images: ["/img/Dg-img1.jpg"],
