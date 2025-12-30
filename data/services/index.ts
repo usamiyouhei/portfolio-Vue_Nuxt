@@ -264,7 +264,7 @@ export const services: Service[] = [
       {
         id: "track-record",
         title: "サービス実績",
-        body: ``,
+        body: `自店経営時に多数レシピ作成`,
       },
       {
         id: "price-guide",
@@ -288,28 +288,8 @@ export const services: Service[] = [
           values: ["約6ページ", "約12ページ", "約20ページ"],
         },
         {
-          feature: "更新機能",
-          values: [
-            "△（1件）<br><small>例：お知らせ</small>",
-            "◎（3件）<br><small>例：お知らせ/ブログ/商品</small>",
-            "◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>",
-          ],
-        },
-        {
-          feature: "原稿",
-          values: ["お客様ご用意", "取材・作成代行", "取材・作成代行"],
-        },
-        {
-          feature: "デザイン案",
-          values: ["1案まで", "2案", "2案"],
-        },
-        {
           feature: "修正",
           values: ["2回まで", "3回", "4回"],
-        },
-        {
-          feature: "スマホ/タブレット対応",
-          values: ["△（スマホ）", "◎（両対応）", "◎（両対応）"],
         },
       ],
     },
@@ -354,28 +334,12 @@ export const services: Service[] = [
           values: ["約6ページ", "約12ページ", "約20ページ"],
         },
         {
-          feature: "更新機能",
-          values: [
-            "△（1件）<br><small>例：お知らせ</small>",
-            "◎（3件）<br><small>例：お知らせ/ブログ/商品</small>",
-            "◎（4件）<br><small>例：お知らせ/ブログ/商品…</small>",
-          ],
-        },
-        {
-          feature: "原稿",
-          values: ["お客様ご用意", "取材・作成代行", "取材・作成代行"],
-        },
-        {
           feature: "デザイン案",
           values: ["1案まで", "2案", "2案"],
         },
         {
           feature: "修正",
           values: ["2回まで", "3回", "4回"],
-        },
-        {
-          feature: "スマホ/タブレット対応",
-          values: ["△（スマホ）", "◎（両対応）", "◎（両対応）"],
         },
       ],
     },
