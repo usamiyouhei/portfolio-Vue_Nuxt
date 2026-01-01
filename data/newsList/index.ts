@@ -123,7 +123,7 @@ export const allNews: News[] = [
     id: "n15",
     title: "明けましておめでとうございます",
     date: "2026-01-01",
-    image: "/img/news/2026.jpeg",
+    image: "/img/news/2026.jpg",
     slug: "2026_start",
     excerpt: "2026年がスタートしました",
     body: "今年も様々なことに挑戦しながら今の技術も磨いていこうと思います。１年、しっかりと準備をして来年から新たに新サービスをスタートさせる予定です。",
