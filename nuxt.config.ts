@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   devServer: {
     https: false, // ★ 明示的にオフ
   },
+  experimental: {
+    oxc: false,
+  },
 
   // app: {
   //   head: {
